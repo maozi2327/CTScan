@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>798</height>
+    <width>945</width>
+    <height>907</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,7 +18,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
+    <width>1000</width>
     <height>16777215</height>
    </size>
   </property>
@@ -28,8 +28,8 @@
   <widget class="QGroupBox" name="xRayGroupBox">
    <property name="geometry">
     <rect>
-     <x>23</x>
-     <y>12</y>
+     <x>24</x>
+     <y>13</y>
      <width>365</width>
      <height>75</height>
     </rect>
@@ -148,8 +148,8 @@
   <widget class="QGroupBox" name="panelGroupBox">
    <property name="geometry">
     <rect>
-     <x>23</x>
-     <y>92</y>
+     <x>24</x>
+     <y>94</y>
      <width>365</width>
      <height>75</height>
     </rect>
@@ -265,14 +265,14 @@
   <widget class="QGroupBox" name="scanSetupGroupBox">
    <property name="geometry">
     <rect>
-     <x>23</x>
-     <y>168</y>
+     <x>24</x>
+     <y>175</y>
      <width>365</width>
      <height>60</height>
     </rect>
    </property>
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
@@ -368,13 +368,13 @@
    <property name="geometry">
     <rect>
      <x>24</x>
-     <y>232</y>
+     <y>240</y>
      <width>365</width>
-     <height>549</height>
+     <height>561</height>
     </rect>
    </property>
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
@@ -382,13 +382,13 @@
    <property name="minimumSize">
     <size>
      <width>365</width>
-     <height>0</height>
+     <height>500</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
      <width>365</width>
-     <height>16777215</height>
+     <height>1000</height>
     </size>
    </property>
    <property name="title">
@@ -414,20 +414,23 @@
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>4</x>
+      <x>0</x>
       <y>21</y>
-      <width>356</width>
-      <height>521</height>
+      <width>359</width>
+      <height>534</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="motionLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <layout class="QHBoxLayout" name="tableRotLayout1">
        <item>
         <layout class="QGridLayout" name="tableRotLayout2">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
          <item row="0" column="0" colspan="2">
           <widget class="QLineEdit" name="tableRotationPosEdit">
            <property name="minimumSize">
@@ -522,15 +525,24 @@
        </item>
        <item>
         <layout class="QVBoxLayout" name="tableRotLayout3">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetFixedSize</enum>
+         </property>
          <item>
-          <widget class="QLabel" name="label_11">
+          <widget class="QLabel" name="tableRotStaticLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>工件旋转</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider">
+          <widget class="QSlider" name="tableRotHorizontalSlider">
            <property name="minimumSize">
             <size>
              <width>190</width>
@@ -554,13 +566,28 @@
      </item>
      <item>
       <widget class="Line" name="tableRotLine">
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="tableTranslationLayout1">
+      <layout class="QHBoxLayout" name="tableTranslationLayou1">
        <item>
         <layout class="QGridLayout" name="tableTranslationLayou2">
          <item row="0" column="0" colspan="2">
@@ -658,14 +685,14 @@
        <item>
         <layout class="QVBoxLayout" name="tableTranslationLayout3">
          <item>
-          <widget class="QLabel" name="label_12">
+          <widget class="QLabel" name="tableTranslationStaticLabel">
            <property name="text">
             <string>工件平移</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider_2">
+          <widget class="QSlider" name="tableTranslationHorizontalSlider">
            <property name="minimumSize">
             <size>
              <width>190</width>
@@ -689,6 +716,21 @@
      </item>
      <item>
       <widget class="Line" name="tableTranslationLine">
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -793,14 +835,14 @@
        <item>
         <layout class="QVBoxLayout" name="tableRadialLayout3">
          <item>
-          <widget class="QLabel" name="label_13">
+          <widget class="QLabel" name="tableRadialStaticLabel">
            <property name="text">
             <string>工件径向</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider_3">
+          <widget class="QSlider" name="tableRadialHorizontalSlider">
            <property name="minimumSize">
             <size>
              <width>190</width>
@@ -824,6 +866,21 @@
      </item>
      <item>
       <widget class="Line" name="tableRadialLine">
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -926,16 +983,16 @@
         </spacer>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="detLayerLayout3">
+        <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QLabel" name="label_14">
+          <widget class="QLabel" name="detLayerStaticLabel">
            <property name="text">
             <string>探测升降</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider_4">
+          <widget class="QSlider" name="detLayerHorizontalSlider">
            <property name="minimumSize">
             <size>
              <width>190</width>
@@ -959,6 +1016,21 @@
      </item>
      <item>
       <widget class="Line" name="detLayerLine">
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -1063,14 +1135,14 @@
        <item>
         <layout class="QVBoxLayout" name="detTranslationLayout3">
          <item>
-          <widget class="QLabel" name="label_15">
+          <widget class="QLabel" name="detTranslationStaticLabel">
            <property name="text">
             <string>探测平移</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider_5">
+          <widget class="QSlider" name="detTranslationHorizontalSlider">
            <property name="minimumSize">
             <size>
              <width>190</width>
@@ -1094,6 +1166,21 @@
      </item>
      <item>
       <widget class="Line" name="detTranslationLine">
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -1198,14 +1285,14 @@
        <item>
         <layout class="QVBoxLayout" name="detRadialLayout3">
          <item>
-          <widget class="QLabel" name="label_16">
+          <widget class="QLabel" name="detRadialStaticLabel">
            <property name="text">
             <string>探测径向</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider_6">
+          <widget class="QSlider" name="detRadialHorizontalSlider">
            <property name="minimumSize">
             <size>
              <width>190</width>
@@ -1229,6 +1316,21 @@
      </item>
      <item>
       <widget class="Line" name="detRadialLine">
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -1333,14 +1435,14 @@
        <item>
         <layout class="QVBoxLayout" name="layerLayerLayout3">
          <item>
-          <widget class="QLabel" name="label_17">
+          <widget class="QLabel" name="rayLayerStaticLabel">
            <property name="text">
             <string>射线升降</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSlider" name="horizontalSlider_7">
+          <widget class="QSlider" name="rayLayerHorizontalSlider">
            <property name="minimumSize">
             <size>
              <width>190</width>
@@ -1364,13 +1466,66 @@
      </item>
      <item>
       <widget class="Line" name="rayLayerLine">
+       <property name="minimumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>350</width>
+         <height>2</height>
+        </size>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>357</width>
+         <height>13</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
    </widget>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>210</y>
+     <width>401</width>
+     <height>561</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>1000</height>
+    </size>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
   </widget>
  </widget>
  <resources/>
