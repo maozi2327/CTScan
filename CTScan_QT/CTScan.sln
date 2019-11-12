@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CTScan", "CTScan\CTScan.vcxproj", "{F5BD4800-1C31-4A42-9880-118FD55DB3B0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PanelDll", "PanelDll\PanelDll.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D4C6F488-2027-4BD7-BB3C-5FC8A20B1383}"
+	ProjectSection(SolutionItems) = preProject
+		Public\headers\CommandQueue.h = Public\headers\CommandQueue.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5BD4800-1C31-4A42-9880-118FD55DB3B0}.Debug|x64.ActiveCfg = Debug|x64
+		{F5BD4800-1C31-4A42-9880-118FD55DB3B0}.Debug|x64.Build.0 = Debug|x64
+		{F5BD4800-1C31-4A42-9880-118FD55DB3B0}.Release|x64.ActiveCfg = Release|x64
+		{F5BD4800-1C31-4A42-9880-118FD55DB3B0}.Release|x64.Build.0 = Release|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.ActiveCfg = Debug|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.Build.0 = Debug|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.ActiveCfg = Release|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F25FC31-82ED-453D-9066-603636078347}
+	EndGlobalSection
+EndGlobal
