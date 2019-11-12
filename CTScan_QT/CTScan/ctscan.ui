@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="contextMenuPolicy">
-   <enum>Qt::CustomContextMenu</enum>
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>CTScan</string>
@@ -20,8 +20,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>80</y>
+      <x>200</x>
+      <y>130</y>
       <width>75</width>
       <height>23</height>
      </rect>

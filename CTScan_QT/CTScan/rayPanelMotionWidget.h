@@ -8,7 +8,6 @@ public:
 	RayPanelMotion();
 private:
 	Ui::rayPanelMotionWidget ui;
-	Ui::rayPanelMotionWidget ui;
 protected:
 	void showEvent(QShowEvent* event);
 public slots:

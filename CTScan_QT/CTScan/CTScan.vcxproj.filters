@@ -78,6 +78,9 @@
     <QtUic Include="ctscan.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="raypanelmotion.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="ctscan.qrc">

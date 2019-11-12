@@ -33,7 +33,10 @@ class Ui_rayPanelMotionWidget
 public:
 	QWidget *widget;
 	QVBoxLayout *verticalLayout_2;
+#ifdef RAY
 	QTabWidget *rayTab;
+#endif
+#if (defined WROX225) && (defined RAY)
 	QWidget *rayWrox225Tab;
 	QPushButton *worx225XRayOffButton_2;
 	QLabel *worx225kvStaticLabel_2;
@@ -43,6 +46,8 @@ public:
 	QLineEdit *worx225EmissionCurrentEdit_2;
 	QLineEdit *worx225VoltageInputEdit;
 	QLabel *worx225FocusStaticLabel_2;
+#endif
+#if (defined COMET450) && (defined RAY)
 	QWidget *rayComet450Tab;
 	QLabel *Comet450uaStaticLabel;
 	QLineEdit *Comet450VoltageInputEdit;
@@ -52,6 +57,7 @@ public:
 	QLabel *Comet450FocusStaticLabel;
 	QComboBox *Comet450FocusComboBox;
 	QLineEdit *Comet450EmissionCurrentEdit;
+#endif
 	QGroupBox *panelGroupBox;
 	QGridLayout *panelLayout1;
 	QLabel *binStaticLabel;
@@ -199,10 +205,13 @@ public:
 		verticalLayout_2 = new QVBoxLayout(widget);
 		verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
 		verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+#ifdef RAY
 		rayTab = new QTabWidget(widget);
 		rayTab->setObjectName(QStringLiteral("rayTab"));
 		rayTab->setMinimumSize(QSize(0, 80));
 		rayTab->setMaximumSize(QSize(16777215, 80));
+#endif
+#if (defined WROX225) && (defined RAY)
 		rayWrox225Tab = new QWidget();
 		rayWrox225Tab->setObjectName(QStringLiteral("rayWrox225Tab"));
 		worx225XRayOffButton_2 = new QPushButton(rayWrox225Tab);
@@ -248,6 +257,8 @@ public:
 		worx225FocusStaticLabel_2->setObjectName(QStringLiteral("worx225FocusStaticLabel_2"));
 		worx225FocusStaticLabel_2->setGeometry(QRect(13, 32, 60, 18));
 		rayTab->addTab(rayWrox225Tab, QString());
+#endif
+#if (defined COMET450) && (defined RAY)
 		rayComet450Tab = new QWidget();
 		rayComet450Tab->setObjectName(QStringLiteral("rayComet450Tab"));
 		Comet450uaStaticLabel = new QLabel(rayComet450Tab);
@@ -290,12 +301,13 @@ public:
 		Comet450EmissionCurrentEdit->setMinimumSize(QSize(60, 20));
 		Comet450EmissionCurrentEdit->setMaximumSize(QSize(60, 20));
 		rayTab->addTab(rayComet450Tab, QString());
-
+#endif
+#ifdef RAY
 		verticalLayout_2->addWidget(rayTab);
-
+#endif
 		panelGroupBox = new QGroupBox(widget);
 		panelGroupBox->setObjectName(QStringLiteral("panelGroupBox"));
-		QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+		QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
 		sizePolicy2.setHorizontalStretch(0);
 		sizePolicy2.setVerticalStretch(0);
 		sizePolicy2.setHeightForWidth(panelGroupBox->sizePolicy().hasHeightForWidth());
@@ -460,7 +472,7 @@ public:
 
 		tableRotLayout3 = new QVBoxLayout();
 		tableRotLayout3->setObjectName(QStringLiteral("tableRotLayout3"));
-		tableRotLayout3->setSizeConstraint(QLayout::SetFixedSize);
+		tableRotLayout3->setSizeConstraint(QLayout::SetDefaultConstraint);
 		tableRotStaticLabel = new QLabel(motionGroupBox);
 		tableRotStaticLabel->setObjectName(QStringLiteral("tableRotStaticLabel"));
 		sizePolicy.setHeightForWidth(tableRotStaticLabel->sizePolicy().hasHeightForWidth());
@@ -1004,16 +1016,16 @@ public:
 
 		verticalLayout_2->addLayout(sampleChooseButtonLayout1);
 
-
-		retranslateUi(rayPanelMotionWidget);
 		mainStrechSpacer = new QSpacerItem(20, 13, QSizePolicy::Minimum, QSizePolicy::Preferred);
 
 		verticalLayout_2->addItem(mainStrechSpacer);
 
-		verticalLayout_2->setStretch(5, 1);
+		verticalLayout_2->setStretch(verticalLayout_2->count() - 1, 1);
 
+		retranslateUi(rayPanelMotionWidget);
+#ifdef RAY
 		rayTab->setCurrentIndex(0);
-
+#endif
 
 		QMetaObject::connectSlotsByName(rayPanelMotionWidget);
 	} // setupUi
@@ -1021,18 +1033,22 @@ public:
 	void retranslateUi(QWidget *rayPanelMotionWidget)
 	{
 		rayPanelMotionWidget->setWindowTitle(QApplication::translate("rayPanelMotionWidget", "Form", nullptr));
+#if (defined WROX225) && (defined RAY)
 		worx225XRayOffButton_2->setText(QApplication::translate("rayPanelMotionWidget", "\345\201\234\346\235\237", nullptr));
 		worx225kvStaticLabel_2->setText(QApplication::translate("rayPanelMotionWidget", "KV", nullptr));
 		worx225uaStaticLabel_2->setText(QApplication::translate("rayPanelMotionWidget", "\316\274A", nullptr));
 		worx225XRayOnButton_2->setText(QApplication::translate("rayPanelMotionWidget", "\345\207\272\346\235\237", nullptr));
 		worx225FocusStaticLabel_2->setText(QApplication::translate("rayPanelMotionWidget", "\347\204\246\347\202\271", nullptr));
 		rayTab->setTabText(rayTab->indexOf(rayWrox225Tab), QApplication::translate("rayPanelMotionWidget", "WROX", nullptr));
+#endif
+#if (defined COMET450) && (defined RAY)
 		Comet450uaStaticLabel->setText(QApplication::translate("rayPanelMotionWidget", "\316\274A", nullptr));
 		Comet450XRayOffButton->setText(QApplication::translate("rayPanelMotionWidget", "\345\201\234\346\235\237", nullptr));
 		Comet450kvStaticLabel->setText(QApplication::translate("rayPanelMotionWidget", "KV", nullptr));
 		Comet450XRayOnButton->setText(QApplication::translate("rayPanelMotionWidget", "\345\207\272\346\235\237", nullptr));
 		Comet450FocusStaticLabel->setText(QApplication::translate("rayPanelMotionWidget", "\347\204\246\347\202\271", nullptr));
 		rayTab->setTabText(rayTab->indexOf(rayComet450Tab), QApplication::translate("rayPanelMotionWidget", "COMET", nullptr));
+#endif
 		panelGroupBox->setTitle(QApplication::translate("rayPanelMotionWidget", "\351\235\242\351\230\265\346\216\242\346\265\213\345\231\250", nullptr));
 		binStaticLabel->setText(QApplication::translate("rayPanelMotionWidget", "\345\220\210\345\271\266", nullptr));
 		gainStaticLabel->setText(QApplication::translate("rayPanelMotionWidget", "\345\242\236\347\233\212", nullptr));

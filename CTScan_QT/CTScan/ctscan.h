@@ -17,7 +17,9 @@ private slots:
 	void copy();
 	void paste();
 protected:
-	void contextMenuEvent(QContextMenuEvent *event);
+#ifndef QT_NO_CONTEXTMENU
+	void contextMenuEvent(QContextMenuEvent *event) override;
+#endif // QT_NO_CONTEXTMENU
 private:
     Ui::CTScanClass ui;
 	QAction *cutAct;

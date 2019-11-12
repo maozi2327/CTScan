@@ -4,11 +4,9 @@
 //面阵线阵用两位二进制表示，例如11(3)表示线阵面阵都有，01(2)表示只有线阵，射线源1射线源2同理
 //使用xxxxxxx五位分别表示射线源，探测器，转台，射线，探测，物理插值，偏摆，如果不包含后面两轴可以不写
 
-#define MAXMOTIONGROUPSIZE 645
-#define MAXAXISSIZE 8
 #define TYPE33346
-#define RAY1 WROX225
-#define RAY2 COMET450
+#define WROX225
+#define COMET450
 #ifdef TYPE11344 //双立柱，无面阵，有转台径向轴，单射线源轴，山东电力设备类型
 #define TABLEROT
 #define TABLETRANSLATION
@@ -101,8 +99,8 @@
 #define DETRADIAL
 #define DETLAYER
 #define ACTIONABLEAXISNUMBER 6
-//#define RAY1
-//#define RAY2
+#define RAY
+#define RAY2
 #define LINEDECTOR
 #define PANELDECTOR
 #endif

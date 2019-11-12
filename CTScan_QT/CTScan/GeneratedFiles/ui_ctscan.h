@@ -33,16 +33,18 @@ public:
     {
         if (CTScanClass->objectName().isEmpty())
             CTScanClass->setObjectName(QStringLiteral("CTScanClass"));
-        CTScanClass->resize(364, 568);
+        CTScanClass->resize(715, 568);
+        CTScanClass->setContextMenuPolicy(Qt::DefaultContextMenu);
         centralWidget = new QWidget(CTScanClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(70, 130, 75, 23));
+        pushButton->setGeometry(QRect(380, 80, 75, 23));
         CTScanClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CTScanClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 364, 23));
+        menuBar->setGeometry(QRect(0, 0, 715, 23));
+        menuBar->setDefaultUp(false);
         CTScanClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(CTScanClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
