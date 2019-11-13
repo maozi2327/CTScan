@@ -2,6 +2,7 @@
 #include "PanelInterface.h"
 #include "headers/niimaq.h"
 #include "CommandQueue.h"
+#include "panelHeaders.h"
 #include <future>
 #include <mutex>
 #include <condition_variable>

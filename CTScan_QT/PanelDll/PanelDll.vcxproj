@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NimaqPanel.h" />
+    <ClInclude Include="panelHeaders.h" />
     <ClInclude Include="PanelInterface.h" />
     <ClInclude Include="paneldll.h" />
     <ClInclude Include="paneldll_global.h" />

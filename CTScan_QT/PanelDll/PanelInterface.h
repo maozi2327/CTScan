@@ -1,16 +1,11 @@
 #pragma once
 #include <qstring.h>
 #include <vector>
-
+#include "panelHeaders.h"
 //面板只执行采集，返回原始数据，不负责生成文件，文件命名和文件保存
 class PanelInterface
 {
 public:
-    enum class SampleMode
-    {
-        softTrigger,
-        exTrigger
-    };
     PanelInterface();
     virtual ~PanelInterface();
 
@@ -33,7 +28,7 @@ public:
 
     //采集多帧时会将数据连续存储在同一内存区域
     virtual bool getPanelSize(int& out_width, int& out_height) = 0;
-    virtual bool setPanelSize(int& in_width, int& in_height) = 0;
+    virtual bool setPanelSize(int in_width, int in_height) = 0;
     virtual unsigned long getImageMemorySize() = 0;
     virtual bool beginAcquire(unsigned short d_quantity) = 0;
     virtual void stopAcquire() = 0;
