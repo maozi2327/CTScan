@@ -102,6 +102,7 @@
     <ClCompile Include="NimaqPanel.cpp" />
     <ClCompile Include="paneldll.cpp" />
     <ClCompile Include="PanelInterface.cpp" />
+    <ClCompile Include="PESiPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NimaqPanel.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="PanelInterface.h" />
     <ClInclude Include="paneldll.h" />
     <ClInclude Include="paneldll_global.h" />
+    <ClInclude Include="PESiPanel.h" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

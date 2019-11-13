@@ -1,7 +1,7 @@
 #pragma once
 #include "PanelInterface.h"
-#include "headers/niimaq.h"
-#include "CommandQueue.h"
+#include "niimaq.h"
+#include "../Public/headers/CommandQueue.h"
 #include "panelHeaders.h"
 #include <future>
 #include <mutex>

@@ -122,6 +122,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Public\util\IULog.cpp" />
     <ClCompile Include="ctscan.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rayPanelMotionWidget.cpp" />
@@ -134,6 +135,7 @@
     <QtMoc Include="ctscan.h" />
     <ClInclude Include="..\Public\headers\CommandQueue.h" />
     <ClInclude Include="..\Public\headers\machineType.h" />
+    <ClInclude Include="..\Public\util\IULog.h" />
     <ClInclude Include="GeneratedFiles\ui_ctscan.h" />
     <QtMoc Include="rayPanelMotionWidget.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
