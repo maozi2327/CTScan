@@ -6,7 +6,7 @@
 #define MAX_LINE_LENGTH 256
 
 LOG_LEVEL CIULog::d_logLevel = LOG_LEVEL::LOG_LEVEL_INFO;
-QFile CIULog::d_logFile = 0;
+CIULog::d_logFile(QFile());
 bool CIULog::Init(QString pszLogFileName)
 {
     if (pszLogFileName.size() == 0)
@@ -39,7 +39,7 @@ void CIULog::SetLevel(LOG_LEVEL nLevel)
     d_logLevel = nLevel;
 }
 
-bool CIULog::Log(LOG_LEVEL nLevel, QString pszFmt, ...)
+bool CIULog::Log(LOG_LEVEL nLevel, char* pszFmt, ...)
 {
     if (nLevel < d_logLevel)
         return false;
@@ -49,7 +49,11 @@ bool CIULog::Log(LOG_LEVEL nLevel, QString pszFmt, ...)
 	
 	QString strLevel("[INFO]");
 	strDebugInfo.append(strLevel);
-	strDebugInfo.append(pszFmt);
+	va_list ap;
+	va_start(ap, pszFmt);
+	QString apString;
+	apString.sprintf(pszFmt, ap);
+	strDebugInfo.append(apString);
 	strDebugInfo += "\r\n";	
 	d_logFile.seek(d_logFile.size());
 	d_logFile.write(strDebugInfo.toLocal8Bit());
@@ -57,7 +61,7 @@ bool CIULog::Log(LOG_LEVEL nLevel, QString pszFmt, ...)
     return true;
 }
 
-bool CIULog::Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, QString pszFmt, ...)
+bool CIULog::Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, char* pszFmt, ...)
 {
 	if (nLevel < d_logLevel)
 		return false;
@@ -75,7 +79,11 @@ bool CIULog::Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, QString ps
 		strLevel = "[Error]";
 
 	strDebugInfo.append(strLevel);
-	strDebugInfo.append(pszFmt);
+	va_list ap;
+	va_start(ap, pszFmt);
+	QString apString;
+	apString.sprintf(pszFmt, ap);
+	strDebugInfo.append(apString);
 	strDebugInfo += "\r\n";
 	d_logFile.seek(d_logFile.size());
 	d_logFile.write(strDebugInfo.toLocal8Bit());

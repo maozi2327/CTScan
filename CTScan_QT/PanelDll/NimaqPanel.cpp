@@ -43,10 +43,14 @@ bool NimaqPanel::initialise()
         return false;
     }
 
-    d_imageMemorySize = d_width * d_height *(d_depth >> 3);
+    d_frameSize = d_width * d_height *(d_depth >> 3);
     std::function<void()> threadFun = std::bind(&NimaqPanel::serialSendThread, this);
     std::thread(threadFun).detach();
     return true;
+}
+bool NimaqPanel::setBinMode(BinMode in_binMode)
+{
+	return true;
 }
 void NimaqPanel::serialSendThread()
 {
@@ -76,12 +80,6 @@ bool NimaqPanel::setSampleTime(int in_sampleTime)
     cmd.ptr[3] = unsigned char(in_sampleTime / 100);
     cmd.size = 4;
     d_serialQueue.push(cmd);
-    return true;
-}
-
-bool NimaqPanel::setFrames(int in_frames)
-{
-    d_frames = in_frames;
     return true;
 }
 
@@ -124,20 +122,6 @@ bool NimaqPanel::setGainFactor(int in_gainFactor)
     return true;
 }
 
-//采集多帧时会将数据连续存储在同一内存区域
-
-bool NimaqPanel::getPanelSize(int& out_width, int& out_height)
-{
-    out_width = d_width;
-    out_height = d_height;
-    return true;
-}
-bool NimaqPanel::setPanelSize(int in_width, int in_height)
-{
-    d_width = in_width;
-    d_height = in_height;
-    return true;
-}
 bool NimaqPanel::beginAcquire(unsigned short d_quantity)
 {
     {
@@ -163,19 +147,18 @@ void NimaqPanel::ringThread(std::promise<bool>& in_promise)
         int NiImaqRingBufNum = 0;
         uInt32 currRingBufNum = 0;
         unsigned char* ringBufAddr;
-        int frameCount = 0;
         unsigned char* framesMem = 0;
         while (d_ringThreadRunFlag)
         {
             if (frameCount % d_frames == 0)
-                framesMem = (unsigned char*)malloc(d_imageMemorySize);
+                framesMem = (unsigned char*)malloc(d_frameSize);
 
             Int32 nRet = imgSessionExamineBuffer2(d_NiImaqSid, NiImaqRingBufNum, &currRingBufNum, (void**)&ringBufAddr);
 
             if (nRet < 0)
                 break;
 
-            memcpy(framesMem + d_imageMemorySize * NiImaqRingBufNum, ringBufAddr, d_imageMemorySize);
+            memcpy(framesMem + d_frameSize * NiImaqRingBufNum, ringBufAddr, d_frameSize);
             free(ringBufAddr);
             NiImaqRingBufNum = (++NiImaqRingBufNum) % d_quantityOfRingBuffer;
 
@@ -196,33 +179,7 @@ void NimaqPanel::stopAcquire()
 }
 
 
-int NimaqPanel::getImageQuantity()
-{
-    return d_imageQueue.size();
-}
-unsigned long NimaqPanel::getImageMemorySize()
-{
-    return d_imageMemorySize;
-}
 
-bool NimaqPanel::getHeadImage(unsigned short** in_imageData)
-{
-    unsigned char* data;
-    
-    if( !d_imageQueue.pop(data) )
-        return false;
 
-    *in_imageData = (unsigned short*)data;
-    return true;
-}
 
-void NimaqPanel::clearImageQueue()
-{
-    while (d_imageQueue.size() != 0)
-    {
-        unsigned char* data;
-        d_imageQueue.pop(data);
-        free(data);
-    }
-}
 

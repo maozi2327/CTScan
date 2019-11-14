@@ -38,9 +38,9 @@ bool PanelDll::setPanelSize(int& in_width, int& in_height)
 {
 	return d_panelInterface->setPanelSize(in_width, in_height);
 }
-unsigned long PanelDll::getImageMemorySize()
+unsigned long PanelDll::getFramSize()
 {
-	return d_panelInterface->getImageMemorySize();
+	return d_panelInterface->getFramSize();
 }
 bool PanelDll::beginAcquire(unsigned short d_quantity)
 {

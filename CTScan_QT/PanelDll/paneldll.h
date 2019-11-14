@@ -19,7 +19,7 @@ public:
 	//采集多帧时会将数据连续存储在同一内存区域
 	bool getPanelSize(int& out_width, int& out_height);
 	bool setPanelSize(int& in_width, int& in_height);
-	unsigned long getImageMemorySize();
+	unsigned long getFramSize();
 	bool beginAcquire(unsigned short d_quantity);
 	void stopAcquire();
 	bool initialise();

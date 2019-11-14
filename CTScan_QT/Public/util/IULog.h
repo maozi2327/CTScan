@@ -2,7 +2,7 @@
 #define __LOG_H__
 
 #define LOG_API
-
+#include <QFile>
 enum class LOG_LEVEL
 {
     LOG_LEVEL_INFO,
@@ -25,9 +25,9 @@ public:
     static void SetLevel(LOG_LEVEL nLevel);
 	
 	//不输出线程ID号和所在函数签名、行号
-	static bool Log(LOG_LEVEL nLevel, QString pszFmt, ...);
+	static bool Log(LOG_LEVEL nLevel, char* pszFmt, ...);
 	//输出线程ID号和所在函数签名、行号
-	static bool Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, QString pszFmt, ...);
+	static bool Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, char* pszFmt, ...);
 private:
     CIULog() = delete;
     ~CIULog() = delete;

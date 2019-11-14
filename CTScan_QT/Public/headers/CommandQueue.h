@@ -46,10 +46,8 @@ public:
     {
         std::unique_lock<std::mutex> lk(d_hmtxQ);
         
-        while(d_queue.szie() != 0)
+        while(d_queue.size() != 0)
             d_queue.pop();
-
-        return true;
     }
 
 };
