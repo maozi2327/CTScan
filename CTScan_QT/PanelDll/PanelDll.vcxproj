@@ -99,16 +99,18 @@
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Public\util\IULog.cpp" />
     <ClCompile Include="NimaqPanel.cpp" />
-    <ClCompile Include="paneldll.cpp" />
+    <ClCompile Include="panel.cpp" />
     <ClCompile Include="PanelInterface.cpp" />
     <ClCompile Include="PESiPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Public\util\IULog.h" />
     <ClInclude Include="NimaqPanel.h" />
     <ClInclude Include="panelHeaders.h" />
     <ClInclude Include="PanelInterface.h" />
-    <ClInclude Include="paneldll.h" />
+    <ClInclude Include="panel.h" />
     <ClInclude Include="paneldll_global.h" />
     <ClInclude Include="PESiPanel.h" />
   </ItemGroup>

@@ -130,7 +130,8 @@ bool NimaqPanel::beginAcquire(unsigned short d_quantity)
         if (d_ringThreadCond.wait_for(lk, std::chrono::milliseconds(1)) == std::cv_status::timeout)
             return false;
     }
-    clearImageQueue();
+
+	clearImageQueue();
     imgRingSetup(d_NiImaqSid, d_quantityOfRingBuffer, NULL, 0, TRUE);
     d_ringThreadPromisePtr.reset(new std::promise<bool>);
     std::function<void()> threadFun = std::bind(&NimaqPanel::ringThread, this, std::ref(*d_ringThreadPromisePtr));

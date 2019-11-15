@@ -119,3 +119,20 @@
 #define LINEDECTOR
 #define PANELDECTOR
 #endif
+
+enum class Axis
+{
+	tableRotation = 0,
+#ifdef TABLETRANSLATION
+	tableTraslation = 1,
+#endif 
+#ifdef RAYLAYER
+	rayLayer = 3,
+#endif
+#ifdef DETLAYER
+	detLayer = 4,
+#endif
+#ifdef TABLERADIAL
+	objRadial = 5,
+#endif
+};

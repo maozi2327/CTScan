@@ -11,7 +11,10 @@ RayPanelMotion::RayPanelMotion()
     //QRect rect = ui.sampleChooseButton->geometry();
     //ui.widget->setFixedHeight(point.x() + rect.height());
 }
+RayPanelMotion::~RayPanelMotion()
+{
 
+}
 
 void RayPanelMotion::on_sampleChooseButton_clicked()
 {

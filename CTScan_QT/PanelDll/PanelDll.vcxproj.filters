@@ -26,9 +26,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="paneldll.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="NimaqPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,11 +35,14 @@
     <ClCompile Include="PESiPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Public\util\IULog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="panel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="paneldll.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PanelInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,6 +53,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PESiPanel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\util\IULog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="panel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

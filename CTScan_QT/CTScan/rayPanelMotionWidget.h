@@ -6,6 +6,7 @@ class RayPanelMotion : public QWidget
 
 public:
 	RayPanelMotion();
+	~RayPanelMotion();
 private:
 	Ui::rayPanelMotionWidget ui;
 protected:

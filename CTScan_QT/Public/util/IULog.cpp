@@ -1,18 +1,14 @@
-#include "stdafx.h"
+#include <QtCore>
 #include "IULog.h"
-//#include "Path.h"
-//#include "UserSessionData.h"
-
 #define MAX_LINE_LENGTH 256
 
 LOG_LEVEL CIULog::d_logLevel = LOG_LEVEL::LOG_LEVEL_INFO;
-CIULog::d_logFile(QFile());
+QFile CIULog::d_logFile;
 bool CIULog::Init(QString pszLogFileName)
 {
     if (pszLogFileName.size() == 0)
 		return false;
 
-    TCHAR szHomePath[MAX_PATH] = {0};
 	int slashIndex  = pszLogFileName.lastIndexOf('\\');
 
 	if (slashIndex == -1)

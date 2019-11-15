@@ -4,12 +4,12 @@
 #include "panelHeaders.h"
 #include <memory>
 class PanelInterface;
-class PANELDLL_EXPORT PanelDll
+class PANELDLL_EXPORT Panel
 {
 private:
 	std::unique_ptr<PanelInterface> d_panelInterface;
 public:
-    PanelDll();
+    Panel();
 	bool initilise();
 	bool setSampleTime(int in_milliseconds);
 	bool setFrames(int in_frames);

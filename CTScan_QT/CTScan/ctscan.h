@@ -2,7 +2,9 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_ctscan.h"
-#include "rayPanelMotionWidget.h"
+#include "raypanelmotionwidget.h"
+#include "controlleroperate.h"
+#include "conescaninterface.h"
 #include <memory>
 class CTScan : public QMainWindow
 {
@@ -25,7 +27,10 @@ private:
 	QAction *cutAct;
 	QAction *copyAct;
 	QAction *pasteAct;
+
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
+	std::unique_ptr<ControlerInterface> d_controller;
+	std::unique_ptr<ConeScanInterface> d_scanInterface;
 };
 //#ifdef TABLETRANSLATION
 //#ifdef TABLERADIAL

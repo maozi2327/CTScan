@@ -2,7 +2,7 @@
 #include "ctscan.h"
 
 CTScan::CTScan(QWidget *parent)
-    : QMainWindow(parent), d_rayPanelMotion(std::make_unique<RayPanelMotion>())
+    : QMainWindow(parent), d_rayPanelMotion(new RayPanelMotion())
 {
     ui.setupUi(this);
 }

@@ -1,8 +1,5 @@
-#ifndef __LOG_H__
-#define __LOG_H__
-
-#define LOG_API
 #include <QFile>
+#include <QString>
 enum class LOG_LEVEL
 {
     LOG_LEVEL_INFO,
@@ -16,7 +13,7 @@ enum class LOG_LEVEL
 #define LOG_WARNING(...)    CIULog::Log(LOG_LEVEL::LOG_LEVEL_WARNING, __FUNCSIG__, __LINE__,__VA_ARGS__)
 #define LOG_ERROR(...)      CIULog::Log(LOG_LEVEL::LOG_LEVEL_ERROR, __FUNCSIG__,__LINE__, __VA_ARGS__)
 
-class LOG_API CIULog
+class CIULog
 {
 public:
     static bool Init(QString pszLogFileName);
@@ -39,5 +36,3 @@ private:
 	static QFile d_logFile;
     static LOG_LEVEL d_logLevel;            //日志级别
 };
-
-#endif // !__LOG_H__
