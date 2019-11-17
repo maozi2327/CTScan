@@ -3,9 +3,9 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_ctscan.h"
 #include "raypanelmotionwidget.h"
-#include "controlleroperate.h"
+#include "controlerinterface.h"
 #include "conescaninterface.h"
-#include <memory>
+#include "ImageWidgetManager.h"
 class CTScan : public QMainWindow
 {
     Q_OBJECT
@@ -31,6 +31,8 @@ private:
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
 	std::unique_ptr<ControlerInterface> d_controller;
 	std::unique_ptr<ConeScanInterface> d_scanInterface;
+	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;
+	size_t frontImageIndex;
 };
 //#ifdef TABLETRANSLATION
 //#ifdef TABLERADIAL

@@ -1,9 +1,9 @@
 #pragma once
 #include <future>
 #include <memory>
-class Panel;
-class CTDispose;
-class ControlerInterface;
+#include "..\PanelDll\panel.h"
+#include "ctdispose.h"
+#include "controlerinterface.h"
 class ConeScanInterface
 {
 protected:
@@ -19,7 +19,7 @@ public:
 	ConeScanInterface(Panel* in_panel, ControlerInterface* in_controller, CTDispose* in_ctDispose);
 	virtual ~ConeScanInterface();
 	
-	virtual bool setGraduation(int in_graduation) { d_graduation = in_graduation; };
+	virtual void setGraduation(int in_graduation) { d_graduation = in_graduation; };
 	virtual bool beginScan() = 0;
 	virtual bool stopScan() = 0;
 	virtual void scanThread() = 0;
