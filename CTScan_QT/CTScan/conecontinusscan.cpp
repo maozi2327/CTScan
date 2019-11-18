@@ -18,7 +18,7 @@ void ConeContinusScan::scanThread(std::promise<bool>& in_promise)
 	while (true)
 	{
 		unsigned short* imagePtr;
-		//d_panel->getHeadImage(&imagePtr);
+		d_panel->getHeadImage(&imagePtr);
 		d_graduation++;
 
 		if (d_is_saveOrg)

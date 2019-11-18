@@ -14,7 +14,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -24,14 +23,10 @@ QT_BEGIN_NAMESPACE
 class Ui_ImageWidget
 {
 public:
-    QHBoxLayout *horizontalLayout_2;
-    QTreeWidget *treeWidget;
-    QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
+    QTreeWidget *treeWidget;
     QVBoxLayout *verticalLayout;
     QLabel *imageLabel;
-    QScrollBar *horizontalScrollBar;
-    QScrollBar *verticalScrollBar;
     QLabel *label_2;
 
     void setupUi(QWidget *ImageWidget)
@@ -39,10 +34,10 @@ public:
         if (ImageWidget->objectName().isEmpty())
             ImageWidget->setObjectName(QStringLiteral("ImageWidget"));
         ImageWidget->resize(977, 667);
-        horizontalLayout_2 = new QHBoxLayout(ImageWidget);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout = new QHBoxLayout(ImageWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         treeWidget = new QTreeWidget(ImageWidget);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QStringLiteral("1"));
@@ -56,56 +51,37 @@ public:
         treeWidget->setMinimumSize(QSize(150, 0));
         treeWidget->setMaximumSize(QSize(150, 16777215));
         treeWidget->setSizeIncrement(QSize(0, 0));
+        treeWidget->setColumnCount(1);
 
-        horizontalLayout_2->addWidget(treeWidget);
+        horizontalLayout->addWidget(treeWidget);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         imageLabel = new QLabel(ImageWidget);
         imageLabel->setObjectName(QStringLiteral("imageLabel"));
-        QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(imageLabel->sizePolicy().hasHeightForWidth());
-        imageLabel->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(imageLabel->sizePolicy().hasHeightForWidth());
+        imageLabel->setSizePolicy(sizePolicy);
 
         verticalLayout->addWidget(imageLabel);
 
-        horizontalScrollBar = new QScrollBar(ImageWidget);
-        horizontalScrollBar->setObjectName(QStringLiteral("horizontalScrollBar"));
-        horizontalScrollBar->setOrientation(Qt::Horizontal);
+        label_2 = new QLabel(ImageWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy1);
+        label_2->setMinimumSize(QSize(0, 12));
+        label_2->setMaximumSize(QSize(16777215, 12));
 
-        verticalLayout->addWidget(horizontalScrollBar);
+        verticalLayout->addWidget(label_2);
 
+        verticalLayout->setStretch(0, 1);
 
         horizontalLayout->addLayout(verticalLayout);
 
-        verticalScrollBar = new QScrollBar(ImageWidget);
-        verticalScrollBar->setObjectName(QStringLiteral("verticalScrollBar"));
-        verticalScrollBar->setOrientation(Qt::Vertical);
-
-        horizontalLayout->addWidget(verticalScrollBar);
-
-        horizontalLayout->setStretch(0, 1);
-
-        verticalLayout_2->addLayout(horizontalLayout);
-
-        label_2 = new QLabel(ImageWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        verticalLayout_2->addWidget(label_2);
-
-
-        horizontalLayout_2->addLayout(verticalLayout_2);
-
-        horizontalLayout_2->setStretch(1, 1);
+        horizontalLayout->setStretch(1, 1);
 
         retranslateUi(ImageWidget);
 

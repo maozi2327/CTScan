@@ -1,5 +1,4 @@
 #include "panel.h"
-#include "PanelInterface.h"
 #ifdef NIMAQPANEL
 #include "NimaqPanel.h"
 #endif
