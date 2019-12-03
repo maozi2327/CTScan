@@ -2,10 +2,11 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_ctscan.h"
+#include "ImageWidgetManager.h"
 #include "raypanelmotionwidget.h"
 #include "controlerinterface.h"
 #include "conescaninterface.h"
-#include "ImageWidgetManager.h"
+#include "..\PanelDll\panel.h"
 class CTScan : public QMainWindow
 {
     Q_OBJECT
@@ -27,7 +28,7 @@ private:
 	QAction *cutAct;
 	QAction *copyAct;
 	QAction *pasteAct;
-
+	std::unique_ptr<Panel> d_panel;
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
 	std::unique_ptr<ControlerInterface> d_controller;
 	std::unique_ptr<ConeScanInterface> d_scanInterface;

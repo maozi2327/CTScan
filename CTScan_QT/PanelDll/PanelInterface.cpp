@@ -17,7 +17,7 @@ bool PanelInterface::setFrames(int in_frames)
 	d_frameSize = d_width * d_height * d_frames * sizeof(unsigned short);
 	return true;
 }
-size_t PanelInterface::getFramSize()
+size_t PanelInterface::getFrameSize()
 {
 	return d_frameSize;
 }

@@ -80,9 +80,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
@@ -98,46 +95,49 @@
     <ClInclude Include="GeneratedFiles\ui_raypanelmotion.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_conescanwidget.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="conescanInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ctdispose.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="conecontinusscan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="simotioncontroller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="controlerinterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageProcess.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_imagewidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="conecontinusscan.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="conescanInterface.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controlerinterface.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ctdispose.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageProcess.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="ImageWidgetManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simotioncontroller.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ctscan.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="conescanwidget.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ctscan.h">
+      <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="raypanelmotionwidget.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -152,19 +152,19 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="ctscan.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="CTScan.rc" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="imagewidget.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="imagewidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="imagewidget.h">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="ctscan.qrc">
+      <Filter>Source Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

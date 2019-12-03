@@ -1,17 +1,18 @@
 #include "stdafx.h"
 #include "ctscan.h"
-
 CTScan::CTScan(QWidget *parent)
-    : QMainWindow(parent), d_rayPanelMotion(new RayPanelMotion()), d_imageWidgetManager(new ImageWidgetManager())
+    : QMainWindow(parent)
+	, d_panel(PanelFactory::getPanel())
+	, d_rayPanelMotion(new RayPanelMotion()), d_imageWidgetManager(new ImageWidgetManager())
 {
     ui.setupUi(this);
 }
 
 void CTScan::on_pushButton_clicked()
 {
-	//if(!d_rayPanelMotion->isVisible())
-	//	d_rayPanelMotion->show();
-	d_imageWidgetManager->showImageInNewWindow(QString("gain.tif"));
+	if(!d_rayPanelMotion->isVisible())
+		d_rayPanelMotion->show();
+	//d_imageWidgetManager->showImageInNewWindow(QString("gain.tif"));
 }
 void CTScan::cut()
 {

@@ -4,6 +4,7 @@
 #include "..\PanelDll\panel.h"
 #include "ctdispose.h"
 #include "controlerinterface.h"
+
 class ConeScanInterface
 {
 protected:
