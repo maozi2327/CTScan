@@ -11,10 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -23,8 +20,6 @@ QT_BEGIN_NAMESPACE
 class Ui_ImageWidget
 {
 public:
-    QHBoxLayout *horizontalLayout;
-    QTreeWidget *treeWidget;
     QVBoxLayout *verticalLayout;
     QLabel *imageLabel;
     QLabel *label_2;
@@ -34,32 +29,15 @@ public:
         if (ImageWidget->objectName().isEmpty())
             ImageWidget->setObjectName(QStringLiteral("ImageWidget"));
         ImageWidget->resize(977, 667);
-        horizontalLayout = new QHBoxLayout(ImageWidget);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        treeWidget = new QTreeWidget(ImageWidget);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
-        __qtreewidgetitem->setText(0, QStringLiteral("1"));
-        treeWidget->setHeaderItem(__qtreewidgetitem);
-        treeWidget->setObjectName(QStringLiteral("treeWidget"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(treeWidget->sizePolicy().hasHeightForWidth());
-        treeWidget->setSizePolicy(sizePolicy);
-        treeWidget->setMinimumSize(QSize(150, 0));
-        treeWidget->setMaximumSize(QSize(150, 16777215));
-        treeWidget->setSizeIncrement(QSize(0, 0));
-        treeWidget->setColumnCount(1);
-
-        horizontalLayout->addWidget(treeWidget);
-
-        verticalLayout = new QVBoxLayout();
+        verticalLayout = new QVBoxLayout(ImageWidget);
         verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         imageLabel = new QLabel(ImageWidget);
         imageLabel->setObjectName(QStringLiteral("imageLabel"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(imageLabel->sizePolicy().hasHeightForWidth());
         imageLabel->setSizePolicy(sizePolicy);
 
@@ -78,10 +56,6 @@ public:
         verticalLayout->addWidget(label_2);
 
         verticalLayout->setStretch(0, 1);
-
-        horizontalLayout->addLayout(verticalLayout);
-
-        horizontalLayout->setStretch(1, 1);
 
         retranslateUi(ImageWidget);
 

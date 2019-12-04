@@ -10,9 +10,9 @@ CTScan::CTScan(QWidget *parent)
 
 void CTScan::on_pushButton_clicked()
 {
-	if(!d_rayPanelMotion->isVisible())
-		d_rayPanelMotion->show();
-	//d_imageWidgetManager->showImageInNewWindow(QString("gain.tif"));
+	//if(!d_rayPanelMotion->isVisible())
+	//	d_rayPanelMotion->show();
+	d_imageWidgetManager->showImageInNewWindow(QString());
 }
 void CTScan::cut()
 {

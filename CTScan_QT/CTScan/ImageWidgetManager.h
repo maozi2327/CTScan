@@ -8,8 +8,8 @@ public:
 	ImageWidgetManager();
 	~ImageWidgetManager();
 
-	bool showImageInNewWindow(unsigned short* in_imageMemory);
-	bool showImageInFrontWindow(unsigned short* in_imageMemory);
+	bool showImageInNewWindow(unsigned char* in_imageMemory, int in_width, int in_height);
+	bool showImageInFrontWindow(unsigned char* in_imageMemory, int in_width, int in_height);
 	bool showImageInNewWindow(QString& in_fileName);
 	bool showImageInFrontWindow(QString& in_fileName);
 private:
