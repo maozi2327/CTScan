@@ -14,25 +14,35 @@ QVector<QRgb> ImageWidget::initializeColorTable()
 
 	return colorTable;
 }
-ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_windowWidth, int in_windowHeight, QWidget *parent)
-	: d_manager(in_imageWidgetManager), QWidget(parent), d_windowWidth(in_windowWidth), d_windowHeight(in_windowHeight)
+ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_desktopWidth, int in_windowHeight, QWidget *parent)
+	: d_manager(in_imageWidgetManager), QWidget(parent), d_desktopWidth(in_desktopWidth), d_desktopHeight(in_windowHeight)
 {
 	ui.setupUi(this);
 	QString str;
 	loadImage(str);
 	ui.imageLabel->setAlignment(Qt::AlignCenter);
-	resize(d_windowWidth * 0.6, d_windowWidth * 0.6 * d_imageHeight / d_imageWidth);
+	d_desktopWidth = 1366;
+	d_desktopHeight = 768;
+
+	if (float(d_desktopWidth) / d_desktopHeight > float(d_imageWidth) / d_imageHeight)
+	{
+		resize(d_desktopWidth * 0.6, d_desktopHeight * 0.6 * d_imageHeight / d_imageWidth);
+	}
+	else
+	{
+		resize(d_desktopHeight * 0.6 * d_imageWidth / d_imageHeight, d_desktopHeight * 0.6);
+	}
 }
-ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_windowWidth, int in_windowHeight,
+ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_desktopWidth, int in_windowHeight,
 	unsigned char* in_buffer, int in_width, int in_height, QWidget *parent)
-	: d_manager(in_imageWidgetManager), QWidget(parent), d_windowWidth(in_windowWidth), d_windowHeight(in_windowHeight)
+	: d_manager(in_imageWidgetManager), QWidget(parent), d_desktopWidth(in_desktopWidth), d_desktopHeight(in_windowHeight)
 {
 	loadImage(in_buffer, in_width, in_height);
-	resize(1366 * 0.6, 1366 * 0.6 * d_imageHeight / d_imageWidth);
+	
 }
-ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_windowWidth, int in_windowHeight, 
+ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_desktopWidth, int in_windowHeight, 
 	QString& in_fileName, QWidget *parent)
-	: d_manager(in_imageWidgetManager), QWidget(parent), d_windowWidth(in_windowWidth), d_windowHeight(in_windowHeight)
+	: d_manager(in_imageWidgetManager), QWidget(parent), d_desktopWidth(in_desktopWidth), d_desktopHeight(in_windowHeight)
 {
 	ui.setupUi(this);
 	loadImage(in_fileName);
@@ -66,6 +76,37 @@ void ImageWidget::mouseMoveEvent(QMouseEvent *event)
 		;
 
 	d_mousePos = event->pos();
+	int posX, posY;
+	
+	if (!caculateMousePosOnImage(posX, posY))
+		return;
+
+	d_mousePosOnImage.x = posX;
+	d_mousePosOnImage.y = posY;
+}
+bool ImageWidget::caculateMousePosOnImage(int& in_posX, int& in_posY)
+{
+	int labelWidth = ui.imageLabel->width();
+	int labelHeight = ui.imageLabel->height();
+	d_imageScreenWidth;
+	d_imageScreenHeight;
+	d_imageTopLeftXOnLabel;
+	d_imageTopLeftYOnLabel;
+	int imageScreenTopPos = (labelHeight - d_imageScreenHeight) / 2;
+	int imageScreenDownPos = imageScreenTopPos + d_imageScreenHeight;
+	int imageScreenLeftPos = (labelWidth - d_imageScreenWidth) / 2;
+	int imageScreenRightPos = imageScreenLeftPos + d_imageScreenWidth;
+
+	if (d_mousePos.x() > imageScreenLeftPos && d_mousePos.x() < imageScreenRightPos &&
+		d_mousePos.y() > imageScreenTopPos && d_mousePos.y() < imageScreenDownPos)
+	{
+		in_posX = (d_mousePos.x() - imageScreenLeftPos + d_imageTopLeftXOnImage) / d_zoomRatio;
+		in_posY = (d_mousePos.y() - imageScreenTopPos + d_imageTopLeftYOnImage) / d_zoomRatio;
+		return true;
+	}
+	else
+		return false;
+
 }
 void ImageWidget::on_foldButton_clicked()
 {
@@ -106,17 +147,33 @@ void ImageWidget::keyPressEvent(QKeyEvent* in_event)
 		break;
 	}
 }
+void ImageWidget::resizeEvent(QResizeEvent *event)
+{
+	QWidget::resizeEvent(event);
+
+	int labelWidth = ui.imageLabel->width();
+	int labelHeight = ui.imageLabel->height();
+	QPixmap pixmap = d_pixmap->scaledToWidth(d_pixmap->width() * d_zoomRatio);
+	QPixmap copy = d_pixmap->copy(d_imageTopLeftXOnImage, d_imageTopLeftYOnImage, d_imageScreenWidth, d_imageScreenHeight);
+	ui.imageLabel->setPixmap(copy);
+}
 void ImageWidget::zoomOut()
 {
 	if (!ui.imageLabel->underMouse())
 		return;
 
-	d_zoomRatio += 0.1;
-	QPixmap pixmap =  d_pixmap->scaledToWidth(d_pixmap->width() * d_zoomRatio);
-	d_mousePosOnImage.x *= d_zoomRatio;
-	d_mousePosOnImage.y *= d_zoomRatio;
-	int leftTopX = d_mousePosOnImage.x - ;
-	int leftTopY = 0;
+	if (d_zoomRatio >= d_zoomRecommendRatio)
+	{
+		d_zoomRatio += 0.1;
+		d_mousePosOnImage.x *= d_zoomRatio;
+		d_mousePosOnImage.y *= d_zoomRatio;
+		d_imageTopLeftXOnImage = d_mousePosOnImage.x - (d_mousePos.x - (ui.imageLabel->width() - d_imageScreenWidth) / 2);
+		d_imageTopLeftYOnImage = d_mousePosOnImage.y - (d_mousePos.y - (ui.imageLabel->height() - d_imageScreenHeight) / 2);
+	}
+	else
+	{
+		resize(d_initialdesktopWidth * d_zoomRatio, d_initialWindowHeight * d_zoomRatio);
+	}
 }
 void ImageWidget::zoomIn()
 {

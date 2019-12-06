@@ -9,10 +9,10 @@ class ImageWidget : public QWidget
 	Q_OBJECT
 
 public:
-	ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_windowWidth, int in_windowHeight, QWidget *parent = Q_NULLPTR);
-	ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_windowWidth, int in_windowHeight, unsigned char* in_buffer,
+	ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_desktopWidth, int in_windowHeight, QWidget *parent = Q_NULLPTR);
+	ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_desktopWidth, int in_windowHeight, unsigned char* in_buffer,
 		int in_width, int in_height, QWidget *parent = Q_NULLPTR);
-	ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_windowWidth, int in_windowHeight, QString& in_fileName,
+	ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_desktopWidth, int in_windowHeight, QString& in_fileName,
 		QWidget *parent = Q_NULLPTR);
 
 	bool loadImage(QString& in_fileName);
@@ -22,7 +22,8 @@ public:
 	void zoomOut();
 	void zoomIn();
 protected:
-	virtual void ImageWidget::showEvent(QShowEvent* in_event);
+	virtual void showEvent(QShowEvent* in_event);
+	virtual void resizeEvent(QResizeEvent *event);
 	void keyPressEvent(QKeyEvent * in_event);
 	void mouseMoveEvent(QMouseEvent *event);
 private:
@@ -34,14 +35,21 @@ private:
 	int d_imageHeight;
 	int d_imageScreenWidth;
 	int d_imageScreenHeight;
-	int d_windowWidth;
-	int d_windowHeight;
+	int d_desktopWidth;
+	int d_desktopHeight;
+	int d_initialdesktopWidth;
+	int d_initialWindowHeight;
+	int d_imageTopLeftXOnLabel;
+	int d_imageTopLeftYOnLabel;
+	int d_imageTopLeftXOnImage;
+	int d_imageTopLeftYOnImage;
 	QPoint d_mousePos;
 	QPoint d_mousePosOnImage;
 	static QVector<QRgb> d_colorTable;
 	static QVector<QRgb> initializeColorTable();
 	float d_zoomRatio = 0.7f;
 	const static float d_zoomRecommendRatio;
+	bool caculateMousePosOnImage(int& in_posX, int& in_posY);
 private slots:
 	void on_foldButton_clicked();
 };
