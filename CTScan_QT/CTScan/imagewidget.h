@@ -23,7 +23,7 @@ public:
 	void zoomIn();
 protected:
 	virtual void showEvent(QShowEvent* in_event);
-	virtual void resizeEvent(QResizeEvent *event);
+	virtual void paintEvent(QPaintEvent *event);
 	void keyPressEvent(QKeyEvent * in_event);
 	void mouseMoveEvent(QMouseEvent *event);
 private:
@@ -43,8 +43,11 @@ private:
 	int d_imageTopLeftYOnLabel;
 	int d_imageTopLeftXOnImage;
 	int d_imageTopLeftYOnImage;
+	int d_mousePosToImageLeft;
+	int d_mousePosToImageRight;
 	QPoint d_mousePos;
 	QPoint d_mousePosOnImage;
+	QRect d_imageLabelRect;
 	static QVector<QRgb> d_colorTable;
 	static QVector<QRgb> initializeColorTable();
 	float d_zoomRatio = 0.7f;

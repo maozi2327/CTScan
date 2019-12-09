@@ -2,7 +2,7 @@
 #include "imagewidget.h"
 #include "ImageWidgetManager.h"
 
-const float ImageWidget::d_zoomRecommendRatio = 0.7f;
+const float ImageWidget::d_zoomRecommendRatio = 1.0f;
 QVector<QRgb> ImageWidget::d_colorTable = initializeColorTable();
 
 QVector<QRgb> ImageWidget::initializeColorTable()
@@ -46,6 +46,24 @@ ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_deskt
 {
 	ui.setupUi(this);
 	loadImage(in_fileName);
+	d_desktopWidth = 1366;
+	d_desktopHeight = 768;
+	float wideRatio = float(d_desktopWidth) / d_imageWidth;
+	float heightRatio = float(d_desktopHeight) / d_imageHeight;
+
+	if (wideRatio >= heightRatio)
+		if (heightRatio >= 2)
+			d_zoomRatio = 1; //以高度为准
+		else
+			d_zoomRatio = 1 / heightRatio;
+	else
+		if (wideRatio >= 2)
+			d_zoomRatio = 1; //以宽度为准
+		else
+			d_zoomRatio = 1 / wideRatio;
+	
+	d_imageTopLeftXOnImage = 0;
+	d_imageTopLeftYOnImage = 0;
 }
 ImageWidget::~ImageWidget()
 {
@@ -58,50 +76,57 @@ bool ImageWidget::loadImage(QString& in_fileName)
 	d_pixmap->convertFromImage(image);
 	d_imageWidth = image.width();
 	d_imageHeight = image.height();
-	resize(1366 * d_zoomRatio, 1366 * d_zoomRatio * d_imageHeight / d_imageWidth);
 	ui.imageLabel->setAlignment(Qt::AlignCenter);
 	return true;
 }
 void ImageWidget::showEvent(QShowEvent* in_event)
 {
-	QWidget::showEvent(in_event);
-	int width = ui.imageLabel->width();
-	ui.imageLabel->setPixmap(d_pixmap->scaledToWidth(ui.imageLabel->width()));
-	setMouseTracking(true);
+	d_imageScreenWidth = d_pixmap->width() * d_zoomRatio;
+	d_imageScreenHeight = d_pixmap->height() * d_zoomRatio;
+	int lineWidth = ui.imageLabel->lineWidth() * 2;
+	ui.imageLabel->resize(d_imageScreenWidth + lineWidth, d_imageScreenHeight + lineWidth);
+	ui.imageLabel->setPixmap(d_pixmap->scaledToWidth(d_imageScreenWidth));
 	ui.imageLabel->setMouseTracking(true);
+	setMouseTracking(true);
 }
 void ImageWidget::mouseMoveEvent(QMouseEvent *event)
 {
-	if (ui.imageLabel->underMouse())
-		;
+	if (!ui.imageLabel->underMouse())
+		return;
 
+	d_imageLabelRect = ui.imageLabel->geometry();
 	d_mousePos = event->pos();
 	int posX, posY;
 	
 	if (!caculateMousePosOnImage(posX, posY))
 		return;
 
-	d_mousePosOnImage.x = posX;
-	d_mousePosOnImage.y = posY;
+	QString mousePosStr;
+	mousePosStr.sprintf("%d, %d", posX, posY);
+	ui.messageLabel->setText(mousePosStr);
+	d_mousePosOnImage.setX(posX);
+	d_mousePosOnImage.setY(posY);
 }
 bool ImageWidget::caculateMousePosOnImage(int& in_posX, int& in_posY)
 {
+	if (d_mousePos.x() >= d_imageLabelRect.right() || d_mousePos.x() <= d_imageLabelRect.left() || 
+		d_mousePos.y() >= d_imageLabelRect.bottom() || d_mousePos.y() <= d_imageLabelRect.top())
+		return false;
+
 	int labelWidth = ui.imageLabel->width();
 	int labelHeight = ui.imageLabel->height();
-	d_imageScreenWidth;
-	d_imageScreenHeight;
-	d_imageTopLeftXOnLabel;
-	d_imageTopLeftYOnLabel;
 	int imageScreenTopPos = (labelHeight - d_imageScreenHeight) / 2;
 	int imageScreenDownPos = imageScreenTopPos + d_imageScreenHeight;
 	int imageScreenLeftPos = (labelWidth - d_imageScreenWidth) / 2;
 	int imageScreenRightPos = imageScreenLeftPos + d_imageScreenWidth;
 
-	if (d_mousePos.x() > imageScreenLeftPos && d_mousePos.x() < imageScreenRightPos &&
-		d_mousePos.y() > imageScreenTopPos && d_mousePos.y() < imageScreenDownPos)
+	if (d_mousePos.x() - d_imageLabelRect.left() > imageScreenLeftPos && d_mousePos.x() - d_imageLabelRect.left() < imageScreenRightPos &&
+		d_mousePos.y() - d_imageLabelRect.top() > imageScreenTopPos && d_mousePos.y() - d_imageLabelRect.top() < imageScreenDownPos)
 	{
-		in_posX = (d_mousePos.x() - imageScreenLeftPos + d_imageTopLeftXOnImage) / d_zoomRatio;
-		in_posY = (d_mousePos.y() - imageScreenTopPos + d_imageTopLeftYOnImage) / d_zoomRatio;
+		d_mousePosToImageLeft = d_mousePos.x() - d_imageLabelRect.left() - imageScreenLeftPos;
+		d_mousePosToImageRight = d_mousePos.y() - d_imageLabelRect.top() - imageScreenTopPos;
+		in_posX = (d_mousePosToImageLeft + d_imageTopLeftXOnImage) / d_zoomRatio;
+		in_posY = (d_mousePosToImageRight + d_imageTopLeftYOnImage) / d_zoomRatio;
 		return true;
 	}
 	else
@@ -147,14 +172,12 @@ void ImageWidget::keyPressEvent(QKeyEvent* in_event)
 		break;
 	}
 }
-void ImageWidget::resizeEvent(QResizeEvent *event)
+void ImageWidget::paintEvent(QPaintEvent *event)
 {
-	QWidget::resizeEvent(event);
-
 	int labelWidth = ui.imageLabel->width();
 	int labelHeight = ui.imageLabel->height();
 	QPixmap pixmap = d_pixmap->scaledToWidth(d_pixmap->width() * d_zoomRatio);
-	QPixmap copy = d_pixmap->copy(d_imageTopLeftXOnImage, d_imageTopLeftYOnImage, d_imageScreenWidth, d_imageScreenHeight);
+	QPixmap copy = pixmap.copy(d_imageTopLeftXOnImage, d_imageTopLeftYOnImage, d_imageScreenWidth, d_imageScreenHeight);
 	ui.imageLabel->setPixmap(copy);
 }
 void ImageWidget::zoomOut()
@@ -164,11 +187,13 @@ void ImageWidget::zoomOut()
 
 	if (d_zoomRatio >= d_zoomRecommendRatio)
 	{
-		d_zoomRatio += 0.1;
-		d_mousePosOnImage.x *= d_zoomRatio;
-		d_mousePosOnImage.y *= d_zoomRatio;
-		d_imageTopLeftXOnImage = d_mousePosOnImage.x - (d_mousePos.x - (ui.imageLabel->width() - d_imageScreenWidth) / 2);
-		d_imageTopLeftYOnImage = d_mousePosOnImage.y - (d_mousePos.y - (ui.imageLabel->height() - d_imageScreenHeight) / 2);
+		d_zoomRatio += 0.25;
+		d_mousePosOnImage.setX(d_mousePosOnImage.x() * d_zoomRatio);
+		d_mousePosOnImage.setY(d_mousePosOnImage.y() * d_zoomRatio);
+		d_imageTopLeftXOnImage = d_mousePosOnImage.x() - (d_mousePos.x() - (ui.imageLabel->width() - d_imageScreenWidth) / 2);
+		d_imageTopLeftYOnImage = d_mousePosOnImage.y() - (d_mousePos.y() - (ui.imageLabel->height() - d_imageScreenHeight) / 2);
+		
+		repaint();
 	}
 	else
 	{

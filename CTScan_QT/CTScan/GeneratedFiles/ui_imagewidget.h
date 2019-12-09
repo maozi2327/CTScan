@@ -88,6 +88,7 @@ public:
         sizePolicy2.setHeightForWidth(imageLabel->sizePolicy().hasHeightForWidth());
         imageLabel->setSizePolicy(sizePolicy2);
         imageLabel->setMaximumSize(QSize(16777215, 16777215));
+        imageLabel->setMouseTracking(false);
         imageLabel->setFocusPolicy(Qt::ClickFocus);
         imageLabel->setFrameShape(QFrame::Box);
 

@@ -92,6 +92,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
        <property name="focusPolicy">
         <enum>Qt::ClickFocus</enum>
        </property>
