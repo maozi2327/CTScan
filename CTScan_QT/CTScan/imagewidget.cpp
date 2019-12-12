@@ -2,7 +2,6 @@
 #include "imagewidget.h"
 #include "ImageWidgetManager.h"
 
-const float ImageWidget::d_zoomRecommendRatio = 1.0f;
 QVector<QRgb> ImageWidget::d_colorTable = initializeColorTable();
 
 QVector<QRgb> ImageWidget::initializeColorTable()
@@ -38,7 +37,6 @@ ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_deskt
 	: d_manager(in_imageWidgetManager), QWidget(parent), d_desktopWidth(in_desktopWidth), d_desktopHeight(in_windowHeight)
 {
 	loadImage(in_buffer, in_width, in_height);
-	
 }
 ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_desktopWidth, int in_windowHeight, 
 	QString& in_fileName, QWidget *parent)
@@ -46,8 +44,20 @@ ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_deskt
 {
 	ui.setupUi(this);
 	loadImage(in_fileName);
+	initialLabelAndImageSize();
+}
+ImageWidget::~ImageWidget()
+{
+}
+
+void ImageWidget::initialLabelAndImageSize()
+{
 	d_desktopWidth = 1366;
 	d_desktopHeight = 768;
+	d_imageTopLeftXOnImage = 0;
+	d_imageTopLeftYOnImage = 0;
+	d_imageWidth = d_pixmap->width();
+	d_imageHeight = d_pixmap->height();
 	float wideRatio = float(d_desktopWidth) / d_imageWidth;
 	float heightRatio = float(d_desktopHeight) / d_imageHeight;
 
@@ -55,39 +65,31 @@ ImageWidget::ImageWidget(ImageWidgetManager* in_imageWidgetManager, int in_deskt
 		if (heightRatio >= 2)
 			d_zoomRatio = 1; //以高度为准
 		else
-			d_zoomRatio = 1 / heightRatio;
+			d_zoomRatio = float(d_desktopHeight) / d_imageHeight * 0.6;
 	else
 		if (wideRatio >= 2)
 			d_zoomRatio = 1; //以宽度为准
 		else
-			d_zoomRatio = 1 / wideRatio;
-	
-	d_imageTopLeftXOnImage = 0;
-	d_imageTopLeftYOnImage = 0;
-}
-ImageWidget::~ImageWidget()
-{
-}
+			d_zoomRatio = float(d_desktopWidth) / d_imageWidth * 0.6;
 
+	d_zoomRecommendRatio = d_zoomRatio;
+	d_imageScreenWidth = d_pixmap->width() * d_zoomRatio;
+	d_imageScreenHeight = d_pixmap->height() * d_zoomRatio;
+	int lineWidth = ui.imageLabel->lineWidth() * 2;
+	setMouseTracking(true);
+	ui.imageLabel->setFixedSize(d_imageScreenWidth + lineWidth, d_imageScreenHeight + lineWidth);
+	ui.imageLabel->setPixmap(d_pixmap->scaledToWidth(d_imageScreenWidth));
+	ui.imageLabel->setMouseTracking(true);
+}
 bool ImageWidget::loadImage(QString& in_fileName)
 {
-	QImage image("D:/code/CTScan/CTScan_QT/x64/Debug/gain_small.tif");
+	QImage image("D:/code/CTScan/CTScan_QT/x64/Debug/gain.tif");
 	d_pixmap = new QPixmap;
 	d_pixmap->convertFromImage(image);
-	d_imageWidth = image.width();
-	d_imageHeight = image.height();
-	ui.imageLabel->setAlignment(Qt::AlignCenter);
 	return true;
 }
 void ImageWidget::showEvent(QShowEvent* in_event)
 {
-	d_imageScreenWidth = d_pixmap->width() * d_zoomRatio;
-	d_imageScreenHeight = d_pixmap->height() * d_zoomRatio;
-	int lineWidth = ui.imageLabel->lineWidth() * 2;
-	ui.imageLabel->resize(d_imageScreenWidth + lineWidth, d_imageScreenHeight + lineWidth);
-	ui.imageLabel->setPixmap(d_pixmap->scaledToWidth(d_imageScreenWidth));
-	ui.imageLabel->setMouseTracking(true);
-	setMouseTracking(true);
 }
 void ImageWidget::mouseMoveEvent(QMouseEvent *event)
 {
@@ -127,23 +129,41 @@ bool ImageWidget::caculateMousePosOnImage(int& in_posX, int& in_posY)
 		d_mousePosToImageRight = d_mousePos.y() - d_imageLabelRect.top() - imageScreenTopPos;
 		in_posX = (d_mousePosToImageLeft + d_imageTopLeftXOnImage) / d_zoomRatio;
 		in_posY = (d_mousePosToImageRight + d_imageTopLeftYOnImage) / d_zoomRatio;
+		d_mousePos.setX(d_mousePos.x() - d_imageLabelRect.left());
+		d_mousePos.setY(d_mousePos.y() - d_imageLabelRect.top());
 		return true;
 	}
 	else
 		return false;
 
 }
+
+void ImageWidget::resizeEvent(QResizeEvent *event)
+{
+	//ui.gridLayout->setSizeConstraint(QLayout::SetNoConstraint);
+}
 void ImageWidget::on_foldButton_clicked()
 {
 	if (ui.folderTree->isVisible())
 	{
+		ui.gridLayout->setSizeConstraint(QLayout::SetFixedSize);
+		int wid = width();
+		int newWidth = width() - ui.folderTree->width();
 		ui.folderTree->hide();
 		ui.foldButton->setText(tr("<"));
+		resize(newWidth, height());
 	}
 	else
 	{
+		ui.gridLayout->setSizeConstraint(QLayout::SetNoConstraint);
+		QLayout::SizeConstraint i  = ui.gridLayout->sizeConstraint();
+		setMaximumSize(width() + ui.folderTree->width() + 100, height());
+		int wid = maximumWidth();
+		int hei = maximumHeight();
+		int newWidth = width() + ui.folderTree->width();
 		ui.folderTree->show();
 		ui.foldButton->setText(tr(">"));
+		resize(newWidth + ui.folderTree->width(), height());
 	}
 }
 bool ImageWidget::loadImage(unsigned char* in_buffer, int in_width, int in_height)
@@ -172,12 +192,13 @@ void ImageWidget::keyPressEvent(QKeyEvent* in_event)
 		break;
 	}
 }
-void ImageWidget::paintEvent(QPaintEvent *event)
+void ImageWidget::zoomImage()
 {
-	int labelWidth = ui.imageLabel->width();
-	int labelHeight = ui.imageLabel->height();
 	QPixmap pixmap = d_pixmap->scaledToWidth(d_pixmap->width() * d_zoomRatio);
+	int labelWidth = pixmap.width();
+	int labelHeight = pixmap.height();
 	QPixmap copy = pixmap.copy(d_imageTopLeftXOnImage, d_imageTopLeftYOnImage, d_imageScreenWidth, d_imageScreenHeight);
+	ui.imageLabel->clear();
 	ui.imageLabel->setPixmap(copy);
 }
 void ImageWidget::zoomOut()
@@ -190,15 +211,16 @@ void ImageWidget::zoomOut()
 		d_zoomRatio += 0.25;
 		d_mousePosOnImage.setX(d_mousePosOnImage.x() * d_zoomRatio);
 		d_mousePosOnImage.setY(d_mousePosOnImage.y() * d_zoomRatio);
+		int width = (d_mousePos.x() - (ui.imageLabel->width() - d_imageScreenWidth) / 2);
 		d_imageTopLeftXOnImage = d_mousePosOnImage.x() - (d_mousePos.x() - (ui.imageLabel->width() - d_imageScreenWidth) / 2);
 		d_imageTopLeftYOnImage = d_mousePosOnImage.y() - (d_mousePos.y() - (ui.imageLabel->height() - d_imageScreenHeight) / 2);
-		
-		repaint();
 	}
 	else
 	{
 		resize(d_initialdesktopWidth * d_zoomRatio, d_initialWindowHeight * d_zoomRatio);
 	}
+
+	zoomImage();
 }
 void ImageWidget::zoomIn()
 {

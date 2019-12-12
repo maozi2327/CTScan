@@ -23,9 +23,11 @@ public:
 	void zoomIn();
 protected:
 	virtual void showEvent(QShowEvent* in_event);
-	virtual void paintEvent(QPaintEvent *event);
+	virtual void resizeEvent(QResizeEvent *event);
 	void keyPressEvent(QKeyEvent * in_event);
 	void mouseMoveEvent(QMouseEvent *event);
+	void zoomImage();
+	void initialLabelAndImageSize();
 private:
 	Ui::ImageWidget ui;
 	ImageWidgetManager* d_manager;
@@ -51,7 +53,7 @@ private:
 	static QVector<QRgb> d_colorTable;
 	static QVector<QRgb> initializeColorTable();
 	float d_zoomRatio = 0.7f;
-	const static float d_zoomRecommendRatio;
+	float d_zoomRecommendRatio;
 	bool caculateMousePosOnImage(int& in_posX, int& in_posY);
 private slots:
 	void on_foldButton_clicked();
