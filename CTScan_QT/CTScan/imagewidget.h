@@ -32,6 +32,7 @@ private:
 	Ui::ImageWidget ui;
 	ImageWidgetManager* d_manager;
 	QPixmap* d_pixmap;
+	QPixmap d_zoomedPixMap;
 	QImage* d_image;
 	int d_imageWidth;
 	int d_imageHeight;
@@ -48,12 +49,15 @@ private:
 	int d_mousePosToImageLeft;
 	int d_mousePosToImageRight;
 	QPoint d_mousePos;
+	QPoint d_mousePosOnImageLabel;
 	QPoint d_mousePosOnImage;
 	QRect d_imageLabelRect;
 	static QVector<QRgb> d_colorTable;
 	static QVector<QRgb> initializeColorTable();
 	float d_zoomRatio = 0.7f;
+	int d_zoomRatioFactor = 10;
 	float d_zoomRecommendRatio;
+	static const int d_initialZoomRatioFactor;
 	bool caculateMousePosOnImage(int& in_posX, int& in_posY);
 private slots:
 	void on_foldButton_clicked();

@@ -53,7 +53,7 @@ public:
         gridLayout->setSpacing(0);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        gridLayout->setSizeConstraint(QLayout::SetNoConstraint);
         gridLayout->setContentsMargins(0, 0, 0, 0);
         verticalSpacer = new QSpacerItem(55, 5, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -67,7 +67,7 @@ public:
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
+        horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         folderTree = new QTreeWidget(ImageWidget);
@@ -101,7 +101,7 @@ public:
         horizontalLayout_2->addLayout(horizontalLayout);
 
         verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
+        verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         imageLabel = new QLabel(ImageWidget);
         imageLabel->setObjectName(QStringLiteral("imageLabel"));
@@ -110,7 +110,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(imageLabel->sizePolicy().hasHeightForWidth());
         imageLabel->setSizePolicy(sizePolicy3);
-        imageLabel->setMinimumSize(QSize(500, 400));
+        imageLabel->setMinimumSize(QSize(0, 400));
         imageLabel->setMaximumSize(QSize(16777215, 16777215));
         imageLabel->setMouseTracking(false);
         imageLabel->setFocusPolicy(Qt::ClickFocus);

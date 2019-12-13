@@ -21,7 +21,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout" rowstretch="1,0,1" columnstretch="1,0,1">
    <property name="sizeConstraint">
-    <enum>QLayout::SetDefaultConstraint</enum>
+    <enum>QLayout::SetNoConstraint</enum>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -77,6 +77,9 @@
      </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="sizeConstraint">
         <enum>QLayout::SetDefaultConstraint</enum>
        </property>
@@ -136,6 +139,9 @@
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QLabel" name="imageLabel">
          <property name="sizePolicy">
@@ -146,7 +152,7 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>500</width>
+           <width>0</width>
            <height>400</height>
           </size>
          </property>
