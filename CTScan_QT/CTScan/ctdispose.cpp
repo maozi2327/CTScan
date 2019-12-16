@@ -4,11 +4,13 @@
 
 CTDispose::CTDispose()
 {
+
 }
 
 
 CTDispose::~CTDispose()
 {
+
 }
 
 void CTDispose::dispose(unsigned short* in_image)

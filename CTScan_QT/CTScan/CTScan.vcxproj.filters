@@ -78,6 +78,9 @@
     <ClCompile Include="ImageWidgetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="linedetscanwidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -139,6 +142,9 @@
     <QtMoc Include="raypanelmotionwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
+    <QtMoc Include="linedetscanwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ctscan.ui">
@@ -148,6 +154,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="conescanwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="linedetscanwidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

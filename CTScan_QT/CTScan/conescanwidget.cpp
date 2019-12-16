@@ -9,4 +9,5 @@ ConeScanWidget::ConeScanWidget(QWidget *parent)
 
 ConeScanWidget::~ConeScanWidget()
 {
+
 }
