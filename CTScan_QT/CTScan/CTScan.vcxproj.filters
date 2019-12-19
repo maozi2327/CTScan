@@ -81,6 +81,12 @@
     <ClCompile Include="linedetscanwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TcpServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tcpserver0.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -143,6 +149,12 @@
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="linedetscanwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TcpServer.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tcpserver0.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

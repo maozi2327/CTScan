@@ -35,7 +35,7 @@ private:
     TheQueue<SerialCmd> d_serialQueue;
     void serialSendThread();
     void ringThread(std::promise<bool>& in_promise);
-    std::shared_ptr<std::promise<bool>> d_ringThreadPromisePtr;
+    std::unique_ptr<std::promise<bool>> d_ringThreadPromisePtr;
     std::mutex d_ringThreadMutex;
     std::condition_variable d_ringThreadCond;
 public:

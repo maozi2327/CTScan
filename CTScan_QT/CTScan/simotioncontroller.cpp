@@ -1,40 +1,44 @@
 #include "stdafx.h"
 #include "simotioncontroller.h"
 
-
-SimotionControler::SimotionControler()
+const unsigned short SimotionController::d_port = 8000;
+const int SimotionController::d_packetSize = 256;
+SimotionController::SimotionController()
 {
+	d_tcpNetWork = new TcpServer(d_packetSize, d_port);
 }
 
 
-SimotionControler::~SimotionControler()
+SimotionController::~SimotionController()
 {
+
 }
-float SimotionControler::getAxisPostion(Axis in_axis)
+float SimotionController::getAxisPostion(Axis in_axis)
 {
+
 	return 0;
 }
-bool SimotionControler::getReadyStatus()
+bool SimotionController::getReadyStatus()
 {
 	return true;
 }
-bool SimotionControler::getSaveStatus()
+bool SimotionController::getSaveStatus()
 {
 	return true;
 }
-bool SimotionControler::getWaitNextScanStatus()
+bool SimotionController::getWaitNextScanStatus()
 {
 	return true;
 }
-bool SimotionControler::getRunStatus()
+bool SimotionController::getRunStatus()
 {
 	return true;
 }
-bool SimotionControler::initialConnection()
+bool SimotionController::initialConnection()
 {
 	return true;
 }
-bool SimotionControler::sendCmd(unsigned char* in_cmd, size_t in_size)
+bool SimotionController::sendCmd(unsigned char* in_cmd, size_t in_size)
 {
 	return true;
 }

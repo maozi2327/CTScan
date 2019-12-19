@@ -14,6 +14,7 @@ NimaqPanel::NimaqPanel() : d_quantityOfRingBuffer(RINGBUFFERNUM), d_NiImaqIid(0)
 NimaqPanel::~NimaqPanel()
 {
 	stopAcquire();
+
 	if(d_ringThreadPromisePtr)
 		d_ringThreadPromisePtr->get_future().get();
 }
