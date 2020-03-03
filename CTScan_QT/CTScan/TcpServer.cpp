@@ -28,11 +28,14 @@ bool TcpServer::initialNetWork()
 	std::function<void()> recvThreadFun = std::bind(&TcpServer::recvThread, this, std::ref(*d_recvThreadPromisePtr));
 	std::thread(recvThreadFun).detach();
 
-	return d_tcpServer->listen(d_serverAddress, d_serverPort);
+	return true;
+	//return d_tcpServer->listen(in_address, in_serverPort);
 }
 bool TcpServer::sendAsyn(const char* in_buffer, int in_size)
 {
-	d_sendQueue.push(command{ in_buffer, in_size });
+	d_sendQueue.push({ in_buffer, in_size });
+	TcpServer::command cmd{ in_buffer, in_size };
+	d_sendQueue.push(cmd);
 	return true;
 }
 int TcpServer::sendSyn(const char* in_buffer, int in_size)
@@ -73,7 +76,10 @@ void TcpServer::recvThread(std::promise<bool>& in_promise)
 			byteRead += nRet;
 
 			if (byteRead == d_packetSize)
-				d_receiveQueue.push(command{buffer, d_packetSize});
+			{
+				TcpServer::command cmd{ buffer, d_packetSize };
+				d_receiveQueue.push(cmd);
+			}
 		}
 	}
 }
