@@ -26,9 +26,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="NimaqPanel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PanelInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -44,9 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PanelInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NimaqPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="panelHeaders.h">

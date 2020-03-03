@@ -1,6 +1,8 @@
 #include "panel.h"
 #ifdef NIMAQPANEL
 #include "NimaqPanel.h"
+#else
+#include "PESiPanel.h"
 #endif
 
 Panel::Panel()

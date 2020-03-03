@@ -1,6 +1,7 @@
 #pragma once
 #include "controlerinterface.h"
 #include "TcpServer.h"
+const int bufferSize = 256;
 class SimotionController :
 	public ControlerInterface
 {
@@ -13,7 +14,7 @@ private:
 		unsigned char tagHead[3];						//包头(0x55,0xaa,0x5a)
 		unsigned char typeCode;						//类型码
 		unsigned short tagLen;							//包长(=参数字节数+3, 实际命令数据包长度=包长+4)
-		unsigned char data[d_packetSize - 6];			//命令参数
+		unsigned char data[bufferSize - 6];			//命令参数
 	};
 public:
 	SimotionController();

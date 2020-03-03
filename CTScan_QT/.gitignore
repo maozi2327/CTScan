@@ -43,3 +43,4 @@
 *.db-wal
 *.ilk
 *.exp
+*.qm
