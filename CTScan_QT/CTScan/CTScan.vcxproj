@@ -138,6 +138,7 @@
     <ClCompile Include="ImageWidgetManager.cpp" />
     <ClCompile Include="imagewidget.cpp" />
     <ClCompile Include="linedetscanwidget.cpp" />
+    <ClCompile Include="LineScanInterface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="raypanelmotionwidget.cpp" />
     <ClCompile Include="conescaninterface.cpp" />
@@ -193,6 +194,7 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
+    <ClInclude Include="LineScanInterface.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="conescanInterface.h" />
     <ClInclude Include="simotioncontroller.h" />

@@ -87,6 +87,9 @@
     <ClCompile Include="tcpserver0.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LineScanInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -137,6 +140,9 @@
     <ClInclude Include="stdafx.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="LineScanInterface.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="conescanwidget.h">
@@ -148,14 +154,14 @@
     <QtMoc Include="raypanelmotionwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
-    <QtMoc Include="linedetscanwidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="TcpServer.h">
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="tcpserver0.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="linedetscanwidget.h">
+      <Filter>Source Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

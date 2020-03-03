@@ -82,6 +82,7 @@ public:
         folderTree->setSizePolicy(sizePolicy1);
         folderTree->setMinimumSize(QSize(150, 0));
         folderTree->setMaximumSize(QSize(150, 16777215));
+        folderTree->setFocusPolicy(Qt::NoFocus);
 
         horizontalLayout->addWidget(folderTree);
 
