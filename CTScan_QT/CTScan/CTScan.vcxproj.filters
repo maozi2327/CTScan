@@ -90,6 +90,9 @@
     <ClCompile Include="LineScanInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tcpclient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -162,6 +165,9 @@
     </QtMoc>
     <QtMoc Include="linedetscanwidget.h">
       <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tcpclient.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

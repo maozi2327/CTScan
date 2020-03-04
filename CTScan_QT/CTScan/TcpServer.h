@@ -32,9 +32,9 @@ private:
 	void reAccept();
 	void recvThread(std::promise<bool>& in_promise);
 	std::unique_ptr<std::promise<bool>> d_recvThreadPromisePtr;
-	bool d_stopRecv;
+	bool d_recvRun;
 	void sendThread(std::promise<bool>& in_promise);
 	std::unique_ptr<std::promise<bool>> d_sendThreadPromisePtr;
-	bool d_stopSend;
+	bool d_sendRun;
 };
 
