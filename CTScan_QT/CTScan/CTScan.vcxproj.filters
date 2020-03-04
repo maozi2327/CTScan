@@ -87,7 +87,10 @@
     <ClCompile Include="tcpserver0.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LineScanInterface.cpp">
+    <ClCompile Include="LineDetScanInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CT3Scan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tcpclient.cpp">
@@ -143,8 +146,17 @@
     <ClInclude Include="stdafx.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="LineScanInterface.h">
+    <ClInclude Include="CT3Scan.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\headers\CtrlData.h">
+      <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\headers\FreeImage.h">
+      <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\headers\IctHeader.h">
+      <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,13 +169,16 @@
     <QtMoc Include="raypanelmotionwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
+    <QtMoc Include="linedetscanwidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="TcpServer.h">
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="tcpserver0.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="linedetscanwidget.h">
+    <QtMoc Include="LineDetScanInterface.h">
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="tcpclient.h">

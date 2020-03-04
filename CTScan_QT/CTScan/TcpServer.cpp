@@ -35,6 +35,7 @@ bool TcpServer::initialNetWork()
 }
 bool TcpServer::sendAsyn(const char* in_buffer, int in_size)
 {
+	d_sendQueue.push({ in_buffer, in_size });
 	TcpServer::command cmd{ in_buffer, in_size };
 	d_sendQueue.push(cmd);
 	return true;

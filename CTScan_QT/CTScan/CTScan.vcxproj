@@ -126,6 +126,7 @@
     <ClCompile Include="conecontinusscan.cpp" />
     <ClCompile Include="conescanwidget.cpp" />
     <ClCompile Include="controlerinterface.cpp" />
+    <ClCompile Include="CT3Scan.cpp" />
     <ClCompile Include="ctdispose.cpp" />
     <ClCompile Include="ctscan.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_imagewidget.cpp">
@@ -137,8 +138,8 @@
     <ClCompile Include="ImageProcess.cpp" />
     <ClCompile Include="ImageWidgetManager.cpp" />
     <ClCompile Include="imagewidget.cpp" />
+    <ClCompile Include="LineDetScanInterface.cpp" />
     <ClCompile Include="linedetscanwidget.cpp" />
-    <ClCompile Include="LineScanInterface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="raypanelmotionwidget.cpp" />
     <ClCompile Include="conescaninterface.cpp" />
@@ -166,6 +167,9 @@
     </QtMoc>
     <QtMoc Include="ctscan.h" />
     <ClInclude Include="..\Public\headers\CommandQueue.h" />
+    <ClInclude Include="..\Public\headers\CtrlData.h" />
+    <ClInclude Include="..\Public\headers\FreeImage.h" />
+    <ClInclude Include="..\Public\headers\IctHeader.h" />
     <ClInclude Include="..\Public\headers\machineType.h" />
     <QtMoc Include="conescanwidget.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
@@ -173,6 +177,7 @@
     </QtMoc>
     <ClInclude Include="conecontinusscan.h" />
     <ClInclude Include="controlerinterface.h" />
+    <ClInclude Include="CT3Scan.h" />
     <ClInclude Include="ctdispose.h" />
     <ClInclude Include="GeneratedFiles\ui_conescanwidget.h" />
     <ClInclude Include="GeneratedFiles\ui_ctscan.h" />
@@ -199,7 +204,12 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
     </QtMoc>
-    <ClInclude Include="LineScanInterface.h" />
+    <QtMoc Include="LineDetScanInterface.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB</Define>
+    </QtMoc>
     <ClInclude Include="resource.h" />
     <ClInclude Include="conescanInterface.h" />
     <ClInclude Include="simotioncontroller.h" />

@@ -1,8 +1,10 @@
 #pragma once
 
-#define NIMAQPANEL
+//#define NIMAQPANEL
 #ifdef NIMAQPANEL
 #define REALPANEL NimaqPanel
+#else
+#define REALPANEL PESiPanel
 #endif
 enum class SampleMode
 {

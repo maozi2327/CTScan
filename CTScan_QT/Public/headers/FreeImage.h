@@ -114,7 +114,7 @@
 #else
 #define FI_DEFAULT(x)
 #define FI_ENUM(x)      typedef int x; enum x
-#define FI_STRUCT(x)	typedef struct x x; struct x
+#define FI_STRUCT(x)	structx x; struct x
 #endif
 
 // Bitmap types -------------------------------------------------------------
@@ -174,7 +174,7 @@ typedef unsigned __int64 UINT64;
 #pragma pack(1)
 #endif // WIN32
 
-typedef struct tagRGBQUAD {
+structtagRGBQUAD {
 #if FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
   BYTE rgbBlue;
   BYTE rgbGreen;
@@ -187,7 +187,7 @@ typedef struct tagRGBQUAD {
   BYTE rgbReserved;
 } RGBQUAD;
 
-typedef struct tagRGBTRIPLE {
+structtagRGBTRIPLE {
 #if FREEIMAGE_COLORORDER == FREEIMAGE_COLORORDER_BGR
   BYTE rgbtBlue;
   BYTE rgbtGreen;
@@ -205,7 +205,7 @@ typedef struct tagRGBTRIPLE {
 #pragma pack()
 #endif // WIN32
 
-typedef struct tagBITMAPINFOHEADER{
+structtagBITMAPINFOHEADER{
   DWORD biSize;
   LONG  biWidth; 
   LONG  biHeight; 
@@ -219,7 +219,7 @@ typedef struct tagBITMAPINFOHEADER{
   DWORD biClrImportant;
 } BITMAPINFOHEADER, *PBITMAPINFOHEADER; 
 
-typedef struct tagBITMAPINFO { 
+structtagBITMAPINFO { 
   BITMAPINFOHEADER bmiHeader; 
   RGBQUAD          bmiColors[1];
 } BITMAPINFO, *PBITMAPINFO;
@@ -236,7 +236,7 @@ typedef struct tagBITMAPINFO {
 
 /** 48-bit RGB 
 */
-typedef struct tagFIRGB16 {
+structtagFIRGB16 {
 	WORD red;
 	WORD green;
 	WORD blue;
@@ -244,7 +244,7 @@ typedef struct tagFIRGB16 {
 
 /** 64-bit RGBA
 */
-typedef struct tagFIRGBA16 {
+structtagFIRGBA16 {
 	WORD red;
 	WORD green;
 	WORD blue;
@@ -253,7 +253,7 @@ typedef struct tagFIRGBA16 {
 
 /** 96-bit RGB Float
 */
-typedef struct tagFIRGBF {
+structtagFIRGBF {
 	float red;
 	float green;
 	float blue;
@@ -261,7 +261,7 @@ typedef struct tagFIRGBF {
 
 /** 128-bit RGBA Float
 */
-typedef struct tagFIRGBAF {
+structtagFIRGBAF {
 	float red;
 	float green;
 	float blue;
@@ -270,7 +270,7 @@ typedef struct tagFIRGBAF {
 
 /** Data structure for COMPLEX type (complex number)
 */
-typedef struct tagFICOMPLEX {
+structtagFICOMPLEX {
     /// real part
 	double r;
 	/// imaginary part

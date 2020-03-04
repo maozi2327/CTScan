@@ -64,7 +64,7 @@ enum{
 };
 
 //子系统连接状态结构定义
-typedef	struct	_SubSysLinkSts{
+struct	_SubSysLinkSts{
 	BYTE		*pRay_linked;											//射线源连接状态
 	BYTE		*pLineDet_linked;										//线阵连接状态
 	BYTE		*pPanDet_linked;										//面阵源连接状态
@@ -85,7 +85,8 @@ enum{
 
 #pragma pack(1)                                             //设定连接程序按字节对齐, 保证结构正确对齐
 //32bits系统配置字结构定义
-typedef	struct	_SysConfig{
+struct SysConfig
+{
 	//*********************b[0]*****************************	
 	BYTE	SliceCameraExist				:1;			//断层摄像头定义
 	BYTE									:1;			//未用
@@ -102,11 +103,11 @@ typedef	struct	_SysConfig{
 														
 	//*********************b[3]*****************************	
 	BYTE									:8;				//保留
-}SysConfig;
+};
 
 
 //系统几何结构参数定义
-typedef	struct	_GeometryParameter{
+struct GeometryParameter{
 	char	szDeviceModel[32];                              //设备型号
 	WORD	CtrlerType;										//控制器类型定义( 0-CTRLER_SIMOTION/ 1-CTRLER_UMAC/2-UNKOWN_CTRLER)
 	WORD	PanDetectorType;								//当前使用的面阵探测器类型(PANEL_PECMOS-[默认],PANEL_PEFPD,PANEL_GNCCD,UNKOWN_PANEL)
@@ -171,29 +172,8 @@ typedef	struct	_GeometryParameter{
 
 	float	MaxViewDiameter;								//最大视场直径(mm)
 	SysConfig	Config;										//系统配置字
-}GeometryParameter;
+};
 
-////坐标轴名定义(共17个轴)
-//enum{					
-//	AxGraduation      = 0,									//分度                     0
-//	AxTranslation,											//平移                     1
-//	AxInterpolation,										//插值                     2
-//	AxLayer1,												//射线源分层               3
-//	AxLayer2,												//探测器分层               4
-//	AxRadial,												//径向                     5
-//	AxSliceThick,											//断层厚度(后准直孔高度)   6
-//	AxCollimator,											//准直孔宽度               7
-//	AxRayVertical,											//射线源升降运动轴		   8
-//	AxRayRadial,											//射线源径向运动轴		   9
-//	AxLineDetVertical,										//线阵探测器升降运动轴	   10
-//	AxLineDetRadial,										//线阵探测器径向运动轴	   11
-//	AxPanelDetVertical,										//面阵探测器升降运动轴	   12
-//	AxOVTranslation,										//工件平车平移运动         13
-//	AxOVRotation1,											//工件平车主轴1旋转运动    14
-//	AxOVRotation2,											//工件平车主轴2旋转运动    15
-//	AxOVDeflection,											//工件平车偏摆运动         16
-//	_MaxiumAxis                                             //                         17
-//};		
 //坐标轴名定义(共17个轴)
 //X-径向；Y-平移；Z-升降
 enum{					
@@ -216,22 +196,22 @@ enum{
 const int MaxiumAxis = _MaxiumAxis;                         //最大轴数目
 
 //运动轴设定的最低和最高运动速度
-typedef struct _AxisSetSpeedData{
+struct AxisSetSpeedData{
 	float	min[MaxiumAxis];								//最低速度(依次对应上面各运动轴)
 	float	max[MaxiumAxis];								//最高速度(依次对应上面各运动轴)
-}AxisSetSpeedData;
+};
 
 //运动轴状态字结构
-typedef struct _AxisStatus{
+struct AxisStatus{
 	float	Temperature;									//温度
 	float	Torque;											//扭矩
 	DWORD	ErrCode;										//轴错误代码
-}AxisStatus;
+};
 
 //运动轴组状态字结构
-typedef struct _AxisGroupStatus{
+struct AxisGroupStatus{
 	AxisStatus	axisStatus[MaxiumAxis];						//依次对应上面各运动轴
-}AxisGroupStatus;
+};
 
 #ifndef USE_IN_CONTROL
 //运动方向名义值定义
@@ -269,34 +249,6 @@ enum{
 //	_T("背景校正"),_T("空气校正"),_T("标定分层零点扫描"),_T("标定回转中心扫描"),
 //	_T("大视场扫描"),_T("组态扫描")};
 
-////扫描模式符号名定义
-//#ifndef	_SCAN_MODE_NAME
-//#define	_SCAN_MODE_NAME
-//enum{
-//	NO_SCAN		=	-1,                                     //无扫描操作
-//	CT1_SCAN,												//Ⅰ代扫描
-//	CT2_SCAN,												//Ⅱ代扫描
-//	CT3_SCAN,												//Ⅲ代扫描
-//	DR_SCAN,                                                //DR扫描
-//	LOCAL_SCAN,												//局部扫描
-//	HELIX_SCAN,												//螺旋扫描
-//	CONE_SCAN,												//锥束扫描
-//	CONEHELIX_SCAN,                                         //锥束螺旋扫描
-//	BKG_SCAN,												//本底校正扫描(固定采集512个分度)
-//	AIR_SCAN,                                               //空气校正扫描(固定采集512个分度)
-//	CAL_LAYER_ZERO_SCAN,                                    //标定分层零点扫描
-//	CAL_CENTER_SCAN,                                        //标定回转中心扫描
-//	LARGE_VIEW_SCAN,										//大视场扫描(回转中心偏置扫描)
-//	CONFIG_SCAN,                                            //组态扫描
-//	//2017.03.29增加
-//	DEF_MAP_SCAN,											//坏像素校正扫描
-//	CONEPOINT_SCAN,											//点对点锥束扫描（到位一次采集一次，不需要同步脉冲）
-//	CROSS_SCAN,												//交错扫描（分度角加对搓采束）
-//	SINGLE_CROSS_SCAN,										//静态交错(只移动射线源)扫描（分度角加对搓采束）
-//	_MAX_SCANMODE_ITEM
-//};
-//
-//#endif
 
 //分层控制方式名义值定义
 enum{
@@ -559,7 +511,7 @@ enum{
 
 //系统状态字结构
 /******        高电平有效        ******/
-typedef union _SysStatus{
+union SysStatus{
 	struct{
 		//*********************status1: 16 bits*****************************
 		BYTE	graduation_zero_found			:1;			//分度运动零位已找到(1)
@@ -739,11 +691,11 @@ typedef union _SysStatus{
 	}s; 
 	WORD	u[10];
 	BYTE	b[20];
-}SysStatus;
+};
 
 //控制系统状态字结构
 /******        高电平有效        ******/
-typedef union _ControlSystemStatus{
+union ControlSystemStatus{
 	struct{
 		//*********************status12: 16 bits*****************************
 		//此16位称为控制系统状态
@@ -769,25 +721,7 @@ typedef union _ControlSystemStatus{
 }ControlSystemStatus;
 
 //运动坐标值
-typedef struct _Coordination{
-	//float	graduation;										//分度
-	//float	translation;									//平移
-	//float	interpolation;									//插值
-	//float	layer1;											//分层1
-	//float	layer2;											//分层2
-	//float	radial;											//径向
-	//float	sliceThickness;									//层厚
-	//float	collimator;										//准直器
-	//float	rayVertical;									//射线源升降	   
-	//float	rayRadial;										//射线源径向		   
-	//float	lineDetVertical;								//线阵探测器升降	
-	//float	lineDetRadial;									//线阵探测器径向	   
-	//float	panelDetVertical;								//面阵探测器升降	
-	//float	ovTranslation;									//工件平车平移         
-	//float	ovRotation1;									//工件平车主轴1旋转
-	//float	ovRotation2;									//工件平车主轴2旋转
-	//float   ovDeflection;									//工件平车偏摆     
-
+struct Coordination{
 	float	graduation;										//分度
 	float   objTranslation;									//工件平移                
 	float   interpolation;									//插值                    
@@ -802,25 +736,25 @@ typedef struct _Coordination{
 	float   rayTranslation;									//射线源Y方向运动轴			
 	float   objVertical;									//工件Z方向运动轴			
 	float   deflection;										//偏摆运动					
-}Coordination;						
+};						
 
 //I/O端口状态
-typedef union _IoRegStatus{
+union IoRegStatus{
 	struct{
 		BYTE	out[4];										//输出寄存器状态
 		BYTE	in[4];										//输入端口状态
 	}s;					
 	BYTE	data[8];
-}IoRegStatus;
+};
 
 //单轴指定距离运动命令CMD_AXIS_MOVE_STEP参数字结构
-typedef struct _AxisMoveStepCmdData{
+struct AxisMoveStepCmdData{
 	BYTE	axisNo;											//轴代号
 	float	distance;										//运动距离(mm)
-}AxisMoveStepCmdData;					
+};					
 
 //单轴连续运动命令CMD_AXIS_MOVE_CONTINEOUS参数字结构
-typedef struct _AxisMoveContCmdData{
+struct AxisMoveContCmdData{
 	BYTE	axisNo;
 	union{
 		BYTE	b;										    //轴代号
@@ -829,49 +763,49 @@ typedef struct _AxisMoveContCmdData{
 			BYTE	dir	    :1;							    //运动方向(P_DIR/N_DIR)
 		}s;					
 	}dir;					
-}AxisMoveContCmdData;
+};
 
 //分层连续运动命令CMD_SLICE_MOVE_CONTINEOUS参数字结构
-typedef union _SliceMoveContCmdData{
+union SliceMoveContCmdData{
 	BYTE	b;											    //轴代号
 	struct{					
 		BYTE		        :7;					
 		BYTE	dir		    :1;							    //运动方向(P_DIR/N_DIR)
 	}s;					
-}SliceMoveContCmdData;
+};
 
 //准直孔宽度选择命令CMD_COLLIMATE_WIDTH_SWITCH参数字结构
-typedef struct _CollimateWidthSwitchCmdData{
+struct CollimateWidthSwitchCmdData{
 	BYTE	holeNo;										    //准直孔代号:0-2
-}CollimateWidthSwitchCmdData;					
+};					
 					
 //断层厚度调节命令CMD_COLLIMATE_HEIGHT_ADJUST参数字结构
-typedef struct _LayerThicknessAdjustCmdData{
+struct LayerThicknessAdjustCmdData{
 	float	layerThickness;								    //断层厚度(mm)
-}LayerThicknessAdjustCmdData;					
+};					
 					
 //单轴运动到指定位置命令CMD_AXIS_GOTO_SPECIFIC_POS参数字结构
-typedef struct _AxisGotoSpecificPosCmdData{
+struct AxisGotoSpecificPosCmdData{
 	BYTE	axisNo;										    //轴代号
 	float	pos;										    //运动位置(mm或度)
-}AxisGotoSpecificPosCmdData;					
+};					
 
 //分层运动到指定位置命令CMD_SLICE_GOTO_SPECIFIC_POS参数字结构
-typedef struct _SliceGotoSpecificPosCmdData{
+struct SliceGotoSpecificPosCmdData{
 	float	pos;										    //运动位置(mm)
-}SliceGotoSpecificPosCmdData;	
+};	
 				
 //标记控制命令CMD_MARK数据结构
-typedef struct _MarkCtrlCmdData{
+struct MarkCtrlCmdData{
 	float	horizontalCoordinate;						//缺陷水平坐标(单位：mm)
 	float	verticalCoordinate;							//缺陷垂直坐标(单位：mm)
 	float	rotationAngle;								//缺陷角度 (单位：°)
-}MarkCtrlCmdData;
+};
 					
 //扫描命令参数字结构
 //CT命令状态位定义
 //2017.04.26增加btnStartScan, autoStopBeam
-typedef union _CT23StsBit{
+union CT23StsBit{
 	struct{												//2代扫描位结构
 		BYTE  btnStartScan		:1;							//0-立即启动扫描,		1-等待出束按钮启动扫描
 		BYTE  changeLayerSpace	:1;							//0-等层距扫描,	    1-变层距扫描
@@ -893,10 +827,10 @@ typedef union _CT23StsBit{
 		BYTE  thirdGeneration	:1;							//0-2代CT扫描,		1-3代CT扫描
 	}s1;					
 	BYTE  c;
-}CT23StsBit;
+};
 //DR命令状态位定义
 //2017.04.26增加autoStopBeam
-typedef union _DRStsBit{
+union DRStsBit{
 	struct{
 		BYTE  physiInterpolation:1;							//0-模拟插值,		1-物理插值
 		BYTE  multiAngle		:1;							//0-单角度扫描,		1-多角度扫描
@@ -908,9 +842,9 @@ typedef union _DRStsBit{
 		BYTE  thirdGeneration	:1;							//0-2代拼接扫描,	1-3代插值扫描
    }s;					
    BYTE  c;
-}DRStsBit;
+};
 //局部CT扫描命令状态位定义
-typedef  union _LocalStsBit{
+union LocalStsBit{
 	struct{
 		BYTE					:5;							//D0-4
 		BYTE	currentLayer	:1;							//D5: 0-按给定参数分层, 1-当前层扫描
@@ -918,9 +852,9 @@ typedef  union _LocalStsBit{
 		BYTE					:1;							//D7: 
 	}s;
 	BYTE	c;
-}LocalStsBit;
+};
 //螺旋CT命令状态位定义
-typedef union _HelixStsBit{
+union HelixStsBit{
 	struct{
 		BYTE  physiInterpolation:1;							//0-模拟插值,		1-物理插值
 		BYTE  biDirScan			:1;							//0-正向分层,		1-螺旋回扫,
@@ -931,9 +865,9 @@ typedef union _HelixStsBit{
 		BYTE				    :2;							//
 	}s;					
 	BYTE  c;					
-}HelixStsBit;
+};
 //锥束CT命令状态位定义
-typedef union _ConeStsBit{
+union ConeStsBit{
 	struct{
 		BYTE  translationCone   :1;							//0-普通锥束扫描,	1-平移锥束扫描
 		BYTE				    :4;        					
@@ -943,10 +877,10 @@ typedef union _ConeStsBit{
              					
    }s;					
    BYTE  c;
-}ConeStsBit;
+};
 
 //2/3代CT扫描命令CMD_CT_SCAN参数字结构
-typedef struct _CT23ScanCmdData{
+struct CT23ScanCmdData{
 	CT23StsBit	stsBit;										//命令状态位
 	BYTE	interpolationAmount;							//3代扫描探测器位置数(插值次数)DM(>=1)
 	WORD	projectionAmount;								//投影次数PN
@@ -961,10 +895,10 @@ typedef struct _CT23ScanCmdData{
 	float	centerOffset;								   	//回转中心偏移(mm)
 	float	firstLayerOffset;							   	//第1层偏移(mm)
 	float	layerSpace;									   	//相邻层间距(mm)
-}CT23ScanCmdData;					
+};					
 					
 //大视场CT扫描命令CMD_LARGEVIEW_SCAN参数字结构
-typedef struct _LargeViewCTScanCmdData{
+struct LargeViewCTScanCmdData{
 	CT23StsBit	stsBit;										//命令状态位
 	BYTE	interpolationAmount;							//3代扫描探测器位置数(插值次数)DM(>=1)
 	WORD	projectionAmount;								//投影次数PN
@@ -976,10 +910,10 @@ typedef struct _LargeViewCTScanCmdData{
 	float	centerOffset;								   	//回转中心偏移(mm)
 	float	firstLayerOffset;							   	//第1层偏移(mm)
 	float	layerSpace;									   	//相邻层间距(mm)
-}LargeViewCTScanCmdData;					
+};					
 					
 //DR扫描命令CMD_DR_SCAN参数字结构
-typedef struct _DRScanCmdData{
+struct DRScanCmdData{
 	DRStsBit	stsBit;										//命令状态位
 	BYTE    interpolationAmount;							//DR扫描探测器位置数(插值次数)DM(>=1)
 	WORD	projectionAmount;								//分层投影次数PN
@@ -993,10 +927,10 @@ typedef struct _DRScanCmdData{
 	float	layerSpace;										//相邻层间距(mm)
 	BYTE	reserved2;										//保留
 	BYTE	tabelNumber;									//扫描转台代号(高4位为0时,以低4位表示的转台中心为原点进行扫描;
-}DRScanCmdData;
+};
 
 //局部扫描命令CMD_LOCAL_SCAN参数字结构
-typedef struct _LocalScanCmdData{
+struct LocalScanCmdData{
 	LocalStsBit	stsBit;										//命令状态位
 	BYTE	ct2Mode;									    //2代扫描模式(0-360度,1-180度,2-180度间隔)
 	WORD	projectionAmount;								//分层投影次数PN
@@ -1008,10 +942,10 @@ typedef struct _LocalScanCmdData{
 	float	centerOffset;								   	//回转中心偏移(mm)
 	float	firstLayerOffset;								//第1层偏移(mm)
 	float	layerSpace;										//层间距(mm)
-}LocalScanCmdData;					
+};					
 
 //螺旋扫描命令CMD_HELIX_SCAN参数字结构
-typedef struct _HelixScanCmdData{
+struct HelixScanCmdData{
 	HelixStsBit	stsBit;										//命令状态位
 	BYTE	interpolationAmount;							//螺旋扫描探测器位置数(插值次数)DM(>=1)
 	WORD	projectionAmount;								//投影次数PN
@@ -1022,10 +956,10 @@ typedef struct _HelixScanCmdData{
 	float	centerOffset;								   	//回转中心偏移(mm)
 	float	firstLayerOffset;								//第1层偏移(mm)
 	float	helixSpace;										//螺距(mm)
-}HelixScanCmdData;
+};
 
 ////锥束螺旋扫描命令CMD_CONE_SCAN参数字结构
-//typedef struct _ConeScanCmdData{
+//struct ConeScanCmdData{
 //	ConeStsBit	stsBit;										//命令状态位 
 //	WORD	projectionAmount;							    //投影次数PN
 //	WORD	sampleTime;										//投影采样时间Tp(4-2000ms)
@@ -1037,7 +971,7 @@ typedef struct _HelixScanCmdData{
 //}ConeScanCmdData;					
 		
 //锥束螺旋扫描命令CMD_CONE_SCAN参数字结构
-typedef struct _ConeScanCmdData{
+struct ConeScanCmdData{
 	ConeStsBit	stsBit;										//命令状态位 
 	WORD	projectionAmount;							    //投影次数PN
 	//WORD	sampleTime;										//投影采样时间Tp(4-2000ms)
@@ -1052,63 +986,17 @@ typedef struct _ConeScanCmdData{
 	WORD crossGradAngle;									//交错扫描用分度角（30°，45°，60°，90°）
 	BYTE		bCrossEquAngle;								//交错扫描用等间距/等角度标志(0-等间距，1-等角度)
 	BYTE		bEnableDetYMove;							//探测器平移轴运动与否(0-不运动，1-运动)
-}ConeScanCmdData;					
+};					
 
 //分层零点标定命令CMD_CAL_LAYER_ZERO参数字结构
-typedef struct _CalAxisZeroCmdData{
+struct CalAxisZeroCmdData{
 	BYTE	axisType;										//校正轴：0-分层；1-升降；2-径向
 	float	firstLayerOffset;							   	//第1分层偏移(mm)
 	WORD	sampleTime;										//投影采样时间Tp(4-2000ms)
-}CalAxisZeroCmdData;					
+};					
 					
 //电源控制命令CMD_POWER_CTRL参数字结构
-//typedef union _PowerCtrlCmd{
-//   struct{
-//	   BYTE	onDetPower		:1;								//0-关闭探测器电源,		1-打开探测器电源
-//	   BYTE	onDrvPower		:1;								//0-关闭动力电源,		1-打开动力电源
-//	   //2017.03.17修改
-//	   //BYTE onCamera	    :1;								//0-关闭摄像头电源,		1-打开摄像头电源
-//	   BYTE onPanDetInUse	    :1;							//0-关闭面阵脉冲,		1-打开面阵脉冲
-//	   BYTE	onLaser			:1;								//0-关闭射线源激光器电源,		1-打开射线源激光器电源
-//	   BYTE	onStoDLaser		:1;								//0-关闭加速器测探测器激光电源,		1-打开加速器测探测器激光电源
-//	   BYTE	onSAimDLaser	:1;								//0-关闭加速器找准探测器激光电源,		1-打开加速器找准探测器激光电源
-//	   BYTE	onStoOLaser		:1;								//0-关闭加速器测工件小车激光电源,		1-打开加速器测工件小车激光电源
-//	   BYTE	onMeasLaser		:1;								//0-关闭差分测量激光器电源,		1-打开差分测量激光器电源
-//
-//	   BYTE	onObjVehPower		:1;							//0-关闭工件小车电源,		1-打开工件小车电源
-//	   BYTE	onRayBanPower		:1;							//0-关闭射线调平系统电源,	1-打开射线调平系统电源
-//	   BYTE	onPanDetPower		:1;							//0-关闭面阵探测器电源,		1-打开面阵探测器电源
-//	   //2017.02.17修改
-//	   BYTE	onStoDLaserLight	:1;							//0-关闭加速器测探测器激光		1-打开加速器测探测器激光
-//	   BYTE	onStoDLaserRcverPower	:1;						//0-关闭探测器上激光接收器电源		1-打开探测器上激光接收器电源
-//	   BYTE	onDetBanPower		:1;							//0-关闭探测调平系统电源,	1-打开探测调平系统电源
-//	   BYTE	onRayUnitPower		:1;							//0-关闭射线单元(从控1动力)电源,	1-打开射线单元(从控1动力)电源
-//	   BYTE	onObjUnitPower		:1;							//0-关闭工件单元(从控2动力)电源,	1-打开工件单元(从控2动力)电源
-//
-//	   BYTE	detPowerMask		:1;                         //0-禁止控制探测器电源, 1-允许控制探测器电源
-//	   BYTE drvPowerMask		:1;                         //0-禁止控制动力电源,	1-允许控制动力电源
-//	   //BYTE cameraMask			:1;                         //0-禁止控制摄像头电源, 1-允许控制摄像头电源
-//	   BYTE panDetInUseMask			:1;                         //0-禁止面阵脉冲控制, 1-允许面阵脉冲控制
-//	   BYTE laserMask			:1;                         //0-禁止控制激光器电源, 1-允许控制激光器电源
-//	   BYTE	stoDLaserMask		:1;							//0-禁止加速器测探测器激光电源,		1-允许加速器测探测器激光电源
-//	   BYTE	sAimDLaserMask		:1;							//0-禁止加速器找准探测器激光电源,	1-允许加速器找准探测器激光电源
-//	   BYTE	stoOLaserMask		:1;							//0-禁止加速器测工件小车激光电源,	1-允许加速器测工件小车激光电源
-//	   BYTE	measLaserMask		:1;							//0-禁止差分测量激光器电源,			1-允许差分测量激光器电源
-//
-//	   BYTE	objVehPowerMask		:1;							//0-禁止工件小车电源,		1-允许工件小车电源
-//	   BYTE	rayBanPowerMask		:1;							//0-禁止调平系统电源,		1-允许调平系统电源
-//	   BYTE	panDetPowerMask		:1;							//0-禁止面阵探测器电源,		1-允许面阵探测器电源
-//	   //2017.02.17修改
-//	   BYTE	stoDLaserLightMask	:1;							//0-禁止加速器测探测器激光		1-允许加速器测探测器激光
-//	   BYTE	stoDLaserRcverPowerMask	:1;						//0-禁止探测器上激光接收器电源		1-允许探测器上激光接收器电源
-//	   BYTE	detBanPowerMask		:1;							//0-禁止探测调平系统电源,	1-允许探测调平系统电源
-//	   BYTE	rayUnitPowerMask		:1;						//0-禁止射线单元(从控1动力)电源,	1-允许射线单元(从控1动力)电源
-//	   BYTE	objUnitPowerMask		:1;						//0-禁止工件单元(从控2动力)电源,	1-允许工件单元(从控2动力)电源
-//   }s;
-//   BYTE  b[4];
-//}PowerCtrlCmd;
-//电源控制命令CMD_POWER_CTRL参数字结构
-typedef union _PowerCtrlCmd{
+union PowerCtrlCmd{
    struct{
 	   BYTE	onDetPower		:1;								//0-关闭探测器电源,		1-打开探测器电源
 	   BYTE	onDrvPower		:1;								//0-关闭动力电源,		1-打开动力电源
@@ -1132,7 +1020,7 @@ typedef union _PowerCtrlCmd{
 }PowerCtrlCmd;
 
 //调平状态反馈结构
-typedef struct _BanlanceCtrlSts{
+struct BanlanceCtrlSts{
 	struct{
 		//平台1支腿状态
 		BYTE	plat1Leg3Drive_fault	:1;								//平台1支腿3驱动器故障：	0-无故障,	1-有故障
@@ -1205,7 +1093,7 @@ typedef struct _BanlanceCtrlSts{
 }BanlanceCtrlSts;
 
 //调平系统提示面板用结构
-typedef struct _BanlanceTipSts{
+struct BanlanceTipSts{
 	struct{
 		//平台1支腿状态
 		BYTE	plat1Leg1Moving			:1;								//平台1支腿1运行指示：	0-停止,	1-运行
@@ -1229,10 +1117,10 @@ typedef struct _BanlanceTipSts{
 	float	plat2Leg2Pos;												//平台1支腿2位置
 	float	plat2Leg3Pos;												//平台1支腿3位置
 	float	plat2Leg4Pos;												//平台1支腿4位置
-}BanlanceTipSts;
+};
 
 //激光测距数据反馈结构
-typedef struct _LaserMeasValueSts{
+struct LaserMeasValueSts{
 	//struct{
 	//	BYTE	stoDLaserAimed1				:1;					//激光接收器对准信号			0-未对准		1-已对准
 	//	BYTE	stoDLaserAimed2				:1;					//激光接收器对准信号			0-未对准		1-已对准
@@ -1254,11 +1142,11 @@ typedef struct _LaserMeasValueSts{
 	float   stoOLaserValue1,								//加速器测工件激光器测距值(mm)
 			stoOLaserValue2,								//加速器测工件激光器测距值(mm)
 			stoOLaserValue3;								//加速器测工件激光器测距值(mm)
-}LaserMeasValueSts;
+};
 
 //CMD_SAIMDLASER_GOTO_LAST_POS
 //将运动系统定位到源-探激光与其接收器对准位置
-typedef struct _SAimDLaserGotoLastPosCmd{
+struct SAimDLaserGotoLastPosCmd{
 	float   layer1,											//分层1(mm)
 			layer2,											//分层2(mm)
 			rayVertical,									//射线升降(mm)
@@ -1266,7 +1154,7 @@ typedef struct _SAimDLaserGotoLastPosCmd{
 }SAimDLaserGotoLastPosCmd;
 
 //工作零位数据结构(浮点数据)
-typedef struct _FWorkZero{
+struct FWorkZero{
 	float   graduation,										//分度(度)
 			objTranslation,									//工件平移(mm)
 			interpolation,									//插值(mm)
@@ -1283,24 +1171,24 @@ typedef struct _FWorkZero{
 			detRadial,										//探测器径向运动轴	   
 			detTranslation,									//探测器平移运动轴	
 			deflection;										//偏摆运动(度)    
-}FWorkZero;					
+};					
 					
 //系统数据文件结构(底层控制器用)
-typedef struct _SysData{
+struct SysData{
 	char		head[32];									//文件头字符串
 	FWorkZero   zero;										//系统工作零位数据结构
 	long		ltOffset;									//断层厚度偏移
 	BYTE		currentZzq;									//当前准直器
 	WORD		synFreq;									//加速器同步频率(Hz)
 	BYTE		varifySum;									//构形文件校验和
-}SysData;
-typedef union _USysData{
+};
+union USysData{
 	SysData  s;
 	BYTE		b[sizeof(SysData)];
 }USysData;
 
 //定义使用WM_COPYDATA消息接收数据结构
-typedef struct _MYCDSRET_FLAG{
+struct MYCDSRET_FLAG{
 	int     nResult;												//状态码返回标志
 	wchar_t	desFilePath[MAX_PATH];									//全路径目标数据文件名
 }MYCDSRET_FLAG;
@@ -1313,7 +1201,7 @@ enum{
 };
 
 //定义使用WM_COPYDATA消息发送数据结构
-typedef struct _FILENAME_FLAG{
+struct FILENAME_FLAG{
 	UINT    bDetTypeLine_Pan;										//线阵/面阵标志
 	//线阵参数
 	char	parFilePath[MAX_PATH];									//参数文件路径
@@ -1337,32 +1225,8 @@ typedef struct _FILENAME_FLAG{
 	char	desFilePath[MAX_PATH];									//目的文件路径
 	int		nScanMode;												//当前欲执行的扫描模式, -1表示无
 	int		bSaveOrg;												//原始数据保存标志:	1-Save
-}FILENAME_FLAG;
+};
 
-/*
-//通信控制ASCII字符定义
-#define	STX		0x02
-#define	ETX		0x03
-
-//通信缓冲区定义
-#define		DATA_LENGTH		250						        //数据包长度
-#define		BUFNUMBER		10							    //缓冲区数量
-					
-typedef struct _COMM_BAG1{                      		    //通信数据包
-	BYTE	bagHead[3];										//包头
-	BYTE	typeCode;										//类型码
-	WORD	bagLen;											//包长
-	BYTE	data[DATA_LENGTH];							    //数据
-}COMM_BAG1;					
-typedef struct _COMM_BAG2{                      		    //通信数据包
-	BYTE	bagHead[3];										//包头
-	BYTE	data[DATA_LENGTH+3];							//数据
-}COMM_BAG2;
-typedef union _COMM_BAG{
-	COMM_BAG1	s1;
-	COMM_BAG2	s2;
-	BYTE  c[sizeof(COMM_BAG1)];
-}COMM_BAG;
 */
 /*----------------------------------------------------------------------*/
 /*                       通信命令缓冲器数据结构                         */
@@ -1375,26 +1239,6 @@ typedef union _COMM_BAG{
 /*    令已被处理,否则使tailer+1.                                        */
 /*----------------------------------------------------------------------*/
 /*
-typedef struct _CommDataBag{
-	BYTE    b;											    //当前接收字符
-	BYTE	headArrived;                    				//收到包头标志(True:已收到,开机False)
-	WORD	rxdCharNum;                     				//应接收的字符数
-	int		rxdPointer,                     				//接收指针
-			dataArrive,                     				//收到完整数据后置为True,开机False
-				
-			txdCharNum,                     				//应发送字符数
-			txdPointer,                     				//发送指针
-			txdBusy;                        				//命令发送器忙标志(True:忙,False:空)
-
-	COMM_BAG	txdBuf[BUFNUMBER];              		    //发送缓冲器
-	int		txdHeader,                      				//发送缓冲器头指针
-            txdTailer;                      				//发送缓冲器尾指针
-
-	COMM_BAG	rxdBuf[BUFNUMBER];              		    //接收缓冲器
-	int		rxdHeader,                      				//接收缓冲器头指针
-		    rxdTailer;                      				//接收缓冲器尾指针
-}CommDataBag;
-*/
 #pragma pack(8)											    //设定连接程序按8字节对齐(VC编译器缺省)
 
 
