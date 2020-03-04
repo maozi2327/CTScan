@@ -96,6 +96,9 @@
     <ClCompile Include="tcpclient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="serialportutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -158,6 +161,9 @@
     <ClInclude Include="..\Public\headers\IctHeader.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\headers\SetupData.h">
+      <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="conescanwidget.h">
@@ -169,20 +175,23 @@
     <QtMoc Include="raypanelmotionwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
-    <QtMoc Include="linedetscanwidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="TcpServer.h">
       <Filter>Source Files</Filter>
-    </QtMoc>
-    <QtMoc Include="tcpserver0.h">
-      <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="LineDetScanInterface.h">
       <Filter>Source Files</Filter>
     </QtMoc>
+    <QtMoc Include="linedetscanwidget.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="serialportutil.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
     <QtMoc Include="tcpclient.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tcpserver0.h">
+      <Filter>Source Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

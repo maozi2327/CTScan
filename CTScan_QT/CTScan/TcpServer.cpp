@@ -13,8 +13,8 @@ TcpServer::TcpServer(int in_packetSize, unsigned short in_serverPort, QObject *p
 
 TcpServer::~TcpServer()
 {
-	d_recvRun = true;
-	d_sendRun = true;
+	d_recvRun = false;
+	d_sendRun = false;
 	if (d_recvThreadPromisePtr)
 		d_recvThreadPromisePtr->get_future().get();
 
