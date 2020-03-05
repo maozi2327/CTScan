@@ -13,8 +13,8 @@ TcpServer::TcpServer(int in_packetSize, unsigned short in_serverPort, QObject *p
 
 TcpServer::~TcpServer()
 {
-	d_recvRun = false;
-	d_sendRun = false;
+	d_isRecvRunning = false;
+	d_isSendRunning = false;
 	if (d_recvThreadPromisePtr)
 		d_recvThreadPromisePtr->get_future().get();
 
@@ -60,7 +60,7 @@ void TcpServer::recvThread(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
 
-	while (d_recvRun)
+	while (d_isRecvRunning)
 	{
 		char* buffer = new char[d_packetSize];
 		int byteRead = 0;
@@ -90,7 +90,7 @@ void TcpServer::sendThread(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
 
-	while (d_sendRun)
+	while (d_isSendRunning)
 	{
 		command cmd;
 		int byteSend = 0;

@@ -10,8 +10,8 @@ TcpClient::TcpClient(QString& in_hostAddress, quint16 in_port, QObject *parent)
 
 TcpClient::~TcpClient()
 {
-	d_recvRun = true;
-	d_sendRun = true;
+	d_isRecvRunning = true;
+	d_isSendRunning = true;
 	if (d_recvThreadPromisePtr)
 		d_recvThreadPromisePtr->get_future().get();
 
@@ -52,7 +52,7 @@ void TcpClient::sendThread(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
 
-	while (d_sendRun)
+	while (d_isSendRunning)
 	{
 		command cmd;
 		int byteSend = 0;

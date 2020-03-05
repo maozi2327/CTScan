@@ -65,30 +65,36 @@ bool SerialPortUtil::closeSerialPort(const QString & in_portName)
 	return true;
 }
 
-bool SerialPortUtil::sendAsyn(const char * in_buffer, int in_size, const QString & in_portName)
+bool SerialPortUtil::send(const char * in_buffer, int in_size, const QString & in_portName)
 {
 	if (d_serialPortMap.find(in_portName) != d_serialPortMap.end())
-	{
 		if (d_serialPortMap[in_portName]->sendAsyn(in_buffer, in_size))
 			return true;
-	}
 
 	return false;
 }
 
+
 bool SerialPortUtil::receive(char * in_buffer, int in_size, const QString & in_portName)
 {
-	return false;
+	if (d_serialPortMap.find(in_portName) != d_serialPortMap.end())
+		d_serialPortMap[in_portName]->receive(in_buffer, in_size);
+
+	return true;
 }
 
 bool SerialPortUtil::onSerialError(QString& out_serialName)
 {
+	closeSerialPort(out_serialName);
 	return true;
 }
 //-----------------SerialPortUtil::SerialPort----------------------------
 SerialPortUtil::SerialPort::SerialPort(SerialPortUtil* in_serialPortUtil, QSerialPort* in_port, QString in_serialPortName)
 	: d_serialPortUtil(in_serialPortUtil)
 {
+	d_isOpen = true;
+	d_isSendRunning = true;
+	d_isRecvRunning = true;
 	d_sendThreadPromisePtr.reset(new std::promise<bool>());
 	std::function<void()> sendFunc = std::bind(&SerialPortUtil::SerialPort::sendThread, this, std::ref(*d_sendThreadPromisePtr));
 	std::thread(sendFunc).detach();
@@ -96,27 +102,31 @@ SerialPortUtil::SerialPort::SerialPort(SerialPortUtil* in_serialPortUtil, QSeria
 	d_recvThreadPromisePtr.reset(new std::promise<bool>());
 	std::function<void()> recvFunc = std::bind(&SerialPortUtil::SerialPort::recvThread, this, std::ref(*d_recvThreadPromisePtr));
 	std::thread(recvFunc).detach();
+
 	connect(this, &SerialPortUtil::SerialPort::serialError, d_serialPortUtil, &SerialPortUtil::onSerialError);
 }
 
 
 SerialPortUtil::SerialPort::~SerialPort()
 {
-	d_sendRun = false;
-	d_recvRun = false;
+	d_isSendRunning = false;
+	d_isRecvRunning = false;
 	d_sendThreadPromisePtr->get_future().get();
 	d_recvThreadPromisePtr->get_future().get();
 }
 
 bool SerialPortUtil::SerialPort::closeSerialPort()
 {
+	d_isOpen = false;
+	d_isRecvRunning = false;
+	d_isSendRunning = false;
 	d_serialPort->close();
 	return true;
 }
 
 bool SerialPortUtil::SerialPort::sendAsyn(const char * in_buffer, int in_size)
 {
-	if (d_opend)
+	if (d_isOpen)
 	{
 		SendCommand cmd = { in_buffer, in_size };
 		d_sendQueue.push(cmd);
@@ -126,32 +136,32 @@ bool SerialPortUtil::SerialPort::sendAsyn(const char * in_buffer, int in_size)
 		return false;
 }
 
-bool SerialPortUtil::SerialPort::receive(char * in_buffer, int in_size, const QString & in_portName)
+bool SerialPortUtil::SerialPort::receive(char * in_buffer, int in_size)
 {
 	RecvCommand cmd;
 	d_receiveQueue.pop(cmd);
 	in_buffer = cmd.in_buffer;
 	in_size = cmd.in_size;
-	return false;
+	return true;
 }
 
 void SerialPortUtil::SerialPort::sendThread(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
 
-	while (d_sendRun)
+	while (d_isSendRunning)
 	{
 		SendCommand cmd;
 		int byteSend = 0;
 		d_sendQueue.pop(cmd);
 
-		while (d_opend)
+		while (d_isOpen)
 		{
 			byteSend = d_serialPort->write(cmd.in_buffer);
 
 			if (byteSend != cmd.in_size)
 			{
-				d_opend = false;
+				d_isOpen = false;
 				emit serialError(d_serialPortName);
 				break;
 			}
@@ -163,7 +173,7 @@ void SerialPortUtil::SerialPort::recvThread(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
 
-	while (d_sendRun)
+	while (d_isSendRunning)
 	{
 		while (d_serialPort->waitForReadyRead(1000))
 		{
@@ -171,7 +181,7 @@ void SerialPortUtil::SerialPort::recvThread(std::promise<bool>& in_promise)
 			
 			if (byteArray.size() == 0)
 			{
-				d_opend = false;
+				d_isOpen = false;
 				emit serialError(d_serialPortName);
 				break;
 			}

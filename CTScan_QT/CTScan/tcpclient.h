@@ -20,11 +20,11 @@ private:
 	bool initialNetWork();
 	void recvThread(std::promise<bool>& in_promise);
 	std::unique_ptr<std::promise<bool>> d_recvThreadPromisePtr;
-	bool d_recvRun;
+	bool d_isRecvRunning;
 	
 	void sendThread(std::promise<bool>& in_promise);
 	std::unique_ptr<std::promise<bool>> d_sendThreadPromisePtr;
-	bool d_sendRun;
+	bool d_isSendRunning;
 	TheQueue<command> d_sendQueue;
 public:
 	TcpClient(QString& in_hostAddress, quint16 in_port, QObject *parent = Q_NULLPTR);
