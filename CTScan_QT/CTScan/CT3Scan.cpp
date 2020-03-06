@@ -10,7 +10,7 @@ CT3Scan::CT3Scan(ControlerInterface* in_controler) : LineDetScanInterface(in_con
 }
 //更新进度条
 //检查扫描结束
-void CT3Scan::run()
+void CT3Scan::scanThread()
 {
 	while (d_threadRun)
 	{

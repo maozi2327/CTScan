@@ -7,7 +7,7 @@ class CT3Scan :
 private:
 	bool d_threadRun;
 protected:
-	void run();
+	void scanThread();
 public:
 	CT3Scan(ControlerInterface* in_controler);
 	void stopScan();
