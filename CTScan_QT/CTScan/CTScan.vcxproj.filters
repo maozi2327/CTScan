@@ -31,6 +31,9 @@
     <Filter Include="Header Files\publicHeaders">
       <UniqueIdentifier>{accbcda0-a38a-4dad-858e-ddc6a97b9692}</UniqueIdentifier>
     </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{6442bf5d-ba88-4875-99ec-76643798f1fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -81,23 +84,23 @@
     <ClCompile Include="linedetscanwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TcpServer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tcpserver0.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LineDetScanInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CT3Scan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tcpclient.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="utility\SerialPortInterface.cpp">
+      <Filter>utility</Filter>
     </ClCompile>
-    <ClCompile Include="serialportutil.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="utility\serialportutil.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\tcpclient.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\TcpServer.cpp">
+      <Filter>utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +167,15 @@
     <ClInclude Include="..\Public\headers\SetupData.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="utility\SerialPortInterface.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\tcpclient.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\TcpServer.h">
+      <Filter>utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="conescanwidget.h">
@@ -175,23 +187,14 @@
     <QtMoc Include="raypanelmotionwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
-    <QtMoc Include="TcpServer.h">
-      <Filter>Source Files</Filter>
-    </QtMoc>
     <QtMoc Include="LineDetScanInterface.h">
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="linedetscanwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
-    <QtMoc Include="serialportutil.h">
-      <Filter>Source Files</Filter>
-    </QtMoc>
-    <QtMoc Include="tcpclient.h">
-      <Filter>Source Files</Filter>
-    </QtMoc>
-    <QtMoc Include="tcpserver0.h">
-      <Filter>Source Files</Filter>
+    <QtMoc Include="utility\serialportutil.h">
+      <Filter>utility</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
