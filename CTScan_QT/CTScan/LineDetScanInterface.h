@@ -1,6 +1,7 @@
 #pragma once
 #include <QTimer>
 #include "IctHeader.h"
+#include "SetupData.h"
 #include "CtrlData.h"
 #include "controlerinterface.h"
 class LineDetScanInterface
@@ -10,10 +11,26 @@ protected:
 	QTimer d_timer;
 	QString d_fileName;
 	ControlerInterface* d_controler;
-	ICT_HEADER d_ictHeader;
+	int	d_AccIndex;
+	int d_accFrecIndex;
+	int	d_TubeIndex;
+	int	d_lineDetIndex;
+	int d_;
+	float d_SOD;
+	float d_SDD;
+	float d_colimateSize;
+	float d_layerThickness;
+	float d_sampleTime;
+	float d_viewDiameter;
+	bool d_standardInterpolation;
+	int d_matrix;
+	RayType d_rayType;
+	SetupData* d_setupData;
+	static ICT_HEADER d_ictHeader;
 	virtual void scanThread() = 0;
 	virtual void createFile() = 0;
-	virtual void setGenerialFileHeader();
+	virtual bool setGenerialFileHeader();
+	void CalculateView_ValidDetector(float in_diameter);
 public:
 	LineDetScanInterface(ControlerInterface* in_controler) : d_controler(in_controler) {}
 	virtual ~LineDetScanInterface();

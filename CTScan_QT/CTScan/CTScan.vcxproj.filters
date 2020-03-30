@@ -90,16 +90,19 @@
     <ClCompile Include="CT3Scan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utility\SerialPortInterface.cpp">
+    <ClCompile Include="..\Public\util\IULog.cpp">
       <Filter>utility</Filter>
     </ClCompile>
-    <ClCompile Include="utility\serialportutil.cpp">
+    <ClCompile Include="..\Public\util\SerialPortInterface.cpp">
       <Filter>utility</Filter>
     </ClCompile>
-    <ClCompile Include="utility\tcpclient.cpp">
+    <ClCompile Include="..\Public\util\serialportutil.cpp">
       <Filter>utility</Filter>
     </ClCompile>
-    <ClCompile Include="utility\TcpServer.cpp">
+    <ClCompile Include="..\Public\util\tcpclient.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Public\util\TcpServer.cpp">
       <Filter>utility</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,13 +170,10 @@
     <ClInclude Include="..\Public\headers\SetupData.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="utility\SerialPortInterface.h">
+    <ClInclude Include="..\Public\util\IULog.h">
       <Filter>utility</Filter>
     </ClInclude>
-    <ClInclude Include="utility\tcpclient.h">
-      <Filter>utility</Filter>
-    </ClInclude>
-    <ClInclude Include="utility\TcpServer.h">
+    <ClInclude Include="..\Public\util\SerialPortInterface.h">
       <Filter>utility</Filter>
     </ClInclude>
   </ItemGroup>
@@ -193,7 +193,13 @@
     <QtMoc Include="linedetscanwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
-    <QtMoc Include="utility\serialportutil.h">
+    <QtMoc Include="..\Public\util\serialportutil.h">
+      <Filter>utility</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Public\util\tcpclient.h">
+      <Filter>utility</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Public\util\TcpServer.h">
       <Filter>utility</Filter>
     </QtMoc>
   </ItemGroup>

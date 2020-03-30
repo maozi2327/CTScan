@@ -6,11 +6,13 @@ class CT3Scan :
 {
 private:
 	bool d_threadRun;
+	float d_scanPos;
 protected:
 	void scanThread();
 public:
 	CT3Scan(ControlerInterface* in_controler);
 	void stopScan();
 	void startScan();
+	virtual bool setGenerialFileHeader();
 };
 

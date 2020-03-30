@@ -42,7 +42,6 @@ bool CIULog::Log(LOG_LEVEL nLevel, char* pszFmt, ...)
     
     char szTime[64] = { 0 };
     QString strDebugInfo(QDateTime::currentDateTime().toString("hh:mm:ss.zzz"));
-	
 	QString strLevel("[INFO]");
 	strDebugInfo.append(strLevel);
 	va_list ap;

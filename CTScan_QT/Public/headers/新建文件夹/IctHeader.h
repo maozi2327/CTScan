@@ -47,8 +47,8 @@
 //2013.01.08修改:
 //1. 在结构SCANPARAMETER中增加多个小转台扫描情况下左侧转台序号(0开始)LeftSerialNoOfTable
 //-----------------------------------------------------------------------------
-#ifndef __d_ictHeader_H
-#define __d_ictHeader_H
+#ifndef __ICTHEADER_H
+#define __ICTHEADER_H
 
 #ifndef	ULONG
 #define	ULONG	unsigned long
