@@ -15,13 +15,56 @@ void CT3Scan::scanThread()
 {
 	while (d_threadRun)
 	{
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		
+		;
 	}
+}
+
+#define	RTBUF_LEN	256						//定义接收/发送缓冲区长度
+struct COMM_PACKET {
+	BYTE	tagHead[3];						//包头(0x55,0xaa,0x5a)
+	BYTE	typeCode;						//类型码
+	WORD	tagLen;							//包长(=参数字节数+3, 实际命令数据包长度=包长+4)
+	BYTE	data[RTBUF_LEN - 6];			//命令参数
+};
+
+void CT3Scan::sendCmdToControl()
+{
+	unsigned char buf[RTBUF_LEN];
+
+	CT23ScanCmdData	cmdData, *pCmdData;
+	cmdData.stsBit.s.changeLayerSpace = 0;
+	cmdData.stsBit.s.czAmountInc1 = d_ictHeader.ScanParameter.InterpolationFlag;
+	cmdData.stsBit.s.currentLayer = 0;
+	cmdData.stsBit.s1.physiInterpolation = d_setupData->interpolationModeDefine;
+	cmdData.stsBit.s.thirdGeneration = 1;
+	cmdData.interpolationAmount = (BYTE)d_ictHeader.ScanParameter.NumberOfInterpolation;
+	cmdData.projectionAmount = d_ictHeader.ScanParameter.Pixels;
+	cmdData.sampleTime = (WORD)(1000 * d_ictHeader.ScanParameter.SampleTime);
+	cmdData.viewDiameter = d_ictHeader.ScanParameter.ViewDiameter;
+	cmdData.orientInc = (short)d_ictHeader.ScanParameter.Azimuth;
+	cmdData.ct2Mode = 0;
+	cmdData.sliceAmount = d_ictHeader.ScanParameter.TotalLayers;
+	cmdData.tabelNumber = 0;
+	cmdData.reserved1 = 0;
+	cmdData.centerOffset = 0;
+	cmdData.stsBit.s.btnStartScan = 0;
+	cmdData.stsBit.s.autoStopBeam = 0;
+	cmdData.firstLayerOffset = d_scanPos;
+	cmdData.layerSpace = 0;
+	COMM_PACKET* ptr = (COMM_PACKET*)buf;
+	ptr->tagHead[0] = 0x55;
+	ptr->tagHead[1] = 0xaa;
+	ptr->tagHead[2] = 0x5a;
+	ptr->typeCode = CMD_CT_SCAN;
+	ptr->tagLen = 3 + sizeof(CT23ScanCmdData);
+	memcpy(buf + 6, &cmdData, sizeof(cmdData));
+	d_controler->sendCmd(buf, 6 + sizeof(CT23ScanCmdData));
 }
 
 void CT3Scan::startScan()
 {
+	sendCmdToControl();
 	std::thread runThread(std::bind(&CT3Scan::scanThread, this));
 	runThread.detach();
 }

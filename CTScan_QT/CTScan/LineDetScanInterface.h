@@ -30,6 +30,7 @@ protected:
 	virtual void scanThread() = 0;
 	virtual void createFile() = 0;
 	virtual bool setGenerialFileHeader();
+	virtual void sendCmdToControl() = 0;
 	void CalculateView_ValidDetector(float in_diameter);
 public:
 	LineDetScanInterface(ControlerInterface* in_controler) : d_controler(in_controler) {}

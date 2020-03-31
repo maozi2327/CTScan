@@ -105,6 +105,9 @@
     <ClCompile Include="..\Public\util\TcpServer.cpp">
       <Filter>utility</Filter>
     </ClCompile>
+    <ClCompile Include="LineDetNetWork.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="..\Public\util\SerialPortInterface.h">
       <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="LineDetNetWork.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

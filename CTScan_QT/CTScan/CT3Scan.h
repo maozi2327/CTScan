@@ -9,6 +9,7 @@ private:
 	float d_scanPos;
 protected:
 	void scanThread();
+	void sendCmdToControl();
 public:
 	CT3Scan(ControlerInterface* in_controler);
 	void stopScan();

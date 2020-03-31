@@ -1,6 +1,6 @@
 #pragma once
 #include "controlerinterface.h"
-#include "TcpServer.h"
+#include "../Public/util/TcpServer.h"
 class SimotionController :
 	public ControlerInterface
 {
