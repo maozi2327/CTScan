@@ -69,7 +69,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;FreeImage.lib;PanelDll.lib;Qt5Networkd.lib;Qt5SerialPortd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;FreeImage.lib;PanelDll.lib;Qt5Networkd.lib;Qt5SerialPortd.lib;$(SolutionDir)Public\lib\CtDispose.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -128,11 +128,12 @@
     <ClCompile Include="..\Public\util\serialportutil.cpp" />
     <ClCompile Include="..\Public\util\tcpclient.cpp" />
     <ClCompile Include="..\Public\util\TcpServer.cpp" />
+    <ClCompile Include="..\Public\util\Thread.cpp" />
     <ClCompile Include="conecontinusscan.cpp" />
     <ClCompile Include="conescanwidget.cpp" />
     <ClCompile Include="controlerinterface.cpp" />
     <ClCompile Include="CT3Scan.cpp" />
-    <ClCompile Include="ctdispose.cpp" />
+    <ClCompile Include="LineDetImageProcess.cpp" />
     <ClCompile Include="ctscan.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_imagewidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -156,6 +157,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Public\util\Thread.h" />
     <QtMoc Include="ctscan.h" />
     <ClInclude Include="..\Public\headers\CommandQueue.h" />
     <ClInclude Include="..\Public\headers\CtrlData.h" />
@@ -184,7 +186,7 @@
     <ClInclude Include="conecontinusscan.h" />
     <ClInclude Include="controlerinterface.h" />
     <ClInclude Include="CT3Scan.h" />
-    <ClInclude Include="ctdispose.h" />
+    <ClInclude Include="LineDetImageProcess.h" />
     <ClInclude Include="GeneratedFiles\ui_conescanwidget.h" />
     <ClInclude Include="GeneratedFiles\ui_ctscan.h" />
     <ClInclude Include="GeneratedFiles\ui_imagewidget.h" />

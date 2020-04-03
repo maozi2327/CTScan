@@ -721,7 +721,7 @@ union ControlSystemStatus{
 		BYTE	waitNextScan			        :1;     	//CT扫描等待状态				0-无		1-等待CMD_NEXT_SCAN命令
 	}s;					
 	WORD	u;
-}ControlSystemStatus;
+};
 
 //运动坐标值
 struct Coordination{

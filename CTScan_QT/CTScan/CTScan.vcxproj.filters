@@ -54,9 +54,6 @@
     <ClCompile Include="conescaninterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ctdispose.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="conecontinusscan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -108,6 +105,12 @@
     <ClCompile Include="LineDetNetWork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Public\util\Thread.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="LineDetImageProcess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -138,9 +141,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="controlerinterface.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ctdispose.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ImageProcess.h">
@@ -180,7 +180,13 @@
       <Filter>utility</Filter>
     </ClInclude>
     <ClInclude Include="LineDetNetWork.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\util\Thread.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="LineDetImageProcess.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

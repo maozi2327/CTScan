@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LineDetScanInterface.h"
+#include "LineDetNetWork.h"
 #include <algorithm>
 LineDetScanInterface::~LineDetScanInterface()
 {

@@ -3,11 +3,18 @@
 #include <functional>
 #include <chrono>
 #include "CT3Scan.h"
+#include "LineDetNetWork.h"
 #include "../Public/util/IULog.h"
+#include "../Public/util/Thread.h"
+#include "../Public/lib/CtDispose.h"
 
 CT3Scan::CT3Scan(ControlerInterface* in_controler) : LineDetScanInterface(in_controler)
 {
-
+	;
+}
+CT3Scan::~CT3Scan()
+{
+	d_scanThread->stopThread();
 }
 //更新进度条
 //检查扫描结束
@@ -15,8 +22,17 @@ void CT3Scan::scanThread()
 {
 	while (d_threadRun)
 	{
+		emit(d_lineDetNetWork->getGraduationCount());
 		
-		;
+		if (d_controler->getSaveStatus())
+		{
+			saveFile();
+			stopScan();
+			d_threadRun = false;
+
+		}
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 }
 
@@ -31,7 +47,6 @@ struct COMM_PACKET {
 void CT3Scan::sendCmdToControl()
 {
 	unsigned char buf[RTBUF_LEN];
-
 	CT23ScanCmdData	cmdData, *pCmdData;
 	cmdData.stsBit.s.changeLayerSpace = 0;
 	cmdData.stsBit.s.czAmountInc1 = d_ictHeader.ScanParameter.InterpolationFlag;
@@ -62,11 +77,17 @@ void CT3Scan::sendCmdToControl()
 	d_controler->sendCmd(buf, 6 + sizeof(CT23ScanCmdData));
 }
 
-void CT3Scan::startScan()
+void CT3Scan::saveFile()
+{
+	QByteArray byteArray = d_fileName.toLocal8Bit();
+	saveOrgHeaderAndList(byteArray.data(), &d_ictHeader, d_lineDetNetWork->getRowList(), 1);
+}
+
+bool CT3Scan::startScan()
 {
 	sendCmdToControl();
-	std::thread runThread(std::bind(&CT3Scan::scanThread, this));
-	runThread.detach();
+	d_scanThread.reset(new Thread(std::bind(&CT3Scan::scanThread, this), std::ref(d_threadRun)));
+	d_scanThread->detach();
 }
 
 bool CT3Scan::setGenerialFileHeader()

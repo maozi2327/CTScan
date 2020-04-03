@@ -2,52 +2,19 @@
 #include <memory>
 #include <condition_variable>
 #include <mutex>
+#include <vector>
 class TcpServer;
-#pragma pack(4)
 #define	CTOSRTBUF_NUM	20						//定义接收/发送缓冲区个数
 #define	CTOSRTBUF_LEN	256						//定义接收/发送缓冲区长度
 
-typedef struct tagAQE_HEADER {
-	SOCKET sServer;								//服务器端套接字
-	SOCKET sClient;								//与客户端建立连接的套接字
-	char			*cIPAddr;					//IP地址字符串指针
-	unsigned short	nServerPort;				//服务器端口地址
-	BYTE    clientServerMode;					//主程序工作方式（CLIENTMODE-作为客户端;SERVERMODE-作为服务器;SERVERDEBUGMODE-作为服务器调试模式）
-	int		*txHeader, *txTailer;				//服务器-客户端通信发送缓冲区头尾指针
-	BYTE(*txBuf)[CTOSRTBUF_LEN];			//服务器-客户端通信发送缓冲区指针
-
-	unsigned int channel_mask;					//通道选择掩码(对应位为1有效，为0屏蔽)
-	unsigned int channel_depth;					//FIFO深度, 典型值为64
-	unsigned int amp_size;						//放大倍数
-	unsigned int int_time;						//积分时间
-	unsigned int delay_time;					//延迟时间
-	unsigned int control_flag;					//内触发测试的控制标志(仅用于调试阶段,0:STOP,8/9:START)
-	//以下4个变量由内部函数设置
-	unsigned int valid_channel_num;				//有效FIFO通道数, 由函数ChannelSelect(AQE_HEADER *ahInfo)根据通道掩码设置
-	unsigned int onepulse_rawdatabytenum;		//单次采集所有FIFO通道的原始数据量, 由函数ChannelDepthSet(AQE_HEADER *ahInfo)设置
-	unsigned int onepulse_validdatabytenum;		//单次采集所有FIFO通道的有效数据量, 由函数ChannelDepthSet(AQE_HEADER *ahInfo)设置
-	unsigned int onechannel_rawdatabytenum;		//单FIFO通道的原始数据量, 由函数ChannelDepthSet(AQE_HEADER *ahInfo)设置
-	unsigned int onechannel_validdatabytenum;	//单FIFO通道的有效数据量, 由函数ChannelDepthSet(AQE_HEADER *ahInfo)设置
-	//以下4个变量由内部函数修改, 调用程序应先对其清0
-	unsigned int sample_count;					//采样总计数, 由内部函数recvEx_DATA(.,.)根据接收数据进行设置
-	unsigned int graduation_count;				//分度总计数, 由内部函数recvEx_DATA(.,.)根据接收数据进行设置
-	unsigned int sample_per_layer;				//单层采样次数, 由内部函数recvEx_DATA(.,.)根据接收数据进行设置
-	unsigned int graduation_per_layer;			//单层采样分度数, 由内部函数recvEx_DATA(.,.)根据接收数据进行设置
-
-	bool         SaveOrNot;						//采集循环控制 TRUE:退出采集循环 FALSE:继续循环
-	ROWLIST		 *beginItem;					//数据存储链表首指针
-	unsigned int hSysDetectorAmount;			//系统探测器数量
-	int			 *pBlockMapTable;				//模块映射表指针
-	BYTE	     bComb;							//合并采样数据标志(TRUE:合并, FALSE:不合并)
-}AQE_HEADER, *pAQE_HEADER;
-#pragma pack()
 //通信命令字结构
-typedef struct tagCMD_STRUCT {
+struct tagCMD_STRUCT
+{
 	unsigned int cmd_len;				//命令位长度
 	unsigned int cmd;					//命令代码
 	unsigned int cmd_param;				//命令参数
 	unsigned int respond_type;			//返回标志
-}CMD_STRUCT, *pCMD_STRUCT;
+};
 
 //自检类命令
 
@@ -70,37 +37,9 @@ typedef struct tagCMD_STRUCT {
 #define CMD_READ_AMP_SIZE	0x0005		//读放大倍数
 #define CMD_READ_INT_TIME	0x0006		//读积分时间
 
-/////////////////////////////////////////////////////////////
-//定义客户端->服务器通信命令
-enum {
-	CMD_LINEDET_INIT = 0x00,			//初始化线阵探测器命令
-	CMD_LINEDET_ARM_TEST,										//CPU测试
-	CMD_LINEDET_START_CI,										//启动传输板
-	CMD_LINEDET_DETECTOR_TEST,									//系统自检
-	CMD_LINEDET_CHANNEL_SELECT,									//FIFO通道选择
-	CMD_LINEDET_CHANNEL_DEPTH_SET,								//FIFO通道深度设置
-	CMD_LINEDET_SET_DELAY_TIME,									//设置延迟时间
-	CMD_LINEDET_SET_AMP_TIME,									//设置放大倍数
-	CMD_LINEDET_SET_INT_TIME,									//设置积分时间
-	CMD_LINEDET_LOAD_DELAY_TIME,								//上传延迟时间
-	CMD_LINEDET_LOAD_AMP_TIME,									//上传放大倍数
-	CMD_LINEDET_LOAD_INT_TIME,									//上传积分时间
-	CMD_LINEDET_START_INTER_DAQ,								//启动内信采集
-//定义服务器->客户端通信状态
-	//STS_ARM_TEST_FAULT							= 0x10,			//初始化线阵探测器结果反馈
-	//STS_CHANNEL_SEL_FAULT,										//通信选择结果反馈
-	//STS_CHANNEL_DEPTH_SET_FAULT,								//通信深度设置结果反馈
-	//STS_START_CI_FAULT,											//开启传输板卡结果反馈
-	//STS_DET_SELF_TEST_FAULT,											//探测自检结果反馈
-	//STS_SET_DELAY_TIME_FAULT,									//设置延迟时间结果反馈
-	//STS_SET_INT_TIME_FAULT,										//设置积分时间结果反馈
-	//STS_SET_AMP_TIME_FAULT,										//设置放大倍数结果反馈
-
-	STS_LINEDET_DATA_ACQUIRE = 0x20	//指示数据为线阵探测器扫描采集数据
-};
-
 //状态/故障码定义					
-enum {
+enum 
+{
 	fLD_SUCCESS = 0x00,			//成功					0x00
 	fLD_ARM_TEST_FAULT,										//初始化线阵探测器结果反馈
 	fLD_CHANNEL_SEL_FAULT,									//通信选择结果反馈
@@ -113,6 +52,77 @@ enum {
 	fLD_LOAD_DELAY_TIME_FAULT,								//上传延迟时间结果反馈
 	fLD_LOAD_INT_TIME_FAULT,								//上传积分时间结果反馈
 	fLD_LOAD_AMP_SIZE_FAULT,								//上传放大倍数结果反馈
+};
+
+struct LineDetList
+{
+	unsigned long* d_item;
+	LineDetList* d_prev;
+	LineDetList* d_next;
+};
+struct RowList
+{
+private:
+	LineDetList* d_listHead;
+	LineDetList* d_ptr;
+	int d_size;
+	int d_graduationNum;
+public:
+	RowList()
+	{
+		d_ptr = d_listHead = 0;
+		d_size = 0;
+		d_graduationNum = 0;
+	}
+	~RowList()
+	{
+		clear();
+	}
+	void push_back(unsigned long* in_mem)
+	{
+		if (d_size == 0)
+		{
+			d_ptr = new LineDetList;
+			d_listHead = d_ptr;
+			d_ptr->d_item = in_mem;
+			d_ptr->d_prev = 0;
+			d_ptr->d_next = 0;
+			++d_graduationNum;
+		}
+		else
+		{
+			d_ptr->d_next = new LineDetList;
+			d_ptr->d_next->d_prev = d_ptr;
+			d_ptr = d_ptr->d_next;
+			d_ptr->d_item = in_mem;
+			d_ptr->d_next = 0;
+
+			if (d_ptr->d_item[0] != d_ptr->d_prev->d_item[0])
+				++d_graduationNum;
+		}
+
+		++d_size;
+	}
+
+	void clear()
+	{
+		d_ptr = d_listHead;
+
+		while(d_ptr != 0)
+		{ 
+			delete[] d_ptr->d_item;
+			d_ptr = d_ptr->d_next;
+			delete d_ptr->d_prev;
+		}
+
+		d_size = 0;
+		d_graduationNum = 0;
+	}
+
+	LineDetList* getList()
+	{
+		return d_listHead;
+	}
 };
 
 class LineDetNetWork
@@ -130,13 +140,25 @@ private:
 	DataType d_recvType;
 	unsigned int d_cmdType;
 	unsigned int d_return64;
+	unsigned int d_returnSize;           //返回数据大小
 
-	unsigned int d_channelMask;
-	unsigned int d_channelDepth;
+	unsigned int d_smallBoardNum;        //小板子数量
+	unsigned int d_smallBoardChannel;    //小板子通道数，64
 	unsigned int d_ampSize;
 	unsigned int d_intTime;
 	unsigned int d_delayTime;
+	
+	int d_dataSizePerPulse;
+	int d_channelNum;
+	RowList d_dataList;
 
+	//线阵探测器每次发送数据格式
+	//									数据长度|
+	//第一个大板子(分度号|脉冲号|64个通道|校验和)|第二个大板子|......|最后一个大板子|
+	//		  (----------------------第一个个脉冲数据------------------------------------)
+	//        ------------------------其他脉冲数据-----------------------------------
+	//        -----------------------最后一个脉冲数据-----------------------------------
+	std::vector<unsigned int> d_nonBlockModuleMap;
 public:
 	bool recvServer_DATA();
 	bool NetCheck();
@@ -147,13 +169,16 @@ public:
 	bool StartCI();
 	bool FPGATest();
 	bool DetectorTest();
-	bool SetAmpSize();
-	bool SetIntTime();
-	bool SetDelayTime();
+	bool SetAmpSize(int in_ampSize);
+	bool SetIntTime(int in_intTime);
+	bool SetDelayTime(int in_delayTime);
 	bool ReadAmpSize();
 	bool ReadIntTime();
 	bool ReadDelayTime();
 	void DecodePackages(char* in_buff, int in_size);
+	int getGraduationCount();
+	int CollectUsefulData(char * in_buff, int in_size);
+	LineDetList* getRowList();
 	LineDetNetWork();
 	~LineDetNetWork();
 };

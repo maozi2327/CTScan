@@ -7,13 +7,16 @@ class CT3Scan :
 private:
 	bool d_threadRun;
 	float d_scanPos;
+	QString d_fileName;
 protected:
 	void scanThread();
 	void sendCmdToControl();
+	virtual void saveFile();
 public:
 	CT3Scan(ControlerInterface* in_controler);
-	void stopScan();
-	void startScan();
+	~CT3Scan();
+	virtual void stopScan();
+	virtual bool startScan();
 	virtual bool setGenerialFileHeader();
 };
 
