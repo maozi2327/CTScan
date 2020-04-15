@@ -8,7 +8,7 @@ class TcpServer;
 #define	CTOSRTBUF_LEN	256						//定义接收/发送缓冲区长度
 
 //通信命令字结构
-struct tagCMD_STRUCT
+struct CMD_STRUCT
 {
 	unsigned int cmd_len;				//命令位长度
 	unsigned int cmd;					//命令代码
@@ -179,6 +179,7 @@ public:
 	int getGraduationCount();
 	int CollectUsefulData(char * in_buff, int in_size);
 	LineDetList* getRowList();
+	void clearRowList();
 	LineDetNetWork();
 	~LineDetNetWork();
 };

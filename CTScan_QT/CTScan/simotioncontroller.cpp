@@ -8,6 +8,7 @@
 
 const unsigned short SimotionController::d_port = 8000;
 const int SimotionController::d_packetSize = 256;
+
 SimotionController::SimotionController()
 {
 	std::function<void(char*, int)> decodeFun = std::bind(&SimotionController::decodePackages, this
@@ -54,22 +55,26 @@ std::map<Axis, float> SimotionController::readAxisWorkZero()
 
 bool SimotionController::readReadyStatus()
 {
+	d_ready = d_sysStatus.s.ready;
 	return d_ready;
 }
 
 bool SimotionController::readSaveStatus()
 {
+	d_save = d_sysStatus.s.save;
 	return d_save;
 }
 
 bool SimotionController::readWaitNextScanStatus()
 {
+	d_waitNextScan = d_sysStatus.s.waitNextScan;
 	return d_waitNextScan;
 }
 
 bool SimotionController::readRunStatus()
 {
-	return true;
+	d_run = !d_sysStatus.s.idle;
+	return d_run;
 }
 
 std::map<Axis, float> SimotionController::readAxisSpeed()
@@ -90,6 +95,73 @@ bool SimotionController::initialConnection()
 	).detach();
 }
 
+bool SimotionController::stopAll()
+{
+	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_STOP) != d_cmdList.end())
+		return false;
+
+	fillInCmdStructAndFillCmdList(CMD_STOP, nullptr, 0);
+	return false;
+}
+
+bool SimotionController::initialiseController()
+{
+	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_SEEK_ABS_ZERO) != d_cmdList.end())
+		return false;
+
+	fillInCmdStructAndFillCmdList(CMD_SEEK_ABS_ZERO, nullptr, 0);
+	return false;
+}
+
+#define FILLX55XAAX5A;	ptr->tagHead[0] = 0x55;\
+						ptr->tagHead[1] = 0xaa;\
+						ptr->tagHead[2] = 0x5a;
+
+bool SimotionController::axisSeekZero(Axis in_axis)
+{
+	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_SEEK_AXIS_ABS_ZERO) != d_cmdList.end())
+		return false;
+
+	char data[1];
+	data[0] = char(in_axis);
+	fillInCmdStructAndFillCmdList(CMD_SEEK_AXIS_ABS_ZERO, data, 1);
+	return true;
+}
+
+bool SimotionController::axisAbsMove(Axis in_axis, float in_pos)
+{
+	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_AXIS_ABS_MOVE) != d_cmdList.end())
+		return false;
+
+	char data[5];
+	data[0] = char(in_axis);
+	memcpy(data + 1, &in_pos, sizeof(float));
+	fillInCmdStructAndFillCmdList(CMD_AXIS_ABS_MOVE, data, 5);
+	return true;
+}
+
+bool SimotionController::axisRealMove(Axis in_axis, float in_pos)
+{
+	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_SEEK_AXIS_ABS_ZERO) != d_cmdList.end())
+		return false;
+
+	char data[5];
+	data[0] = char(in_axis);
+	memcpy(data + 1, &in_pos, sizeof(float));
+	fillInCmdStructAndFillCmdList(CMD_AXIS_REL_MOVE, data, 5);
+}
+
+bool SimotionController::sliceMove(float in_pos)
+{
+	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_SLICE_ABS_MOVE) != d_cmdList.end())
+		return false;
+
+	char data[4];
+	memcpy(data, &in_pos, sizeof(float));
+	fillInCmdStructAndFillCmdList(CMD_SLICE_ABS_MOVE, data, 4);
+	return true;
+}
+
 void SimotionController::getAixsValueAndNotify(std::map<Axis, float>& in_value, char * in_data, int in_axisNum, int in_typeCode)
 {
 	for (int i = 0; i != in_axisNum; ++i)
@@ -100,6 +172,17 @@ void SimotionController::getAixsValueAndNotify(std::map<Axis, float>& in_value, 
 		d_receivedCmd = in_typeCode;
 		d_con.notify_all();
 	}
+}
+
+void SimotionController::fillInCmdStructAndFillCmdList(int in_cmd, char * in_data, int in_size)
+{
+	CommandType d_cmdData(sizeof(tagCOMM_PACKET));
+	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
+	FILLX55XAAX5A;
+	ptr->typeCode = CMD_AXIS_REL_MOVE;
+	memcpy(&ptr->data[0], &in_data, in_size);
+	ptr->tagLen = 3 + in_size;
+	d_cmdList.push_back(d_cmdData);
 }
 
 bool SimotionController::sendCmd()
@@ -120,6 +203,12 @@ bool SimotionController::sendCmd()
 
 //55  AA  5A    TP          BL           DW             VS
 //  包头(3B)  分类码(1B) 包长(1W)    n字节参数字      校验和(1B)
+
+void SimotionController::sendToControl(char * in_package, int in_size)
+{
+	CommandType cmd(in_package, in_size);
+	d_cmdList.push_back(cmd);
+}
 
 void SimotionController::decodePackages(char* in_package, int in_size)
 {
@@ -168,16 +257,9 @@ void SimotionController::getSystemStatus()
 	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_POLL_STATUS) != d_cmdList.end())
 		return;
 
-	CommandType d_cmdData(sizeof(tagCOMM_PACKET));
-	tagCOMM_PACKET d_cmd;
-	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
-	ptr->tagHead[0] = 0x55;
-	ptr->tagHead[1] = 0xaa;
-	ptr->tagHead[2] = 0x5a;
-	ptr->typeCode = CMD_POLL_STATUS;
-	ptr->data[0] = STS_SYSTEM_STATUS;
-	ptr->tagLen = 3 + 2 * sizeof(BYTE);
-	d_cmdList.push_back(d_cmdData);
+	char data[1];
+	data[0] = char(STS_SYSTEM_STATUS);
+	fillInCmdStructAndFillCmdList(CMD_POLL_STATUS, data, 1);
 }
 
 void SimotionController::getAxisPosition()
@@ -185,16 +267,9 @@ void SimotionController::getAxisPosition()
 	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_POLL_STATUS) != d_cmdList.end())
 		return;
 
-	CommandType d_cmdData(sizeof(tagCOMM_PACKET));
-	tagCOMM_PACKET d_cmd;
-	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
-	ptr->tagHead[0] = 0x55;
-	ptr->tagHead[1] = 0xaa;
-	ptr->tagHead[2] = 0x5a;
-	ptr->typeCode = CMD_POLL_STATUS;
-	ptr->data[0] = STS_ALL_COORDINATION;
-	ptr->tagLen = 3 + 2;
-	d_cmdList.push_back(d_cmdData);
+	char data[1];
+	data[0] = char(STS_ALL_COORDINATION);
+	fillInCmdStructAndFillCmdList(CMD_POLL_STATUS, data, 1);
 	return;
 }
 
@@ -203,15 +278,7 @@ void SimotionController::getAxisSpeed()
 	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_UPLOAD_AXIS_SPEED) != d_cmdList.end())
 		return;
 
-	CommandType d_cmdData(sizeof(tagCOMM_PACKET));
-	tagCOMM_PACKET d_cmd;
-	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
-	ptr->tagHead[0] = 0x55;
-	ptr->tagHead[1] = 0xaa;
-	ptr->tagHead[2] = 0x5a;
-	ptr->typeCode = CMD_UPLOAD_AXIS_SPEED;
-	ptr->tagLen = 3 + 0;
-	d_cmdList.push_back(d_cmdData);
+	fillInCmdStructAndFillCmdList(CMD_UPLOAD_AXIS_SPEED, nullptr, 0);
 }
 
 void SimotionController::getAxisWorkZero()
@@ -219,40 +286,27 @@ void SimotionController::getAxisWorkZero()
 	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_UPLOAD_WORKZERO) != d_cmdList.end())
 		return;
 
-	CommandType d_cmdData(sizeof(tagCOMM_PACKET));
-	tagCOMM_PACKET d_cmd;
-	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
-	ptr->tagHead[0] = 0x55;
-	ptr->tagHead[1] = 0xaa;
-	ptr->tagHead[2] = 0x5a;
-	ptr->typeCode = CMD_UPLOAD_WORKZERO;
-	ptr->tagLen = 3 + 0;
-	d_cmdList.push_back(d_cmdData);
+	fillInCmdStructAndFillCmdList(CMD_UPLOAD_WORKZERO, nullptr, 0);
 }
 
 void SimotionController::setAxisSpeed(std::map<Axis, float>& in_speed)
 {
 	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_DOWNLOAD_AXIS_SPEED) != d_cmdList.end())
 		return;
-	
-	int dataSize = in_speed.size() * 5;
-	CommandType d_cmdData(sizeof(tagCOMM_PACKET) + dataSize);
-	tagCOMM_PACKET d_cmd;
-	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
-	ptr->tagHead[0] = 0x55;
-	ptr->tagHead[1] = 0xaa;
-	ptr->tagHead[2] = 0x5a;
-	ptr->typeCode = CMD_DOWNLOAD_AXIS_SPEED;
-	ptr->tagLen = 3 + dataSize;	
+
+	int size = in_speed.size() * 5;
+	char* data = new char[size];
 	int i = 0;
 
 	for (auto& pair : in_speed)
 	{
-		ptr->data[i * 5] = char(pair.first);
-		memcpy(ptr->data + i * 5 + 1, &pair.second, sizeof(float));
+		data[i * 5] = char(pair.first);
+		memcpy(data + i * 5 + 1, &pair.second, sizeof(float));
+		++i;
 	}
-
-	d_cmdList.push_back(d_cmdData);
+	
+	fillInCmdStructAndFillCmdList(CMD_DOWNLOAD_AXIS_SPEED, data, size);
+	delete[] data;
 }
 
 void SimotionController::setAxisWorkZero(std::map<Axis, float>& in_workZero)
@@ -260,22 +314,17 @@ void SimotionController::setAxisWorkZero(std::map<Axis, float>& in_workZero)
 	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_DOWNLOAD_WORKZERO) != d_cmdList.end())
 		return;
 
-	int dataSize = in_workZero.size() * 5;
-	CommandType d_cmdData(sizeof(tagCOMM_PACKET) + dataSize);
-	tagCOMM_PACKET d_cmd;
-	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
-	ptr->tagHead[0] = 0x55;
-	ptr->tagHead[1] = 0xaa;
-	ptr->tagHead[2] = 0x5a;
-	ptr->typeCode = CMD_DOWNLOAD_AXIS_SPEED;
-	ptr->tagLen = 3 + dataSize;
+	int size = in_workZero.size() * 5;
+	char* data = new char[size];
 	int i = 0;
 
 	for (auto& pair : in_workZero)
 	{
-		ptr->data[i * 5] = char(pair.first);
-		memcpy(ptr->data + i * 5 + 1, &pair.second, sizeof(float));
+		data[i * 5] = char(pair.first);
+		memcpy(data + i * 5 + 1, &pair.second, sizeof(float));
+		++i;
 	}
 
-	d_cmdList.push_back(d_cmdData);
+	fillInCmdStructAndFillCmdList(CMD_DOWNLOAD_AXIS_SPEED, data, size);
+	delete[] data;
 }

@@ -7,12 +7,17 @@
 #include <memory>
 class Thread;
 class LineDetNetWork;
+class LineDetImageProcess;
+
 class LineDetScanInterface
 {
 	Q_OBJECT
 protected:
 	QTimer d_timer;
 	QString d_fileName;
+	QString d_installDirectory;
+	bool d_threadRun;
+
 	ControlerInterface* d_controler;
 	int	d_AccIndex;
 	int d_accFrecIndex;
@@ -28,15 +33,17 @@ protected:
 	bool d_standardInterpolation;
 	int d_matrix;
 	std::unique_ptr<LineDetNetWork> d_lineDetNetWork;
+	std::unique_ptr<LineDetImageProcess> d_lineDetImageProcess;
 	std::unique_ptr<Thread> d_scanThread;
 	RayType d_rayType;
 	SetupData* d_setupData;
 	static ICT_HEADER d_ictHeader;
 	virtual void scanThread() = 0;
-	virtual void saveFile() = 0;
+	void saveOrgFile();
 	virtual bool setGenerialFileHeader();
 	virtual void sendCmdToControl() = 0;
 	void CalculateView_ValidDetector(float in_diameter);
+	virtual bool checkScanAble() = 0;
 signals:
 	void signalGraduationCount(int in_count);
 
@@ -44,8 +51,6 @@ public:
 	LineDetScanInterface(ControlerInterface* in_controler) : d_controler(in_controler) {}
 	virtual ~LineDetScanInterface();
 	void setFileName(QString& in_fileName) { d_fileName = in_fileName; };
-	virtual void setFileHeader() = 0;
-	virtual void checkScanAble() = 0;
 	virtual bool startScan() = 0;
 	virtual void stopScan() = 0;
 };

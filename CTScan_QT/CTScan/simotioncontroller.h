@@ -15,6 +15,13 @@ struct CommandType
 		d_data = new char[in_size];
 		d_size = in_size;
 	}
+
+	CommandType(const char* in_data, int in_size)
+	{
+		d_data = new char[in_size];
+		memcpy(d_data, in_data, in_size);
+	}
+
 	~CommandType()
 	{
 		if (d_data != nullptr)
@@ -61,16 +68,23 @@ private:
 	bool d_save;
 	bool d_ready;
 	bool d_waitNextScan;
-
+	bool d_run;
 	bool d_threadRun;
 
 	void getAixsValueAndNotify(std::map<Axis, float>& in_value, char* in_data, int in_axisNum, int in_typeCode);
+	void fillInCmdStructAndFillCmdList(int in_cmd, char* in_data, int in_size);
 protected:
 	virtual bool sendCmd();
 public:
 	SimotionController();
 	~SimotionController();
-	virtual bool initialConnection() = 0;
+	virtual bool initialConnection();
+	virtual bool stopAll();
+	virtual bool initialiseController();
+	virtual bool axisSeekZero(Axis in_axis);
+	virtual bool axisAbsMove(Axis in_axis, float in_pos);
+	virtual bool axisRealMove(Axis in_axis, float in_pos);
+	virtual bool sliceMove(float in_pos);
 
 	virtual bool readReadyStatus();
 	virtual bool readSaveStatus();
@@ -89,6 +103,7 @@ public:
 	virtual void setAxisSpeed(std::map<Axis, float>& in_speed);
 	virtual void setAxisWorkZero(std::map<Axis, float>& in_workZero);
 	
+	virtual void sendToControl(char* in_package, int in_size);
 	virtual void decodePackages(char* in_package, int in_size);
 };
 

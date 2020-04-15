@@ -133,6 +133,8 @@
     <ClCompile Include="conescanwidget.cpp" />
     <ClCompile Include="controlerinterface.cpp" />
     <ClCompile Include="CT3Scan.cpp" />
+    <ClCompile Include="LineDetAirTune.cpp" />
+    <ClCompile Include="LineDetBkgTune.cpp" />
     <ClCompile Include="LineDetImageProcess.cpp" />
     <ClCompile Include="ctscan.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_imagewidget.cpp">
@@ -186,6 +188,8 @@
     <ClInclude Include="conecontinusscan.h" />
     <ClInclude Include="controlerinterface.h" />
     <ClInclude Include="CT3Scan.h" />
+    <ClInclude Include="LineDetAirTune.h" />
+    <ClInclude Include="LineDetBkgTune.h" />
     <ClInclude Include="LineDetImageProcess.h" />
     <ClInclude Include="GeneratedFiles\ui_conescanwidget.h" />
     <ClInclude Include="GeneratedFiles\ui_ctscan.h" />

@@ -72,6 +72,7 @@ bool LineDetNetWork::ChannelDepthSet()
 	CMD_STRUCT cmdInfo;
 	cmdInfo.cmd = CMD_CHANNEL_DEPTH_SET;
 	cmdInfo.cmd_len = 16;
+
 	//实际FIFO的深度，也是单采样脉冲下ARM读FIFO的次数(16位总线位宽、67个整型数据，将进行134次读操作)
 	//此处channel_depth+3是数据中包含分度号、脉冲序号和校验和3个数据
 	cmdInfo.cmd_param = (d_smallBoardChannel + 3) * 2;
@@ -251,4 +252,9 @@ int LineDetNetWork::CollectUsefulData(char * in_buff, int in_size)
 LineDetList * LineDetNetWork::getRowList()
 {
 	return d_dataList.getList();
+}
+
+void LineDetNetWork::clearRowList()
+{
+	d_dataList.clear();
 }

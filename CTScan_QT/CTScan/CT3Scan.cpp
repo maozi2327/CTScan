@@ -1,35 +1,35 @@
 #include "stdafx.h"
-#include <thread>
 #include <functional>
 #include <chrono>
 #include "CT3Scan.h"
 #include "LineDetNetWork.h"
+#include "LineDetImageProcess.h"
 #include "../Public/util/IULog.h"
 #include "../Public/util/Thread.h"
-#include "../Public/lib/CtDispose.h"
 
 CT3Scan::CT3Scan(ControlerInterface* in_controler) : LineDetScanInterface(in_controler)
 {
 	;
 }
+
 CT3Scan::~CT3Scan()
 {
 	d_scanThread->stopThread();
 }
+
 //更新进度条
 //检查扫描结束
 void CT3Scan::scanThread()
 {
 	while (d_threadRun)
 	{
-		emit(d_lineDetNetWork->getGraduationCount());
+		emit(signalGraduationCount(d_lineDetNetWork->getGraduationCount()));
 		
-		if (d_controler->getSaveStatus())
+		if (d_controler->readSaveStatus())
 		{
 			saveFile();
 			stopScan();
 			d_threadRun = false;
-
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -46,7 +46,7 @@ struct COMM_PACKET {
 
 void CT3Scan::sendCmdToControl()
 {
-	unsigned char buf[RTBUF_LEN];
+	char buf[RTBUF_LEN];
 	CT23ScanCmdData	cmdData, *pCmdData;
 	cmdData.stsBit.s.changeLayerSpace = 0;
 	cmdData.stsBit.s.czAmountInc1 = d_ictHeader.ScanParameter.InterpolationFlag;
@@ -74,13 +74,19 @@ void CT3Scan::sendCmdToControl()
 	ptr->typeCode = CMD_CT_SCAN;
 	ptr->tagLen = 3 + sizeof(CT23ScanCmdData);
 	memcpy(buf + 6, &cmdData, sizeof(cmdData));
-	d_controler->sendCmd(buf, 6 + sizeof(CT23ScanCmdData));
+	d_controler->sendToControl(buf, 6 + sizeof(CT23ScanCmdData));
+}
+
+QByteArray getByteArray(QString& in_fileName)
+{
+	QByteArray byteArray = in_fileName.toLocal8Bit();
+	return byteArray;
 }
 
 void CT3Scan::saveFile()
 {
-	QByteArray byteArray = d_fileName.toLocal8Bit();
-	saveOrgHeaderAndList(byteArray.data(), &d_ictHeader, d_lineDetNetWork->getRowList(), 1);
+	saveOrgFile();
+	d_lineDetImageProcess->dispose(d_installDirectory, d_fileName, d_destFileName);
 }
 
 bool CT3Scan::startScan()
@@ -92,6 +98,8 @@ bool CT3Scan::startScan()
 
 bool CT3Scan::setGenerialFileHeader()
 {
+	LineDetScanInterface::setGenerialFileHeader();
+
 	d_ictHeader.DataFormat.graduationBase = 0;						//3代扫描起始分度
 	int	i, N;														//整数变量
 	int	Matrix;														//矩阵尺寸
@@ -142,6 +150,11 @@ bool CT3Scan::setGenerialFileHeader()
 		LOG_WARNING("插值次数太多！视场直径%d, 图像矩阵%d", diameter, Matrix);
 		return false;
 	}
+}
+
+bool CT3Scan::checkScanAble()
+{
+	return false;
 }
 
 void CT3Scan::stopScan()

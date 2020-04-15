@@ -1,10 +1,23 @@
 #include "stdafx.h"
 #include "LineDetScanInterface.h"
 #include "LineDetNetWork.h"
+#include "LineDetImageProcess.h"
 #include <algorithm>
+
 LineDetScanInterface::~LineDetScanInterface()
 {
 
+}
+
+void LineDetScanInterface::stopScan()
+{
+	d_controler->stopAll();
+	d_lineDetNetWork->clearRowList();
+}
+
+void LineDetScanInterface::saveOrgFile()
+{
+	d_lineDetImageProcess->saveOrgFile(d_fileName, &d_ictHeader, d_lineDetNetWork->getRowList(), 1);
 }
 
 bool LineDetScanInterface::setGenerialFileHeader()

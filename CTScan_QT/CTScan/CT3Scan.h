@@ -5,18 +5,19 @@ class CT3Scan :
 	public LineDetScanInterface
 {
 private:
-	bool d_threadRun;
 	float d_scanPos;
-	QString d_fileName;
+	QString d_destFileName;
+	unsigned int d_correctFlag;
 protected:
 	void scanThread();
 	void sendCmdToControl();
 	virtual void saveFile();
+	virtual bool setGenerialFileHeader();
+	virtual bool checkScanAble();
 public:
 	CT3Scan(ControlerInterface* in_controler);
 	~CT3Scan();
 	virtual void stopScan();
 	virtual bool startScan();
-	virtual bool setGenerialFileHeader();
 };
 

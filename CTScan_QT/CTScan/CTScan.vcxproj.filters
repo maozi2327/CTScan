@@ -111,6 +111,12 @@
     <ClCompile Include="LineDetImageProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LineDetAirTune.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LineDetBkgTune.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -187,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="LineDetImageProcess.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LineDetAirTune.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LineDetBkgTune.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
