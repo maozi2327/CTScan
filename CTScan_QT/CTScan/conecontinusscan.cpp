@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ConeContinusScan.h"
-ConeContinusScan::ConeContinusScan(Panel* in_panel, ControlerInterface* in_controller, CTDispose* in_ctDispose):
+#include "PanelImageProcess.h"
+ConeContinusScan::ConeContinusScan(Panel* in_panel, ControlerInterface* in_controller, PanelImageProcess* in_ctDispose):
 	ConeScanInterface(in_panel, in_controller, in_ctDispose)
 {
 }
@@ -38,7 +39,7 @@ bool ConeContinusScan::saveFile(unsigned short* in_image)
 
 bool ConeContinusScan::beginScan()
 {
-	d_controller->sendCmd(0 , 0);
+	d_controller->sendToControl(0 , 0);
 	d_ringThreadPromisePtr.reset(new std::promise<bool>);
 	std::function<void()> threadFun = std::bind(&ConeContinusScan::scanThread, this, std::ref(*d_ringThreadPromisePtr));
 	std::thread(threadFun).detach();
@@ -46,5 +47,6 @@ bool ConeContinusScan::beginScan()
 }
 bool ConeContinusScan::stopScan()
 {
-	return d_controller->sendCmd(0, 0);
+	d_controller->sendToControl(0, 0);
+	return true;
 }

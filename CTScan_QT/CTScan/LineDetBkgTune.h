@@ -1,5 +1,7 @@
 #pragma once
 #include "LineDetScanInterface.h"
+
+class ControlerInterface;
 class LineDetBkgTune :
 	public LineDetScanInterface
 {

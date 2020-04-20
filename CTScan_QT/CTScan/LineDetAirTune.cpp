@@ -90,7 +90,7 @@ LineDetAirTune::~LineDetAirTune()
 
 bool LineDetAirTune::checkScanAble()
 {
-
+	return false;
 }
 
 bool LineDetAirTune::startScan()

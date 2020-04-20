@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QWidget>
 #include "ui_linedetscanwidget.h"
 
 class LineDetScanWidget : public QWidget

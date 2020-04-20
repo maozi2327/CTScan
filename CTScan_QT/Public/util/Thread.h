@@ -18,7 +18,7 @@ public:
 	~Thread();
 	bool join();
 	bool detach();
-	bool stopThread();
+	void stopThread();
 };
 
 bool Thread::join()
@@ -52,5 +52,5 @@ inline Thread::Thread(T && in_function, bool& in_threadRun)
 {
 	d_threadRun = in_threadRun;
 	d_fun = in_function;
-	d_threadPromisePtr.reset(new std::promise<bool>(false));
+	d_threadPromisePtr.reset(new std::promise<bool>());
 }

@@ -117,6 +117,12 @@
     <ClCompile Include="LineDetBkgTune.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MotorControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelImageProcess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -198,7 +204,10 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="LineDetBkgTune.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MotorControl.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +235,12 @@
     <QtMoc Include="..\Public\util\TcpServer.h">
       <Filter>utility</Filter>
     </QtMoc>
+    <QtMoc Include="MotorControl.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PanelImageProcess.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ctscan.ui">
@@ -238,6 +253,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="linedetscanwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MotorControl.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

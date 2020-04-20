@@ -41,6 +41,7 @@ private:
 	void acceptCollection();
 	void reAccept();
 	void recvThread(std::promise<bool>& in_promise);
+	void recvThreadPacketHead(std::promise<bool>& in_promise);
 	std::unique_ptr<std::promise<bool>> d_recvThreadPromisePtr;
 	bool d_isRecvRunning;
 	void sendThread(std::promise<bool>& in_promise);

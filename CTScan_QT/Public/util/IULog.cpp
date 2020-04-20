@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <QtCore>
 #include "IULog.h"
 #define MAX_LINE_LENGTH 256

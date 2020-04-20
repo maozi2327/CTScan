@@ -14,7 +14,7 @@ Thread::~Thread()
 
 }
 
-bool Thread::stopThread()
+void Thread::stopThread()
 {
 	d_threadRun = false;
 	d_threadPromisePtr->get_future().get();

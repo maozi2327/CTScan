@@ -6,7 +6,7 @@ class ConeContinusScan :
 private:
 	int d_graduationCount;
 public:
-	ConeContinusScan(Panel* in_panel, ControlerInterface* in_controller, CTDispose* in_ctDispose);
+	ConeContinusScan(Panel* in_panel, ControlerInterface* in_controller, PanelImageProcess* in_ctDispose);
 	~ConeContinusScan();
 
 	virtual bool beginScan();

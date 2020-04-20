@@ -24,7 +24,7 @@ SimotionController::~SimotionController()
 }
 
 template<typename T1, typename T2>
-inline bool GetResult(T1& t1, T2 t2)
+inline bool GetResult(T1& t1, T2 t2, std::mutex& d_mutex, std::condition_variable& d_con)
 {
 	t1 = 0;
 	std::unique_lock<std::mutex> lk(d_mutex);
@@ -47,7 +47,7 @@ std::map<Axis, float> SimotionController::readAxisPostion()
 
 std::map<Axis, float> SimotionController::readAxisWorkZero()
 {
-	if (GetResult(d_receivedCmd, STS_WORKZERO))
+	if (GetResult(d_receivedCmd, STS_WORKZERO, d_mutex, d_con))
 		return d_axisSpeed;
 
 	return std::map<Axis, float>();
@@ -79,7 +79,7 @@ bool SimotionController::readRunStatus()
 
 std::map<Axis, float> SimotionController::readAxisSpeed()
 {
-	if (GetResult(d_receivedCmd, STS_AXIS_SPEED))
+	if (GetResult(d_receivedCmd, STS_AXIS_SPEED, d_mutex, d_con))
 		return d_axisSpeed;
 
 	return std::map<Axis, float>();
@@ -93,6 +93,8 @@ bool SimotionController::initialConnection()
 			sendCmd();	
 		}
 	).detach();
+
+	return true;
 }
 
 bool SimotionController::stopAll()
@@ -113,7 +115,7 @@ bool SimotionController::initialiseController()
 	return false;
 }
 
-#define FILLX55XAAX5A;	ptr->tagHead[0] = 0x55;\
+#define FILLX55XAAX5A	ptr->tagHead[0] = 0x55;\
 						ptr->tagHead[1] = 0xaa;\
 						ptr->tagHead[2] = 0x5a;
 
@@ -199,6 +201,8 @@ bool SimotionController::sendCmd()
 					d_server->sendAsyn(cmd.d_data, cmd.d_size);
 			}
 	}
+
+	return true;
 }
 
 //55  AA  5A    TP          BL           DW             VS
@@ -226,19 +230,25 @@ void SimotionController::decodePackages(char* in_package, int in_size)
 	case	STS_GRADUATION_BASE:
 		break;
 	case	STS_WORKZERO:
+	{
 		int axisNum = dataSize / 5;
 		getAixsValueAndNotify(d_axisWorkZero, in_package + sizeof(tagCOMM_PACKET1), axisNum, typeCode);
 		break;
+	}
 	//(轴代号|轴坐标)|(轴代号|轴坐标)|(轴代号|轴坐标)|......(轴代号|轴坐标)|
  	// 1字节 | 4字节 |1字节 | 4字节
 	case	STS_ALL_COORDINATION:
+	{
 		int axisNum = dataSize / 5;
 		getAixsValueAndNotify(d_axisPosition, in_package + sizeof(tagCOMM_PACKET1), axisNum, typeCode);
 		break;
+	}
 	case	STS_AXIS_SPEED:
+	{
 		int axisNum = dataSize / 5;
 		getAixsValueAndNotify(d_axisSpeed, in_package + sizeof(tagCOMM_PACKET1), axisNum, typeCode);
 		break;
+	}
 	case	STS_DIAGNICS_RESULT:
 		break;
 	case	STS_IO_REGISTER:

@@ -150,6 +150,8 @@
     <ClCompile Include="LineDetScanInterface.cpp" />
     <ClCompile Include="linedetscanwidget.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MotorControl.cpp" />
+    <ClCompile Include="PanelImageProcess.cpp" />
     <ClCompile Include="raypanelmotionwidget.cpp" />
     <ClCompile Include="conescaninterface.cpp" />
     <ClCompile Include="simotioncontroller.cpp" />
@@ -188,6 +190,7 @@
     <ClInclude Include="conecontinusscan.h" />
     <ClInclude Include="controlerinterface.h" />
     <ClInclude Include="CT3Scan.h" />
+    <ClInclude Include="GeneratedFiles\ui_MotorControl.h" />
     <ClInclude Include="LineDetAirTune.h" />
     <ClInclude Include="LineDetBkgTune.h" />
     <ClInclude Include="LineDetImageProcess.h" />
@@ -223,6 +226,14 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB</Define>
     </QtMoc>
     <ClInclude Include="LineDetNetWork.h" />
+    <QtMoc Include="MotorControl.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
+    </QtMoc>
+    <QtMoc Include="PanelImageProcess.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
+    </QtMoc>
     <ClInclude Include="resource.h" />
     <ClInclude Include="conescanInterface.h" />
     <ClInclude Include="simotioncontroller.h" />
@@ -242,6 +253,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
     <QtUic Include="linedetscanwidget.ui" />
+    <QtUic Include="MotorControl.ui" />
     <QtUic Include="raypanelmotion.ui" />
   </ItemGroup>
   <ItemGroup>

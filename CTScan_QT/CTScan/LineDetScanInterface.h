@@ -9,7 +9,7 @@ class Thread;
 class LineDetNetWork;
 class LineDetImageProcess;
 
-class LineDetScanInterface
+class LineDetScanInterface : public QObject
 {
 	Q_OBJECT
 protected:

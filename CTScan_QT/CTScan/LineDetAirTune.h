@@ -7,7 +7,6 @@ protected:
 	virtual void saveFile();
 	virtual bool setGenerialFileHeader();
 	virtual void scanThread();
-	virtual void saveFile();
 	virtual void sendCmdToControl();
 	virtual bool checkScanAble();
 public:

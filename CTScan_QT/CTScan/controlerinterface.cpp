@@ -4,9 +4,11 @@
 
 ControlerInterface::ControlerInterface()
 {
+
 }
 
 
 ControlerInterface::~ControlerInterface()
 {
+
 }

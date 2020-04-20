@@ -2,6 +2,7 @@
 #include "LineDetScanInterface.h"
 #include "LineDetNetWork.h"
 #include "LineDetImageProcess.h"
+#include "../Public/util/Thread.h"
 #include <algorithm>
 
 LineDetScanInterface::~LineDetScanInterface()
@@ -83,6 +84,7 @@ bool LineDetScanInterface::setGenerialFileHeader()
 	strcpy_s(d_ictHeader.ScanParameter.FilenameOfCTdata, "");
 	strcpy_s(d_ictHeader.ScanParameter.FilenameOf2CTdata, "");
 	strcpy_s(d_ictHeader.ScanParameter.FilenameOfPictureData, "");
+	return true;
 }
 
 void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)

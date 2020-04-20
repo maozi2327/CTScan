@@ -3,7 +3,7 @@
 #include <thread>
 
 TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packetSizePos, std::function<void(char*, int in_size)> in_dataHandlerCallBack
-	, QHostAddress in_hosetAddress, unsigned short in_serverPort, QObject *parent = Q_NULLPTR)
+	, QHostAddress in_hosetAddress, unsigned short in_serverPort, QObject *parent)
 	: d_tcpServer(new QTcpServer())
 	, QObject(parent)
 	, d_packetHeadSize(in_packetHeadSize), d_packetSize(in_packetSizeLenth), d_packetSizePos(in_packetSizePos)
@@ -15,7 +15,7 @@ TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packe
 }
 
 TcpServer::TcpServer(int in_packetSize, QHostAddress in_hosetAddress, unsigned short in_serverPort
-	, std::function<void(char*, int in_size)> in_dataHandlerCallBack, QObject *parent = Q_NULLPTR)
+	, std::function<void(char*, int in_size)> in_dataHandlerCallBack, QObject *parent)
 	: d_tcpServer(new QTcpServer())
 	, QObject(parent)
 	, d_serverAddress(in_hosetAddress), d_serverPort(in_serverPort), d_packetSize(in_packetSize)
@@ -53,7 +53,6 @@ bool TcpServer::initialNetWorkForVariablePacketSize()
 }
 bool TcpServer::sendAsyn(const char* in_buffer, int in_size)
 {
-	d_sendQueue.push({ in_buffer, in_size });
 	TcpServer::command cmd{ in_buffer, in_size };
 	d_sendQueue.push(cmd);
 	return true;
@@ -105,7 +104,7 @@ void TcpServer::recvThread(std::promise<bool>& in_promise)
 		}
 	}
 }
-void TcpServer::recvThread(std::promise<bool>& in_promise)
+void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
 

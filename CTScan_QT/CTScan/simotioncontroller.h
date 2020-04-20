@@ -5,6 +5,7 @@
 #include <memory>
 #include <condition_variable>
 #include <mutex>
+#include "../Public/headers/CtrlData.h"
 struct CommandType
 {
 	int d_cmd;

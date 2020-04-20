@@ -2,7 +2,7 @@
 #include <future>
 #include <memory>
 #include "..\PanelDll\panel.h"
-#include "ctdispose.h"
+#include "PanelImageProcess.h"
 #include "controlerinterface.h"
 
 class ConeScanInterface
@@ -11,13 +11,13 @@ protected:
 	int d_graduation;
 	QString d_fileName;
 	Panel* d_panel;
-	CTDispose* d_ctDispose;
+	PanelImageProcess* d_ctDispose;
 	bool d_is_saveOrg;
 	bool d_is_dispose;
 	ControlerInterface* d_controller;
 	std::unique_ptr<std::promise<bool>> d_ringThreadPromisePtr;
 public:
-	ConeScanInterface(Panel* in_panel, ControlerInterface* in_controller, CTDispose* in_ctDispose);
+	ConeScanInterface(Panel* in_panel, ControlerInterface* in_controller, PanelImageProcess* in_ctDispose);
 	virtual ~ConeScanInterface();
 	
 	virtual void setGraduation(int in_graduation) { d_graduation = in_graduation; };

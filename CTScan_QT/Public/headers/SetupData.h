@@ -11,17 +11,6 @@ IP地址:		192.168.2.124
 
 DNS服务器:	202.202.0.33
 */
-//const char szAcquireClientIP[]="192.168.2.120";						//采集客户端IP地址
-const wchar_t szAcquireClientIP[]=_T("192.168.2.120");						//采集客户端IP地址
-const unsigned short nAcquireClientPort	= 4000;						//采集客户端端口地址
-
-const wchar_t szCtoSIP[]=_T("192.168.1.122");						//客户端-服务器IP地址
-const wchar_t szUnerCtrlerIP[]=_T("192.168.0.124");					//控制客户端IP地址
-const unsigned short nUnerCtrlerPort	= 8000;						//控制客户端端口地址
-
-//const char szAcquireInterfaceIP[]="192.168.2.120";					//采集卡IP地址
-#define	nComPortMaxNum	8											//定义串行通信端口最大数量
-const char szCom[nComPortMaxNum][16]={"COM1","COM2","COM3","COM4","COM5","COM6","COM7","COM8"};
 
 #define	MAX_PARA_ITEM	    20										//最大参数项
 #define	MAX_STR_LENGTH	    100										//最大字符串长度
@@ -29,20 +18,6 @@ const char szCom[nComPortMaxNum][16]={"COM1","COM2","COM3","COM4","COM5","COM6",
 #define	MAX_BLOCK		    160										//以8为单位的最大探测模块数(必须与在AcquireInterface.h中定义一致)
 #define	MAX_COMMONMODE_ITEM	20										//最大常用模式项数
 #define	MAX_SCANCONFIG_ITEM	32										//最大扫描组态项数
-
-//扫描模式字符串名
-const wchar_t szScanModeText[20][32]={
-	_T("Ⅰ代扫描"),_T("Ⅱ代CT扫描"),_T("Ⅲ代CT扫描"),_T("DR扫描"),
-	_T("局部扫描"),_T("螺旋扫描"),_T("锥束扫描"),_T("锥束螺旋扫描"),
-	_T("背景校正"),_T("空气校正"),_T("标定零点扫描"),_T("标定回转中心扫描"),
-	_T("大视场扫描"),_T("组态扫描"),_T("坏像素校正"),_T("锥束点位扫描"),
-	_T("锥束交错扫描"),_T("单向交错扫描"),_T("锥束大视场扫描"),_T("锥束螺旋点位扫描")};
-
-const wchar_t szAxisName[][14]={_T("分度"),_T("工件平移"),_T("插值"),_T("分层1"),_T("分层2"),_T("工件径向"),_T("层厚"),_T("准直器"),_T("工件升降"),_T("射线径向"),_T("射线平移"),_T("探测径向"),_T("探测平移"),_T("偏摆")};
-
-//const   wchar_t    szSingleAxisName[][16]={_T("旋转R"),_T("径向X"),_T("平移Y"),_T("升降Z"),_T("旋转R"),_T("径向X"),
-//	_T("平移Y"),_T("升降Z"),_T("旋转R"),_T("径向X"),_T("平移Y"),_T("升降Z")};
-const wchar_t szSingleAxisName[][14]={_T("分度"),_T("工件平移"),_T("插值"),_T("射线分层"),_T("探测分层"),_T("工件径向"),_T("层厚"),_T("准直器"),_T("工件升降"),_T("射线径向"),_T("射线平移"),_T("探测径向"),_T("探测平移"),_T("偏摆")};
 
 //射线源符号名定义
 enum{
@@ -173,48 +148,6 @@ struct _WDoorPosData{
 };					
 
 //几何参数测量结果信息数据结构定义
-struct _GeoAdjInfoData{
-	FWorkZero geoWorkZeroOld;									//前相关零点参数
-	FWorkZero geoWorkZeroNew;									//新相关零点参数
-
-	float   rayPlatAngleX;											//射线平台倾角X
-	float   rayPlatAngleY;											//射线平台倾角Y
-	float   detPlatAngleX;											//探测平台倾角X
-	float   detPlatAngleY;											//探测平台倾角Y
-	float   objPlatAngleX;											//工件平台倾角X
-	float   objPlatAngleY;											//工件平台倾角Y
-
-	float   fStoDAngle;												//源-探夹角
-	float   fStoOAngle;												//源-物夹角
-	float	fDefMoveOldPos;											//工件偏摆缸运动原位值
-	float   fDefMoveSetPos;											//工件偏摆缸运动设定值
-
-	float   fWDoorLeftPos;											//左钨门调整后位置
-	float   fWDoorRightPos;											//右钨门调整后位置
-	WDoorPosData wDoorPosForLineDet;								//线阵使用时钨门位置
-	WDoorPosData wDoorPosForPanDet;									//面阵使用时钨门位置
-
-	float	stodLaserMeasRefDistance;								//射线源测探测器激光测距参考距离(mm)
-	float	stodLaserMeasRealDistance1;								//射线源测探测器激光测距实测距离(mm)
-	float	stodLaserMeasRealDistance2;								//射线源测探测器激光测距实测距离(mm)
-	float	stodLaserMeasLeftPos;									//源-探测距左移至零位设定位置(mm)
-	float	stodLaserMeasRightPos;									//源-探测距右移全行程设定位置(mm)
-
-	float	stooLaser12MeasRefDistance;								//源-物激光器1和2测距平移方向参考距离(mm)
-	float	stooLaser13MeasRefDistance;								//源-物激光器1和3测距平移方向参考距离(mm)
-	float	stooLaserDeflectionRadius;								//源-物测距偏摆运动旋转半径(mm)
-	float	stooLaserMeasRefDistance;								//射线源测工件小车激光测距参考距离(mm)
-	float	stooLaserMeasRealDistance1;								//射线源测工件小车激光测距实测距离(mm)
-	float	stooLaserMeasRealDistance2;								//射线源测工件小车激光测距实测距离(mm)
-	float	stooLaserMeasRealDistance3;								//射线源测工件小车激光测距实测距离(mm)
-
-	float	hStoDLaserOffsetDistance;								//源-探激光测距水平方向偏移距离(mm,激光偏线阵右侧为正,左侧为负)
-	float	vStoDLaserOffsetDistance;								//源-探激光测距竖直方向偏移距离(mm,激光偏上方为正,下方为负)
-
-	float	detectorDistanceLineToPan;								//定义面阵与线阵中心探测器之间距离(mm)
-
-	Coordination toTransPosCord;									//运输位坐标定义
-};
 
 //运动轴定义(对立式系统)
 //R-旋转轴

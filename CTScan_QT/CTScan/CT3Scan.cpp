@@ -6,6 +6,7 @@
 #include "LineDetImageProcess.h"
 #include "../Public/util/IULog.h"
 #include "../Public/util/Thread.h"
+#include "MotorControl.h"
 
 CT3Scan::CT3Scan(ControlerInterface* in_controler) : LineDetScanInterface(in_controler)
 {
@@ -93,7 +94,7 @@ bool CT3Scan::startScan()
 {
 	sendCmdToControl();
 	d_scanThread.reset(new Thread(std::bind(&CT3Scan::scanThread, this), std::ref(d_threadRun)));
-	d_scanThread->detach();
+	return d_scanThread->detach();
 }
 
 bool CT3Scan::setGenerialFileHeader()

@@ -7,35 +7,435 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>400</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>300</width>
-    <height>400</height>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>300</width>
-    <height>400</height>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>LineDetScanWidget</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QPushButton" name="motorPanelButton">
    <property name="geometry">
     <rect>
-     <x>12</x>
-     <y>14</y>
+     <x>230</x>
+     <y>470</y>
+     <width>61</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>电机</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
      <width>282</width>
-     <height>372</height>
+     <height>458</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_4">
     <item row="0" column="0" colspan="2">
+     <widget class="QTabWidget" name="rayTab">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="rayWrox225Tab">
+       <attribute name="title">
+        <string>WROX</string>
+       </attribute>
+       <widget class="QPushButton" name="worx225XRayOffButton_2">
+        <property name="geometry">
+         <rect>
+          <x>288</x>
+          <y>8</y>
+          <width>60</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>停束</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="worx225kvStaticLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>79</x>
+          <y>7</y>
+          <width>25</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>25</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>KV</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="worx225uaStaticLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>176</x>
+          <y>7</y>
+          <width>25</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>25</horstretch>
+          <verstretch>18</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>μA</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="worx225XRayOnButton_2">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>8</y>
+          <width>60</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>出束</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="worx225FocusComboBox_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>32</y>
+          <width>60</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="worx225EmissionCurrentEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>7</y>
+          <width>60</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="worx225VoltageInputEdit">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>7</y>
+          <width>60</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="worx225FocusStaticLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>32</y>
+          <width>60</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>焦点</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="rayComet450Tab">
+       <attribute name="title">
+        <string>COMET</string>
+       </attribute>
+       <widget class="QLabel" name="Comet450uaStaticLabel">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>7</y>
+          <width>25</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>25</horstretch>
+          <verstretch>18</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>μA</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Comet450VoltageInputEdit">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>7</y>
+          <width>40</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="Comet450kvStaticLabel">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>7</y>
+          <width>25</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>25</width>
+          <height>18</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>KV</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="Comet450XRayOnButton">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>10</y>
+          <width>60</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>出束</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="Comet450FocusStaticLabel">
+        <property name="geometry">
+         <rect>
+          <x>13</x>
+          <y>32</y>
+          <width>60</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>焦点</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="Comet450FocusComboBox">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>32</y>
+          <width>40</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="Comet450EmissionCurrentEdit">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>7</y>
+          <width>40</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="Comet450XRayOffButton">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>10</y>
+          <width>60</width>
+          <height>40</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>停束</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
      <widget class="QTabWidget" name="tabWidget">
       <property name="minimumSize">
        <size>
@@ -50,13 +450,13 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>三代CT</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -406,7 +806,7 @@
        <attribute name="title">
         <string>DR</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>12</x>
@@ -684,13 +1084,13 @@
        <attribute name="title">
         <string>二代CT</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>10</y>
           <width>252</width>
-          <height>234</height>
+          <height>241</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -1121,14 +1521,14 @@
       </widget>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QLabel" name="label_4">
       <property name="text">
        <string>当前进度</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="2" column="1">
      <widget class="QProgressBar" name="progressBar">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1153,14 +1553,14 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="3" column="0">
      <widget class="QLabel" name="label_5">
       <property name="text">
        <string>总体进度</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
+    <item row="3" column="1">
      <widget class="QProgressBar" name="progressBar_2">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1179,7 +1579,7 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="4" column="0">
      <widget class="QPushButton" name="pushButton">
       <property name="minimumSize">
        <size>
@@ -1192,7 +1592,7 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
+    <item row="4" column="1">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <spacer name="horizontalSpacer">

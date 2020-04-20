@@ -3,10 +3,13 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_ctscan.h"
 #include "ImageWidgetManager.h"
-#include "raypanelmotionwidget.h"
 #include "controlerinterface.h"
 #include "conescaninterface.h"
 #include "..\PanelDll\panel.h"
+#include <memory>
+
+class RayPanelMotion;
+class MotorControl;
 class CTScan : public QMainWindow
 {
     Q_OBJECT
@@ -15,6 +18,7 @@ public:
     CTScan(QWidget *parent = Q_NULLPTR);
 public slots:
 	void on_pushButton_clicked();
+	void on_motorPanelButton_clicked();
 private slots:
 	void cut();
 	void copy();
@@ -33,6 +37,7 @@ private:
 	std::unique_ptr<ControlerInterface> d_controller;
 	std::unique_ptr<ConeScanInterface> d_scanInterface;
 	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;
+	std::unique_ptr<MotorControl> d_motorControl;
 	size_t frontImageIndex;
 };
 //#ifdef TABLETRANSLATION

@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "ctscan.h"
+#include "MotorControl.h"
+#include "raypanelmotionwidget.h"
 CTScan::CTScan(QWidget *parent)
     : QMainWindow(parent)
 	, d_panel(PanelFactory::getPanel())
@@ -17,6 +19,11 @@ void CTScan::on_pushButton_clicked()
 void CTScan::cut()
 {
 	//infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+}
+
+void CTScan::on_motorPanelButton_clicked()
+{
+
 }
 
 void CTScan::copy()

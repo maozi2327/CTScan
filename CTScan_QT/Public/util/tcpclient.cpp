@@ -41,12 +41,12 @@ bool TcpClient::initialNetWork()
 
 int TcpClient::sendSyn(const char* in_buffer, int in_size)
 {
-
+	return 0;
 }
 
 bool TcpClient::receive(char* in_buffer, int in_size)
 {
-
+	return 0;
 }
 void TcpClient::sendThread(std::promise<bool>& in_promise)
 {

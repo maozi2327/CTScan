@@ -31,12 +31,12 @@ bool LineDetNetWork::NetSetup()
 }
 
 template<typename T1, typename T2>
-inline bool GetResult(T1& t1, T2 t2)
+inline bool GetResult(T1& t1, T2 t2, std::condition_variable& in_con, std::mutex& in_mutex)
 {
 	t1 = 0;
-	std::unique_lock<std::mutex> lk(d_mutex);
+	std::unique_lock<std::mutex> lk(in_mutex);
 
-	if (d_con.wait_for(lk, std::chrono::milliseconds(1000), [&] { return t1 == t2; }))
+	if (in_con.wait_for(lk, std::chrono::milliseconds(1000), [&] { return t1 == t2; }))
 		return true;
 	else
 		return false;
@@ -51,7 +51,7 @@ bool LineDetNetWork::ARMTest()
 	cmdInfo.respond_type = 1;
 	d_recvType = CMD;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_cmdType, CMD_ARM_TEST);
+	return GetResult(d_cmdType, CMD_ARM_TEST, d_con, d_mutex);
 }
 
 bool LineDetNetWork::ChannelSelect()
@@ -111,7 +111,7 @@ bool LineDetNetWork::DetectorTest()
 	cmdInfo.cmd_param = d_smallBoardChannel;
 	cmdInfo.respond_type = 1;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_return64, 64);
+	return GetResult(d_return64, 64, d_con, d_mutex);
 }
 
 bool LineDetNetWork::SetAmpSize(int in_ampSize)
@@ -123,7 +123,7 @@ bool LineDetNetWork::SetAmpSize(int in_ampSize)
 	cmdInfo.respond_type = 1;
 	d_recvType = PARAMETER;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_returnSize, d_dataSizePerPulse);
+	return GetResult(d_returnSize, d_dataSizePerPulse, d_con, d_mutex);
 }
 
 bool LineDetNetWork::SetIntTime(int in_intTime)
@@ -135,7 +135,7 @@ bool LineDetNetWork::SetIntTime(int in_intTime)
 	cmdInfo.respond_type = 1;
 	d_recvType = PARAMETER;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_returnSize, d_dataSizePerPulse);
+	return GetResult(d_returnSize, d_dataSizePerPulse, d_con, d_mutex);
 }
 
 bool LineDetNetWork::SetDelayTime(int in_delayTime)
@@ -147,7 +147,7 @@ bool LineDetNetWork::SetDelayTime(int in_delayTime)
 	cmdInfo.respond_type = 1;
 	d_recvType = PARAMETER;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_returnSize, d_dataSizePerPulse);
+	return GetResult(d_returnSize, d_dataSizePerPulse, d_con, d_mutex);
 }
 
 bool LineDetNetWork::ReadAmpSize()
@@ -159,7 +159,7 @@ bool LineDetNetWork::ReadAmpSize()
 	cmdInfo.respond_type = 1;
 	d_recvType = PARAMETER;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_returnSize, d_dataSizePerPulse);
+	return GetResult(d_returnSize, d_dataSizePerPulse, d_con, d_mutex);
 }
 
 bool LineDetNetWork::ReadIntTime()
@@ -171,7 +171,7 @@ bool LineDetNetWork::ReadIntTime()
 	cmdInfo.respond_type = 1;
 	d_recvType = PARAMETER;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_returnSize, d_dataSizePerPulse);
+	return GetResult(d_returnSize, d_dataSizePerPulse, d_con, d_mutex);
 }
 
 bool LineDetNetWork::ReadDelayTime()
@@ -183,7 +183,7 @@ bool LineDetNetWork::ReadDelayTime()
 	cmdInfo.respond_type = 1;
 	d_recvType = PARAMETER;
 	d_server->sendAsyn((char*)&cmdInfo, sizeof(CMD_STRUCT));
-	return GetResult(d_returnSize, d_dataSizePerPulse);
+	return GetResult(d_returnSize, d_dataSizePerPulse, d_con, d_mutex);
 }
 
 void LineDetNetWork::DecodePackages(char * in_buff, int in_size)
