@@ -2,7 +2,7 @@
 #include "..\Public\headers\machineType.h"
 #include <vector>
 #include <map>
-class ControlerInterface
+class ControllerInterface
 {
 protected:
 	std::map<Axis, float> d_axisSpeed;
@@ -10,14 +10,14 @@ protected:
 	std::map<Axis, float> d_axisWorkZero;
 	virtual bool sendCmd() = 0;
 public:
-	ControlerInterface();
-	virtual ~ControlerInterface();
+	ControllerInterface();
+	virtual ~ControllerInterface();
 	virtual bool initialConnection() = 0;
 	virtual bool stopAll() = 0;
 	virtual bool initialiseController() = 0;
 	virtual bool axisSeekZero(Axis in_axis) = 0;
 	virtual bool axisAbsMove(Axis in_axis, float in_pos) = 0;
-	virtual bool axisRealMove(Axis in_axis, float in_pos) = 0;
+	virtual bool axisRelMove(Axis in_axis, float in_pos) = 0;
 	virtual bool sliceMove(float in_pos) = 0;
 
 

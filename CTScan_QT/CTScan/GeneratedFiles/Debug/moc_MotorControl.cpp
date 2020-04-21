@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MotorControl_t {
     QByteArrayData data[23];
-    char stringdata0[768];
+    char stringdata0[750];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,39 +33,39 @@ struct qt_meta_stringdata_MotorControl_t {
 static const qt_meta_stringdata_MotorControl_t qt_meta_stringdata_MotorControl = {
     {
 QT_MOC_LITERAL(0, 0, 12), // "MotorControl"
-QT_MOC_LITERAL(1, 13, 31), // "on_tableRotAbsPosButton_clicked"
-QT_MOC_LITERAL(2, 45, 0), // ""
-QT_MOC_LITERAL(3, 46, 33), // "on_tableRotNegativeButton_cli..."
-QT_MOC_LITERAL(4, 80, 33), // "on_tableRotPositiveButton_cli..."
-QT_MOC_LITERAL(5, 114, 39), // "on_tableTranslationAbsPosButt..."
-QT_MOC_LITERAL(6, 154, 41), // "on_tableTranslationNegativeBu..."
-QT_MOC_LITERAL(7, 196, 41), // "on_tableTranslationPositiveBu..."
-QT_MOC_LITERAL(8, 238, 34), // "on_tableRadialAbsPosButton_cl..."
-QT_MOC_LITERAL(9, 273, 36), // "on_tableRadialNegativeButton_..."
-QT_MOC_LITERAL(10, 310, 36), // "on_tableRadialPositiveButton_..."
-QT_MOC_LITERAL(11, 347, 31), // "on_detLayerAbsPosButton_clicked"
-QT_MOC_LITERAL(12, 379, 33), // "on_detLayerNegativeButton_cli..."
-QT_MOC_LITERAL(13, 413, 33), // "on_detLayerPositiveButton_cli..."
-QT_MOC_LITERAL(14, 447, 37), // "on_detTranslationAbsPosButton..."
-QT_MOC_LITERAL(15, 485, 39), // "on_detTranslationNegativeButt..."
-QT_MOC_LITERAL(16, 525, 39), // "on_detTranslationPositiveButt..."
-QT_MOC_LITERAL(17, 565, 32), // "on_detRadialAbsPosButton_clicked"
-QT_MOC_LITERAL(18, 598, 34), // "on_detRadialNegativeButton_cl..."
-QT_MOC_LITERAL(19, 633, 34), // "on_detRadialPositiveButton_cl..."
-QT_MOC_LITERAL(20, 668, 31), // "on_rayLayerAbsPosButton_clicked"
-QT_MOC_LITERAL(21, 700, 33), // "on_rayLayerNegativeButton_cli..."
-QT_MOC_LITERAL(22, 734, 33) // "on_rayLayerPositiveButton_cli..."
+QT_MOC_LITERAL(1, 13, 29), // "on_objRotAbsPosButton_clicked"
+QT_MOC_LITERAL(2, 43, 0), // ""
+QT_MOC_LITERAL(3, 44, 31), // "on_objRotNegativeButton_clicked"
+QT_MOC_LITERAL(4, 76, 31), // "on_objRotPositiveButton_clicked"
+QT_MOC_LITERAL(5, 108, 37), // "on_objTranslationAbsPosButton..."
+QT_MOC_LITERAL(6, 146, 39), // "on_objTranslationNegativeButt..."
+QT_MOC_LITERAL(7, 186, 39), // "on_objTranslationPositiveButt..."
+QT_MOC_LITERAL(8, 226, 32), // "on_objRadialAbsPosButton_clicked"
+QT_MOC_LITERAL(9, 259, 34), // "on_objRadialNegativeButton_cl..."
+QT_MOC_LITERAL(10, 294, 34), // "on_objRadialPositiveButton_cl..."
+QT_MOC_LITERAL(11, 329, 31), // "on_detLayerAbsPosButton_clicked"
+QT_MOC_LITERAL(12, 361, 33), // "on_detLayerNegativeButton_cli..."
+QT_MOC_LITERAL(13, 395, 33), // "on_detLayerPositiveButton_cli..."
+QT_MOC_LITERAL(14, 429, 37), // "on_detTranslationAbsPosButton..."
+QT_MOC_LITERAL(15, 467, 39), // "on_detTranslationNegativeButt..."
+QT_MOC_LITERAL(16, 507, 39), // "on_detTranslationPositiveButt..."
+QT_MOC_LITERAL(17, 547, 32), // "on_detRadialAbsPosButton_clicked"
+QT_MOC_LITERAL(18, 580, 34), // "on_detRadialNegativeButton_cl..."
+QT_MOC_LITERAL(19, 615, 34), // "on_detRadialPositiveButton_cl..."
+QT_MOC_LITERAL(20, 650, 31), // "on_rayLayerAbsPosButton_clicked"
+QT_MOC_LITERAL(21, 682, 33), // "on_rayLayerNegativeButton_cli..."
+QT_MOC_LITERAL(22, 716, 33) // "on_rayLayerPositiveButton_cli..."
 
     },
-    "MotorControl\0on_tableRotAbsPosButton_clicked\0"
-    "\0on_tableRotNegativeButton_clicked\0"
-    "on_tableRotPositiveButton_clicked\0"
-    "on_tableTranslationAbsPosButton_clicked\0"
-    "on_tableTranslationNegativeButton_clicked\0"
-    "on_tableTranslationPositiveButton_clicked\0"
-    "on_tableRadialAbsPosButton_clicked\0"
-    "on_tableRadialNegativeButton_clicked\0"
-    "on_tableRadialPositiveButton_clicked\0"
+    "MotorControl\0on_objRotAbsPosButton_clicked\0"
+    "\0on_objRotNegativeButton_clicked\0"
+    "on_objRotPositiveButton_clicked\0"
+    "on_objTranslationAbsPosButton_clicked\0"
+    "on_objTranslationNegativeButton_clicked\0"
+    "on_objTranslationPositiveButton_clicked\0"
+    "on_objRadialAbsPosButton_clicked\0"
+    "on_objRadialNegativeButton_clicked\0"
+    "on_objRadialPositiveButton_clicked\0"
     "on_detLayerAbsPosButton_clicked\0"
     "on_detLayerNegativeButton_clicked\0"
     "on_detLayerPositiveButton_clicked\0"
@@ -149,15 +149,15 @@ void MotorControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         MotorControl *_t = static_cast<MotorControl *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_tableRotAbsPosButton_clicked(); break;
-        case 1: _t->on_tableRotNegativeButton_clicked(); break;
-        case 2: _t->on_tableRotPositiveButton_clicked(); break;
-        case 3: _t->on_tableTranslationAbsPosButton_clicked(); break;
-        case 4: _t->on_tableTranslationNegativeButton_clicked(); break;
-        case 5: _t->on_tableTranslationPositiveButton_clicked(); break;
-        case 6: _t->on_tableRadialAbsPosButton_clicked(); break;
-        case 7: _t->on_tableRadialNegativeButton_clicked(); break;
-        case 8: _t->on_tableRadialPositiveButton_clicked(); break;
+        case 0: _t->on_objRotAbsPosButton_clicked(); break;
+        case 1: _t->on_objRotNegativeButton_clicked(); break;
+        case 2: _t->on_objRotPositiveButton_clicked(); break;
+        case 3: _t->on_objTranslationAbsPosButton_clicked(); break;
+        case 4: _t->on_objTranslationNegativeButton_clicked(); break;
+        case 5: _t->on_objTranslationPositiveButton_clicked(); break;
+        case 6: _t->on_objRadialAbsPosButton_clicked(); break;
+        case 7: _t->on_objRadialNegativeButton_clicked(); break;
+        case 8: _t->on_objRadialPositiveButton_clicked(); break;
         case 9: _t->on_detLayerAbsPosButton_clicked(); break;
         case 10: _t->on_detLayerNegativeButton_clicked(); break;
         case 11: _t->on_detLayerPositiveButton_clicked(); break;

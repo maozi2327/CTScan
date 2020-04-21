@@ -142,7 +142,7 @@ bool SimotionController::axisAbsMove(Axis in_axis, float in_pos)
 	return true;
 }
 
-bool SimotionController::axisRealMove(Axis in_axis, float in_pos)
+bool SimotionController::axisRelMove(Axis in_axis, float in_pos)
 {
 	if (std::find(d_cmdList.begin(), d_cmdList.end(), CMD_SEEK_AXIS_ABS_ZERO) != d_cmdList.end())
 		return false;
@@ -178,11 +178,11 @@ void SimotionController::getAixsValueAndNotify(std::map<Axis, float>& in_value, 
 
 void SimotionController::fillInCmdStructAndFillCmdList(int in_cmd, char * in_data, int in_size)
 {
-	CommandType d_cmdData(sizeof(tagCOMM_PACKET));
+	CommandType d_cmdData(sizeof(tagCOMM_PACKET) + in_size);
 	tagCOMM_PACKET* ptr = (tagCOMM_PACKET*)(d_cmdData.d_data);
 	FILLX55XAAX5A;
 	ptr->typeCode = CMD_AXIS_REL_MOVE;
-	memcpy(&ptr->data[0], &in_data, in_size);
+	memcpy(d_cmdData.d_data + sizeof(tagCOMM_PACKET), &in_data, in_size);
 	ptr->tagLen = 3 + in_size;
 	d_cmdList.push_back(d_cmdData);
 }

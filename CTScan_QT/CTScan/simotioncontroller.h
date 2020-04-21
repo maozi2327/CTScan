@@ -1,5 +1,5 @@
 #pragma once
-#include "controlerinterface.h"
+#include "controllerinterface.h"
 #include "../Public/util/TcpServer.h"
 #include <list>
 #include <memory>
@@ -20,9 +20,23 @@ struct CommandType
 	CommandType(const char* in_data, int in_size)
 	{
 		d_data = new char[in_size];
+		d_size = in_size;
 		memcpy(d_data, in_data, in_size);
 	}
+	CommandType(const CommandType& in_commandType)
+	{
+		d_data = new char[in_commandType.d_size];
+		d_size = in_commandType.d_size;
+		memcpy(d_data, in_commandType.d_data, d_size);
+	}
 
+	//CommandType(CommandType&& in_commandType)
+	//{
+	//	d_data = new char[in_commandType.d_size];
+	//	d_size = in_commandType.d_size;
+	//	memcpy(d_data, in_commandType.d_data, d_size);
+	//	delete[] in_commandType.d_data;
+	//}
 	~CommandType()
 	{
 		if (d_data != nullptr)
@@ -42,7 +56,6 @@ struct tagCOMM_PACKET
 	unsigned char tagHead[3];						//包头(0x55,0xaa,0x5a)
 	unsigned char typeCode;						//类型码
 	unsigned short tagLen;							//包长(=参数字节数+3, 实际命令数据包长度=包长+4)
-	unsigned char data[10 - 6];			//命令参数
 };
 
 struct tagCOMM_PACKET1 
@@ -53,7 +66,7 @@ struct tagCOMM_PACKET1
 };
 
 class SimotionController :
-	public ControlerInterface, std::enable_shared_from_this<SimotionController>
+	public ControllerInterface, std::enable_shared_from_this<SimotionController>
 {
 private:
 	std::unique_ptr<TcpServer> d_server;
@@ -84,7 +97,7 @@ public:
 	virtual bool initialiseController();
 	virtual bool axisSeekZero(Axis in_axis);
 	virtual bool axisAbsMove(Axis in_axis, float in_pos);
-	virtual bool axisRealMove(Axis in_axis, float in_pos);
+	virtual bool axisRelMove(Axis in_axis, float in_pos);
 	virtual bool sliceMove(float in_pos);
 
 	virtual bool readReadyStatus();

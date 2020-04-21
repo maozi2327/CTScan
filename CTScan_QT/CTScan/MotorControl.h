@@ -3,15 +3,15 @@
 #include <QWidget>
 #include "ui_MotorControl.h"
 
-class ControlerInterface;
+class ControllerInterface;
 class MotorControl : public QWidget
 {
 	Q_OBJECT
 private:
-	ControlerInterface* d_controler;
+	ControllerInterface* d_controller;
 
 public:
-	MotorControl(QWidget *parent = Q_NULLPTR);
+	MotorControl(ControllerInterface* in_controller, QWidget *parent = Q_NULLPTR);
 	~MotorControl();
 
 
@@ -19,17 +19,17 @@ private:
 	Ui::MotorControl ui;
 
 private slots:
-	void on_tableRotAbsPosButton_clicked();
-	void on_tableRotNegativeButton_clicked();
-	void on_tableRotPositiveButton_clicked();
+	void on_objRotAbsPosButton_clicked();
+	void on_objRotNegativeButton_clicked();
+	void on_objRotPositiveButton_clicked();
 
-	void on_tableTranslationAbsPosButton_clicked();
-	void on_tableTranslationNegativeButton_clicked();
-	void on_tableTranslationPositiveButton_clicked();
+	void on_objTranslationAbsPosButton_clicked();
+	void on_objTranslationNegativeButton_clicked();
+	void on_objTranslationPositiveButton_clicked();
 
-	void on_tableRadialAbsPosButton_clicked();
-	void on_tableRadialNegativeButton_clicked();
-	void on_tableRadialPositiveButton_clicked();
+	void on_objRadialAbsPosButton_clicked();
+	void on_objRadialNegativeButton_clicked();
+	void on_objRadialPositiveButton_clicked();
 
 	void on_detLayerAbsPosButton_clicked();
 	void on_detLayerNegativeButton_clicked();

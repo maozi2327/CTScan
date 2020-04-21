@@ -2,29 +2,49 @@
 #include "ctscan.h"
 #include "MotorControl.h"
 #include "raypanelmotionwidget.h"
+#include "simotioncontroller.h"
+#include "linedetscanwidget.h"
 CTScan::CTScan(QWidget *parent)
     : QMainWindow(parent)
-	, d_panel(PanelFactory::getPanel())
+	, d_lineDetScanWidget(new LineDetScanWidget(d_motorControl.get())), d_panel(PanelFactory::getPanel())
 	, d_rayPanelMotion(new RayPanelMotion()), d_imageWidgetManager(new ImageWidgetManager())
+	, d_controller(new SimotionController()), d_motorControl(new MotorControl(d_controller.get()))
 {
     ui.setupUi(this);
 }
 
-void CTScan::on_pushButton_clicked()
+CTScan::~CTScan()
 {
-	//if(!d_rayPanelMotion->isVisible())
-	//	d_rayPanelMotion->show();
-	d_imageWidgetManager->showImageInNewWindow(QString());
 }
+
+void CTScan::on_ray1LineDetButton_clicked()
+{
+	d_lineDetScanWidget->show();
+}
+
+void CTScan::on_ray1PanelDetButton_clicked()
+{
+}
+
+void CTScan::on_ray2LineDetButton_clicked()
+{
+}
+
+void CTScan::on_ray2PanelDetButton_clicked()
+{
+}
+
+//void CTScan::on_pushButton_clicked()
+//{
+//	//if(!d_rayPanelMotion->isVisible())
+//	//	d_rayPanelMotion->show();
+//	d_imageWidgetManager->showImageInNewWindow(QString());
+//}
 void CTScan::cut()
 {
 	//infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
 }
 
-void CTScan::on_motorPanelButton_clicked()
-{
-
-}
 
 void CTScan::copy()
 {

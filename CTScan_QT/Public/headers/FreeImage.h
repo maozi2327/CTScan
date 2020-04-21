@@ -148,7 +148,7 @@ FI_STRUCT(FIMULTIBITMAP) { void *data; };
 #endif
 
 #ifndef _MSC_VER
-// define portable types for 32-bit / 64-bit OS
+// define porobj types for 32-bit / 64-bit OS
 #include <inttypes.h>
 typedef int32_t BOOL;
 typedef uint8_t BYTE;
@@ -706,7 +706,7 @@ typedef void (DLL_CALLCONV *FI_InitProc)(Plugin *plugin, int format_id);
 #define JPEG_SUBSAMPLING_420 0x4000		//! save with medium 2x2 medium chroma subsampling (4:2:0) - default value
 #define JPEG_SUBSAMPLING_422 0x8000		//! save with low 2x1 chroma subsampling (4:2:2) 
 #define JPEG_SUBSAMPLING_444 0x10000	//! save with no chroma subsampling (4:4:4)
-#define JPEG_OPTIMIZE		0x20000		//! on saving, compute optimal Huffman coding tables (can reduce a few percent of file size)
+#define JPEG_OPTIMIZE		0x20000		//! on saving, compute optimal Huffman coding objs (can reduce a few percent of file size)
 #define JPEG_BASELINE		0x40000		//! save basic JPEG, without metadata or any markers
 #define KOALA_DEFAULT       0
 #define LBM_DEFAULT         0
@@ -928,7 +928,7 @@ extern "C" {
 	DLL_API unsigned DLL_CALLCONV FreeImage_GetTransparencyCount(FIBITMAP *dib);
 	DLL_API BYTE * DLL_CALLCONV FreeImage_GetTransparencyTable(FIBITMAP *dib);
 	DLL_API void DLL_CALLCONV FreeImage_SetTransparent(FIBITMAP *dib, BOOL enabled);
-	DLL_API void DLL_CALLCONV FreeImage_SetTransparencyTable(FIBITMAP *dib, BYTE *table, int count);
+	DLL_API void DLL_CALLCONV FreeImage_SetTransparencyTable(FIBITMAP *dib, BYTE *obj, int count);
 	DLL_API BOOL DLL_CALLCONV FreeImage_IsTransparent(FIBITMAP *dib);
 	DLL_API void DLL_CALLCONV FreeImage_SetTransparentIndex(FIBITMAP *dib, int index);
 	DLL_API int DLL_CALLCONV FreeImage_GetTransparentIndex(FIBITMAP *dib);

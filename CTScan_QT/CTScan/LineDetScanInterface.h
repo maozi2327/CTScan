@@ -3,7 +3,7 @@
 #include "IctHeader.h"
 #include "SetupData.h"
 #include "CtrlData.h"
-#include "controlerinterface.h"
+#include "controllerinterface.h"
 #include <memory>
 class Thread;
 class LineDetNetWork;
@@ -18,7 +18,7 @@ protected:
 	QString d_installDirectory;
 	bool d_threadRun;
 
-	ControlerInterface* d_controler;
+	ControllerInterface* d_controller;
 	int	d_AccIndex;
 	int d_accFrecIndex;
 	int	d_TubeIndex;
@@ -48,7 +48,7 @@ signals:
 	void signalGraduationCount(int in_count);
 
 public:
-	LineDetScanInterface(ControlerInterface* in_controler) : d_controler(in_controler) {}
+	LineDetScanInterface(ControllerInterface* in_controller);
 	virtual ~LineDetScanInterface();
 	void setFileName(QString& in_fileName) { d_fileName = in_fileName; };
 	virtual bool startScan() = 0;

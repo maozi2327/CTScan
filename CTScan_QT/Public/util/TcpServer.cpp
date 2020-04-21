@@ -9,6 +9,7 @@ TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packe
 	, d_packetHeadSize(in_packetHeadSize), d_packetSize(in_packetSizeLenth), d_packetSizePos(in_packetSizePos)
 	, d_serverAddress(in_hosetAddress), d_serverPort(in_serverPort)
 	, d_dataHandlerCallBack(in_dataHandlerCallBack)
+	, d_connected(false)
 {
 	initialNetWorkForVariablePacketSize();
 	connect(d_tcpServer, SIGNAL(newConnection()), this, SLOT(acceptCollection()));
@@ -20,6 +21,7 @@ TcpServer::TcpServer(int in_packetSize, QHostAddress in_hosetAddress, unsigned s
 	, QObject(parent)
 	, d_serverAddress(in_hosetAddress), d_serverPort(in_serverPort), d_packetSize(in_packetSize)
 	, d_dataHandlerCallBack(in_dataHandlerCallBack)
+	, d_connected(false)
 {
 	initialNetWork();
 	connect(d_tcpServer, SIGNAL(newConnection()), this, SLOT(acceptCollection()));
@@ -49,7 +51,15 @@ bool TcpServer::initialNetWork()
 }
 bool TcpServer::initialNetWorkForVariablePacketSize()
 {
-	return false;
+	d_sendThreadPromisePtr.reset(new std::promise<bool>);
+	//std::thread([this]() { sendThread(*d_sendThreadPromisePtr); });
+	std::function<void()> sendThreadFun = std::bind(&TcpServer::sendThread, this, std::ref(*d_sendThreadPromisePtr));
+	std::thread(sendThreadFun).detach();
+	d_recvThreadPromisePtr.reset(new std::promise<bool>);
+	std::function<void()> recvThreadFun = std::bind(&TcpServer::recvThreadPacketHead, this, std::ref(*d_recvThreadPromisePtr));
+	std::thread(recvThreadFun).detach();
+
+	return d_tcpServer->listen(d_serverAddress, d_serverPort);
 }
 bool TcpServer::sendAsyn(const char* in_buffer, int in_size)
 {
@@ -72,6 +82,7 @@ bool TcpServer::receive(char* in_buffer, int in_size)
 void TcpServer::acceptCollection()
 {
 	d_tcpSocket = d_tcpServer->nextPendingConnection();
+	d_connected = true;
 	d_tcpServer->pauseAccepting();
 }
 void TcpServer::recvThread(std::promise<bool>& in_promise)

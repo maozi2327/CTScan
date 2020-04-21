@@ -5,6 +5,12 @@
 #include "../Public/util/Thread.h"
 #include <algorithm>
 
+ICT_HEADER LineDetScanInterface::d_ictHeader;
+LineDetScanInterface::LineDetScanInterface(ControllerInterface * in_controller) : d_controller(in_controller)
+{
+
+}
+
 LineDetScanInterface::~LineDetScanInterface()
 {
 
@@ -12,7 +18,7 @@ LineDetScanInterface::~LineDetScanInterface()
 
 void LineDetScanInterface::stopScan()
 {
-	d_controler->stopAll();
+	d_controller->stopAll();
 	d_lineDetNetWork->clearRowList();
 }
 
@@ -97,8 +103,7 @@ void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)
 	int leftMiddle = d_ictHeader.ScanParameter.SerialNo1OfMiddleHorizontalDetector;
 	int rightMiddle = d_ictHeader.ScanParameter.SerialNo2OfMiddleHorizontalDetector;
 
-	//确定3代扫描有效探测器数Nv
-	if (d_standardInterpolation)
+	if (d_standardInterpolation)		//确定3代扫描有效探测器数Nv
 	{
 		int	Nv;
 		if (leftMiddle == rightMiddle)
@@ -111,8 +116,7 @@ void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)
 	}
 	else 
 	{
-		//计算视场D占用的扇角beta
-		float beta = (float)(2 * asin(in_diameter / 2 / d_SOD));
+		float beta = (float)(2 * asin(in_diameter / 2 / d_SOD));        //计算视场D占用的扇角beta
 		int	Nv;
 
 		if (leftMiddle == rightMiddle)

@@ -15,7 +15,7 @@ protected:
 	virtual bool setGenerialFileHeader();
 	virtual bool checkScanAble();
 public:
-	CT3Scan(ControlerInterface* in_controler);
+	CT3Scan(ControllerInterface* in_controller);
 	~CT3Scan();
 	virtual void stopScan();
 	virtual bool startScan();

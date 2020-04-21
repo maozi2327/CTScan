@@ -3,6 +3,8 @@
 #include <thread>
 
 //-----------------SerialPortUtil::--------------------------------------
+
+SerialPortUtil* SerialPortUtil::d_s_instance;
 SerialPortUtil::SerialPortUtil(QObject *parent)
 	: QObject(parent)
 {

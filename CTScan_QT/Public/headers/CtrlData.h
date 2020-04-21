@@ -67,7 +67,7 @@ struct	_SubSysLinkSts{
 	BYTE		*pPanDet_linked;										//面阵源连接状态
 	BYTE		*pUnderCtrler_linked;									//底层控制器源连接状态
 	BYTE		*pBanlance_linked;									//调平系统连接状态
-}SubSysLinkSts;
+};
 
 
 //2代扫描模式名义值定义
@@ -531,7 +531,7 @@ union SysStatus{
 		BYTE	detTranslation_zero_found		:1;			//探测平移零位已找到(1)
 		BYTE	rayRadial_zero_found			:1;			//射线径向零位已找到(1)
 		BYTE	rayTranslation_zero_found		:1;			//射线平移零位已找到(1)
-		BYTE	objVertical_zero_found			:1;			//工件升降零位已找到(1)
+		BYTE	tableVertical_zero_found			:1;			//工件升降零位已找到(1)
 		BYTE	deflection_zero_found			:1;			//偏摆零位已找到(1)
 		BYTE									:2;			//保留
 
@@ -1020,7 +1020,7 @@ union PowerCtrlCmd{
 	   BYTE	panDetReturnPosMask	:1;							//0-禁止面阵撤收位电磁铁电源,	1-允许面阵撤收位电磁铁电源
    }s;
    BYTE  b;
-}PowerCtrlCmd;
+};
 
 //调平状态反馈结构
 struct BanlanceCtrlSts{
@@ -1093,7 +1093,7 @@ struct BanlanceCtrlSts{
 	BYTE	plat2Leg2Pos[4];											//平台1支腿2位置，4字节BCD数：高4位符号位(0-正,1-负)，高字整数，低字小数
 	BYTE	plat2Leg3Pos[4];											//平台1支腿3位置，4字节BCD数：高4位符号位(0-正,1-负)，高字整数，低字小数
 	BYTE	plat2Leg4Pos[4];											//平台1支腿4位置，4字节BCD数：高4位符号位(0-正,1-负)，高字整数，低字小数
-}BanlanceCtrlSts;
+};
 
 //调平系统提示面板用结构
 struct BanlanceTipSts{
@@ -1154,7 +1154,7 @@ struct SAimDLaserGotoLastPosCmd{
 			layer2,											//分层2(mm)
 			rayVertical,									//射线升降(mm)
 			lineDetVertical;								//线阵升降(mm)
-}SAimDLaserGotoLastPosCmd;
+};
 
 //工作零位数据结构(浮点数据)
 struct FWorkZero{
@@ -1188,13 +1188,13 @@ struct SysData{
 union USysData{
 	SysData  s;
 	BYTE		b[sizeof(SysData)];
-}USysData;
+};
 
 //定义使用WM_COPYDATA消息接收数据结构
 struct MYCDSRET_FLAG{
 	int     nResult;												//状态码返回标志
 	wchar_t	desFilePath[MAX_PATH];									//全路径目标数据文件名
-}MYCDSRET_FLAG;
+};
 
 //定义WM_COPYDATA消息中线阵面阵标志
 enum{

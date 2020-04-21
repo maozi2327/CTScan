@@ -7,8 +7,9 @@
 #include "../Public/util/IULog.h"
 #include "../Public/util/Thread.h"
 #include "MotorControl.h"
+#include "functions.h"
 
-CT3Scan::CT3Scan(ControlerInterface* in_controler) : LineDetScanInterface(in_controler)
+CT3Scan::CT3Scan(ControllerInterface* in_controller) : LineDetScanInterface(in_controller)
 {
 	;
 }
@@ -26,7 +27,7 @@ void CT3Scan::scanThread()
 	{
 		emit(signalGraduationCount(d_lineDetNetWork->getGraduationCount()));
 		
-		if (d_controler->readSaveStatus())
+		if (d_controller->readSaveStatus())
 		{
 			saveFile();
 			stopScan();
@@ -75,14 +76,9 @@ void CT3Scan::sendCmdToControl()
 	ptr->typeCode = CMD_CT_SCAN;
 	ptr->tagLen = 3 + sizeof(CT23ScanCmdData);
 	memcpy(buf + 6, &cmdData, sizeof(cmdData));
-	d_controler->sendToControl(buf, 6 + sizeof(CT23ScanCmdData));
+	d_controller->sendToControl(buf, 6 + sizeof(CT23ScanCmdData));
 }
 
-QByteArray getByteArray(QString& in_fileName)
-{
-	QByteArray byteArray = in_fileName.toLocal8Bit();
-	return byteArray;
-}
 
 void CT3Scan::saveFile()
 {
@@ -151,6 +147,8 @@ bool CT3Scan::setGenerialFileHeader()
 		LOG_WARNING("插值次数太多！视场直径%d, 图像矩阵%d", diameter, Matrix);
 		return false;
 	}
+
+	return true;
 }
 
 bool CT3Scan::checkScanAble()

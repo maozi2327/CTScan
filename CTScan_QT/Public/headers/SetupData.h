@@ -135,7 +135,7 @@ struct _PanScanConfig{
 	float	sdd;													//SDD(mm)
 	float	deflectionPos;											//偏摆角度(mm)
 	int		frameCnt;												//采集帧数
-}PanScanConfig;
+};
 
 
 //2017.02.19增加

@@ -122,9 +122,9 @@
 
 enum class Axis
 {
-	tableRotation = 0,
+	objRotation = 0,
 #ifdef TABLETRANSLATION
-	tableTraslation = 1,
+	objTraslation = 1,
 #endif 
 #ifdef RAYLAYER
 	rayLayer = 3,
@@ -135,4 +135,6 @@ enum class Axis
 #ifdef TABLERADIAL
 	objRadial = 5,
 #endif
+	detRadial = 11,
+	detTranslation = 12
 };

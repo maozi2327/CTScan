@@ -17,13 +17,13 @@ public:
 	bool sendAsyn(const char* in_buffer, int in_size);
 	int sendSyn(const char* in_buffer, int in_size);
 	bool receive(char* in_buffer, int in_size);
+	void recvThreadPacketHead(std::promise<bool>& in_promise);
 private:
 	struct command
 	{
 		const char* in_buffer;
 		int in_size;
 	};
-	bool d_connected;
 	int d_packetSize;
 
 	int d_packetHeadSize;
@@ -41,9 +41,9 @@ private:
 	void acceptCollection();
 	void reAccept();
 	void recvThread(std::promise<bool>& in_promise);
-	void recvThreadPacketHead(std::promise<bool>& in_promise);
 	std::unique_ptr<std::promise<bool>> d_recvThreadPromisePtr;
 	bool d_isRecvRunning;
+	bool d_connected;
 	void sendThread(std::promise<bool>& in_promise);
 	std::unique_ptr<std::promise<bool>> d_sendThreadPromisePtr;
 	bool d_isSendRunning;

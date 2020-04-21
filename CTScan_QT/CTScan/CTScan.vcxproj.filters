@@ -60,9 +60,6 @@
     <ClCompile Include="simotioncontroller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="controlerinterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ImageProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -123,6 +120,12 @@
     <ClCompile Include="PanelImageProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="functions.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="controllerinterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -133,9 +136,6 @@
     </ClInclude>
     <ClInclude Include="..\Public\headers\machineType.h">
       <Filter>Header Files\publicHeaders</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_raypanelmotion0.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_raypanelmotion.h">
       <Filter>Generated Files</Filter>
@@ -150,9 +150,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="conescanInterface.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="controlerinterface.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ImageProcess.h">
@@ -208,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MotorControl.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="controllerinterface.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

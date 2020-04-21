@@ -3,6 +3,7 @@
 #include "LineDetAirTune.h"
 #include "LineDetImageProcess.h"
 #include "../Public/util/Thread.h"
+#include "functions.h"
 
 bool LineDetAirTune::setGenerialFileHeader()
 {
@@ -45,7 +46,7 @@ void LineDetAirTune::sendCmdToControl()
 	ptr->tagHead[2] = 0x5a;
 	ptr->typeCode = AIR_SCAN;
 	ptr->tagLen = 3 + 0;
-	d_controler->sendToControl(buf, 6);
+	d_controller->sendToControl(buf, 6);
 }
 
 void LineDetAirTune::scanThread()
@@ -54,7 +55,7 @@ void LineDetAirTune::scanThread()
 	{
 		emit(signalGraduationCount(d_lineDetNetWork->getGraduationCount()));
 
-		if (d_controler->readSaveStatus())
+		if (d_controller->readSaveStatus())
 		{
 			saveFile();
 			stopScan();
@@ -65,11 +66,7 @@ void LineDetAirTune::scanThread()
 	}
 }
 
-QByteArray getByteArray(QString& in_fileName)
-{
-	QByteArray byteArray = in_fileName.toLocal8Bit();
-	return byteArray;
-}
+
 
 void LineDetAirTune::saveFile()
 {
@@ -77,7 +74,7 @@ void LineDetAirTune::saveFile()
 	d_lineDetImageProcess->createBkgDat(d_fileName, d_installDirectory);
 }
 
-LineDetAirTune::LineDetAirTune(ControlerInterface* in_controler) : LineDetScanInterface(in_controler)
+LineDetAirTune::LineDetAirTune(ControllerInterface* in_controller) : LineDetScanInterface(in_controller)
 {
 
 }
@@ -102,6 +99,7 @@ bool LineDetAirTune::startScan()
 	sendCmdToControl();
 	d_scanThread.reset(new Thread(std::bind(&LineDetAirTune::scanThread, this), std::ref(d_threadRun)));
 	d_scanThread->detach();
+	return true;
 }
 
 void LineDetAirTune::stopScan()

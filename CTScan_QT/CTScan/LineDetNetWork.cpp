@@ -4,7 +4,7 @@
 #include <chrono>
 #include <algorithm>
 LineDetNetWork::LineDetNetWork() 
-	: d_server(std::make_unique<TcpServer>(sizeof(4, 4, 0, QHostAddress::Any, 4000)))
+	: d_server(new TcpServer(4, 4, 0, [this](char* in_char, int in_size) { DecodePackages(in_char, in_size); }, QHostAddress::Any, 4000))
 {
 
 }

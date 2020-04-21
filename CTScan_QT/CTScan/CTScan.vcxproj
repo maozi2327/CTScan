@@ -131,8 +131,9 @@
     <ClCompile Include="..\Public\util\Thread.cpp" />
     <ClCompile Include="conecontinusscan.cpp" />
     <ClCompile Include="conescanwidget.cpp" />
-    <ClCompile Include="controlerinterface.cpp" />
+    <ClCompile Include="controllerinterface.cpp" />
     <ClCompile Include="CT3Scan.cpp" />
+    <ClCompile Include="functions.cpp" />
     <ClCompile Include="LineDetAirTune.cpp" />
     <ClCompile Include="LineDetBkgTune.cpp" />
     <ClCompile Include="LineDetImageProcess.cpp" />
@@ -188,8 +189,12 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
     </QtMoc>
     <ClInclude Include="conecontinusscan.h" />
-    <ClInclude Include="controlerinterface.h" />
+    <ClInclude Include="controllerinterface.h" />
     <ClInclude Include="CT3Scan.h" />
+    <ClInclude Include="functions.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
+    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MotorControl.h" />
     <ClInclude Include="LineDetAirTune.h" />
     <ClInclude Include="LineDetBkgTune.h" />
@@ -198,7 +203,6 @@
     <ClInclude Include="GeneratedFiles\ui_ctscan.h" />
     <ClInclude Include="GeneratedFiles\ui_imagewidget.h" />
     <ClInclude Include="GeneratedFiles\ui_raypanelmotion.h" />
-    <ClInclude Include="GeneratedFiles\ui_raypanelmotion0.h" />
     <QtMoc Include="raypanelmotionwidget.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>

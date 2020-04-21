@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include "stdafx.h"
-#include "../../serialportutil.h"
+#include "../../public/util/serialportutil.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -55,12 +55,12 @@ static const uint qt_meta_data_SerialPort[] = {
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
 
- // slots: name, argc, parameters, tag, flags
-       1,    1,   19,    2, 0x08 /* Private */,
+ // signals: name, argc, parameters, tag, flags
+       1,    1,   19,    2, 0x06 /* Public */,
 
- // slots: parameters
+ // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
@@ -74,6 +74,15 @@ void SerialPort::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->serialError((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (SerialPort::*)(QString & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&SerialPort::serialError)) {
+                *result = 0;
+                return;
+            }
         }
     }
 }
@@ -112,6 +121,13 @@ int SerialPort::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 1;
     }
     return _id;
+}
+
+// SIGNAL 0
+void SerialPort::serialError(QString & _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 struct qt_meta_stringdata_SerialPortUtil_t {
     QByteArrayData data[5];

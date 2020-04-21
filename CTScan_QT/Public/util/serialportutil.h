@@ -33,7 +33,7 @@ private:
 	std::unique_ptr<std::promise<bool>> d_sendThreadPromisePtr;
 	bool d_isSendRunning;
 
-private slots:
+signals:
 	void serialError(QString& out_serialName);
 
 public:
