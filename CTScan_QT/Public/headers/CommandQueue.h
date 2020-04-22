@@ -16,7 +16,7 @@ public:
     }
     ~TheQueue()
     {
-
+		clear();
     }
     size_t size() 
     {
@@ -44,7 +44,7 @@ public:
 
     void clear()
     {
-        std::unique_lock<std::mutex> lk(d_hmtxQ);
+        std::lock_guard<std::mutex> lk(d_hmtxQ);
         
         while(d_queue.size() != 0)
             d_queue.pop();

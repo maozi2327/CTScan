@@ -2,13 +2,15 @@
 #include "TcpServer.h"
 #include <thread>
 
-TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packetSizePos, std::function<void(char*, int in_size)> in_dataHandlerCallBack
+TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packetSizePos
+	, std::function<void()> in_sendDataCallBack
+	, std::function<void(char*, int in_size)> in_dataHandlerCallBack
 	, QHostAddress in_hosetAddress, unsigned short in_serverPort, QObject *parent)
 	: d_tcpServer(new QTcpServer())
 	, QObject(parent)
 	, d_packetHeadSize(in_packetHeadSize), d_packetSize(in_packetSizeLenth), d_packetSizePos(in_packetSizePos)
 	, d_serverAddress(in_hosetAddress), d_serverPort(in_serverPort)
-	, d_dataHandlerCallBack(in_dataHandlerCallBack)
+	, d_dataHandlerCallBack(in_dataHandlerCallBack), d_sendInitiliseCallBack(in_sendDataCallBack)
 	, d_connected(false)
 {
 	initialNetWorkForVariablePacketSize();
@@ -83,6 +85,7 @@ void TcpServer::acceptCollection()
 {
 	d_tcpSocket = d_tcpServer->nextPendingConnection();
 	d_connected = true;
+	d_sendInitiliseCallBack();
 	d_tcpServer->pauseAccepting();
 }
 void TcpServer::recvThread(std::promise<bool>& in_promise)
@@ -113,6 +116,8 @@ void TcpServer::recvThread(std::promise<bool>& in_promise)
 				byteRead = 0;
 			}
 		}
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 }
 void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
@@ -160,6 +165,8 @@ void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 				byteRead = 0;
 			}
 		}
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 }
 void TcpServer::sendThread(std::promise<bool>& in_promise)

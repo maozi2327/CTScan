@@ -8,15 +8,29 @@ MotorControl::MotorControl(ControllerInterface* in_controller, QWidget *parent)
 	, d_controller(in_controller)
 {
 	ui.setupUi(this);
+	d_controller->getAxisPosition();
 }
 
 MotorControl::~MotorControl()
 {
+
 }
 
 void MotorControl::on_objRotAbsPosButton_clicked()
 {
 	d_controller->axisAbsMove(Axis::objRotation, ui.objRotationPosEdit->text().toFloat());
+}
+
+void MotorControl::updateAxisStatus()
+{
+	std::map<Axis, float> axisPos = d_controller->readAxisPostion();
+	ui.rayLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::rayLayer]));
+	ui.objRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRadial]));
+	ui.objRotStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRotation]));
+	ui.objTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::objTraslation]));
+	ui.detLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::detLayer]));
+	ui.detRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::detRadial]));
+	ui.detTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::detTranslation]));
 }
 
 void MotorControl::on_objRotNegativeButton_clicked()

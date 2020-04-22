@@ -162,6 +162,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Public\headers\List.h" />
     <ClInclude Include="..\Public\util\Thread.h" />
     <QtMoc Include="ctscan.h" />
     <ClInclude Include="..\Public\headers\CommandQueue.h" />

@@ -212,6 +212,9 @@
     <ClInclude Include="controllerinterface.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\headers\List.h">
+      <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="conescanwidget.h">

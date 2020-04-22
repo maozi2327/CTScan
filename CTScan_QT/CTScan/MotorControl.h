@@ -2,6 +2,7 @@
 
 #include <QWidget>
 #include "ui_MotorControl.h"
+#include <map>
 
 class ControllerInterface;
 class MotorControl : public QWidget
@@ -17,7 +18,7 @@ public:
 
 private:
 	Ui::MotorControl ui;
-
+	void updateAxisStatus();
 private slots:
 	void on_objRotAbsPosButton_clicked();
 	void on_objRotNegativeButton_clicked();

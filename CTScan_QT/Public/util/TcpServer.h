@@ -9,10 +9,11 @@ class TcpServer  : public QObject
 	Q_OBJECT
 
 public:
+	TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packetSizePos
+		, std::function<void()> in_sendDataCallBack, std::function<void(char*, int in_size)> in_recvDataCallBack
+		, QHostAddress in_hosetAddress, unsigned short in_serverPort, QObject *parent = Q_NULLPTR);
 	TcpServer(int in_packetSize, QHostAddress in_hosetAddress, unsigned short in_serverPort
 		, std::function<void(char*, int in_size)> in_dataHandlerCallBack, QObject *parent = Q_NULLPTR);
-	TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packetSizePos
-		, std::function<void(char*, int in_size)> in_recvDataCallBack, QHostAddress in_hosetAddress, unsigned short in_serverPort, QObject *parent = Q_NULLPTR);
 	virtual ~TcpServer();
 	bool sendAsyn(const char* in_buffer, int in_size);
 	int sendSyn(const char* in_buffer, int in_size);
@@ -30,6 +31,7 @@ private:
 	int d_packetSizePos;
 	int d_packetSizeLenth;
 	std::function<void(char*, int in_size)> d_dataHandlerCallBack;
+	std::function<void()> d_sendInitiliseCallBack;
 	QTcpServer* d_tcpServer;
 	QTcpSocket* d_tcpSocket;
 	unsigned short d_serverPort;

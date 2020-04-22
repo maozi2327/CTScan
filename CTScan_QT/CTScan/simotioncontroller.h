@@ -6,6 +6,7 @@
 #include <condition_variable>
 #include <mutex>
 #include "../Public/headers/CtrlData.h"
+#include "../Public/headers/List.h"
 struct CommandType
 {
 	int d_cmd;
@@ -15,6 +16,24 @@ struct CommandType
 	{
 		d_data = new char[in_size];
 		d_size = in_size;
+	}
+
+	void operator=(const CommandType& in_commandLeft)
+	{
+		char* temp = nullptr;
+		
+		if (in_commandLeft.d_size != 0)
+		{
+			temp = new char[in_commandLeft.d_size];
+			memcpy(temp, in_commandLeft.d_data, in_commandLeft.d_size);
+		}
+
+		if (d_data != nullptr)
+			delete[] d_data;
+
+		d_data = temp;
+		d_size = in_commandLeft.d_size;
+		d_cmd = in_commandLeft.d_cmd;
 	}
 
 	CommandType(const char* in_data, int in_size)
@@ -30,24 +49,23 @@ struct CommandType
 		memcpy(d_data, in_commandType.d_data, d_size);
 	}
 
-	//CommandType(CommandType&& in_commandType)
-	//{
-	//	d_data = new char[in_commandType.d_size];
-	//	d_size = in_commandType.d_size;
-	//	memcpy(d_data, in_commandType.d_data, d_size);
-	//	delete[] in_commandType.d_data;
-	//}
+	CommandType(CommandType&& in_commandType)
+	{
+		d_data = in_commandType.d_data;
+		d_size = in_commandType.d_size;
+	}
 	~CommandType()
 	{
 		if (d_data != nullptr)
 		{
 			delete[] d_data;
 			d_size = 0;
+			d_data = nullptr;
 		}
 	}
-	friend bool operator==(const CommandType& in_commandLeft, int d_cmd)
+	friend bool operator==(const CommandType& in_commandLeft, const CommandType& in_commandRight)
 	{
-		return in_commandLeft.d_cmd == d_cmd;
+		return in_commandLeft.d_cmd == in_commandRight.d_cmd;
 	}
 };
 
@@ -75,10 +93,13 @@ private:
 	
 	SysStatus d_sysStatus;
 	ControlSystemStatus d_ctrlSysSts;									//¿ØÖÆÏµÍ³×´Ì¬×Ö
-	std::list<CommandType> d_cmdList;
+	List<CommandType> d_cmdList;
 	std::condition_variable d_con;
 	std::mutex d_mutex;
 	int d_receivedCmd;
+	
+	bool d_connected;
+	
 	bool d_save;
 	bool d_ready;
 	bool d_waitNextScan;
@@ -86,13 +107,13 @@ private:
 	bool d_threadRun;
 
 	void getAixsValueAndNotify(std::map<Axis, float>& in_value, char* in_data, int in_axisNum, int in_typeCode);
-	void fillInCmdStructAndFillCmdList(int in_cmd, char* in_data, int in_size);
+	void fillInCmdStructAndFillCmdList(int in_cmd, char* in_data, int in_size, bool in_consist);
 protected:
 	virtual bool sendCmd();
 public:
 	SimotionController();
 	~SimotionController();
-	virtual bool initialConnection();
+	virtual bool initialSend();
 	virtual bool stopAll();
 	virtual bool initialiseController();
 	virtual bool axisSeekZero(Axis in_axis);
@@ -114,10 +135,12 @@ public:
 	virtual void getAxisSpeed();
 	virtual void getAxisWorkZero();
 
+	virtual void stopGettingAxisPostion();
+
 	virtual void setAxisSpeed(std::map<Axis, float>& in_speed);
 	virtual void setAxisWorkZero(std::map<Axis, float>& in_workZero);
 	
-	virtual void sendToControl(char* in_package, int in_size);
+	virtual void sendToControl(char* in_package, int in_size, bool in_consist = false);
 	virtual void decodePackages(char* in_package, int in_size);
 };
 

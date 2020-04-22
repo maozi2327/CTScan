@@ -12,7 +12,7 @@ protected:
 public:
 	ControllerInterface();
 	virtual ~ControllerInterface();
-	virtual bool initialConnection() = 0;
+	virtual bool initialSend() = 0;
 	virtual bool stopAll() = 0;
 	virtual bool initialiseController() = 0;
 	virtual bool axisSeekZero(Axis in_axis) = 0;
@@ -35,9 +35,11 @@ public:
 	virtual void getAxisSpeed() = 0;
 	virtual void getAxisWorkZero() = 0;
 
+	virtual void stopGettingAxisPostion() = 0;
+
 	virtual void setAxisSpeed(std::map<Axis, float>& in_speed) = 0;
 	virtual void setAxisWorkZero(std::map<Axis, float>& in_workZero) = 0;
-	virtual void sendToControl(char* in_package, int in_size) = 0;
+	virtual void sendToControl(char* in_package, int in_size, bool in_consist = false) = 0;
 	virtual void decodePackages(char* in_package, int in_size) = 0;
 };
 
