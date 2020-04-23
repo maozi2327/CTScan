@@ -188,9 +188,6 @@
     <ClInclude Include="..\Public\util\SerialPortInterface.h">
       <Filter>utility</Filter>
     </ClInclude>
-    <ClInclude Include="LineDetNetWork.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\util\Thread.h">
       <Filter>utility</Filter>
     </ClInclude>
@@ -208,9 +205,6 @@
     </ClInclude>
     <ClInclude Include="functions.h">
       <Filter>utility</Filter>
-    </ClInclude>
-    <ClInclude Include="controllerinterface.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\headers\List.h">
       <Filter>Header Files\publicHeaders</Filter>
@@ -246,6 +240,12 @@
     </QtMoc>
     <QtMoc Include="PanelImageProcess.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="LineDetNetWork.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="controllerinterface.h">
+      <Filter>Source Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

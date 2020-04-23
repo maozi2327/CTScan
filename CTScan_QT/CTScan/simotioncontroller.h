@@ -97,9 +97,7 @@ private:
 	std::condition_variable d_con;
 	std::mutex d_mutex;
 	int d_receivedCmd;
-	
-	bool d_connected;
-	
+			
 	bool d_save;
 	bool d_ready;
 	bool d_waitNextScan;
@@ -110,9 +108,13 @@ private:
 	void fillInCmdStructAndFillCmdList(int in_cmd, char* in_data, int in_size, bool in_consist);
 protected:
 	virtual bool sendCmd();
+	virtual void setConnectdSts();
 public:
 	SimotionController();
 	~SimotionController();
+	
+	virtual bool getConnected();
+
 	virtual bool initialSend();
 	virtual bool stopAll();
 	virtual bool initialiseController();

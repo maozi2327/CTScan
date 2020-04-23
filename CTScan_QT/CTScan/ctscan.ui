@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>166</width>
-    <height>334</height>
+    <height>359</height>
    </rect>
   </property>
   <property name="contextMenuPolicy">
@@ -110,6 +110,19 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>310</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>

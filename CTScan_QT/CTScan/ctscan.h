@@ -3,7 +3,6 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_ctscan.h"
 #include "ImageWidgetManager.h"
-#include "controllerinterface.h"
 #include "conescaninterface.h"
 #include "..\PanelDll\panel.h"
 #include <memory>
@@ -11,6 +10,7 @@
 class RayPanelMotion;
 class MotorControl;
 class LineDetScanWidget;
+class ControllerInterface;
 class CTScan : public QMainWindow
 {
     Q_OBJECT
@@ -18,6 +18,7 @@ class CTScan : public QMainWindow
 public:
     CTScan(QWidget *parent = Q_NULLPTR);
 	~CTScan();
+
 public slots:
 	void on_ray1LineDetButton_clicked();
 	void on_ray1PanelDetButton_clicked();
@@ -28,6 +29,7 @@ private slots:
 	void cut();
 	void copy();
 	void paste();
+	void controllerNetWorkStsSlot(bool sts);
 protected:
 #ifndef QT_NO_CONTEXTMENU
 	void contextMenuEvent(QContextMenuEvent *event) override;
@@ -37,14 +39,16 @@ private:
 	QAction *cutAct;
 	QAction *copyAct;
 	QAction *pasteAct;
-	std::unique_ptr<ControllerInterface> d_controller;
 	std::unique_ptr<MotorControl> d_motorControl;
 	std::unique_ptr<ConeScanInterface> d_scanInterface;
 	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;
 	std::unique_ptr<Panel> d_panel;
 	std::unique_ptr<LineDetScanWidget> d_lineDetScanWidget;
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
+	std::unique_ptr<ControllerInterface> d_controller;
 	size_t frontImageIndex;
+
+	QSystemTrayIcon* tray;
 };
 //#ifdef TABLETRANSLATION
 //#ifdef TABLERADIAL

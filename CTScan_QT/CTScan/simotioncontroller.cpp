@@ -15,13 +15,44 @@ SimotionController::SimotionController()
 	std::function<void(char*, int)> decodeFun = std::bind(&SimotionController::decodePackages, this
 		, std::placeholders::_1, std::placeholders::_2);
 	std::function<void()> sendFun = std::bind(&SimotionController::sendCmd, this);
-	d_server.reset(new TcpServer(sizeof(tagCOMM_PACKET1), 2, 4, sendFun, decodeFun, QHostAddress::Any, d_port));
+	d_server.reset(new TcpServer(sizeof(tagCOMM_PACKET1), 2, 4, sendFun, decodeFun, QHostAddress::LocalHost, d_port));
+	auto intervel = std::chrono::milliseconds(100);
+
+	std::thread([this, intervel] 
+	{
+		while (true)
+		{
+			std::this_thread::sleep_for(intervel);
+			//std::weak_ptr<SimotionController> thisWeak = shared_from_this();
+			//auto shared = thisWeak.lock();
+
+			if (true)
+			{
+				d_timeout += intervel;
+
+				if (d_timeout >= std::chrono::seconds(1))
+					if (d_connected == true)
+					{
+						emit netWorkStsSginal(false);
+						d_connected = false;
+					}
+			}
+			else
+				break;
+		}
+
+	}).detach();
 }
 
 
 SimotionController::~SimotionController()
 {
 	d_threadRun = false;
+}
+
+bool SimotionController::getConnected()
+{
+	return d_connected;
 }
 
 template<typename T1, typename T2>
@@ -192,10 +223,10 @@ bool SimotionController::sendCmd()
 {
 	while (d_threadRun)
 	{
-		std::weak_ptr<SimotionController> thisWeak = shared_from_this();
-		std::shared_ptr<SimotionController> shared = thisWeak.lock();
+		//std::weak_ptr<SimotionController> thisWeak = shared_from_this();
+		//auto shared = thisWeak.lock();
 
-		if (shared)
+		//if (shared)
 			while (d_threadRun)
 			{
 				CommandType cmd(0);
@@ -210,6 +241,11 @@ bool SimotionController::sendCmd()
 	return true;
 }
 
+void SimotionController::setConnectdSts()
+{
+	d_timeout = std::chrono::milliseconds(0);
+}
+
 //55  AA  5A    TP          BL           DW             VS
 //  包头(3B)  分类码(1B) 包长(1W)    n字节参数字      校验和(1B)
 
@@ -221,6 +257,7 @@ void SimotionController::sendToControl(char * in_package, int in_size, bool in_c
 
 void SimotionController::decodePackages(char* in_package, int in_size)
 {
+	setConnectdSts();
 	char typeCode = ((tagCOMM_PACKET1*)in_package)->typeCode;
 	int dataSize = ((tagCOMM_PACKET1*)in_package)->tagLen;
 

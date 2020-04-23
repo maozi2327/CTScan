@@ -11,6 +11,14 @@ LineDetScanWidget::LineDetScanWidget(MotorControl* in_motorControl, QWidget *par
 
 LineDetScanWidget::~LineDetScanWidget()
 {
+
+}
+
+void LineDetScanWidget::onNetworkStsChanged(bool in_netWorkSts)
+{
+	ui.startButton->setEnabled(in_netWorkSts);
+	ui.startButton->setEnabled(in_netWorkSts);
+	ui.scanModeTab->setEnabled(in_netWorkSts);
 }
 
 void LineDetScanWidget::contextMenuEvent(QContextMenuEvent * event)
@@ -20,6 +28,10 @@ void LineDetScanWidget::contextMenuEvent(QContextMenuEvent * event)
 	QMenu menu(this);
 	menu.addAction(showMotorTableAction);
 	menu.exec(event->globalPos());
+}
+
+void LineDetScanWidget::disableAllControls()
+{
 }
 
 void LineDetScanWidget::showMotorTable()

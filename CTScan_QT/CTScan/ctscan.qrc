@@ -2,3 +2,9 @@
     <qresource prefix="CTScan">
     </qresource>
 </RCC>
+
+<RCC>
+    <qresource prefix="SystemTray">
+      <file>Resources/ico.png</file>
+    </qresource>
+</RCC>

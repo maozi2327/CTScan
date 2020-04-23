@@ -2,7 +2,8 @@
 #include "controllerinterface.h"
 
 
-ControllerInterface::ControllerInterface()
+ControllerInterface::ControllerInterface() 
+	: d_timeout(std::chrono::milliseconds(0)), d_connected(true)
 {
 
 }

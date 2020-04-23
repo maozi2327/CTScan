@@ -29,13 +29,14 @@ public:
     QPushButton *ray1PanelDetButton;
     QPushButton *ray2LineDetButton;
     QPushButton *ray2PanelDetButton;
+    QPushButton *pushButton;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *CTScanClass)
     {
         if (CTScanClass->objectName().isEmpty())
             CTScanClass->setObjectName(QStringLiteral("CTScanClass"));
-        CTScanClass->resize(166, 334);
+        CTScanClass->resize(166, 359);
         CTScanClass->setContextMenuPolicy(Qt::DefaultContextMenu);
         centralWidget = new QWidget(CTScanClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -80,6 +81,9 @@ public:
 
         verticalLayout->addWidget(ray2PanelDetButton);
 
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(60, 310, 75, 23));
         CTScanClass->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(CTScanClass);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -97,6 +101,7 @@ public:
         ray1PanelDetButton->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2201-\351\235\242\351\230\265", nullptr));
         ray2LineDetButton->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2202-\347\272\277\351\230\265", nullptr));
         ray2PanelDetButton->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2202-\351\235\242\351\230\265", nullptr));
+        pushButton->setText(QApplication::translate("CTScanClass", "PushButton", nullptr));
     } // retranslateUi
 
 };

@@ -8,7 +8,7 @@ MotorControl::MotorControl(ControllerInterface* in_controller, QWidget *parent)
 	, d_controller(in_controller)
 {
 	ui.setupUi(this);
-	d_controller->getAxisPosition();
+	//d_controller->getAxisPosition();
 }
 
 MotorControl::~MotorControl()

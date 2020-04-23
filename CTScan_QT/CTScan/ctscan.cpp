@@ -11,10 +11,16 @@ CTScan::CTScan(QWidget *parent)
 	, d_controller(new SimotionController()), d_motorControl(new MotorControl(d_controller.get()))
 {
     ui.setupUi(this);
+	connect(d_controller.get(), &ControllerInterface::netWorkStsSginal
+		, this, &CTScan::controllerNetWorkStsSlot, Qt::QueuedConnection);
+	tray = new QSystemTrayIcon(this);
+	tray->setIcon(QIcon(QPixmap(":/SystemTray/Resources/ico.png")));
+	tray->show();
 }
 
 CTScan::~CTScan()
 {
+
 }
 
 void CTScan::on_ray1LineDetButton_clicked()
@@ -34,6 +40,11 @@ void CTScan::on_ray2PanelDetButton_clicked()
 {
 }
 
+void CTScan::controllerNetWorkStsSlot(bool sts)
+{
+	d_lineDetScanWidget->onNetworkStsChanged(sts);
+}
+
 //void CTScan::on_pushButton_clicked()
 //{
 //	//if(!d_rayPanelMotion->isVisible())
@@ -42,7 +53,7 @@ void CTScan::on_ray2PanelDetButton_clicked()
 //}
 void CTScan::cut()
 {
-	//infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+	hide();                 /* Òþ²Ø´°¿Ú */
 }
 
 

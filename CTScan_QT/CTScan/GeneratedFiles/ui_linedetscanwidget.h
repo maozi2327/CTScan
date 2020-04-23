@@ -51,41 +51,41 @@ public:
     QComboBox *Comet450FocusComboBox;
     QLineEdit *Comet450EmissionCurrentEdit;
     QPushButton *Comet450XRayOffButton;
-    QTabWidget *tabWidget;
+    QTabWidget *scanModeTab;
     QWidget *tab;
     QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QGridLayout *gridLayout_2;
     QLabel *label_53;
-    QComboBox *comboBox_35;
+    QComboBox *ct3MultiLayerComboBox;
     QLabel *label;
-    QComboBox *comboBox;
+    QComboBox *ct3MatrixComboBox;
     QLabel *label_2;
-    QComboBox *comboBox_2;
+    QComboBox *ct3ViewComboBox;
     QLabel *label_3;
-    QComboBox *comboBox_3;
+    QComboBox *ct3SampleTimesComboBox;
     QLabel *label_7;
-    QLineEdit *lineEdit;
+    QLineEdit *ct3AngleLineEdit;
     QLabel *label_8;
-    QLineEdit *lineEdit_2;
+    QLineEdit *ct3LayerPosLineEdit;
     QLabel *label_17;
-    QLineEdit *lineEdit_5;
+    QLineEdit *ct3LayerSpaceLineEdit;
     QVBoxLayout *verticalLayout;
-    QListWidget *listWidget;
+    QListWidget *ct3LayerPosListWidget;
     QSpacerItem *verticalSpacer_2;
     QWidget *tab_2;
     QWidget *layoutWidget2;
     QGridLayout *gridLayout_3;
     QLabel *label_41;
-    QComboBox *comboBox_27;
+    QComboBox *ratioComboBox;
     QLabel *label_34;
-    QComboBox *comboBox_22;
+    QComboBox *drMatrixComboBox;
     QLabel *label_35;
-    QComboBox *comboBox_23;
+    QComboBox *drViewComboBox;
     QLabel *label_36;
-    QComboBox *comboBox_24;
+    QComboBox *drSampleTimesComboBox;
     QLabel *label_37;
-    QLineEdit *lineEdit_13;
+    QLineEdit *drAngleLineEdit;
     QLabel *label_38;
     QLineEdit *lineEdit_14;
     QWidget *tab_5;
@@ -93,15 +93,15 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QGridLayout *gridLayout;
     QLabel *label_40;
-    QComboBox *comboBox_26;
+    QComboBox *ct3ScanModeComboBox;
     QLabel *label_39;
-    QComboBox *comboBox_25;
+    QComboBox *ct2MultiLayerComboBox;
     QLabel *label_31;
-    QComboBox *comboBox_20;
+    QComboBox *ct2MatrixComboBox;
     QLabel *label_30;
-    QComboBox *comboBox_21;
+    QComboBox *ct2ViewComboBox;
     QLabel *label_33;
-    QComboBox *comboBox_19;
+    QComboBox *ct2SampleTimesComboBox;
     QLabel *label_32;
     QLineEdit *lineEdit_11;
     QLabel *label_29;
@@ -109,16 +109,16 @@ public:
     QLabel *label_18;
     QLineEdit *lineEdit_7;
     QVBoxLayout *verticalLayout_2;
-    QListWidget *listWidget_2;
+    QListWidget *ct2LayerPosListWidget;
     QSpacerItem *verticalSpacer;
     QLabel *label_4;
-    QProgressBar *progressBar;
+    QProgressBar *nowProgressBar;
     QLabel *label_5;
-    QProgressBar *progressBar_2;
-    QPushButton *pushButton;
+    QProgressBar *allProgressBar;
+    QPushButton *startButton;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton_2;
+    QPushButton *stopButton;
 
     void setupUi(QWidget *LineDetScanWidget)
     {
@@ -232,10 +232,10 @@ public:
 
         gridLayout_4->addWidget(rayTab, 0, 0, 1, 2);
 
-        tabWidget = new QTabWidget(layoutWidget);
-        tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setMinimumSize(QSize(280, 280));
-        tabWidget->setMaximumSize(QSize(280, 280));
+        scanModeTab = new QTabWidget(layoutWidget);
+        scanModeTab->setObjectName(QStringLiteral("scanModeTab"));
+        scanModeTab->setMinimumSize(QSize(280, 280));
+        scanModeTab->setMaximumSize(QSize(280, 280));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         layoutWidget1 = new QWidget(tab);
@@ -262,17 +262,17 @@ public:
 
         gridLayout_2->addWidget(label_53, 0, 0, 1, 1);
 
-        comboBox_35 = new QComboBox(layoutWidget1);
-        comboBox_35->setObjectName(QStringLiteral("comboBox_35"));
+        ct3MultiLayerComboBox = new QComboBox(layoutWidget1);
+        ct3MultiLayerComboBox->setObjectName(QStringLiteral("ct3MultiLayerComboBox"));
         QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(comboBox_35->sizePolicy().hasHeightForWidth());
-        comboBox_35->setSizePolicy(sizePolicy2);
-        comboBox_35->setMinimumSize(QSize(80, 0));
-        comboBox_35->setMaximumSize(QSize(80, 16777215));
+        sizePolicy2.setHeightForWidth(ct3MultiLayerComboBox->sizePolicy().hasHeightForWidth());
+        ct3MultiLayerComboBox->setSizePolicy(sizePolicy2);
+        ct3MultiLayerComboBox->setMinimumSize(QSize(80, 0));
+        ct3MultiLayerComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(comboBox_35, 0, 1, 1, 1);
+        gridLayout_2->addWidget(ct3MultiLayerComboBox, 0, 1, 1, 1);
 
         label = new QLabel(layoutWidget1);
         label->setObjectName(QStringLiteral("label"));
@@ -281,14 +281,14 @@ public:
 
         gridLayout_2->addWidget(label, 1, 0, 1, 1);
 
-        comboBox = new QComboBox(layoutWidget1);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        sizePolicy2.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy2);
-        comboBox->setMinimumSize(QSize(80, 0));
-        comboBox->setMaximumSize(QSize(80, 16777215));
+        ct3MatrixComboBox = new QComboBox(layoutWidget1);
+        ct3MatrixComboBox->setObjectName(QStringLiteral("ct3MatrixComboBox"));
+        sizePolicy2.setHeightForWidth(ct3MatrixComboBox->sizePolicy().hasHeightForWidth());
+        ct3MatrixComboBox->setSizePolicy(sizePolicy2);
+        ct3MatrixComboBox->setMinimumSize(QSize(80, 0));
+        ct3MatrixComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(comboBox, 1, 1, 1, 1);
+        gridLayout_2->addWidget(ct3MatrixComboBox, 1, 1, 1, 1);
 
         label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -297,14 +297,14 @@ public:
 
         gridLayout_2->addWidget(label_2, 2, 0, 1, 1);
 
-        comboBox_2 = new QComboBox(layoutWidget1);
-        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-        sizePolicy2.setHeightForWidth(comboBox_2->sizePolicy().hasHeightForWidth());
-        comboBox_2->setSizePolicy(sizePolicy2);
-        comboBox_2->setMinimumSize(QSize(80, 0));
-        comboBox_2->setMaximumSize(QSize(80, 16777215));
+        ct3ViewComboBox = new QComboBox(layoutWidget1);
+        ct3ViewComboBox->setObjectName(QStringLiteral("ct3ViewComboBox"));
+        sizePolicy2.setHeightForWidth(ct3ViewComboBox->sizePolicy().hasHeightForWidth());
+        ct3ViewComboBox->setSizePolicy(sizePolicy2);
+        ct3ViewComboBox->setMinimumSize(QSize(80, 0));
+        ct3ViewComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(comboBox_2, 2, 1, 1, 1);
+        gridLayout_2->addWidget(ct3ViewComboBox, 2, 1, 1, 1);
 
         label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QStringLiteral("label_3"));
@@ -313,14 +313,14 @@ public:
 
         gridLayout_2->addWidget(label_3, 3, 0, 1, 1);
 
-        comboBox_3 = new QComboBox(layoutWidget1);
-        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
-        sizePolicy2.setHeightForWidth(comboBox_3->sizePolicy().hasHeightForWidth());
-        comboBox_3->setSizePolicy(sizePolicy2);
-        comboBox_3->setMinimumSize(QSize(80, 0));
-        comboBox_3->setMaximumSize(QSize(80, 16777215));
+        ct3SampleTimesComboBox = new QComboBox(layoutWidget1);
+        ct3SampleTimesComboBox->setObjectName(QStringLiteral("ct3SampleTimesComboBox"));
+        sizePolicy2.setHeightForWidth(ct3SampleTimesComboBox->sizePolicy().hasHeightForWidth());
+        ct3SampleTimesComboBox->setSizePolicy(sizePolicy2);
+        ct3SampleTimesComboBox->setMinimumSize(QSize(80, 0));
+        ct3SampleTimesComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(comboBox_3, 3, 1, 1, 1);
+        gridLayout_2->addWidget(ct3SampleTimesComboBox, 3, 1, 1, 1);
 
         label_7 = new QLabel(layoutWidget1);
         label_7->setObjectName(QStringLiteral("label_7"));
@@ -329,14 +329,14 @@ public:
 
         gridLayout_2->addWidget(label_7, 4, 0, 1, 1);
 
-        lineEdit = new QLineEdit(layoutWidget1);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        sizePolicy2.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy2);
-        lineEdit->setMinimumSize(QSize(80, 0));
-        lineEdit->setMaximumSize(QSize(80, 16777215));
+        ct3AngleLineEdit = new QLineEdit(layoutWidget1);
+        ct3AngleLineEdit->setObjectName(QStringLiteral("ct3AngleLineEdit"));
+        sizePolicy2.setHeightForWidth(ct3AngleLineEdit->sizePolicy().hasHeightForWidth());
+        ct3AngleLineEdit->setSizePolicy(sizePolicy2);
+        ct3AngleLineEdit->setMinimumSize(QSize(80, 0));
+        ct3AngleLineEdit->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(lineEdit, 4, 1, 1, 1);
+        gridLayout_2->addWidget(ct3AngleLineEdit, 4, 1, 1, 1);
 
         label_8 = new QLabel(layoutWidget1);
         label_8->setObjectName(QStringLiteral("label_8"));
@@ -345,14 +345,14 @@ public:
 
         gridLayout_2->addWidget(label_8, 5, 0, 1, 1);
 
-        lineEdit_2 = new QLineEdit(layoutWidget1);
-        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
-        sizePolicy2.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
-        lineEdit_2->setSizePolicy(sizePolicy2);
-        lineEdit_2->setMinimumSize(QSize(80, 0));
-        lineEdit_2->setMaximumSize(QSize(80, 16777215));
+        ct3LayerPosLineEdit = new QLineEdit(layoutWidget1);
+        ct3LayerPosLineEdit->setObjectName(QStringLiteral("ct3LayerPosLineEdit"));
+        sizePolicy2.setHeightForWidth(ct3LayerPosLineEdit->sizePolicy().hasHeightForWidth());
+        ct3LayerPosLineEdit->setSizePolicy(sizePolicy2);
+        ct3LayerPosLineEdit->setMinimumSize(QSize(80, 0));
+        ct3LayerPosLineEdit->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(lineEdit_2, 5, 1, 1, 1);
+        gridLayout_2->addWidget(ct3LayerPosLineEdit, 5, 1, 1, 1);
 
         label_17 = new QLabel(layoutWidget1);
         label_17->setObjectName(QStringLiteral("label_17"));
@@ -361,14 +361,14 @@ public:
 
         gridLayout_2->addWidget(label_17, 6, 0, 1, 1);
 
-        lineEdit_5 = new QLineEdit(layoutWidget1);
-        lineEdit_5->setObjectName(QStringLiteral("lineEdit_5"));
-        sizePolicy2.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
-        lineEdit_5->setSizePolicy(sizePolicy2);
-        lineEdit_5->setMinimumSize(QSize(80, 0));
-        lineEdit_5->setMaximumSize(QSize(80, 16777215));
+        ct3LayerSpaceLineEdit = new QLineEdit(layoutWidget1);
+        ct3LayerSpaceLineEdit->setObjectName(QStringLiteral("ct3LayerSpaceLineEdit"));
+        sizePolicy2.setHeightForWidth(ct3LayerSpaceLineEdit->sizePolicy().hasHeightForWidth());
+        ct3LayerSpaceLineEdit->setSizePolicy(sizePolicy2);
+        ct3LayerSpaceLineEdit->setMinimumSize(QSize(80, 0));
+        ct3LayerSpaceLineEdit->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(lineEdit_5, 6, 1, 1, 1);
+        gridLayout_2->addWidget(ct3LayerSpaceLineEdit, 6, 1, 1, 1);
 
 
         horizontalLayout_2->addLayout(gridLayout_2);
@@ -376,12 +376,12 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        listWidget = new QListWidget(layoutWidget1);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setMinimumSize(QSize(100, 130));
-        listWidget->setMaximumSize(QSize(100, 130));
+        ct3LayerPosListWidget = new QListWidget(layoutWidget1);
+        ct3LayerPosListWidget->setObjectName(QStringLiteral("ct3LayerPosListWidget"));
+        ct3LayerPosListWidget->setMinimumSize(QSize(100, 130));
+        ct3LayerPosListWidget->setMaximumSize(QSize(100, 130));
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(ct3LayerPosListWidget);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -390,7 +390,7 @@ public:
 
         horizontalLayout_2->addLayout(verticalLayout);
 
-        tabWidget->addTab(tab, QString());
+        scanModeTab->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         layoutWidget2 = new QWidget(tab_2);
@@ -414,12 +414,12 @@ public:
 
         gridLayout_3->addWidget(label_41, 0, 0, 1, 1);
 
-        comboBox_27 = new QComboBox(layoutWidget2);
-        comboBox_27->setObjectName(QStringLiteral("comboBox_27"));
-        comboBox_27->setMinimumSize(QSize(80, 0));
-        comboBox_27->setMaximumSize(QSize(80, 16777215));
+        ratioComboBox = new QComboBox(layoutWidget2);
+        ratioComboBox->setObjectName(QStringLiteral("ratioComboBox"));
+        ratioComboBox->setMinimumSize(QSize(80, 0));
+        ratioComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_3->addWidget(comboBox_27, 0, 1, 1, 1);
+        gridLayout_3->addWidget(ratioComboBox, 0, 1, 1, 1);
 
         label_34 = new QLabel(layoutWidget2);
         label_34->setObjectName(QStringLiteral("label_34"));
@@ -430,12 +430,12 @@ public:
 
         gridLayout_3->addWidget(label_34, 1, 0, 1, 1);
 
-        comboBox_22 = new QComboBox(layoutWidget2);
-        comboBox_22->setObjectName(QStringLiteral("comboBox_22"));
-        comboBox_22->setMinimumSize(QSize(80, 0));
-        comboBox_22->setMaximumSize(QSize(80, 16777215));
+        drMatrixComboBox = new QComboBox(layoutWidget2);
+        drMatrixComboBox->setObjectName(QStringLiteral("drMatrixComboBox"));
+        drMatrixComboBox->setMinimumSize(QSize(80, 0));
+        drMatrixComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_3->addWidget(comboBox_22, 1, 1, 1, 1);
+        gridLayout_3->addWidget(drMatrixComboBox, 1, 1, 1, 1);
 
         label_35 = new QLabel(layoutWidget2);
         label_35->setObjectName(QStringLiteral("label_35"));
@@ -446,12 +446,12 @@ public:
 
         gridLayout_3->addWidget(label_35, 2, 0, 1, 1);
 
-        comboBox_23 = new QComboBox(layoutWidget2);
-        comboBox_23->setObjectName(QStringLiteral("comboBox_23"));
-        comboBox_23->setMinimumSize(QSize(80, 0));
-        comboBox_23->setMaximumSize(QSize(80, 16777215));
+        drViewComboBox = new QComboBox(layoutWidget2);
+        drViewComboBox->setObjectName(QStringLiteral("drViewComboBox"));
+        drViewComboBox->setMinimumSize(QSize(80, 0));
+        drViewComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_3->addWidget(comboBox_23, 2, 1, 1, 1);
+        gridLayout_3->addWidget(drViewComboBox, 2, 1, 1, 1);
 
         label_36 = new QLabel(layoutWidget2);
         label_36->setObjectName(QStringLiteral("label_36"));
@@ -462,12 +462,12 @@ public:
 
         gridLayout_3->addWidget(label_36, 3, 0, 1, 1);
 
-        comboBox_24 = new QComboBox(layoutWidget2);
-        comboBox_24->setObjectName(QStringLiteral("comboBox_24"));
-        comboBox_24->setMinimumSize(QSize(80, 0));
-        comboBox_24->setMaximumSize(QSize(80, 16777215));
+        drSampleTimesComboBox = new QComboBox(layoutWidget2);
+        drSampleTimesComboBox->setObjectName(QStringLiteral("drSampleTimesComboBox"));
+        drSampleTimesComboBox->setMinimumSize(QSize(80, 0));
+        drSampleTimesComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_3->addWidget(comboBox_24, 3, 1, 1, 1);
+        gridLayout_3->addWidget(drSampleTimesComboBox, 3, 1, 1, 1);
 
         label_37 = new QLabel(layoutWidget2);
         label_37->setObjectName(QStringLiteral("label_37"));
@@ -478,13 +478,13 @@ public:
 
         gridLayout_3->addWidget(label_37, 4, 0, 1, 1);
 
-        lineEdit_13 = new QLineEdit(layoutWidget2);
-        lineEdit_13->setObjectName(QStringLiteral("lineEdit_13"));
-        lineEdit_13->setMinimumSize(QSize(80, 0));
-        lineEdit_13->setMaximumSize(QSize(80, 16777215));
-        lineEdit_13->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        drAngleLineEdit = new QLineEdit(layoutWidget2);
+        drAngleLineEdit->setObjectName(QStringLiteral("drAngleLineEdit"));
+        drAngleLineEdit->setMinimumSize(QSize(80, 0));
+        drAngleLineEdit->setMaximumSize(QSize(80, 16777215));
+        drAngleLineEdit->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        gridLayout_3->addWidget(lineEdit_13, 4, 1, 1, 1);
+        gridLayout_3->addWidget(drAngleLineEdit, 4, 1, 1, 1);
 
         label_38 = new QLabel(layoutWidget2);
         label_38->setObjectName(QStringLiteral("label_38"));
@@ -508,7 +508,7 @@ public:
 
         gridLayout_3->addWidget(lineEdit_14, 5, 1, 1, 1);
 
-        tabWidget->addTab(tab_2, QString());
+        scanModeTab->addTab(tab_2, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QStringLiteral("tab_5"));
         layoutWidget3 = new QWidget(tab_5);
@@ -532,14 +532,14 @@ public:
 
         gridLayout->addWidget(label_40, 0, 0, 1, 1);
 
-        comboBox_26 = new QComboBox(layoutWidget3);
-        comboBox_26->setObjectName(QStringLiteral("comboBox_26"));
-        sizePolicy2.setHeightForWidth(comboBox_26->sizePolicy().hasHeightForWidth());
-        comboBox_26->setSizePolicy(sizePolicy2);
-        comboBox_26->setMinimumSize(QSize(80, 0));
-        comboBox_26->setMaximumSize(QSize(80, 16777215));
+        ct3ScanModeComboBox = new QComboBox(layoutWidget3);
+        ct3ScanModeComboBox->setObjectName(QStringLiteral("ct3ScanModeComboBox"));
+        sizePolicy2.setHeightForWidth(ct3ScanModeComboBox->sizePolicy().hasHeightForWidth());
+        ct3ScanModeComboBox->setSizePolicy(sizePolicy2);
+        ct3ScanModeComboBox->setMinimumSize(QSize(80, 0));
+        ct3ScanModeComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout->addWidget(comboBox_26, 0, 1, 1, 1);
+        gridLayout->addWidget(ct3ScanModeComboBox, 0, 1, 1, 1);
 
         label_39 = new QLabel(layoutWidget3);
         label_39->setObjectName(QStringLiteral("label_39"));
@@ -550,14 +550,14 @@ public:
 
         gridLayout->addWidget(label_39, 1, 0, 1, 1);
 
-        comboBox_25 = new QComboBox(layoutWidget3);
-        comboBox_25->setObjectName(QStringLiteral("comboBox_25"));
-        sizePolicy2.setHeightForWidth(comboBox_25->sizePolicy().hasHeightForWidth());
-        comboBox_25->setSizePolicy(sizePolicy2);
-        comboBox_25->setMinimumSize(QSize(80, 0));
-        comboBox_25->setMaximumSize(QSize(80, 16777215));
+        ct2MultiLayerComboBox = new QComboBox(layoutWidget3);
+        ct2MultiLayerComboBox->setObjectName(QStringLiteral("ct2MultiLayerComboBox"));
+        sizePolicy2.setHeightForWidth(ct2MultiLayerComboBox->sizePolicy().hasHeightForWidth());
+        ct2MultiLayerComboBox->setSizePolicy(sizePolicy2);
+        ct2MultiLayerComboBox->setMinimumSize(QSize(80, 0));
+        ct2MultiLayerComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout->addWidget(comboBox_25, 1, 1, 1, 1);
+        gridLayout->addWidget(ct2MultiLayerComboBox, 1, 1, 1, 1);
 
         label_31 = new QLabel(layoutWidget3);
         label_31->setObjectName(QStringLiteral("label_31"));
@@ -568,14 +568,14 @@ public:
 
         gridLayout->addWidget(label_31, 2, 0, 1, 1);
 
-        comboBox_20 = new QComboBox(layoutWidget3);
-        comboBox_20->setObjectName(QStringLiteral("comboBox_20"));
-        sizePolicy2.setHeightForWidth(comboBox_20->sizePolicy().hasHeightForWidth());
-        comboBox_20->setSizePolicy(sizePolicy2);
-        comboBox_20->setMinimumSize(QSize(80, 0));
-        comboBox_20->setMaximumSize(QSize(80, 16777215));
+        ct2MatrixComboBox = new QComboBox(layoutWidget3);
+        ct2MatrixComboBox->setObjectName(QStringLiteral("ct2MatrixComboBox"));
+        sizePolicy2.setHeightForWidth(ct2MatrixComboBox->sizePolicy().hasHeightForWidth());
+        ct2MatrixComboBox->setSizePolicy(sizePolicy2);
+        ct2MatrixComboBox->setMinimumSize(QSize(80, 0));
+        ct2MatrixComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout->addWidget(comboBox_20, 2, 1, 1, 1);
+        gridLayout->addWidget(ct2MatrixComboBox, 2, 1, 1, 1);
 
         label_30 = new QLabel(layoutWidget3);
         label_30->setObjectName(QStringLiteral("label_30"));
@@ -586,14 +586,14 @@ public:
 
         gridLayout->addWidget(label_30, 3, 0, 1, 1);
 
-        comboBox_21 = new QComboBox(layoutWidget3);
-        comboBox_21->setObjectName(QStringLiteral("comboBox_21"));
-        sizePolicy2.setHeightForWidth(comboBox_21->sizePolicy().hasHeightForWidth());
-        comboBox_21->setSizePolicy(sizePolicy2);
-        comboBox_21->setMinimumSize(QSize(80, 0));
-        comboBox_21->setMaximumSize(QSize(80, 16777215));
+        ct2ViewComboBox = new QComboBox(layoutWidget3);
+        ct2ViewComboBox->setObjectName(QStringLiteral("ct2ViewComboBox"));
+        sizePolicy2.setHeightForWidth(ct2ViewComboBox->sizePolicy().hasHeightForWidth());
+        ct2ViewComboBox->setSizePolicy(sizePolicy2);
+        ct2ViewComboBox->setMinimumSize(QSize(80, 0));
+        ct2ViewComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout->addWidget(comboBox_21, 3, 1, 1, 1);
+        gridLayout->addWidget(ct2ViewComboBox, 3, 1, 1, 1);
 
         label_33 = new QLabel(layoutWidget3);
         label_33->setObjectName(QStringLiteral("label_33"));
@@ -604,14 +604,14 @@ public:
 
         gridLayout->addWidget(label_33, 4, 0, 1, 1);
 
-        comboBox_19 = new QComboBox(layoutWidget3);
-        comboBox_19->setObjectName(QStringLiteral("comboBox_19"));
-        sizePolicy2.setHeightForWidth(comboBox_19->sizePolicy().hasHeightForWidth());
-        comboBox_19->setSizePolicy(sizePolicy2);
-        comboBox_19->setMinimumSize(QSize(80, 0));
-        comboBox_19->setMaximumSize(QSize(80, 16777215));
+        ct2SampleTimesComboBox = new QComboBox(layoutWidget3);
+        ct2SampleTimesComboBox->setObjectName(QStringLiteral("ct2SampleTimesComboBox"));
+        sizePolicy2.setHeightForWidth(ct2SampleTimesComboBox->sizePolicy().hasHeightForWidth());
+        ct2SampleTimesComboBox->setSizePolicy(sizePolicy2);
+        ct2SampleTimesComboBox->setMinimumSize(QSize(80, 0));
+        ct2SampleTimesComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout->addWidget(comboBox_19, 4, 1, 1, 1);
+        gridLayout->addWidget(ct2SampleTimesComboBox, 4, 1, 1, 1);
 
         label_32 = new QLabel(layoutWidget3);
         label_32->setObjectName(QStringLiteral("label_32"));
@@ -673,17 +673,17 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        listWidget_2 = new QListWidget(layoutWidget3);
-        listWidget_2->setObjectName(QStringLiteral("listWidget_2"));
+        ct2LayerPosListWidget = new QListWidget(layoutWidget3);
+        ct2LayerPosListWidget->setObjectName(QStringLiteral("ct2LayerPosListWidget"));
         QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(listWidget_2->sizePolicy().hasHeightForWidth());
-        listWidget_2->setSizePolicy(sizePolicy5);
-        listWidget_2->setMinimumSize(QSize(100, 130));
-        listWidget_2->setMaximumSize(QSize(100, 130));
+        sizePolicy5.setHeightForWidth(ct2LayerPosListWidget->sizePolicy().hasHeightForWidth());
+        ct2LayerPosListWidget->setSizePolicy(sizePolicy5);
+        ct2LayerPosListWidget->setMinimumSize(QSize(100, 130));
+        ct2LayerPosListWidget->setMaximumSize(QSize(100, 130));
 
-        verticalLayout_2->addWidget(listWidget_2);
+        verticalLayout_2->addWidget(ct2LayerPosListWidget);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -692,46 +692,46 @@ public:
 
         horizontalLayout_3->addLayout(verticalLayout_2);
 
-        tabWidget->addTab(tab_5, QString());
+        scanModeTab->addTab(tab_5, QString());
 
-        gridLayout_4->addWidget(tabWidget, 1, 0, 1, 2);
+        gridLayout_4->addWidget(scanModeTab, 1, 0, 1, 2);
 
         label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
 
         gridLayout_4->addWidget(label_4, 2, 0, 1, 1);
 
-        progressBar = new QProgressBar(layoutWidget);
-        progressBar->setObjectName(QStringLiteral("progressBar"));
-        sizePolicy2.setHeightForWidth(progressBar->sizePolicy().hasHeightForWidth());
-        progressBar->setSizePolicy(sizePolicy2);
-        progressBar->setMinimumSize(QSize(100, 0));
-        progressBar->setAutoFillBackground(false);
-        progressBar->setValue(24);
-        progressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        nowProgressBar = new QProgressBar(layoutWidget);
+        nowProgressBar->setObjectName(QStringLiteral("nowProgressBar"));
+        sizePolicy2.setHeightForWidth(nowProgressBar->sizePolicy().hasHeightForWidth());
+        nowProgressBar->setSizePolicy(sizePolicy2);
+        nowProgressBar->setMinimumSize(QSize(100, 0));
+        nowProgressBar->setAutoFillBackground(false);
+        nowProgressBar->setValue(24);
+        nowProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_4->addWidget(progressBar, 2, 1, 1, 1);
+        gridLayout_4->addWidget(nowProgressBar, 2, 1, 1, 1);
 
         label_5 = new QLabel(layoutWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
 
         gridLayout_4->addWidget(label_5, 3, 0, 1, 1);
 
-        progressBar_2 = new QProgressBar(layoutWidget);
-        progressBar_2->setObjectName(QStringLiteral("progressBar_2"));
-        sizePolicy2.setHeightForWidth(progressBar_2->sizePolicy().hasHeightForWidth());
-        progressBar_2->setSizePolicy(sizePolicy2);
-        progressBar_2->setAutoFillBackground(false);
-        progressBar_2->setValue(24);
-        progressBar_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        allProgressBar = new QProgressBar(layoutWidget);
+        allProgressBar->setObjectName(QStringLiteral("allProgressBar"));
+        sizePolicy2.setHeightForWidth(allProgressBar->sizePolicy().hasHeightForWidth());
+        allProgressBar->setSizePolicy(sizePolicy2);
+        allProgressBar->setAutoFillBackground(false);
+        allProgressBar->setValue(24);
+        allProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout_4->addWidget(progressBar_2, 3, 1, 1, 1);
+        gridLayout_4->addWidget(allProgressBar, 3, 1, 1, 1);
 
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setMinimumSize(QSize(0, 30));
+        startButton = new QPushButton(layoutWidget);
+        startButton->setObjectName(QStringLiteral("startButton"));
+        startButton->setMinimumSize(QSize(0, 30));
 
-        gridLayout_4->addWidget(pushButton, 4, 0, 1, 1);
+        gridLayout_4->addWidget(startButton, 4, 0, 1, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -740,11 +740,11 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        pushButton_2 = new QPushButton(layoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setMinimumSize(QSize(0, 30));
+        stopButton = new QPushButton(layoutWidget);
+        stopButton->setObjectName(QStringLiteral("stopButton"));
+        stopButton->setMinimumSize(QSize(0, 30));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(stopButton);
 
 
         gridLayout_4->addLayout(horizontalLayout, 4, 1, 1, 1);
@@ -752,8 +752,8 @@ public:
 
         retranslateUi(LineDetScanWidget);
 
-        rayTab->setCurrentIndex(1);
-        tabWidget->setCurrentIndex(0);
+        rayTab->setCurrentIndex(0);
+        scanModeTab->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(LineDetScanWidget);
@@ -782,14 +782,14 @@ public:
         label_7->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_8->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
         label_17->setText(QApplication::translate("LineDetScanWidget", "\345\261\202\351\227\264\350\267\235", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("LineDetScanWidget", "\344\270\211\344\273\243CT", nullptr));
+        scanModeTab->setTabText(scanModeTab->indexOf(tab), QApplication::translate("LineDetScanWidget", "\344\270\211\344\273\243CT", nullptr));
         label_41->setText(QApplication::translate("LineDetScanWidget", "\346\257\224\344\276\213\346\250\241\345\274\217", nullptr));
         label_34->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
         label_35->setText(QApplication::translate("LineDetScanWidget", "\350\247\206\345\234\272\347\233\264\345\276\204", nullptr));
         label_36->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\254\241\346\225\260", nullptr));
         label_37->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_38->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("LineDetScanWidget", "DR", nullptr));
+        scanModeTab->setTabText(scanModeTab->indexOf(tab_2), QApplication::translate("LineDetScanWidget", "DR", nullptr));
         label_40->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\345\274\217", nullptr));
         label_39->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215/\345\244\232\345\261\202", nullptr));
         label_31->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
@@ -798,11 +798,11 @@ public:
         label_32->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_29->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
         label_18->setText(QApplication::translate("LineDetScanWidget", "\345\261\202\351\227\264\350\267\235", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("LineDetScanWidget", "\344\272\214\344\273\243CT", nullptr));
+        scanModeTab->setTabText(scanModeTab->indexOf(tab_5), QApplication::translate("LineDetScanWidget", "\344\272\214\344\273\243CT", nullptr));
         label_4->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215\350\277\233\345\272\246", nullptr));
         label_5->setText(QApplication::translate("LineDetScanWidget", "\346\200\273\344\275\223\350\277\233\345\272\246", nullptr));
-        pushButton->setText(QApplication::translate("LineDetScanWidget", "\345\274\200\345\247\213", nullptr));
-        pushButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\255\242", nullptr));
+        startButton->setText(QApplication::translate("LineDetScanWidget", "\345\274\200\345\247\213", nullptr));
+        stopButton->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\255\242", nullptr));
     } // retranslateUi
 
 };

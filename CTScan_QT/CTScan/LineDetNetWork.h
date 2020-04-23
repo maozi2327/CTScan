@@ -1,4 +1,5 @@
 #pragma once
+#include <QObject>
 #include <memory>
 #include <condition_variable>
 #include <mutex>
@@ -125,8 +126,9 @@ public:
 	}
 };
 
-class LineDetNetWork
+class LineDetNetWork : public QObject
 {
+	Q_OBJECT
 private:
 	std::unique_ptr<TcpServer> d_server;
 	enum DataType
@@ -135,6 +137,7 @@ private:
 		PARAMETER,
 		DATA
 	};
+	bool d_connected;
 	std::condition_variable d_con;
 	std::mutex d_mutex;
 	DataType d_recvType;
@@ -159,6 +162,12 @@ private:
 	//        ------------------------其他脉冲数据-----------------------------------
 	//        -----------------------最后一个脉冲数据-----------------------------------
 	std::vector<unsigned int> d_nonBlockModuleMap;
+
+public slots:
+	void netWorkStatusSlot(bool sts);
+
+signals:
+	void netWorkStatusSignal(bool sts);
 public:
 	bool recvServer_DATA();
 	bool NetCheck();
@@ -180,6 +189,8 @@ public:
 	int CollectUsefulData(char * in_buff, int in_size);
 	LineDetList* getRowList();
 	void clearRowList();
+
+	bool getConnected();
 	LineDetNetWork();
 	~LineDetNetWork();
 };

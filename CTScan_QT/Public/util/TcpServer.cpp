@@ -14,7 +14,7 @@ TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packe
 	, d_connected(false)
 {
 	initialNetWorkForVariablePacketSize();
-	connect(d_tcpServer, SIGNAL(newConnection()), this, SLOT(acceptCollection()));
+	connect(d_tcpServer, &QTcpServer::newConnection, this, &TcpServer::acceptCollection);
 }
 
 TcpServer::TcpServer(int in_packetSize, QHostAddress in_hosetAddress, unsigned short in_serverPort
@@ -65,13 +65,16 @@ bool TcpServer::initialNetWorkForVariablePacketSize()
 }
 bool TcpServer::sendAsyn(const char* in_buffer, int in_size)
 {
+	if (!d_connected)
+		return false;
+
 	TcpServer::command cmd{ in_buffer, in_size };
 	d_sendQueue.push(cmd);
 	return true;
 }
 int TcpServer::sendSyn(const char* in_buffer, int in_size)
 {
-	if(d_tcpSocket)
+	if(d_connected && d_tcpSocket)
 		return d_tcpSocket->write(in_buffer, in_size);
 
 	return -1;
@@ -130,6 +133,7 @@ void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 
 		while (d_connected)
 		{
+			d_tcpSocket->waitForReadyRead(10000000);
 			char* headBuffer = new char[d_packetHeadSize];
 			int nRet = d_tcpSocket->read(headBuffer, d_packetHeadSize);
 
@@ -138,6 +142,8 @@ void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 				reAccept();
 				break;
 			}
+			else if (nRet == 0)
+				continue;
 
 			byteRead += nRet;
 			unsigned int packetSize = 0;
@@ -166,8 +172,12 @@ void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 			}
 		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		//std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
+}
+bool TcpServer::getConnected()
+{
+	return d_connected;
 }
 void TcpServer::sendThread(std::promise<bool>& in_promise)
 {

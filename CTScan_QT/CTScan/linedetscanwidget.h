@@ -10,6 +10,8 @@ class LineDetScanWidget : public QWidget
 public:
 	LineDetScanWidget(MotorControl* in_motorControl, QWidget *parent = Q_NULLPTR);
 	~LineDetScanWidget();
+
+	void onNetworkStsChanged(bool in_netWorkSts);
 protected:
 #ifndef QT_NO_CONTEXTMENU
 	void contextMenuEvent(QContextMenuEvent *event) override;
@@ -18,8 +20,8 @@ private:
 	Ui::LineDetScanWidget ui;
 	QAction *showMotorTableAction;
 	MotorControl* d_motorControl;
+
+	void disableAllControls();
 private slots:
 	void showMotorTable();
-	//void copy();
-	//void paste();
 };

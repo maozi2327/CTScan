@@ -1,17 +1,28 @@
 #pragma once
+#include <QObJect>
 #include "..\Public\headers\machineType.h"
+#include <chrono>
 #include <vector>
 #include <map>
-class ControllerInterface
+class ControllerInterface : public QObject
 {
+	Q_OBJECT
+signals:
+	void netWorkStsSginal(bool sts);
 protected:
 	std::map<Axis, float> d_axisSpeed;
 	std::map<Axis, float> d_axisPosition;
 	std::map<Axis, float> d_axisWorkZero;
+	bool d_connected;
+	std::chrono::milliseconds d_timeout;
+	virtual void setConnectdSts() = 0;
 	virtual bool sendCmd() = 0;
 public:
 	ControllerInterface();
 	virtual ~ControllerInterface();
+	
+	virtual bool getConnected() = 0;
+
 	virtual bool initialSend() = 0;
 	virtual bool stopAll() = 0;
 	virtual bool initialiseController() = 0;
@@ -19,7 +30,7 @@ public:
 	virtual bool axisAbsMove(Axis in_axis, float in_pos) = 0;
 	virtual bool axisRelMove(Axis in_axis, float in_pos) = 0;
 	virtual bool sliceMove(float in_pos) = 0;
-
+	
 
 	virtual bool readReadyStatus() = 0;
 	virtual bool readSaveStatus() = 0;

@@ -19,6 +19,10 @@ public:
 	int sendSyn(const char* in_buffer, int in_size);
 	bool receive(char* in_buffer, int in_size);
 	void recvThreadPacketHead(std::promise<bool>& in_promise);
+	bool getConnected();
+
+signals:
+	void netWorkStatusSignal(int sts);
 private:
 	struct command
 	{
