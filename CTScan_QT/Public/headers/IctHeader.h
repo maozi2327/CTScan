@@ -88,7 +88,8 @@ enum{
 //扫描模式符号名定义
 #ifndef	_SCAN_MODE_NAME
 #define	_SCAN_MODE_NAME
-enum{
+enum class ScanMode
+{
 	NO_SCAN		=	-1,												//无扫描操作
 	CT1_SCAN,														//Ⅰ代扫描
 	CT2_SCAN,														//Ⅱ代扫描

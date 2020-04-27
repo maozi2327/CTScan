@@ -1,0 +1,14 @@
+<Setup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="***">
+    <kVRay>
+        <kVRayData rayNum="1" rayEnergy="450kV" rayDoseRate="4000" rayType="Comet-450"/>
+        <kVRayData rayNum="2" rayEnergy="225kV" rayDoseRate="4000" rayType="Worx-225"/>
+    </kVRay>
+    <LineDet>
+        <LineDetData LineDetType="arch" AmplifyMultiple="7" HorizontalSectorAngle="36.48" NumberOfCalibrateHorizontalDetector="20" LineDetNum="1" IntegralTime="20" nBlockMapTable="76,77,78,79" BeginSerialNoOfCt2Detector="204" nFIFOdepth="64" DelayTime="10" NumberOfSystemHorizontalDetector="608" nDetectorChnnelAmount="" EndSerialNoOfCt2Detector="403" HorizontalDetectorAngle="0.06" nChnnelMask="1111 1111 11"/>
+        <LineDetData1>
+            <LineDetType>arch</LineDetType>
+            <AmplifyMultiple>7</AmplifyMultiple>
+            <HorizontalSectorAngle>36.48</HorizontalSectorAngle>
+        </LineDetData1>
+    </LineDet>
+</Setup>

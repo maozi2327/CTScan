@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
 #include "CtrlData.h"
+#include "IctHeader.h"
+#include <map>
+#include <tuple>
 //系统参数设置数据结构文件
 
 /*
@@ -20,7 +23,8 @@ DNS服务器:	202.202.0.33
 #define	MAX_SCANCONFIG_ITEM	32										//最大扫描组态项数
 
 //射线源符号名定义
-enum{
+enum
+{
 	TUBE_SPELLMAN	=	0,											//X射线管: 使用SPELLMAN高压电源
 	TUBE_COMET,														//X射线管: 使用COMET高压电源
 	ACCELERATOR,													//电子直线加速器
@@ -32,7 +36,8 @@ enum{
 	UNKNOW_RAY														//未知射线源(如WORX)
 };
 //探测器符号定义定义探测器类型(PANEL_PECMOS-[默认],PANEL_PEFPD,PANEL_GNCCD,UNKOWN_PANEL)
-enum{
+enum
+{
 	PANEL_PECMOS = 0,												//PE CMOS探测器
 	PANEL_PESI_0822,												//PE 非晶SI探测器
 	PANEL_PESI_1622,												//PE 非晶SI探测器
@@ -46,7 +51,8 @@ enum{
 };
 
 //控制器符号定义
-enum{
+enum
+{
 	CTRLER_SIMOTION	= 0,											//NEWPORT控制器
 	CTRLER_UMAC,													//UMAC控制器
 	CTRLER_PI,														//PI控制器
@@ -55,45 +61,52 @@ enum{
 };
 
 //图像/视频/图片监视模式定义
-enum{
+enum
+{
 	PICTURE			=	0,											//图片
 	VIDEO,															//视频
 	IMAGE															//图像
 };
 
 //定义线阵数据处理方式
-enum{
+enum
+{
 	DP_DLL		= 0,												//动态库
 	DP_SERVER														//服务器
 };
 
 //定义面阵数据处理方式
-enum{
+enum
+{
 	DP_DETDLL		= 0,											//探测器自带动态库
 	//DP_SERVER														//校正函数调用服务器
 };
 
 //定义控制端口通信方式
-enum{
+enum
+{
 	SERIAL_PORT	= 0,												//串行通信端口
 	TCP_IP															//TCP/IP网络
 };
 
 //定义扫描方式名义值
-enum{
+enum
+{
 	sDR_SCAN	=	0,												//DR扫描
 	sCT_SCAN,														//CT扫描
 	sLV_SCAN                                                        //大视场扫描
 };
 
 //定义文件命令方式名义值
-enum{
+enum
+{
 	mDATE	=	0,													//默认命名方式："年月日+4位序号"
 	mDATE_NAME_NO                                                   //"年月日_名称_编号_4位序号"，如九院
 };
 
 //扫描常用模式数据结构定义
-struct _CommonModeData{
+struct _CommonModeData
+{
 	int		mode;													//扫描模式(1-CT2;2-CT3;3-DR;4-LOCAL)
 	WORD	matrix;													//图像矩阵
 	float	diameter;												//视场直径(mm)
@@ -115,7 +128,8 @@ struct _CommonModeData{
 };
 
 //扫描组态单个数据结构定义(线阵)
-struct _LineScanConfig{
+struct _LineScanConfig
+{
 	int		mode;													//扫描模式(0-DR, 1-CT，2-大视场CT)
 	WORD	matrix;													//图像矩阵
 	float	diameter;												//视场直径(mm)
@@ -126,7 +140,8 @@ struct _LineScanConfig{
 };
 
 //扫描组态单个数据结构定义(面阵)
-struct _PanScanConfig{
+struct _PanScanConfig
+{
 	int		mode;													//扫描模式(0-DR拍片)
 	float	orientationAngle;										//扫描方位(°)
 	float	layerPos;												//断层位置(mm)
@@ -140,7 +155,8 @@ struct _PanScanConfig{
 
 //2017.02.19增加
 //钨门位置数据结构定义
-struct _WDoorPosData{
+struct _WDoorPosData
+{
 	float   upDoorPos,												//上钨门位置   
 			downDoorPos,											//下钨门位置   
 			leftDoorPos,											//左钨门位置   
@@ -154,7 +170,8 @@ struct _WDoorPosData{
 //X-径向轴；
 //Y-平移轴；
 //Z-升降轴(分层运动方向)；
-union _SysAxisConfig{
+union _SysAxisConfig
+{
 	struct{
 		//*********************status1: 8 bits*****************************
 		BYTE	interpolation_define		:1;						//插值运动轴定义:0-不存在;1-存在
@@ -187,7 +204,8 @@ union _SysAxisConfig{
 
 //2017.10.05增加
 //工件参数信息定义
-struct _WorkPieceInfoData{
+struct _WorkPieceInfoData
+{
 	wchar_t	WorkpieceName[MAX_STR_LENGTH];							//工件名称
 	wchar_t	WorkpieceModel[MAX_STR_LENGTH];							//工件型号
 	wchar_t	WorkpieceNumber[MAX_STR_LENGTH];						//工件编号
@@ -200,70 +218,80 @@ struct _WorkPieceInfoData{
 };
 
 //扫描组态整体数据结构定义
-struct RayData 
+struct kVRayData 
 {
-	int		rayNumber;
-	struct RayParameter
-	{
-		int		rayDefine;												//射线源定义(TUBE_SPELLMAN/TUBE_COMET/ACCELERATOR/ACCELERATOR_NV/UNKNOW_TUBE)
-		float	rayEnergy;												//射线能量,单位:KV
-		float	rayDoseRate;											//射线剂量率, 单位:cGy/min/m
-	};
-	RayParameter rayParameter[4];
+	char	rayType[32];
+	short	rayDefine;												//射线源定义(TUBE_SPELLMAN/TUBE_COMET/ACCELERATOR/ACCELERATOR_NV/UNKNOW_TUBE)
+	float	rayEnergy;												//射线能量,单位:KV
+	float	rayDoseRate;											//射线剂量率, 单位:cGy/min/m
 };
 struct AcceleratorData
 {
-	int AcceleratorNumber;
-	struct AcceleratorParameter
-	{
-		float	rayEnergy;												//射线能量,单位:KV
-		float	rayDoseRate;											//射线剂量率, 单位:cGy/min/m
-		WORD	accRiseTime;											//加速器出束上升时间(ms)
-		std::vector<int>	syncFreqDefine;								//同步频率定义(Hz)
-	};
-	AcceleratorParameter AcceleratorParameter[4];
+	float	rayEnergy;												//射线能量,单位:KV
+	float	rayDoseRate;											//射线剂量率, 单位:cGy/min/m
+	short	accRiseTime;											//加速器出束上升时间(ms)
+	std::vector<int>	syncFreqDefine;								//同步频率定义(Hz)
+};
+enum class LineDetNum
+{
+	lineDet1 = 0,
+	lineDet2,
+	lineDet3,
+	lineDet4
 };
 struct LineDetData
 {
-	int		LineDetNumber;
-	struct LineDetParameter
-	{
-		WORD	LineDetType;
-		WORD	NumberOfSystemHorizontalDetector;               //射线平面方向系统探测器数(此参数为探测器总数)
-		WORD	NumberOfCalibrateHorizontalDetector;            //射线平面方向校正用探测器数(此参数为校正用探测器数量)
-		WORD	BeginSerialNoOfCt2Detector;                     //2代扫描开始探测器序号(从0开始)
-		WORD	EndSerialNoOfCt2Detector;                       //2代扫描结束探测器序号(从0开始)
-		float	RadialPosition;                                 //焦点到旋转中心距离(当前径向位置)(mm)    		
-		float	SourceDetectorDistance;							//焦点到探测器插值钢带距离(mm)
-		float	HorizontalSectorAngle;                          //射线平面方向扇角
-		float	HorizontalDetectorAngle;						//水平方向单个探测器夹角(°)
-		WORD	AmplifyMultiple;								//采样放大倍数, 典型值6
-		WORD	IntegralTime;									//采样积分时间(us), 典型值70
-		WORD	DelayTime;										//采样延迟时间(us), 典型值10
-		WORD	nFIFOdepth;										//数据采集FIFO通道深度, 典型值64
-		WORD	nChnnelMask;									//数据采集FIFO通道掩码(2进制表示, 每位代表64通道)
-		WORD	nDetectorChnnelAmount;							//探测器通道数(由上面2参数计算获得,可能大于物理探测器数)
-		int		nBlockMapTable[MAX_BLOCK];						//探测模块映射表,从0开始,以8通道为单位,最大1280通道,-1表示未用
-	};
-	LineDetParameter lineDetParameter[4];
+	char	LineDetType;
+	short	NumberOfSystemHorizontalDetector;               //射线平面方向系统探测器数(此参数为探测器总数)
+	short	NumberOfCalibrateHorizontalDetector;            //射线平面方向校正用探测器数(此参数为校正用探测器数量)
+	short	BeginSerialNoOfCt2Detector;                     //2代扫描开始探测器序号(从0开始)
+	short	EndSerialNoOfCt2Detector;                       //2代扫描结束探测器序号(从0开始)
+	short	AmplifyMultiple;								//采样放大倍数, 典型值6
+	short	IntegralTime;									//采样积分时间(us), 典型值70
+	short	DelayTime;										//采样延迟时间(us), 典型值10
+	short	nFIFOdepth;										//数据采集FIFO通道深度, 典型值64
+	short	nChnnelMask;									//数据采集FIFO通道掩码(2进制表示, 每位代表64通道)
+	short	nDetectorChnnelAmount;							//探测器通道数(由上面2参数计算获得,可能大于物理探测器数)
+	float	HorizontalSectorAngle;                          //射线平面方向扇角
+	float	HorizontalDetectorAngle;						//水平方向单个探测器夹角(°)
+	int		nBlockMapTable[MAX_BLOCK];	
+	//探测模块映射表,从0开始,以8通道为单位,最大1280通道,-1表示未用
 };
 struct PanDetData
 {
-	int PanDetType;
+	char PandetType[32];
+	short horizontalPixels;
+	short verticalPixels;
+	short pixelBlockLeft;
+	short pixelBlockRight;
+	float pixelSize;
+	char rotAngle;			//镜像，90 = 1, 180 = 2, 270 = 3
+	char mirror;			//镜像，x = 1, y = 2
+};
+struct CT2Para
+{
+	short beginDector;
+	short endDector;
+	float angle;
 };
 //系统设置数据结构定义
-struct SetupData{
-	char	szDeviceModel[32];                              //设备型号
-	RayData	rayData;
-	AcceleratorData acceleratorData;
-	LineDetData lineDetData;
-	std::vector<int> scanModeDefine;
-	std::vector<int> scanMatrixDefine;
-	std::vector<int> scanViewDefine;
-	std::vector<int> layerThickDefine;
-	std::vector<int> sampleTimeDefine;
-	std::vector<int> collimateDefine;
-	std::vector<AxisDefinition>	sysAxisDefine;									//系统运动轴定义
+struct SetupData
+{
+	char szDeviceModel[32];                              //设备型号
+	std::vector<kVRayData> kVRayData;
+	std::vector<AcceleratorData> acceleratorData;
+	std::vector<LineDetData> lineDetData;
+	std::vector<PanDetData> panDetData;
+	using rayDetScanmode = std::tuple<int, int, ScanMode>; /*ray, det, scanmode*/
+	std::map<rayDetScanmode, int> matrix;
+	std::map<rayDetScanmode, int> scanview;
+	std::map<rayDetScanmode, int> sampleTime;
+	//std::vector<int> layerThickDefine;
+	//std::vector<int> sampleTimeDefine;
+	//std::vector<int> collimateDefine;
+	std::vector<AxisDefinition>	sysAxisDefine;						//系统运动轴定义
+	std::map<LineDetNum, float> lineDetSDD;
+	std::map<LineDetNum, std::vector<CT2Para>> lineDetCT2Data;
 
 	int		interpolationModeDefine;								//插值方式定义(SIMULATION/PHYSICS)
 	int		ct3InterpolationFlag;									//3代CT扫描插值数定义(0/1)
@@ -282,11 +310,8 @@ struct SetupData{
 	unsigned short nAcquireClientPort;								//采集客户端端口地址
 	wchar_t	szUnderCtrlerIP[32];									//控制客户端IP地址
 	unsigned short nUnderCtrlerPort;								//控制客户端端口地址
-	float	CurSOD;													//焦点到旋转中心距离(当前旋转中心径向位置)(mm)    
-	float	CurSDD;													//焦点到中心探测器距离(当前探测器径向位置)(mm)    
-	BOOL	bLineDetExist;											//系统配置有线阵探测器
-	BOOL	bPanDetExist;											//系统配置有面阵探测器
-	BYTE	nFileNamingMode;										//文件命名方式(DATE-年月日+4位序号,DATE_NAME_NO-年月日_名称_编号_4位序号  )
+	float	CurSOD;													//焦点到旋转中心距离(当前旋转中心径向位置)(mm)
+	float	CurSDD;													//焦点到中心探测器距离(当前探测器径向位置)(mm)
 };
 
 

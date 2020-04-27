@@ -1,10 +1,5 @@
-<RCC>
-    <qresource prefix="CTScan">
-    </qresource>
-</RCC>
-
-<RCC>
-    <qresource prefix="SystemTray">
-      <file>Resources/ico.png</file>
-    </qresource>
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+   <file>images/ico.png</file>
+</qresource>
 </RCC>

@@ -20,7 +20,7 @@ bool LineDetAirTune::setGenerialFileHeader()
 
 	d_ictHeader.ScanParameter.ViewDiameter = 300;
 	d_ictHeader.ScanParameter.NumberOfValidHorizontalDetector = 
-		d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].NumberOfSystemHorizontalDetector;
+		d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
 	d_ictHeader.ScanParameter.InterpolationFlag = 0;
 	d_ictHeader.ScanParameter.NumberOfInterpolation = 1;
 	d_ictHeader.ScanParameter.NumberOfGraduation = TUNE_PROJECTIONS;
@@ -44,7 +44,7 @@ void LineDetAirTune::sendCmdToControl()
 	ptr->tagHead[0] = 0x55;
 	ptr->tagHead[1] = 0xaa;
 	ptr->tagHead[2] = 0x5a;
-	ptr->typeCode = AIR_SCAN;
+	ptr->typeCode = static_cast<char>(ScanMode::AIR_SCAN);
 	ptr->tagLen = 3 + 0;
 	d_controller->sendToControl(buf, 6);
 }

@@ -106,11 +106,11 @@ bool CT3Scan::setGenerialFileHeader()
 	int scanPosSel;													//CT分层方式:0-当前层, 1-等层距, 2-不等层距
 	float centerOffset;								   				//回转中心偏移(mm)
 
-	d_ictHeader.ScanParameter.ScanMode = CT3_SCAN;
+	d_ictHeader.ScanParameter.ScanMode = static_cast<char>(ScanMode::CT3_SCAN);
 
 	//对无关参数设置默认值
 	d_ictHeader.ScanParameter.NumberofValidVerticalDetector = 
-		d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].NumberOfSystemHorizontalDetector;
+		d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
 	d_ictHeader.ScanParameter.RadialDistanceInLocal = 0;
 	d_ictHeader.ScanParameter.AngleInLocal = 0;
 	d_ictHeader.ScanParameter.HelixScanPitch = 0;

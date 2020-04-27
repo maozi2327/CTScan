@@ -36,39 +36,39 @@ bool LineDetScanInterface::setGenerialFileHeader()
 	d_ictHeader.DataFormat.appendColAtRow = 2;						//每行附加数据个数
 	strcpy_s(d_ictHeader.SystemParameter.ModelOfCT, d_setupData->szDeviceModel);//CT设备型号
 	d_ictHeader.DataFormat.dataColAtRow
-		= d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].NumberOfSystemHorizontalDetector;
+		= d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
 
 	//设置射线源参数
 	if (d_rayType == RayType::Accelerator)
 	{
 		d_ictHeader.SystemParameter.RaySort = 0;
-		d_ictHeader.SystemParameter.RayEngery = d_setupData->acceleratorData.AcceleratorParameter[d_AccIndex].rayEnergy;
-		d_ictHeader.SystemParameter.RayDosage = d_setupData->acceleratorData.AcceleratorParameter[d_AccIndex].rayDoseRate;
-		d_ictHeader.SystemParameter.SynchFrequency = d_setupData->acceleratorData.AcceleratorParameter[d_AccIndex].syncFreqDefine[d_accFrecIndex];
+		d_ictHeader.SystemParameter.RayEngery = d_setupData->acceleratorData[d_AccIndex].rayEnergy;
+		d_ictHeader.SystemParameter.RayDosage = d_setupData->acceleratorData[d_AccIndex].rayDoseRate;
+		d_ictHeader.SystemParameter.SynchFrequency = d_setupData->acceleratorData[d_AccIndex].syncFreqDefine[d_accFrecIndex];
 	}
 	else if (d_rayType == RayType::Tube)
 	{
 		d_ictHeader.SystemParameter.RaySort = 0;
-		d_ictHeader.SystemParameter.RayEngery = d_setupData->acceleratorData.AcceleratorParameter[d_AccIndex].rayEnergy;
-		d_ictHeader.SystemParameter.RayDosage = d_setupData->acceleratorData.AcceleratorParameter[d_AccIndex].rayDoseRate;
+		d_ictHeader.SystemParameter.RayEngery = d_setupData->acceleratorData[d_AccIndex].rayEnergy;
+		d_ictHeader.SystemParameter.RayDosage = d_setupData->acceleratorData[d_AccIndex].rayDoseRate;
 		d_ictHeader.SystemParameter.SynchFrequency = 250;
 	}
 
 	//设置探测器参数
-	d_ictHeader.SystemParameter.AmplifyMultiple = d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].AmplifyMultiple;
-	d_ictHeader.SystemParameter.IntegralTime = d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].IntegralTime;
+	d_ictHeader.SystemParameter.AmplifyMultiple = d_setupData->lineDetData[d_lineDetIndex].AmplifyMultiple;
+	d_ictHeader.SystemParameter.IntegralTime = d_setupData->lineDetData[d_lineDetIndex].IntegralTime;
 	d_ictHeader.ScanParameter.DetectorStyle
-		= d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].LineDetType;
+		= d_setupData->lineDetData[d_lineDetIndex].LineDetType;
 	d_ictHeader.ScanParameter.NumberOfSystemHorizontalDetector
-		= d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].NumberOfSystemHorizontalDetector;
+		= d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
 	d_ictHeader.ScanParameter.SerialNo1OfMiddleHorizontalDetector
-		= d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].BeginSerialNoOfCt2Detector;
+		= d_setupData->lineDetData[d_lineDetIndex].BeginSerialNoOfCt2Detector;
 	d_ictHeader.ScanParameter.SerialNo2OfMiddleHorizontalDetector
-		= d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].EndSerialNoOfCt2Detector;
+		= d_setupData->lineDetData[d_lineDetIndex].EndSerialNoOfCt2Detector;
 	d_ictHeader.ScanParameter.NumberofSystemVerticalDetector = 1;
 	d_ictHeader.ScanParameter.SpaceOfHorizontalDetector	= 0;
 	d_ictHeader.ScanParameter.SpaceOfVerticalDetector = 0;
-	d_ictHeader.ScanParameter.HorizontalSectorAngle = d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].HorizontalDetectorAngle;
+	d_ictHeader.ScanParameter.HorizontalSectorAngle = d_setupData->lineDetData[d_lineDetIndex].HorizontalDetectorAngle;
 	d_ictHeader.ScanParameter.VerticalSectorAngle = 0;
 	d_ictHeader.ScanParameter.RadialPosition = d_SOD;
 	d_ictHeader.ScanParameter.SourceDetectorDistance = d_SDD;
@@ -95,10 +95,10 @@ bool LineDetScanInterface::setGenerialFileHeader()
 
 void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)
 {
-	int systemDetector = d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].NumberOfSystemHorizontalDetector;
-	int calibrateDetector = d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].NumberOfCalibrateHorizontalDetector;
+	int systemDetector = d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
+	int calibrateDetector = d_setupData->lineDetData[d_lineDetIndex].NumberOfCalibrateHorizontalDetector;
 	int realSysDetectorNum = systemDetector - calibrateDetector;
-	float delta = d_setupData->lineDetData.lineDetParameter[d_lineDetIndex].HorizontalDetectorAngle / 180 * PI;
+	float delta = d_setupData->lineDetData[d_lineDetIndex].HorizontalDetectorAngle / 180 * PI;
 
 	int leftMiddle = d_ictHeader.ScanParameter.SerialNo1OfMiddleHorizontalDetector;
 	int rightMiddle = d_ictHeader.ScanParameter.SerialNo2OfMiddleHorizontalDetector;

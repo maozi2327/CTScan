@@ -34,6 +34,9 @@
     <Filter Include="utility">
       <UniqueIdentifier>{6442bf5d-ba88-4875-99ec-76643798f1fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\lib">
+      <UniqueIdentifier>{3eba4a28-4a96-4fb7-90d1-5f729f7e7346}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -126,6 +129,12 @@
     <ClCompile Include="controllerinterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Public\lib\tinyxml2.cpp">
+      <Filter>Header Files\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="setupdataparser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\headers\CommandQueue.h">
@@ -209,6 +218,9 @@
     <ClInclude Include="..\Public\headers\List.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\lib\tinyxml2.h">
+      <Filter>Header Files\lib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="conescanwidget.h">
@@ -245,6 +257,9 @@
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="controllerinterface.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="setupdataparser.h">
       <Filter>Source Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -6,7 +6,8 @@
 #include "conescaninterface.h"
 #include "..\PanelDll\panel.h"
 #include <memory>
-
+struct SetupData;
+class SetupDataParser;
 class RayPanelMotion;
 class MotorControl;
 class LineDetScanWidget;
@@ -39,6 +40,8 @@ private:
 	QAction *cutAct;
 	QAction *copyAct;
 	QAction *pasteAct;
+	std::unique_ptr<SetupData> d_setupData;
+	std::unique_ptr<SetupDataParser> d_setupDataPaser;
 	std::unique_ptr<MotorControl> d_motorControl;
 	std::unique_ptr<ConeScanInterface> d_scanInterface;
 	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;

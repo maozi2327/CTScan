@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by 123 (456) -->
+<SetupData>
+	<szDeviceModel>CD-500BX</szDeviceModel>
+	<LineDetSection>
+		<Num>1</Num>
+		<LineDetData>
+			<LineDetType>Arch<!--线阵类型-->
+			</LineDetType>
+			<NumberOfCalibrateHorizontalDetector>608<!--探测器通道数量-->
+			</NumberOfCalibrateHorizontalDetector>
+			<BeginSerialNoOfCt2Detector>204</BeginSerialNoOfCt2Detector>
+			<EndSerialNoOfCt2Detector>403</EndSerialNoOfCt2Detector>
+			<AmplifyMultiple>7</AmplifyMultiple>
+			<IntegralTime>20</IntegralTime>
+			<DelayTime>10</DelayTime>
+			<nFIFOdepth>64</nFIFOdepth>
+			<nChnnelMask>1111 1111 11</nChnnelMask>
+			<HorizontalSectorAngle>36.48</HorizontalSectorAngle>
+			<HorizontalDetectorAngle>0.06</HorizontalDetectorAngle>
+			<nBlockMapTable>76,77,78,79</nBlockMapTable>
+			<IpAddress>192.168.2.120</IpAddress>
+			<nAcquireClientPort>4000</nAcquireClientPort>
+			<SourceDetectorDistance>1454</SourceDetectorDistance>
+		</LineDetData>
+	</LineDetSection>
+	<PanDetSection>
+		<num>1</num>
+		<PanDetData>
+			<PandetType>PE1621</PandetType>
+			<horizontalPixels>2048</horizontalPixels>
+			<verticalPixels>2048</verticalPixels>
+			<pixelBlockLeft>30</pixelBlockLeft>
+			<pixelBlockRight>30</pixelBlockRight>
+			<pixelSize>0.2</pixelSize>
+			<rotAngle>0</rotAngle>
+			<mirror>0</mirror>
+		</PanDetData>
+	</PanDetSection>
+	<kVRaySection>
+		<num>2</num>
+		<kVRayData>
+			<rayType>Comet-450</rayType>
+			<rayEnergy>450kV</rayEnergy>
+			<rayDoseRate/>
+		</kVRayData>
+		<kVRayData>
+			<rayType>Wrox-225</rayType>
+			<rayEnergy>225kV</rayEnergy>
+			<rayDoseRate/>
+		</kVRayData>
+	</kVRaySection>
+	<AcceleratorSection>
+		<num>0</num>
+		<AcceleratorData>
+			<rayEnergy>9MeV</rayEnergy>
+			<rayDoseRate>1000</rayDoseRate>
+			<accRiseTime>10</accRiseTime>
+			<syncFreqDefine>50,100,150,200,250</syncFreqDefine>
+		</AcceleratorData>
+	</AcceleratorSection>
+	<ScanModeSection>
+		<ScanMode Ray="1" Det="1">
+			<ScanType Type="CT2">
+				<View>800</View>
+				<Matrix>1024,2048</Matrix>
+				<translationModeDefine>BI_DIR</translationModeDefine>
+			</ScanType>
+			<ScanType Type="CT3">
+				<View>100,150,200,300</View>
+				<Matrix>256,512,1024,2048</Matrix>
+				<ct3InterpolationFlag>1</ct3InterpolationFlag>
+			</ScanType>
+			<ScanType Type="DR">
+				<View>100,150,200,300</View>
+				<Matrix>256,512,1024,2048</Matrix>
+				<drScanModeDefine>BI_DIR</drScanModeDefine>
+				<drInterpolationFlag>1</drInterpolationFlag>
+				<drScanAngleDefine>ONEANGLE</drScanAngleDefine>
+			</ScanType>
+		</ScanMode>
+		<ScanMode Ray="1" Det="2">
+			<ScanType Type="CONE_SCAN">
+				<Matrix>256,512,1024,2048</Matrix>
+			</ScanType>
+			<ScanType Type="CONE_JOINT_ROT_SCAN">
+				<View>500</View>
+				<Matrix>256,512,1024,2048</Matrix>
+			</ScanType>
+		</ScanMode>
+		<ScanMode Ray="2" Det="2">
+			<ScanType Type="CONE_SCAN">
+				<Matrix>256,512,1024,2048</Matrix>
+			</ScanType>
+			<ScanType Type="CONE_JOINT_ROT_SCAN">
+				<View>500</View>
+				<Matrix>256,512,1024,2048</Matrix>
+			</ScanType>
+		</ScanMode>
+	</ScanModeSection>
+	<AxisDefinition>
+		<Axis Name="ObjRotation"/>
+		<Axis Name="ObjTranslation"/>
+		<Axis Name="ObjRadial"/>
+		<Axis Name="RayLayer"/>
+		<Axis Name="DetLayer"/>
+		<Axis Name="DetRadial"/>
+	</AxisDefinition>
+</SetupData>

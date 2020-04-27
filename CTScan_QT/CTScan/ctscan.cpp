@@ -4,18 +4,20 @@
 #include "raypanelmotionwidget.h"
 #include "simotioncontroller.h"
 #include "linedetscanwidget.h"
+#include "setupdataparser.h"
+#include "../Public/headers/SetupData.h"
 CTScan::CTScan(QWidget *parent)
     : QMainWindow(parent)
 	, d_lineDetScanWidget(new LineDetScanWidget(d_motorControl.get())), d_panel(PanelFactory::getPanel())
 	, d_rayPanelMotion(new RayPanelMotion()), d_imageWidgetManager(new ImageWidgetManager())
 	, d_controller(new SimotionController()), d_motorControl(new MotorControl(d_controller.get()))
+	, d_setupData(new SetupData), d_setupDataPaser(new SetupDataParser(d_setupData.get()))
 {
     ui.setupUi(this);
 	connect(d_controller.get(), &ControllerInterface::netWorkStsSginal
 		, this, &CTScan::controllerNetWorkStsSlot, Qt::QueuedConnection);
 	tray = new QSystemTrayIcon(this);
-	tray->setIcon(QIcon(QPixmap(":/SystemTray/Resources/ico.png")));
-	tray->show();
+	tray->setIcon(QIcon(":/images/ico.png"));
 }
 
 CTScan::~CTScan()
@@ -26,18 +28,23 @@ CTScan::~CTScan()
 void CTScan::on_ray1LineDetButton_clicked()
 {
 	d_lineDetScanWidget->show();
+
+	//tray->show();
 }
 
 void CTScan::on_ray1PanelDetButton_clicked()
 {
+
 }
 
 void CTScan::on_ray2LineDetButton_clicked()
 {
+
 }
 
 void CTScan::on_ray2PanelDetButton_clicked()
 {
+
 }
 
 void CTScan::controllerNetWorkStsSlot(bool sts)

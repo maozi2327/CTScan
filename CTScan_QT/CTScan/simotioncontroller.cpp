@@ -31,11 +31,21 @@ SimotionController::SimotionController()
 				d_timeout += intervel;
 
 				if (d_timeout >= std::chrono::seconds(1))
+				{
 					if (d_connected == true)
 					{
 						emit netWorkStsSginal(false);
 						d_connected = false;
 					}
+				}
+				else
+				{
+					if (d_connected == false)
+					{
+						emit netWorkStsSginal(true);
+						d_connected = true;
+					}
+				}
 			}
 			else
 				break;
