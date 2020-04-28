@@ -53,6 +53,7 @@
 	<AcceleratorSection>
 		<num>0</num>
 		<AcceleratorData>
+			<rayType>ZC</rayType>
 			<rayEnergy>9MeV</rayEnergy>
 			<rayDoseRate>1000</rayDoseRate>
 			<accRiseTime>10</accRiseTime>
@@ -60,14 +61,14 @@
 		</AcceleratorData>
 	</AcceleratorSection>
 	<ScanModeSection>
-		<ScanMode Ray="1" Det="1">
+		<RayDetCouple Ray="1" Det="1">
 			<ScanType Type="CT2">
 				<View>800</View>
 				<Matrix>1024,2048</Matrix>
 				<translationModeDefine>BI_DIR</translationModeDefine>
 			</ScanType>
 			<ScanType Type="CT3">
-				<View>100,150,200,300</View>
+				<View>100,150,200,300,450,600</View>
 				<Matrix>256,512,1024,2048</Matrix>
 				<ct3InterpolationFlag>1</ct3InterpolationFlag>
 			</ScanType>
@@ -78,8 +79,8 @@
 				<drInterpolationFlag>1</drInterpolationFlag>
 				<drScanAngleDefine>ONEANGLE</drScanAngleDefine>
 			</ScanType>
-		</ScanMode>
-		<ScanMode Ray="1" Det="2">
+		</RayDetCouple>
+		<RayDetCouple Ray="1" Det="2">
 			<ScanType Type="CONE_SCAN">
 				<Matrix>256,512,1024,2048</Matrix>
 			</ScanType>
@@ -87,8 +88,8 @@
 				<View>500</View>
 				<Matrix>256,512,1024,2048</Matrix>
 			</ScanType>
-		</ScanMode>
-		<ScanMode Ray="2" Det="2">
+		</RayDetCouple>
+		<RayDetCouple Ray="2" Det="2">
 			<ScanType Type="CONE_SCAN">
 				<Matrix>256,512,1024,2048</Matrix>
 			</ScanType>
@@ -96,7 +97,7 @@
 				<View>500</View>
 				<Matrix>256,512,1024,2048</Matrix>
 			</ScanType>
-		</ScanMode>
+		</RayDetCouple>
 	</ScanModeSection>
 	<AxisDefinition>
 		<Axis Name="ObjRotation"/>

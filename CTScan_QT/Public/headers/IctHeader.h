@@ -114,6 +114,7 @@ enum class ScanMode
 	CONEHELIX_POINT_SCAN,									//ืถส๘ยÝะýตใฮปษจร่
 	//CONE_SCAN_2TABLE,										//ืถส๘ษจร่
 	CONE_JOINT_SCAN,                                        //ืถส๘ฦดฝำษจร่
+	CONE_JOINT_ROT_SCAN,                                        //ืถส๘ฦดฝำษจร่
 	_MAX_SCANMODE_ITEM
 };
 #endif

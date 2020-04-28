@@ -27,7 +27,7 @@ void MotorControl::updateAxisStatus()
 	ui.rayLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::rayLayer]));
 	ui.objRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRadial]));
 	ui.objRotStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRotation]));
-	ui.objTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::objTraslation]));
+	ui.objTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::objTranslation]));
 	ui.detLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::detLayer]));
 	ui.detRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::detRadial]));
 	ui.detTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::detTranslation]));
@@ -45,32 +45,32 @@ void MotorControl::on_objRotPositiveButton_clicked()
 
 void MotorControl::on_objTranslationAbsPosButton_clicked()
 {
-	d_controller->axisAbsMove(Axis::objTraslation, ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisAbsMove(Axis::objTranslation, ui.objTranslationPosEdit->text().toFloat());
 }
 
 void MotorControl::on_objTranslationNegativeButton_clicked()
 {
-	d_controller->axisRelMove(Axis::objTraslation, -ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisRelMove(Axis::objTranslation, -ui.objTranslationPosEdit->text().toFloat());
 }
 
 void MotorControl::on_objTranslationPositiveButton_clicked()
 {
-	d_controller->axisRelMove(Axis::objTraslation, ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisRelMove(Axis::objTranslation, ui.objTranslationPosEdit->text().toFloat());
 }
 
 void MotorControl::on_objRadialAbsPosButton_clicked()
 {
-	d_controller->axisAbsMove(Axis::objTraslation, ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisAbsMove(Axis::objTranslation, ui.objTranslationPosEdit->text().toFloat());
 }
 
 void MotorControl::on_objRadialNegativeButton_clicked()
 {
-	d_controller->axisRelMove(Axis::objTraslation, -ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisRelMove(Axis::objTranslation, -ui.objTranslationPosEdit->text().toFloat());
 }
 
 void MotorControl::on_objRadialPositiveButton_clicked()
 {
-	d_controller->axisRelMove(Axis::objTraslation, ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisRelMove(Axis::objTranslation, ui.objTranslationPosEdit->text().toFloat());
 }
 
 void MotorControl::on_detLayerAbsPosButton_clicked()

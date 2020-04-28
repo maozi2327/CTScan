@@ -178,31 +178,33 @@ enum class RayType
 
 //坐标轴名定义(共17个轴)
 //X-径向；Y-平移；Z-升降
-
-enum class AxisDefinition{					
-	AxGraduation      = 0,									//分度                     0
-	AxObjTranslation,										//工件平移                 1
-	AxInterpolation,										//插值                     2
-	AxLayer1,												//射线源分层               3
-	AxLayer2,												//探测器分层               4
-	AxObjRadial,											//工件径向                 5
-	AxSliceThick,											//断层厚度(后准直孔高度)   6
-	AxCollimator,											//准直孔宽度               7
-	AxObjVertical,											//工件Z方向运动轴			8
-	AxRayRadial,											//射线源X方向运动轴			9
-	AxRayTranslation,										//射线源Y方向运动轴			10
-	AxDetRadial,											//探测器X方向运动轴			11
-	AxDetTranslation,										//探测器Y方向运动轴			12
-	AxDeflection,											//偏摆运动					13
-	_MaxiumAxis                                             //                          14
-};					
-const int MaxiumAxis = static_cast<int>(AxisDefinition::_MaxiumAxis);                         //最大轴数目
-
-//运动轴设定的最低和最高运动速度
-struct AxisSetSpeedData{
-	float	min[MaxiumAxis];								//最低速度(依次对应上面各运动轴)
-	float	max[MaxiumAxis];								//最高速度(依次对应上面各运动轴)
-};
+//
+//enum class AxisDefinition
+//{					
+//	AxGraduation      = 0,									//分度                     0
+//	AxObjTranslation,										//工件平移                 1
+//	AxInterpolation,										//插值                     2
+//	AxLayer1,												//射线源分层               3
+//	AxLayer2,												//探测器分层               4
+//	AxObjRadial,											//工件径向                 5
+//	AxSliceThick,											//断层厚度(后准直孔高度)   6
+//	AxCollimator,											//准直孔宽度               7
+//	AxObjVertical,											//工件Z方向运动轴			8
+//	AxRayRadial,											//射线源X方向运动轴			9
+//	AxRayTranslation,										//射线源Y方向运动轴			10
+//	AxDetRadial,											//探测器X方向运动轴			11
+//	AxDetTranslation,										//探测器Y方向运动轴			12
+//	AxDeflection,											//偏摆运动					13
+//	_MaxiumAxis                                             //                          14
+//};					
+//const int MaxiumAxis = static_cast<int>(AxisDefinition::_MaxiumAxis);                         //最大轴数目
+//
+////运动轴设定的最低和最高运动速度
+//struct AxisSetSpeedData
+//{
+//	float	min[MaxiumAxis];								//最低速度(依次对应上面各运动轴)
+//	float	max[MaxiumAxis];								//最高速度(依次对应上面各运动轴)
+//};
 
 //运动轴状态字结构
 struct AxisStatus{

@@ -3,7 +3,8 @@
 //用三位二进制代替，例如对于转台如果值为011(3)，代表拥有平移和径向两种运动方式
 //面阵线阵用两位二进制表示，例如11(3)表示线阵面阵都有，01(2)表示只有线阵，射线源1射线源2同理
 //使用xxxxxxx五位分别表示射线源，探测器，转台，射线，探测，物理插值，偏摆，如果不包含后面两轴可以不写
-
+#include <map>
+#include <string>
 #define TYPE33346
 #define WROX225
 #define COMET450
@@ -124,7 +125,7 @@ enum class Axis
 {
 	objRotation = 0,
 #ifdef TABLETRANSLATION
-	objTraslation = 1,
+	objTranslation = 1,
 #endif 
 #ifdef RAYLAYER
 	rayLayer = 3,
@@ -137,4 +138,15 @@ enum class Axis
 #endif
 	detRadial = 11,
 	detTranslation = 12
+};
+
+const std::map<const char*, Axis> AxisNameMap
+{
+	{"ObjRotation", Axis::objRotation}, 
+	{"ObjTranslaiton", Axis::objTranslation},
+	{"ObjRadial", Axis::objRadial},
+	{"RayLayer", Axis::rayLayer},
+	{"DetLayer", Axis::detLayer},
+	{"DetTranslation", Axis::detTranslation},
+	{"DetRadial", Axis::detRadial}
 };

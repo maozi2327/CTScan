@@ -2,6 +2,7 @@
 #include <vector>
 #include "CtrlData.h"
 #include "IctHeader.h"
+#include "machineType.h"
 #include <map>
 #include <tuple>
 //系统参数设置数据结构文件
@@ -220,17 +221,17 @@ struct _WorkPieceInfoData
 //扫描组态整体数据结构定义
 struct kVRayData 
 {
-	char	rayType[32];
-	short	rayDefine;												//射线源定义(TUBE_SPELLMAN/TUBE_COMET/ACCELERATOR/ACCELERATOR_NV/UNKNOW_TUBE)
-	float	rayEnergy;												//射线能量,单位:KV
-	float	rayDoseRate;											//射线剂量率, 单位:cGy/min/m
+	char rayType[16];
+	char rayEnergy[8];												//射线能量,单位:KV
+	char rayDoseRate[8];											//射线剂量率, 单位:cGy/min/m
 };
 struct AcceleratorData
 {
-	float	rayEnergy;												//射线能量,单位:KV
-	float	rayDoseRate;											//射线剂量率, 单位:cGy/min/m
-	short	accRiseTime;											//加速器出束上升时间(ms)
-	std::vector<int>	syncFreqDefine;								//同步频率定义(Hz)
+	char rayType[16];
+	char rayEnergy[8];												//射线能量,单位:KV
+	char rayDoseRate[8];											//射线剂量率, 单位:cGy/min/m
+	unsigned short accRiseTime;											//加速器出束上升时间(ms)
+	std::vector<int> syncFreqDefine;								//同步频率定义(Hz)
 };
 enum class LineDetNum
 {
@@ -254,8 +255,11 @@ struct LineDetData
 	short	nDetectorChnnelAmount;							//探测器通道数(由上面2参数计算获得,可能大于物理探测器数)
 	float	HorizontalSectorAngle;                          //射线平面方向扇角
 	float	HorizontalDetectorAngle;						//水平方向单个探测器夹角(°)
-	int		nBlockMapTable[MAX_BLOCK];	
-	//探测模块映射表,从0开始,以8通道为单位,最大1280通道,-1表示未用
+	int		nBlockMapTable[MAX_BLOCK];						
+	char	szAcquireClientIP[32];							//采集客户端IP地址
+	unsigned short nAcquireClientPort;						//采集客户端端口地址
+	float	SourceDetectorDistance;							//射线源探测器距离
+															
 };
 struct PanDetData
 {
@@ -268,28 +272,77 @@ struct PanDetData
 	char rotAngle;			//镜像，90 = 1, 180 = 2, 270 = 3
 	char mirror;			//镜像，x = 1, y = 2
 };
-struct CT2Para
+struct CT2Data
 {
-	short beginDector;
-	short endDector;
-	float angle;
+	unsigned short Ray;
+	unsigned short Det;
+	unsigned short View;
+	unsigned short Matrix;
+	unsigned char translationModeDefine;
+};
+struct CT3Data
+{
+	unsigned short Ray;
+	unsigned short Det;
+	unsigned short View;
+	unsigned short Matrix;
+	unsigned char ct3InterpolationFlag;
+};
+struct DrScanData
+{
+	unsigned short Ray;
+	unsigned short Det;
+	unsigned short View;
+	unsigned short Matrix;
+	unsigned char drScanModeDefine;
+	unsigned char drInterpolationFlag;
+	unsigned char drScanAngleDefine;
+};
+struct ConeScanData
+{
+	unsigned short Ray;
+	unsigned short Det;
+	unsigned short Matrix;
+};
+struct ConeJointRotScanData
+{
+	unsigned short Ray;
+	unsigned short Det;
+	unsigned short Matrix;
 };
 //系统设置数据结构定义
+
+using rayDetScanmode = std::pair<std::pair<int, int>, ScanMode>; /*ray, det, scanmode*/
+
 struct SetupData
 {
 	char szDeviceModel[32];                              //设备型号
+	unsigned short lineDetNum;
+	unsigned short panDetNum;
+	unsigned short kVRayNum;
+	unsigned short acceleratorNum;
 	std::vector<kVRayData> kVRayData;
 	std::vector<AcceleratorData> acceleratorData;
 	std::vector<LineDetData> lineDetData;
 	std::vector<PanDetData> panDetData;
-	using rayDetScanmode = std::tuple<int, int, ScanMode>; /*ray, det, scanmode*/
-	std::map<rayDetScanmode, int> matrix;
-	std::map<rayDetScanmode, int> scanview;
-	std::map<rayDetScanmode, int> sampleTime;
+	std::multimap<std::pair<int, int>, ScanMode> rayDetCoupleScanmode;
+	std::multimap<rayDetScanmode, int> matrix;
+	std::multimap<rayDetScanmode, int> scanview;
+	std::multimap<rayDetScanmode, int> sampleTime;
+	unsigned short ct3DataNum;
+	std::vector<CT3Data> ct3Data;
+	unsigned short ct2DataNum;
+	std::vector<CT2Data> ct2Data;
+	unsigned short drDataNum;
+	std::vector<DrScanData> drScanData;
+	unsigned short ConeScanDataNum;
+	std::vector<ConeScanData> coneScanData;
+	unsigned short ConeJointRotScanDataNum;
+	std::vector<ConeJointRotScanData> coneJointRotScanData;
 	//std::vector<int> layerThickDefine;
 	//std::vector<int> sampleTimeDefine;
 	//std::vector<int> collimateDefine;
-	std::vector<AxisDefinition>	sysAxisDefine;						//系统运动轴定义
+	std::vector<Axis> sysAxisDefine;						//系统运动轴定义
 	std::map<LineDetNum, float> lineDetSDD;
 	std::map<LineDetNum, std::vector<CT2Para>> lineDetCT2Data;
 
@@ -306,8 +359,6 @@ struct SetupData
 	float	largeViewCenterOffset;									//大视场扫描回转中心偏置(mm)
 	float	largeFocalCenterOffset;									//大焦点情况回转中心偏移值(mm)
 	float	smallFocalCenterOffset;									//小焦点情况回转中心偏移值(mm)
-	wchar_t	szAcquireClientIP[32];									//采集客户端IP地址
-	unsigned short nAcquireClientPort;								//采集客户端端口地址
 	wchar_t	szUnderCtrlerIP[32];									//控制客户端IP地址
 	unsigned short nUnderCtrlerPort;								//控制客户端端口地址
 	float	CurSOD;													//焦点到旋转中心距离(当前旋转中心径向位置)(mm)
