@@ -222,14 +222,14 @@ struct _WorkPieceInfoData
 struct kVRayData 
 {
 	char rayType[16];
-	char rayEnergy[8];												//射线能量,单位:KV
-	char rayDoseRate[8];											//射线剂量率, 单位:cGy/min/m
+	float rayEnergy;												//射线能量,单位:KV
+	float rayDoseRate;											//射线剂量率, 单位:cGy/min/m
 };
 struct AcceleratorData
 {
 	char rayType[16];
-	char rayEnergy[8];												//射线能量,单位:KV
-	char rayDoseRate[8];											//射线剂量率, 单位:cGy/min/m
+	float rayEnergy;												//射线能量,单位:KV
+	float rayDoseRate;
 	unsigned short accRiseTime;											//加速器出束上升时间(ms)
 	std::vector<int> syncFreqDefine;								//同步频率定义(Hz)
 };
@@ -276,24 +276,27 @@ struct CT2Data
 {
 	unsigned short Ray;
 	unsigned short Det;
-	unsigned short View;
-	unsigned short Matrix;
+	std::vector<unsigned short> View;
+	std::vector<unsigned short> Matrix;
+	std::vector<unsigned short> SampleTime;
 	unsigned char translationModeDefine;
 };
 struct CT3Data
 {
 	unsigned short Ray;
 	unsigned short Det;
-	unsigned short View;
-	unsigned short Matrix;
+	std::vector<unsigned short> View;
+	std::vector<unsigned short> Matrix;
+	std::vector<unsigned short> SampleTime;
 	unsigned char ct3InterpolationFlag;
 };
 struct DrScanData
 {
 	unsigned short Ray;
 	unsigned short Det;
-	unsigned short View;
-	unsigned short Matrix;
+	std::vector<unsigned short> View;
+	std::vector<unsigned short> Matrix;
+	std::vector<unsigned short> SampleTime;
 	unsigned char drScanModeDefine;
 	unsigned char drInterpolationFlag;
 	unsigned char drScanAngleDefine;
@@ -302,13 +305,14 @@ struct ConeScanData
 {
 	unsigned short Ray;
 	unsigned short Det;
-	unsigned short Matrix;
+	std::vector<unsigned short> Matrix;
 };
 struct ConeJointRotScanData
 {
 	unsigned short Ray;
 	unsigned short Det;
-	unsigned short Matrix;
+	std::vector<unsigned short> Matrix;
+	std::vector<unsigned short> View;
 };
 //系统设置数据结构定义
 
@@ -325,7 +329,6 @@ struct SetupData
 	std::vector<AcceleratorData> acceleratorData;
 	std::vector<LineDetData> lineDetData;
 	std::vector<PanDetData> panDetData;
-	std::multimap<std::pair<int, int>, ScanMode> rayDetCoupleScanmode;
 	std::multimap<rayDetScanmode, int> matrix;
 	std::multimap<rayDetScanmode, int> scanview;
 	std::multimap<rayDetScanmode, int> sampleTime;
@@ -343,8 +346,6 @@ struct SetupData
 	//std::vector<int> sampleTimeDefine;
 	//std::vector<int> collimateDefine;
 	std::vector<Axis> sysAxisDefine;						//系统运动轴定义
-	std::map<LineDetNum, float> lineDetSDD;
-	std::map<LineDetNum, std::vector<CT2Para>> lineDetCT2Data;
 
 	int		interpolationModeDefine;								//插值方式定义(SIMULATION/PHYSICS)
 	int		ct3InterpolationFlag;									//3代CT扫描插值数定义(0/1)

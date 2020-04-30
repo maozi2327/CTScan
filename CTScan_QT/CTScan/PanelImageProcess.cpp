@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "PanelImageProcess.h"
+#include "panelimageprocess.h"
 
 PanelImageProcess::PanelImageProcess(QObject *parent)
 	: QObject(parent)

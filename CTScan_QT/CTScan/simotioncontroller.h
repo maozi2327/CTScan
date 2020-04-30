@@ -1,12 +1,12 @@
 #pragma once
 #include "controllerinterface.h"
-#include "../Public/util/TcpServer.h"
+#include "../Public/util/tcpserver.h"
 #include <list>
 #include <memory>
 #include <condition_variable>
 #include <mutex>
-#include "../Public/headers/CtrlData.h"
-#include "../Public/headers/List.h"
+#include "../Public/headers/ctrldata.h"
+#include "../Public/headers/list.h"
 struct CommandType
 {
 	int d_cmd;

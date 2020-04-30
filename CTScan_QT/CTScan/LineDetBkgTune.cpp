@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "LineDetBkgTune.h"
+#include "linedetbkgtune.h"
 #include "controllerinterface.h"
 #include "../Public/util/Thread.h"
 #include "LineDetImageProcess.h"

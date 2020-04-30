@@ -154,17 +154,17 @@ bool SetupDataParser::parsekVRaySection(tinyxml2::XMLElement * in_element)
 
 bool SetupDataParser::parsekVRayData(tinyxml2::XMLElement * in_element, int in_number)
 {
-	kVRayData localKVRayData;
+	kVRayData localData;
 	
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
 		if (strcmp(element->Value(), "rayType") == 0)
-			strcpy(localKVRayData.rayType, element->GetText());
+			strcpy(localData.rayType, element->GetText());
 		else if (strcmp(element->Value(), "rayEnergy") == 0)
-			strcpy(localKVRayData.rayEnergy, element->GetText());
+			localData.rayEnergy = atof(element->GetText());
 		else if (strcmp(element->Value(), "rayDoseRate") == 0)
-			strcpy(localKVRayData.rayDoseRate, element->GetText());
+			localData.rayDoseRate = atof(element->GetText());
 	}
 
 	return false;
@@ -188,19 +188,19 @@ bool SetupDataParser::parseAcceleratorSection(tinyxml2::XMLElement * in_element)
 
 bool SetupDataParser::parseAcceleratorData(tinyxml2::XMLElement * in_element, int in_number)
 {
-	AcceleratorData localAcceleratorData;
+	AcceleratorData localData;
 
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
 		if (strcmp(element->Value(), "rayType") == 0)
-			strcpy(localAcceleratorData.rayType, element->GetText());
+			strcpy(localData.rayType, element->GetText());
 		else if (strcmp(element->Value(), "rayEnergy") == 0)
-			strcpy(localAcceleratorData.rayEnergy, element->GetText());
+			localData.rayEnergy = atof(element->GetText());
 		else if (strcmp(element->Value(), "rayDoseRate") == 0)
-			strcpy(localAcceleratorData.rayDoseRate, element->GetText());
+			localData.rayDoseRate = atof(element->GetText());
 		else if (strcmp(element->Value(), "accRiseTime") == 0)
-			localAcceleratorData.accRiseTime = atoi(element->GetText());
+			localData.accRiseTime = atoi(element->GetText());
 		else if (strcmp(element->Value(), "syncFreqDefine") == 0)
 		{
 			std::regex pattern("\\d+");
@@ -209,14 +209,13 @@ bool SetupDataParser::parseAcceleratorData(tinyxml2::XMLElement * in_element, in
 			int index = 0;
 
 			for (std::sregex_iterator it(str.begin(), str.end(), pattern), end_it; it != end_it; ++it, ++index)
-				localAcceleratorData.syncFreqDefine.push_back(stoi(it->str()));
+				localData.syncFreqDefine.push_back(stoi(it->str()));
 		}
 	}
 
 	return false;
 }
-template<typename T>
-void insertLineDetNumericData(T int_data, tinyxml2::XMLElement * in_element, rayDetScanmode in_mode)
+void insertNumericDataFromString(std::vector<unsigned short>& int_data, tinyxml2::XMLElement * in_element)
 {
 	std::regex pattern("\\d+");
 	std::smatch results;
@@ -224,7 +223,7 @@ void insertLineDetNumericData(T int_data, tinyxml2::XMLElement * in_element, ray
 	int index = 0;
 
 	for (std::sregex_iterator it(str.begin(), str.end(), pattern), end_it; it != end_it; ++it)
-		int_data.insert({ in_mode, stoi(it->str()) });
+		int_data.push_back(stoi(it->str()));
 }
 bool SetupDataParser::parseScanModeSection(tinyxml2::XMLElement * in_element)
 {
@@ -244,9 +243,9 @@ bool SetupDataParser::parseScanModeSection(tinyxml2::XMLElement * in_element)
 		//			for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
 		//			{
 		//				if (strcmp(element1->FirstAttribute()->Name(), "View") == 0)
-		//					insertLineDetNumericData(d_setupData->scanview, element1, mode);
+		//					insertNumericDataFromString(d_setupData->scanview, element1, mode);
 		//				else if (strcmp(element1->FirstAttribute()->Name(), "Matrix") == 0)
-		//					insertLineDetNumericData(d_setupData->matrix, element1, mode);
+		//					insertNumericDataFromString(d_setupData->matrix, element1, mode);
 		//				else if (strcmp(element1->FirstAttribute()->Name(), "translationModeDefine") == 0)
 		//				{
 
@@ -261,9 +260,9 @@ bool SetupDataParser::parseScanModeSection(tinyxml2::XMLElement * in_element)
 		//			for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
 		//			{
 		//				if (strcmp(element1->FirstAttribute()->Name(), "View") == 0)
-		//					insertLineDetNumericData(d_setupData->scanview, element1, mode);
+		//					insertNumericDataFromString(d_setupData->scanview, element1, mode);
 		//				else if (strcmp(element1->FirstAttribute()->Name(), "Matrix") == 0)
-		//					insertLineDetNumericData(d_setupData->matrix, element1, mode);
+		//					insertNumericDataFromString(d_setupData->matrix, element1, mode);
 		//				else if (strcmp(element1->FirstAttribute()->Name(), "ct3InterpolationFlag") == 0)
 		//				{
 
@@ -293,54 +292,23 @@ bool SetupDataParser::parseScanModeSection(tinyxml2::XMLElement * in_element)
 	{
 		if (strcmp(element->Value(), "CT2") == 0)
 		{
-			d_setupData->ct2DataNum = atoi(element->FirstChildElement()->GetText());
-			int index = 0;
-
-			for (auto element1 = element->FirstChildElement()->NextSiblingElement(); 
-				element1 != nullptr && index != d_setupData->ct2DataNum; element1 = element1->NextSiblingElement())
-			{
-				for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
-				{
-					CT2Data locaData;
-
-					if (strcmp(element11->Value(), "Ray") == 0)
-					{
-						locaData.Ray = atoi(element11->GetText());
-					}
-					else if (strcmp(element11->Value(), "Det") == 0)
-					{
-						locaData.Det = atoi(element11->GetText());
-					}
-					else if (strcmp(element11->Value(), "View") == 0)
-					{
-
-					}
-					else if (strcmp(element11->Value(), "Matrix") == 0)
-					{
-
-					}
-					else if (strcmp(element11->Value(), "translationModeDefine") == 0)
-					{
-
-					}
-				}
-			}
+			parseCT2Data(element);
 		}
 		else if (strcmp(element->Value(), "CT3") == 0)
 		{
-			d_setupData->ct3DataNum = atoi(element->FirstChildElement()->GetText());
+			parseCT3Data(element);
 		}
 		if (strcmp(element->Value(), "DR") == 0)
 		{
-			d_setupData->drDataNum = atoi(element->FirstChildElement()->GetText());
+			parseDRData(element);
 		}
 		else if (strcmp(element->Value(), "CONE_SCAN") == 0)
 		{
-			d_setupData->ConeScanDataNum = atoi(element->FirstChildElement()->GetText());
+			parseConeScanData(element);
 		}
 		if (strcmp(element->Value(), "CONE_JOINT_ROT_SCAN") == 0)
 		{
-			d_setupData->ConeJointRotScanDataNum = atoi(element->FirstChildElement()->GetText());
+			parseConeJointRotScanData(element);
 		}
 	}
 	return false;
@@ -358,6 +326,219 @@ bool SetupDataParser::parseAxisDefinition(tinyxml2::XMLElement * in_element)
 	}
 
 	return false;
+}
+
+bool SetupDataParser::parseCT2Data(tinyxml2::XMLElement * in_element)
+{
+	d_setupData->ct2DataNum = atoi(in_element->FirstChildElement()->GetText());
+	int index = 0;
+
+	for (auto element1 = in_element->FirstChildElement()->NextSiblingElement();
+		element1 != nullptr && index != d_setupData->ct2DataNum; element1 = element1->NextSiblingElement())
+	{
+		CT2Data locaData;
+
+		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
+		{
+
+			if (strcmp(element11->Value(), "Ray") == 0)
+			{
+				locaData.Ray = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "Det") == 0)
+			{
+				locaData.Det = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "View") == 0)
+			{
+				insertNumericDataFromString(locaData.View, element11);
+			}
+			else if (strcmp(element11->Value(), "Matrix") == 0)
+			{
+				insertNumericDataFromString(locaData.Matrix, element11);
+			}
+			else if (strcmp(element11->Value(), "SampleTime") == 0)
+			{
+				insertNumericDataFromString(locaData.SampleTime, element11);
+			}
+			else if (strcmp(element11->Value(), "translationModeDefine") == 0)
+			{
+				locaData.translationModeDefine = atoi(element11->GetText());
+			}
+		}
+
+		d_setupData->ct2Data.push_back(locaData);
+	}
+
+	return true;
+}
+
+bool SetupDataParser::parseCT3Data(tinyxml2::XMLElement * in_element)
+{
+	d_setupData->ct3DataNum = atoi(in_element->FirstChildElement()->GetText());
+	int index = 0;
+
+	for (auto element1 = in_element->FirstChildElement()->NextSiblingElement();
+		element1 != nullptr && index != d_setupData->ct2DataNum; element1 = element1->NextSiblingElement())
+	{
+		CT3Data locaData;
+
+		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
+		{
+
+			if (strcmp(element11->Value(), "Ray") == 0)
+			{
+				locaData.Ray = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "Det") == 0)
+			{
+				locaData.Det = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "View") == 0)
+			{
+				insertNumericDataFromString(locaData.View, element11);
+			}
+			else if (strcmp(element11->Value(), "Matrix") == 0)
+			{
+				insertNumericDataFromString(locaData.Matrix, element11);
+			}
+			else if (strcmp(element11->Value(), "SampleTime") == 0)
+			{
+				insertNumericDataFromString(locaData.SampleTime, element11);
+			}
+			else if (strcmp(element11->Value(), "ct3InterpolationFlag") == 0)
+			{
+				locaData.ct3InterpolationFlag = atoi(element11->GetText());
+			}
+		}
+
+		d_setupData->ct3Data.push_back(locaData);
+	}
+
+	return true;
+}
+
+bool SetupDataParser::parseDRData(tinyxml2::XMLElement * in_element)
+{
+	d_setupData->drDataNum = atoi(in_element->FirstChildElement()->GetText());
+	int index = 0;
+
+	for (auto element1 = in_element->FirstChildElement()->NextSiblingElement();
+		element1 != nullptr && index != d_setupData->ct2DataNum; element1 = element1->NextSiblingElement())
+	{
+		DrScanData locaData;
+
+		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
+		{
+
+			if (strcmp(element11->Value(), "Ray") == 0)
+			{
+				locaData.Ray = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "Det") == 0)
+			{
+				locaData.Det = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "View") == 0)
+			{
+				insertNumericDataFromString(locaData.View, element11);
+			}
+			else if (strcmp(element11->Value(), "Matrix") == 0)
+			{
+				insertNumericDataFromString(locaData.Matrix, element11);
+			}
+			else if (strcmp(element11->Value(), "SampleTime") == 0)
+			{
+				insertNumericDataFromString(locaData.SampleTime, element11);
+			}
+			else if (strcmp(element11->Value(), "drScanModeDefine") == 0)
+			{
+				locaData.drScanModeDefine = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "drInterpolationFlag") == 0)
+			{
+				locaData.drInterpolationFlag = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "drScanAngleDefine") == 0)
+			{
+				locaData.drScanAngleDefine = atoi(element11->GetText());
+			}
+		}
+
+		d_setupData->drScanData.push_back(locaData);
+	}
+
+	return true;
+}
+
+bool SetupDataParser::parseConeScanData(tinyxml2::XMLElement * in_element)
+{
+	d_setupData->ConeScanDataNum = atoi(in_element->FirstChildElement()->GetText());
+	int index = 0;
+
+	for (auto element1 = in_element->FirstChildElement()->NextSiblingElement();
+		element1 != nullptr && index != d_setupData->ct2DataNum; element1 = element1->NextSiblingElement())
+	{
+		ConeScanData locaData;
+
+		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
+		{
+
+			if (strcmp(element11->Value(), "Ray") == 0)
+			{
+				locaData.Ray = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "Det") == 0)
+			{
+				locaData.Det = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "Matrix") == 0)
+			{
+				insertNumericDataFromString(locaData.Matrix, element11);
+			}
+		}
+
+		d_setupData->coneScanData.push_back(locaData);
+	}
+
+	return true;
+}
+
+bool SetupDataParser::parseConeJointRotScanData(tinyxml2::XMLElement * in_element)
+{
+	d_setupData->ConeJointRotScanDataNum = atoi(in_element->FirstChildElement()->GetText());
+	int index = 0;
+
+	for (auto element1 = in_element->FirstChildElement()->NextSiblingElement();
+		element1 != nullptr && index != d_setupData->ct2DataNum; element1 = element1->NextSiblingElement())
+	{
+		ConeJointRotScanData locaData;
+
+		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
+		{
+
+			if (strcmp(element11->Value(), "Ray") == 0)
+			{
+				locaData.Ray = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "Det") == 0)
+			{
+				locaData.Det = atoi(element11->GetText());
+			}
+			else if (strcmp(element11->Value(), "Matrix") == 0)
+			{
+				insertNumericDataFromString(locaData.Matrix, element11);
+			}
+			else if (strcmp(element11->Value(), "View") == 0)
+			{
+				insertNumericDataFromString(locaData.View, element11);
+			}
+		}
+
+		d_setupData->coneJointRotScanData.push_back(locaData);
+	}
+
+	return true;
 }
 
 SetupDataParser::SetupDataParser(SetupData* in_setupData, QObject *parent)
@@ -409,6 +590,7 @@ bool SetupDataParser::parseSetupXMLFile()
 		}
 		else if (strcmp(element->Value(), "ScanModeSection") == 0)
 		{
+			parseScanModeSection(element);
 			continue;
 		}
 		else if (strcmp(element->Value(), "AxisDefinition") == 0)

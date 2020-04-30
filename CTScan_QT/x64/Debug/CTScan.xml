@@ -42,12 +42,12 @@
 		<kVRayData>
 			<rayType>Comet-450</rayType>
 			<rayEnergy>450kV</rayEnergy>
-			<rayDoseRate/>
+			<rayDoseRate>100</rayDoseRate>
 		</kVRayData>
 		<kVRayData>
 			<rayType>Wrox-225</rayType>
 			<rayEnergy>225kV</rayEnergy>
-			<rayDoseRate/>
+			<rayDoseRate>60</rayDoseRate>
 		</kVRayData>
 	</kVRaySection>
 	<AcceleratorSection>
@@ -107,4 +107,69 @@
 		<Axis Name="DetLayer"/>
 		<Axis Name="DetRadial"/>
 	</AxisDefinition>
+	<ScanModeSection>
+		<CT2>
+			<Num>1</Num>
+			<a>
+				<Ray>1</Ray>
+				<Det>1</Det>
+				<View>800</View>
+				<Matrix>1024,2048</Matrix>
+				<translationModeDefine>1</translationModeDefine>
+				<SampleTime>25,45,65,85,125</SampleTime>
+			</a>
+		</CT2>
+		<CT3>
+			<Num>1</Num>
+			<a>
+				<Ray>1</Ray>
+				<Det>1</Det>
+				<View>100,150,200,300,450,600</View>
+				<Matrix>256,512,1024,2048</Matrix>
+				<ct3InterpolationFlag>1</ct3InterpolationFlag>
+				<SampleTime>25,45,65,85,125</SampleTime>
+			</a>
+		</CT3>
+		<DR>
+			<Num>1</Num>
+			<a>
+				<Ray>1</Ray>
+				<Det>1</Det>
+				<View>100,150,200,300</View>
+				<Matrix>256,512,1024,2048</Matrix>
+				<drScanModeDefine>1</drScanModeDefine>
+				<drInterpolationFlag>1</drInterpolationFlag>
+				<drScanAngleDefine>0</drScanAngleDefine>
+				<SampleTime>25,45,65,85,125</SampleTime>
+			</a>
+		</DR>
+		<CONE_SCAN>
+			<Num>2</Num>
+			<a>
+				<Ray>1</Ray>
+				<Det>1</Det>
+				<Matrix>256,512,1024,2048</Matrix>
+			</a>
+			<a>
+				<Ray>1</Ray>
+				<Det>1</Det>
+				<Matrix>256,512,1024,2048</Matrix>
+			</a>
+		</CONE_SCAN>
+		<CONE_JOINT_ROT_SCAN>
+			<Num>2</Num>
+			<a>
+				<Ray>1</Ray>
+				<Det>1</Det>
+				<Matrix>256,512,1024,2048</Matrix>
+				<View>500</View>
+			</a>
+			<a>
+				<Ray>1</Ray>
+				<Det>1</Det>
+				<Matrix>256,512,1024,2048</Matrix>
+				<View>500</View>
+			</a>
+		</CONE_JOINT_ROT_SCAN>
+	</ScanModeSection>
 </SetupData>

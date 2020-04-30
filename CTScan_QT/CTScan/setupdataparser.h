@@ -22,6 +22,11 @@ private:
 	bool parseAcceleratorData(tinyxml2::XMLElement* in_element, int in_number);
 	bool parseScanModeSection(tinyxml2::XMLElement* in_element);
 	bool parseAxisDefinition(tinyxml2::XMLElement* in_element);
+	bool parseCT2Data(tinyxml2::XMLElement* in_element);
+	bool parseCT3Data(tinyxml2::XMLElement* in_element);
+	bool parseDRData(tinyxml2::XMLElement* in_element);
+	bool parseConeScanData(tinyxml2::XMLElement* in_element);
+	bool parseConeJointRotScanData(tinyxml2::XMLElement* in_element);
 public:
 	SetupDataParser(SetupData* in_setupData, QObject *parent = Q_NULLPTR);
 	~SetupDataParser();

@@ -213,10 +213,7 @@ struct AxisStatus{
 	DWORD	ErrCode;										//轴错误代码
 };
 
-//运动轴组状态字结构
-struct AxisGroupStatus{
-	AxisStatus	axisStatus[MaxiumAxis];						//依次对应上面各运动轴
-};
+
 
 #ifndef USE_IN_CONTROL
 //运动方向名义值定义

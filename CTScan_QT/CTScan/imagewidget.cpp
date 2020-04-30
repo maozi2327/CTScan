@@ -1,6 +1,6 @@
 #include "stdafx.h"		
 #include "imagewidget.h"
-#include "ImageWidgetManager.h"
+#include "imagewidgetmanager.h"
 
 //NOTEPAD//
 //对主widget的gridlayout的sizeconstraint设置成noconstraint，然后不设置最大和最小size，

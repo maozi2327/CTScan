@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include <functional>
 #include <chrono>
-#include "CT3Scan.h"
-#include "LineDetNetWork.h"
-#include "LineDetImageProcess.h"
+#include "ct3scan.h"
+#include "linedetnetwork.h"
+#include "linedetimageprocess.h"
 #include "../Public/util/IULog.h"
 #include "../Public/util/Thread.h"
-#include "MotorControl.h"
-#include "functions.h"
+#include "../Public/util/functions.h"
+#include "motorcontrolwidget.h"
 
 CT3Scan::CT3Scan(ControllerInterface* in_controller) : LineDetScanInterface(in_controller)
 {
@@ -39,7 +39,8 @@ void CT3Scan::scanThread()
 }
 
 #define	RTBUF_LEN	256						//定义接收/发送缓冲区长度
-struct COMM_PACKET {
+struct COMM_PACKET 
+{
 	BYTE	tagHead[3];						//包头(0x55,0xaa,0x5a)
 	BYTE	typeCode;						//类型码
 	WORD	tagLen;							//包长(=参数字节数+3, 实际命令数据包长度=包长+4)

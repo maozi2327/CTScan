@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "TcpServer.h"
+#include "tcpserver.h"
 #include <thread>
 
 TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packetSizePos

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ConeScanInterface.h"
+#include "conescaninterface.h"
 #include <Windows.h>
 
 ConeScanInterface::ConeScanInterface(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose):

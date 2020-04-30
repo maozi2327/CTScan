@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>LineDetScanWidget</string>
+   <string/>
   </property>
   <widget class="QPushButton" name="motorPanelButton">
    <property name="geometry">
@@ -452,7 +452,7 @@
       <property name="currentIndex">
        <number>2</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="ct3Tab">
        <attribute name="title">
         <string>三代CT</string>
        </attribute>
@@ -615,12 +615,12 @@
               </size>
              </property>
              <property name="text">
-              <string>采样次数</string>
+              <string>采样时间</string>
              </property>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QComboBox" name="ct3SampleTimesComboBox">
+            <widget class="QComboBox" name="ct3SampleTimeComboBox">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -802,7 +802,7 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="ct2Tab">
        <attribute name="title">
         <string>DR</string>
        </attribute>
@@ -845,7 +845,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="ratioComboBox">
+          <widget class="QComboBox" name="drRatioComboBox">
            <property name="minimumSize">
             <size>
              <width>80</width>
@@ -963,12 +963,12 @@
             </size>
            </property>
            <property name="text">
-            <string>采样次数</string>
+            <string>采样时间</string>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="drSampleTimesComboBox">
+          <widget class="QComboBox" name="drSampleTimeComboBox">
            <property name="minimumSize">
             <size>
              <width>80</width>
@@ -1080,7 +1080,7 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_5">
+      <widget class="QWidget" name="drTab">
        <attribute name="title">
         <string>二代CT</string>
        </attribute>
@@ -1125,7 +1125,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QComboBox" name="ct3ScanModeComboBox">
+            <widget class="QComboBox" name="ct2ScanModeComboBox">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -1308,12 +1308,12 @@
               </size>
              </property>
              <property name="text">
-              <string>采样次数</string>
+              <string>采样时间</string>
              </property>
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QComboBox" name="ct2SampleTimesComboBox">
+            <widget class="QComboBox" name="ct2SampleTimeComboBox">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                <horstretch>0</horstretch>

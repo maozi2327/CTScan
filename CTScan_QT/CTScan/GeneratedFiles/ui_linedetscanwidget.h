@@ -52,7 +52,7 @@ public:
     QLineEdit *Comet450EmissionCurrentEdit;
     QPushButton *Comet450XRayOffButton;
     QTabWidget *scanModeTab;
-    QWidget *tab;
+    QWidget *ct3Tab;
     QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_2;
     QGridLayout *gridLayout_2;
@@ -63,7 +63,7 @@ public:
     QLabel *label_2;
     QComboBox *ct3ViewComboBox;
     QLabel *label_3;
-    QComboBox *ct3SampleTimesComboBox;
+    QComboBox *ct3SampleTimeComboBox;
     QLabel *label_7;
     QLineEdit *ct3AngleLineEdit;
     QLabel *label_8;
@@ -73,27 +73,27 @@ public:
     QVBoxLayout *verticalLayout;
     QListWidget *ct3LayerPosListWidget;
     QSpacerItem *verticalSpacer_2;
-    QWidget *tab_2;
+    QWidget *ct2Tab;
     QWidget *layoutWidget2;
     QGridLayout *gridLayout_3;
     QLabel *label_41;
-    QComboBox *ratioComboBox;
+    QComboBox *drRatioComboBox;
     QLabel *label_34;
     QComboBox *drMatrixComboBox;
     QLabel *label_35;
     QComboBox *drViewComboBox;
     QLabel *label_36;
-    QComboBox *drSampleTimesComboBox;
+    QComboBox *drSampleTimeComboBox;
     QLabel *label_37;
     QLineEdit *drAngleLineEdit;
     QLabel *label_38;
     QLineEdit *lineEdit_14;
-    QWidget *tab_5;
+    QWidget *drTab;
     QWidget *layoutWidget3;
     QHBoxLayout *horizontalLayout_3;
     QGridLayout *gridLayout;
     QLabel *label_40;
-    QComboBox *ct3ScanModeComboBox;
+    QComboBox *ct2ScanModeComboBox;
     QLabel *label_39;
     QComboBox *ct2MultiLayerComboBox;
     QLabel *label_31;
@@ -101,7 +101,7 @@ public:
     QLabel *label_30;
     QComboBox *ct2ViewComboBox;
     QLabel *label_33;
-    QComboBox *ct2SampleTimesComboBox;
+    QComboBox *ct2SampleTimeComboBox;
     QLabel *label_32;
     QLineEdit *lineEdit_11;
     QLabel *label_29;
@@ -236,9 +236,9 @@ public:
         scanModeTab->setObjectName(QStringLiteral("scanModeTab"));
         scanModeTab->setMinimumSize(QSize(280, 280));
         scanModeTab->setMaximumSize(QSize(280, 280));
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        layoutWidget1 = new QWidget(tab);
+        ct3Tab = new QWidget();
+        ct3Tab->setObjectName(QStringLiteral("ct3Tab"));
+        layoutWidget1 = new QWidget(ct3Tab);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(10, 10, 252, 204));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
@@ -313,14 +313,14 @@ public:
 
         gridLayout_2->addWidget(label_3, 3, 0, 1, 1);
 
-        ct3SampleTimesComboBox = new QComboBox(layoutWidget1);
-        ct3SampleTimesComboBox->setObjectName(QStringLiteral("ct3SampleTimesComboBox"));
-        sizePolicy2.setHeightForWidth(ct3SampleTimesComboBox->sizePolicy().hasHeightForWidth());
-        ct3SampleTimesComboBox->setSizePolicy(sizePolicy2);
-        ct3SampleTimesComboBox->setMinimumSize(QSize(80, 0));
-        ct3SampleTimesComboBox->setMaximumSize(QSize(80, 16777215));
+        ct3SampleTimeComboBox = new QComboBox(layoutWidget1);
+        ct3SampleTimeComboBox->setObjectName(QStringLiteral("ct3SampleTimeComboBox"));
+        sizePolicy2.setHeightForWidth(ct3SampleTimeComboBox->sizePolicy().hasHeightForWidth());
+        ct3SampleTimeComboBox->setSizePolicy(sizePolicy2);
+        ct3SampleTimeComboBox->setMinimumSize(QSize(80, 0));
+        ct3SampleTimeComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_2->addWidget(ct3SampleTimesComboBox, 3, 1, 1, 1);
+        gridLayout_2->addWidget(ct3SampleTimeComboBox, 3, 1, 1, 1);
 
         label_7 = new QLabel(layoutWidget1);
         label_7->setObjectName(QStringLiteral("label_7"));
@@ -390,10 +390,10 @@ public:
 
         horizontalLayout_2->addLayout(verticalLayout);
 
-        scanModeTab->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QStringLiteral("tab_2"));
-        layoutWidget2 = new QWidget(tab_2);
+        scanModeTab->addTab(ct3Tab, QString());
+        ct2Tab = new QWidget();
+        ct2Tab->setObjectName(QStringLiteral("ct2Tab"));
+        layoutWidget2 = new QWidget(ct2Tab);
         layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
         layoutWidget2->setGeometry(QRect(12, 10, 142, 172));
         gridLayout_3 = new QGridLayout(layoutWidget2);
@@ -414,12 +414,12 @@ public:
 
         gridLayout_3->addWidget(label_41, 0, 0, 1, 1);
 
-        ratioComboBox = new QComboBox(layoutWidget2);
-        ratioComboBox->setObjectName(QStringLiteral("ratioComboBox"));
-        ratioComboBox->setMinimumSize(QSize(80, 0));
-        ratioComboBox->setMaximumSize(QSize(80, 16777215));
+        drRatioComboBox = new QComboBox(layoutWidget2);
+        drRatioComboBox->setObjectName(QStringLiteral("drRatioComboBox"));
+        drRatioComboBox->setMinimumSize(QSize(80, 0));
+        drRatioComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_3->addWidget(ratioComboBox, 0, 1, 1, 1);
+        gridLayout_3->addWidget(drRatioComboBox, 0, 1, 1, 1);
 
         label_34 = new QLabel(layoutWidget2);
         label_34->setObjectName(QStringLiteral("label_34"));
@@ -462,12 +462,12 @@ public:
 
         gridLayout_3->addWidget(label_36, 3, 0, 1, 1);
 
-        drSampleTimesComboBox = new QComboBox(layoutWidget2);
-        drSampleTimesComboBox->setObjectName(QStringLiteral("drSampleTimesComboBox"));
-        drSampleTimesComboBox->setMinimumSize(QSize(80, 0));
-        drSampleTimesComboBox->setMaximumSize(QSize(80, 16777215));
+        drSampleTimeComboBox = new QComboBox(layoutWidget2);
+        drSampleTimeComboBox->setObjectName(QStringLiteral("drSampleTimeComboBox"));
+        drSampleTimeComboBox->setMinimumSize(QSize(80, 0));
+        drSampleTimeComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout_3->addWidget(drSampleTimesComboBox, 3, 1, 1, 1);
+        gridLayout_3->addWidget(drSampleTimeComboBox, 3, 1, 1, 1);
 
         label_37 = new QLabel(layoutWidget2);
         label_37->setObjectName(QStringLiteral("label_37"));
@@ -508,10 +508,10 @@ public:
 
         gridLayout_3->addWidget(lineEdit_14, 5, 1, 1, 1);
 
-        scanModeTab->addTab(tab_2, QString());
-        tab_5 = new QWidget();
-        tab_5->setObjectName(QStringLiteral("tab_5"));
-        layoutWidget3 = new QWidget(tab_5);
+        scanModeTab->addTab(ct2Tab, QString());
+        drTab = new QWidget();
+        drTab->setObjectName(QStringLiteral("drTab"));
+        layoutWidget3 = new QWidget(drTab);
         layoutWidget3->setObjectName(QStringLiteral("layoutWidget3"));
         layoutWidget3->setGeometry(QRect(10, 10, 252, 241));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget3);
@@ -532,14 +532,14 @@ public:
 
         gridLayout->addWidget(label_40, 0, 0, 1, 1);
 
-        ct3ScanModeComboBox = new QComboBox(layoutWidget3);
-        ct3ScanModeComboBox->setObjectName(QStringLiteral("ct3ScanModeComboBox"));
-        sizePolicy2.setHeightForWidth(ct3ScanModeComboBox->sizePolicy().hasHeightForWidth());
-        ct3ScanModeComboBox->setSizePolicy(sizePolicy2);
-        ct3ScanModeComboBox->setMinimumSize(QSize(80, 0));
-        ct3ScanModeComboBox->setMaximumSize(QSize(80, 16777215));
+        ct2ScanModeComboBox = new QComboBox(layoutWidget3);
+        ct2ScanModeComboBox->setObjectName(QStringLiteral("ct2ScanModeComboBox"));
+        sizePolicy2.setHeightForWidth(ct2ScanModeComboBox->sizePolicy().hasHeightForWidth());
+        ct2ScanModeComboBox->setSizePolicy(sizePolicy2);
+        ct2ScanModeComboBox->setMinimumSize(QSize(80, 0));
+        ct2ScanModeComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout->addWidget(ct3ScanModeComboBox, 0, 1, 1, 1);
+        gridLayout->addWidget(ct2ScanModeComboBox, 0, 1, 1, 1);
 
         label_39 = new QLabel(layoutWidget3);
         label_39->setObjectName(QStringLiteral("label_39"));
@@ -604,14 +604,14 @@ public:
 
         gridLayout->addWidget(label_33, 4, 0, 1, 1);
 
-        ct2SampleTimesComboBox = new QComboBox(layoutWidget3);
-        ct2SampleTimesComboBox->setObjectName(QStringLiteral("ct2SampleTimesComboBox"));
-        sizePolicy2.setHeightForWidth(ct2SampleTimesComboBox->sizePolicy().hasHeightForWidth());
-        ct2SampleTimesComboBox->setSizePolicy(sizePolicy2);
-        ct2SampleTimesComboBox->setMinimumSize(QSize(80, 0));
-        ct2SampleTimesComboBox->setMaximumSize(QSize(80, 16777215));
+        ct2SampleTimeComboBox = new QComboBox(layoutWidget3);
+        ct2SampleTimeComboBox->setObjectName(QStringLiteral("ct2SampleTimeComboBox"));
+        sizePolicy2.setHeightForWidth(ct2SampleTimeComboBox->sizePolicy().hasHeightForWidth());
+        ct2SampleTimeComboBox->setSizePolicy(sizePolicy2);
+        ct2SampleTimeComboBox->setMinimumSize(QSize(80, 0));
+        ct2SampleTimeComboBox->setMaximumSize(QSize(80, 16777215));
 
-        gridLayout->addWidget(ct2SampleTimesComboBox, 4, 1, 1, 1);
+        gridLayout->addWidget(ct2SampleTimeComboBox, 4, 1, 1, 1);
 
         label_32 = new QLabel(layoutWidget3);
         label_32->setObjectName(QStringLiteral("label_32"));
@@ -692,7 +692,7 @@ public:
 
         horizontalLayout_3->addLayout(verticalLayout_2);
 
-        scanModeTab->addTab(tab_5, QString());
+        scanModeTab->addTab(drTab, QString());
 
         gridLayout_4->addWidget(scanModeTab, 1, 0, 1, 2);
 
@@ -761,7 +761,7 @@ public:
 
     void retranslateUi(QWidget *LineDetScanWidget)
     {
-        LineDetScanWidget->setWindowTitle(QApplication::translate("LineDetScanWidget", "LineDetScanWidget", nullptr));
+        LineDetScanWidget->setWindowTitle(QString());
         motorPanelButton->setText(QApplication::translate("LineDetScanWidget", "\347\224\265\346\234\272", nullptr));
         worx225XRayOffButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\235\237", nullptr));
         worx225kvStaticLabel_2->setText(QApplication::translate("LineDetScanWidget", "KV", nullptr));
@@ -778,27 +778,27 @@ public:
         label_53->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215/\345\244\232\345\261\202", nullptr));
         label->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
         label_2->setText(QApplication::translate("LineDetScanWidget", "\350\247\206\345\234\272\347\233\264\345\276\204", nullptr));
-        label_3->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\254\241\346\225\260", nullptr));
+        label_3->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\227\266\351\227\264", nullptr));
         label_7->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_8->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
         label_17->setText(QApplication::translate("LineDetScanWidget", "\345\261\202\351\227\264\350\267\235", nullptr));
-        scanModeTab->setTabText(scanModeTab->indexOf(tab), QApplication::translate("LineDetScanWidget", "\344\270\211\344\273\243CT", nullptr));
+        scanModeTab->setTabText(scanModeTab->indexOf(ct3Tab), QApplication::translate("LineDetScanWidget", "\344\270\211\344\273\243CT", nullptr));
         label_41->setText(QApplication::translate("LineDetScanWidget", "\346\257\224\344\276\213\346\250\241\345\274\217", nullptr));
         label_34->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
         label_35->setText(QApplication::translate("LineDetScanWidget", "\350\247\206\345\234\272\347\233\264\345\276\204", nullptr));
-        label_36->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\254\241\346\225\260", nullptr));
+        label_36->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\227\266\351\227\264", nullptr));
         label_37->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_38->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
-        scanModeTab->setTabText(scanModeTab->indexOf(tab_2), QApplication::translate("LineDetScanWidget", "DR", nullptr));
+        scanModeTab->setTabText(scanModeTab->indexOf(ct2Tab), QApplication::translate("LineDetScanWidget", "DR", nullptr));
         label_40->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\345\274\217", nullptr));
         label_39->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215/\345\244\232\345\261\202", nullptr));
         label_31->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
         label_30->setText(QApplication::translate("LineDetScanWidget", "\350\247\206\345\234\272\347\233\264\345\276\204", nullptr));
-        label_33->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\254\241\346\225\260", nullptr));
+        label_33->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\227\266\351\227\264", nullptr));
         label_32->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_29->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
         label_18->setText(QApplication::translate("LineDetScanWidget", "\345\261\202\351\227\264\350\267\235", nullptr));
-        scanModeTab->setTabText(scanModeTab->indexOf(tab_5), QApplication::translate("LineDetScanWidget", "\344\272\214\344\273\243CT", nullptr));
+        scanModeTab->setTabText(scanModeTab->indexOf(drTab), QApplication::translate("LineDetScanWidget", "\344\272\214\344\273\243CT", nullptr));
         label_4->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215\350\277\233\345\272\246", nullptr));
         label_5->setText(QApplication::translate("LineDetScanWidget", "\346\200\273\344\275\223\350\277\233\345\272\246", nullptr));
         startButton->setText(QApplication::translate("LineDetScanWidget", "\345\274\200\345\247\213", nullptr));

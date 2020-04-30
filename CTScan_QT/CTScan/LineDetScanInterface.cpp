@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "LineDetScanInterface.h"
-#include "LineDetNetWork.h"
-#include "LineDetImageProcess.h"
-#include "../Public/util/Thread.h"
+#include "linedetscaninterface.h"
+#include "linedetnetwork.h"
+#include "linedetimageprocess.h"
+#include "../Public/util/thread.h"
 #include <algorithm>
 
 ICT_HEADER LineDetScanInterface::d_ictHeader;

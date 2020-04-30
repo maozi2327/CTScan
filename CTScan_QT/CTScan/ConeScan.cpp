@@ -19,8 +19,7 @@ bool ConeScan::scanStart()
 	if(!d_panelInterface->setSampleMode(SampleMode::exTrigger))
 		return false;
 
-
-	d_panelInterface->beginAcquire();
+	//d_panelInterface->beginAcquire();
 }
 void ConeScan::scanThread()
 {
@@ -31,9 +30,9 @@ void ConeScan::scanThread()
 }
 bool ConeScan::scanStop()
 {
-
+	return false;
 }
 bool ConeScan::intialise()
 {
-
+	return false;
 }

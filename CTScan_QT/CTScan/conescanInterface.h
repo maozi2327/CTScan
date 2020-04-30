@@ -2,7 +2,7 @@
 #include <future>
 #include <memory>
 #include "..\PanelDll\panel.h"
-#include "PanelImageProcess.h"
+#include "panelimageprocess.h"
 #include "controllerinterface.h"
 
 class ConeScanInterface

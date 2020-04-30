@@ -2,14 +2,14 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_ctscan.h"
-#include "ImageWidgetManager.h"
+#include "imagewidgetmanager.h"
 #include "conescaninterface.h"
 #include "..\PanelDll\panel.h"
 #include <memory>
 struct SetupData;
 class SetupDataParser;
 class RayPanelMotion;
-class MotorControl;
+class MotorControlWidget;
 class LineDetScanWidget;
 class ControllerInterface;
 class CTScan : public QMainWindow
@@ -42,7 +42,7 @@ private:
 	QAction *pasteAct;
 	std::unique_ptr<SetupData> d_setupData;
 	std::unique_ptr<SetupDataParser> d_setupDataPaser;
-	std::unique_ptr<MotorControl> d_motorControl;
+	std::unique_ptr<MotorControlWidget> d_motorControl;
 	std::unique_ptr<ConeScanInterface> d_scanInterface;
 	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;
 	std::unique_ptr<Panel> d_panel;

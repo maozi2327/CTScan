@@ -1,5 +1,5 @@
 #pragma once
-#include "FreeImage.h"
+#include "freeimage.h"
 class ImageProcess
 {
 public:

@@ -3,7 +3,7 @@
 #include "LineDetAirTune.h"
 #include "LineDetImageProcess.h"
 #include "../Public/util/Thread.h"
-#include "functions.h"
+#include "../Public/util/functions.h"
 
 bool LineDetAirTune::setGenerialFileHeader()
 {

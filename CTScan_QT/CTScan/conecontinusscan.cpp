@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "ConeContinusScan.h"
-#include "PanelImageProcess.h"
+#include "conecontinusscan.h"
+#include "panelimageprocess.h"
 ConeContinusScan::ConeContinusScan(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose):
 	ConeScanInterface(in_panel, in_controller, in_ctDispose)
 {

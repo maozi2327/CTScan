@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ImageWidgetManager.h"
+#include "imagewidgetmanager.h"
 #include "imagewidget.h"
 
 

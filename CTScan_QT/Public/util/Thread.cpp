@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Thread.h"
+#include "thread.h"
 
 Thread::Thread(std::function<void()>  in_function, bool& in_threadRun)
 {

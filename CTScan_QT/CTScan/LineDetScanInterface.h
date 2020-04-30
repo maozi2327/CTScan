@@ -1,8 +1,8 @@
 #pragma once
 #include <QTimer>
-#include "IctHeader.h"
-#include "SetupData.h"
-#include "CtrlData.h"
+#include "ictheader.h"
+#include "setupdata.h"
+#include "ctrldata.h"
 #include "controllerinterface.h"
 #include <memory>
 class Thread;
@@ -23,7 +23,6 @@ protected:
 	int d_accFrecIndex;
 	int	d_TubeIndex;
 	int	d_lineDetIndex;
-	int d_;
 	float d_SOD;
 	float d_SDD;
 	float d_colimateSize;

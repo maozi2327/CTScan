@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ImageProcess.h"
+#include "imageprocess.h"
 
 ImageProcess::ImageProcess()
 {
