@@ -187,7 +187,9 @@ void TcpServer::sendThread(std::promise<bool>& in_promise)
 	{
 		command cmd;
 		int byteSend = 0;
-		d_sendQueue.pop(cmd);
+		
+		if(!d_sendQueue.pop(cmd))
+			continue;
 
 		while (d_connected)
 		{

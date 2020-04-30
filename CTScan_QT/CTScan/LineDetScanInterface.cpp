@@ -133,3 +133,20 @@ void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)
 
 	d_ictHeader.ScanParameter.ViewDiameter = (float)((int)(100.0 * in_diameter)) / 100;
 }
+
+bool LineDetScanInterface::canScan()
+{	//³õÊ¼»¯£¬Ì½²âÆ÷£¬Ö´ĞĞÃüÁî
+	if(!d_lineDetNetWork->getConnected())
+		return false;
+
+	if (!d_controller->getConnected())
+		return false;
+
+	if (!d_controller->readReadyStatus())
+		return false;
+
+	if (!d_controller->readRunStatus())
+		return false;
+
+	return true;
+}

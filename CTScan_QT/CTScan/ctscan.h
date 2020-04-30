@@ -12,6 +12,8 @@ class RayPanelMotion;
 class MotorControlWidget;
 class LineDetScanWidget;
 class ControllerInterface;
+class LineDetNetWork;
+class LineDetScanInterface;
 class CTScan : public QMainWindow
 {
     Q_OBJECT
@@ -46,11 +48,12 @@ private:
 	std::unique_ptr<ConeScanInterface> d_scanInterface;
 	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;
 	std::unique_ptr<Panel> d_panel;
-	std::unique_ptr<LineDetScanWidget> d_lineDetScanWidget;
+	std::unique_ptr<LineDetScanWidget> d_line1Det1ScanWidget;
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
 	std::unique_ptr<ControllerInterface> d_controller;
+	std::vector<std::unique_ptr<LineDetNetWork>> d_lineDetNetWorkVector;
+	std::map<std::pair<int, int>, std::vector<std::unique_ptr<LineDetScanInterface>>> d_rayDetScanMap;
 	size_t frontImageIndex;
-
 	QSystemTrayIcon* tray;
 };
 //#ifdef TABLETRANSLATION

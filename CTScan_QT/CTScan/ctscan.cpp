@@ -6,6 +6,9 @@
 #include "linedetscanwidget.h"
 #include "setupdataparser.h"
 #include "../Public/headers/SetupData.h"
+#include "ct3Scan.h"
+#include "linedetnetwork.h"
+
 CTScan::CTScan(QWidget *parent)
     : QMainWindow(parent)
 	, d_panel(PanelFactory::getPanel())
@@ -18,7 +21,22 @@ CTScan::CTScan(QWidget *parent)
 		, this, &CTScan::controllerNetWorkStsSlot, Qt::QueuedConnection);
 	tray = new QSystemTrayIcon(this);
 	tray->setIcon(QIcon(":/images/ico.png"));
-	d_lineDetScanWidget.reset(new LineDetScanWidget(d_motorControl.get(), d_controller.get(), d_setupData.get()));
+
+	auto& data = d_setupData->ct3Data;
+	auto matrixItr = std::find_if(data.begin(), data.end(),	[](CT3Data elem) { return elem.Det == 1 && elem.Ray == 1; });
+
+	if (matrixItr != data.end())
+	{
+		std::unique_ptr<LineDetScanInterface> scan(new CT3Scan(d_controller.get(), *matrixItr));
+		d_rayDetScanMap[{1, 1}].push_back(std::move(scan));
+	}
+
+	using pair = std::pair<std::pair<int, int>, std::vector<std::unique_ptr<LineDetScanInterface>>>;
+	auto& uniquePtrVector = d_rayDetScanMap[{1, 1}];
+	std::vector<LineDetScanInterface*> scanVector(uniquePtrVector.size());
+	std::transform(uniquePtrVector.begin(), uniquePtrVector.end(), scanVector.begin(),
+		[](std::unique_ptr<LineDetScanInterface>& elem) { return elem.get(); });
+	d_line1Det1ScanWidget.reset(new LineDetScanWidget(d_motorControl.get(), scanVector, d_setupData.get()));
 }
 
 CTScan::~CTScan()
@@ -28,7 +46,7 @@ CTScan::~CTScan()
 
 void CTScan::on_ray1LineDetButton_clicked()
 {
-	d_lineDetScanWidget->show();
+	d_line1Det1ScanWidget->show();
 	//tray->show();
 }
 
@@ -49,7 +67,7 @@ void CTScan::on_ray2PanelDetButton_clicked()
 
 void CTScan::controllerNetWorkStsSlot(bool sts)
 {
-	d_lineDetScanWidget->onNetworkStsChanged(sts);
+	d_line1Det1ScanWidget->onNetworkStsChanged(sts);
 }
 
 //void CTScan::on_pushButton_clicked()

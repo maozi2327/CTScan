@@ -4,13 +4,23 @@
 #include "simotioncontroller.h"
 #include "../Public/headers/setupData.h"
 #include "ct3scan.h"
-
-LineDetScanWidget::LineDetScanWidget(MotorControlWidget* in_motorControl, ControllerInterface* in_controller, SetupData* in_setupData, QWidget *parent)
-	: QWidget(parent)
-	, d_motorControl(in_motorControl), d_detNum(1), d_rayNum(1), d_setupData(in_setupData), d_controller(in_controller)
+LineDetScanWidget::LineDetScanWidget(MotorControlWidget* in_motorControl, std::vector<LineDetScanInterface*>& in_scan,
+	SetupData* in_setupData, QWidget *parent)
+	: QWidget(parent), d_motorControlDialog(in_motorControl)
+	, d_detNum(1), d_rayNum(1), d_setupData(in_setupData)
 {
 	ui.setupUi(this);
 	initiliseControls();
+
+	for (auto itr : in_scan)
+	{
+		if (auto scan = dynamic_cast<CT3Scan*>(itr))
+		{
+			CT3Data data{ scan->getData() };
+			initiliseCt3Controls(data);
+			d_scanMap.insert({ ScanMode::CT3_SCAN, itr });
+		}
+	}
 }
 
 LineDetScanWidget::~LineDetScanWidget()
@@ -43,50 +53,82 @@ template<typename T>
 void addItemToMatixVieSample(T& in_data, QComboBox* in_matrix, QComboBox* in_view, QComboBox* in_sampleTime,
 	int in_rayNum, int in_detNum)
 {
-	auto matrixItr = std::find_if(in_data.begin(), in_data.end(),
-		[in_rayNum, in_detNum](T::value_type elem) { return elem.Det == in_detNum && elem.Ray == in_rayNum; });
+	//for(auto& matrixItr : in_data)
+	//	if (matrixItr != in_data.end())
+	//	{
+	for (auto& value : in_data.Matrix)
+		in_matrix->addItem(QString::number(value));
 
-	if (matrixItr != in_data.end())
-	{
-		for (auto& value : matrixItr->Matrix)
-			in_matrix->addItem(QString::number(value));
+	for (auto& value : in_data.View)
+		in_view->addItem(QString::number(value));
 
-		for (auto& value : matrixItr->View)
-			in_view->addItem(QString::number(value));
-
-		for (auto& value : matrixItr->SampleTime)
-			in_sampleTime->addItem(QString::number(value));
-	}
+	for (auto& value : in_data.SampleTime)
+		in_sampleTime->addItem(QString::number(value));
+		//}
 }
 void LineDetScanWidget::initiliseControls()
 {
-	addItemToMatixVieSample(d_setupData->ct2Data, ui.ct2MatrixComboBox, ui.ct2ViewComboBox,
-		ui.ct2SampleTimeComboBox, d_rayNum, d_detNum);
-	addItemToMatixVieSample(d_setupData->ct3Data, ui.ct3MatrixComboBox, ui.ct3ViewComboBox, 
+	//addItemToMatixVieSample(d_setupData->ct2Data, ui.ct2MatrixComboBox, ui.ct2ViewComboBox,
+	//	ui.ct2SampleTimeComboBox, d_rayNum, d_detNum);
+	//addItemToMatixVieSample(d_setupData->ct3Data, ui.ct3MatrixComboBox, ui.ct3ViewComboBox, 
+	//	ui.ct3SampleTimeComboBox, d_rayNum, d_detNum);
+	//addItemToMatixVieSample(d_setupData->drScanData, ui.drMatrixComboBox, ui.drViewComboBox, 
+	//	ui.drSampleTimeComboBox, d_rayNum, d_detNum);
+	//QString str;
+	//ui.ct2MultiLayerComboBox->addItem(str.fromLocal8Bit("当前层"));
+	//ui.ct2MultiLayerComboBox->addItem(str.fromLocal8Bit("等间距"));
+	//ui.ct2MultiLayerComboBox->addItem(str.fromLocal8Bit("多层"));
+	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度"));
+	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度间隔"));
+	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("180度"));
+	//ui.ct3MultiLayerComboBox->addItem(str.fromLocal8Bit("单层"));
+	//ui.ct3MultiLayerComboBox->addItem(str.fromLocal8Bit("等间距"));
+	//ui.ct3MultiLayerComboBox->addItem(str.fromLocal8Bit("多层"));
+	//ui.drRatioComboBox->addItem(str.fromLocal8Bit("等比例"));
+	//ui.drRatioComboBox->addItem(str.fromLocal8Bit("不等比例"));
+}
+
+void LineDetScanWidget::initiliseCt3Controls(CT3Data& in_data)
+{
+	addItemToMatixVieSample(in_data, ui.ct3MatrixComboBox, ui.ct3ViewComboBox,
 		ui.ct3SampleTimeComboBox, d_rayNum, d_detNum);
-	addItemToMatixVieSample(d_setupData->drScanData, ui.drMatrixComboBox, ui.drViewComboBox, 
-		ui.drSampleTimeComboBox, d_rayNum, d_detNum);
 	QString str;
-	ui.ct2MultiLayerComboBox->addItem(str.fromLocal8Bit("当前层"));
-	ui.ct2MultiLayerComboBox->addItem(str.fromLocal8Bit("等间距"));
-	ui.ct2MultiLayerComboBox->addItem(str.fromLocal8Bit("多层"));
-	ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度"));
-	ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度间隔"));
-	ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("180度"));
 	ui.ct3MultiLayerComboBox->addItem(str.fromLocal8Bit("单层"));
 	ui.ct3MultiLayerComboBox->addItem(str.fromLocal8Bit("等间距"));
 	ui.ct3MultiLayerComboBox->addItem(str.fromLocal8Bit("多层"));
-	ui.drRatioComboBox->addItem(str.fromLocal8Bit("等比例"));
-	ui.drRatioComboBox->addItem(str.fromLocal8Bit("不等比例"));
+}
+
+void LineDetScanWidget::initiliseCt2Controls()
+{
+	//addItemToMatixVieSample(d_setupData->ct2Data, ui.ct2MatrixComboBox, ui.ct2ViewComboBox,
+	//	ui.ct2SampleTimeComboBox, d_rayNum, d_detNum);
+	//QString str;
+	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度"));
+	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度间隔"));
+	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("180度"));
+}
+
+void LineDetScanWidget::initiliseDrControls()
+{
+	//addItemToMatixVieSample(d_setupData->drScanData, ui.drMatrixComboBox, ui.drViewComboBox,
+	//	ui.drSampleTimeComboBox, d_rayNum, d_detNum);
+	//QString str;
+	//ui.drRatioComboBox->addItem(str.fromLocal8Bit("等比例"));
+	//ui.drRatioComboBox->addItem(str.fromLocal8Bit("不等比例"));
 }
 
 void LineDetScanWidget::on_startButton_clicked()
 {
-	if (ui.scanModeTab->currentWidget() == ui.ct3Tab)
-		d_scan.reset(new CT3Scan(d_controller));
+	if(ui.scanModeTab->currentWidget() == ui.ct3Tab)
+		d_scanMap[ScanMode::CT3_SCAN]->startScan();
+}
+
+void LineDetScanWidget::on_saveDirButton_clicked()
+{
+	auto srcDirPath = QFileDialog::getExistingDirectory(this, "choose src Directory", "/");
 }
 
 void LineDetScanWidget::showMotorTable()
 {
-	d_motorControl->show();
+	d_motorControlDialog->show();
 }

@@ -2,9 +2,11 @@
 
 #include "ui_linedetscanwidget.h"
 #include <memory>
-
+#include <vector>
+#include <map>
+#include "../Public/headers/setupdata.h"
 class MotorControlWidget;
-struct SetupData;
+struct CT3Data;
 class LineDetScanInterface;
 class ControllerInterface;
 class LineDetScanWidget : public QWidget
@@ -12,7 +14,8 @@ class LineDetScanWidget : public QWidget
 	Q_OBJECT
 
 public:
-	LineDetScanWidget(MotorControlWidget* in_motorControl, ControllerInterface* in_controller, SetupData* in_setupData, QWidget *parent = Q_NULLPTR);
+	LineDetScanWidget(MotorControlWidget* in_motorControl, std::vector<LineDetScanInterface*>& in_scan,
+		SetupData* in_setupData, QWidget *parent = Q_NULLPTR);
 	~LineDetScanWidget();
 
 	void onNetworkStsChanged(bool in_netWorkSts);
@@ -23,15 +26,18 @@ protected:
 private:
 	Ui::LineDetScanWidget ui;
 	QAction *showMotorTableAction;
-	MotorControlWidget* d_motorControl;
+	MotorControlWidget* d_motorControlDialog;
 	SetupData* d_setupData;
 	unsigned short d_rayNum;
 	unsigned short d_detNum;
 	void disableAllControls();
 	void initiliseControls();
-	std::unique_ptr<LineDetScanInterface> d_scan;
-	ControllerInterface* d_controller;
+	void initiliseCt3Controls(CT3Data& in_data);
+	void initiliseCt2Controls();
+	void initiliseDrControls();
+	std::map<ScanMode, LineDetScanInterface*> d_scanMap;
 private slots:
 	void showMotorTable();
 	void on_startButton_clicked();
+	void on_saveDirButton_clicked();
 };

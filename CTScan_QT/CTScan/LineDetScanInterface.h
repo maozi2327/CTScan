@@ -31,8 +31,8 @@ protected:
 	float d_viewDiameter;
 	bool d_standardInterpolation;
 	int d_matrix;
-	std::unique_ptr<LineDetNetWork> d_lineDetNetWork;
-	std::unique_ptr<LineDetImageProcess> d_lineDetImageProcess;
+	LineDetNetWork* d_lineDetNetWork;
+	LineDetImageProcess* d_lineDetImageProcess;
 	std::unique_ptr<Thread> d_scanThread;
 	RayType d_rayType;
 	SetupData* d_setupData;
@@ -43,6 +43,7 @@ protected:
 	virtual void sendCmdToControl() = 0;
 	void CalculateView_ValidDetector(float in_diameter);
 	virtual bool checkScanAble() = 0;
+	virtual bool canScan() = 0;
 signals:
 	void signalGraduationCount(int in_count);
 

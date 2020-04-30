@@ -149,7 +149,10 @@ bool SerialPort::sendAsyn(const char * in_buffer, int in_size)
 bool SerialPort::receive(char * in_buffer, int in_size)
 {
 	RecvCommand cmd;
-	d_receiveQueue.pop(cmd);
+
+	if(!d_receiveQueue.pop(cmd))
+		return false;
+	
 	in_buffer = cmd.in_buffer;
 	in_size = cmd.in_size;
 	return true;
@@ -163,7 +166,9 @@ void SerialPort::sendThread(std::promise<bool>& in_promise)
 	{
 		SendCommand cmd;
 		int byteSend = 0;
-		d_sendQueue.pop(cmd);
+		
+		if(!d_sendQueue.pop(cmd))
+			continue;
 
 		while (d_isOpen)
 		{

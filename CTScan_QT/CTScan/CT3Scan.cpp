@@ -8,15 +8,18 @@
 #include "../Public/util/Thread.h"
 #include "../Public/util/functions.h"
 #include "motorcontrolwidget.h"
+#include "../Public/headers/setupdata.h"
 
-CT3Scan::CT3Scan(ControllerInterface* in_controller) : LineDetScanInterface(in_controller)
+CT3Scan::CT3Scan(ControllerInterface* in_controller, CT3Data& in_data) : LineDetScanInterface(in_controller)
+	, d_ct3Data(in_data)
 {
 	;
 }
 
 CT3Scan::~CT3Scan()
 {
-	d_scanThread->stopThread();
+	if(d_scanThread.get() != nullptr)
+		d_scanThread->stopThread();
 }
 
 //更新进度条
@@ -94,6 +97,11 @@ bool CT3Scan::startScan()
 	return d_scanThread->detach();
 }
 
+CT3Data CT3Scan::getData()
+{
+	return d_ct3Data;
+}
+
 bool CT3Scan::setGenerialFileHeader()
 {
 	LineDetScanInterface::setGenerialFileHeader();
@@ -155,6 +163,12 @@ bool CT3Scan::setGenerialFileHeader()
 bool CT3Scan::checkScanAble()
 {
 	return false;
+}
+
+bool CT3Scan::canScan()
+{
+	if(!LineDetScanInterface::canScan())
+		return false;
 }
 
 void CT3Scan::stopScan()
