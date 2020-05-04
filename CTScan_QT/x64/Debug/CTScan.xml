@@ -5,6 +5,7 @@
 	<LineDetSection>
 		<Num>1</Num>
 		<LineDetData>
+			<LideDetID>1</LideDetID>
 			<LineDetType>Arch<!--线阵类型-->
 			</LineDetType>
 			<NumberOfCalibrateHorizontalDetector>608<!--探测器通道数量-->

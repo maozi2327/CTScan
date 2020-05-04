@@ -10,7 +10,7 @@
 #include "motorcontrolwidget.h"
 #include "../Public/headers/setupdata.h"
 
-CT3Scan::CT3Scan(ControllerInterface* in_controller, CT3Data& in_data) : LineDetScanInterface(in_controller)
+CT3Scan::CT3Scan(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWor, CT3Data& in_data) : LineDetScanInterface(in_controller, in_lineDetNetWor)
 	, d_ct3Data(in_data)
 {
 	;
@@ -20,6 +20,16 @@ CT3Scan::~CT3Scan()
 {
 	if(d_scanThread.get() != nullptr)
 		d_scanThread->stopThread();
+}
+
+bool CT3Scan::setScanParameter(float in_layer, int in_matrix, float in_view, int in_sampleTime, float in_angle)
+{
+	d_layer = in_layer;
+	d_matrix = in_matrix;
+	d_view = in_view;
+	d_sampleTime = in_sampleTime;
+	d_angle = in_angle;
+	return true;
 }
 
 //更新进度条
@@ -71,7 +81,7 @@ void CT3Scan::sendCmdToControl()
 	cmdData.centerOffset = 0;
 	cmdData.stsBit.s.btnStartScan = 0;
 	cmdData.stsBit.s.autoStopBeam = 0;
-	cmdData.firstLayerOffset = d_scanPos;
+	cmdData.firstLayerOffset = d_layer;
 	cmdData.layerSpace = 0;
 	COMM_PACKET* ptr = (COMM_PACKET*)buf;
 	ptr->tagHead[0] = 0x55;
@@ -87,12 +97,18 @@ void CT3Scan::sendCmdToControl()
 void CT3Scan::saveFile()
 {
 	saveOrgFile();
-	d_lineDetImageProcess->dispose(d_installDirectory, d_fileName, d_destFileName);
+	QString orgFilaName(d_orgPath + d_fileName + ".org");
+	QString disposedFilaName(d_orgPath + d_fileName);
+	d_lineDetImageProcess->dispose(d_installDirectory, orgFilaName, disposedFilaName);
 }
 
 bool CT3Scan::startScan()
-{
-	sendCmdToControl();
+{	
+	if (canScan())
+		sendCmdToControl();
+	else
+		return false;
+
 	d_scanThread.reset(new Thread(std::bind(&CT3Scan::scanThread, this), std::ref(d_threadRun)));
 	return d_scanThread->detach();
 }
@@ -107,19 +123,13 @@ bool CT3Scan::setGenerialFileHeader()
 	LineDetScanInterface::setGenerialFileHeader();
 
 	d_ictHeader.DataFormat.graduationBase = 0;						//3代扫描起始分度
-	int	i, N;														//整数变量
-	int	Matrix;														//矩阵尺寸
-	float diameter;													//视场直径
-	float rotAngle;                                                 //旋转角度
-	float space;													//层间距
-	int scanPosSel;													//CT分层方式:0-当前层, 1-等层距, 2-不等层距
-	float centerOffset;								   				//回转中心偏移(mm)
-
 	d_ictHeader.ScanParameter.ScanMode = static_cast<char>(ScanMode::CT3_SCAN);
+	d_ictHeader.ScanParameter.NumberOfGraduation = d_matrix;
+	d_ictHeader.ScanParameter.Azimuth = d_angle;
+	d_ictHeader.ScanParameter.NumberofValidVerticalDetector =
+		d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
 
 	//对无关参数设置默认值
-	d_ictHeader.ScanParameter.NumberofValidVerticalDetector = 
-		d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
 	d_ictHeader.ScanParameter.RadialDistanceInLocal = 0;
 	d_ictHeader.ScanParameter.AngleInLocal = 0;
 	d_ictHeader.ScanParameter.HelixScanPitch = 0;
@@ -135,25 +145,22 @@ bool CT3Scan::setGenerialFileHeader()
 	d_ictHeader.ScanParameter.LeftSerialNoOfTable = 0;
 	d_ictHeader.ScanParameter.NumberOfTable = 1;
 	d_ictHeader.ScanParameter.LargeViewCenterOffset = 0;
-	d_ictHeader.ScanParameter.Pixels = Matrix;
-	d_ictHeader.ScanParameter.NumberOfGraduation = Matrix;
-	d_ictHeader.ScanParameter.Azimuth = rotAngle;
-	d_ictHeader.ScanParameter.SpaceBetweenLayer = space;
+	d_ictHeader.ScanParameter.Pixels = d_matrix;
 	d_ictHeader.ScanParameter.GraduationDirection = P_DIR;
 	d_ictHeader.ScanParameter.DelaminationMode = 0;
 
-	CalculateView_ValidDetector(diameter);
+	CalculateView_ValidDetector(d_view);
 
 	d_ictHeader.ScanParameter.InterpolationFlag = d_setupData->ct3InterpolationFlag;
-	d_ictHeader.ScanParameter.NumberOfInterpolation = (float)Matrix / d_ictHeader.ScanParameter.NumberOfValidHorizontalDetector + 1;
-	N = d_ictHeader.ScanParameter.NumberOfSystemHorizontalDetector;
+	d_ictHeader.ScanParameter.NumberOfInterpolation = (float)d_matrix / d_ictHeader.ScanParameter.NumberOfValidHorizontalDetector + 1;
+	int N = d_ictHeader.ScanParameter.NumberOfSystemHorizontalDetector;
 	float d = PI * d_ictHeader.ScanParameter.HorizontalSectorAngle / (180 * (N - 1));
 	d *= d_ictHeader.ScanParameter.SourceDetectorDistance;
 	N = d_ictHeader.ScanParameter.NumberOfInterpolation;
 
 	if ((d / N < d_setupData->minInterpolationSpace) || (N > 80)) 
 	{
-		LOG_WARNING("插值次数太多！视场直径%d, 图像矩阵%d", diameter, Matrix);
+		//LOG_WARNING("插值次数太多！视场直径%.0f, 图像矩阵%d", d_view, d_matrix);
 		return false;
 	}
 

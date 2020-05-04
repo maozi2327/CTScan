@@ -151,6 +151,7 @@
     <ClCompile Include="linescainterface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="motorcontrolwidget.cpp" />
+    <ClCompile Include="msglistbox.cpp" />
     <ClCompile Include="panelimageprocess.cpp" />
     <ClCompile Include="panelScanInterface.cpp" />
     <ClCompile Include="raypanelmotionwidget.cpp" />
@@ -253,6 +254,11 @@
     <ClInclude Include="linedetbkgtune.h" />
     <ClInclude Include="linedetimageprocess.h" />
     <ClInclude Include="linescaninterface.h" />
+    <QtMoc Include="msglistbox.h">
+      <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort;.\GeneratedFiles\$(ConfigurationName)</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort;.\GeneratedFiles\$(ConfigurationName)</IncludePath>
+    </QtMoc>
     <ClInclude Include="panelScanInterface.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="simotioncontroller.h" />
@@ -273,6 +279,7 @@
     </CustomBuild>
     <QtUic Include="linedetscanwidget.ui" />
     <QtUic Include="motorcontrolwidget.ui" />
+    <QtUic Include="msglistbox.ui" />
     <QtUic Include="raypanelmotion.ui" />
   </ItemGroup>
   <ItemGroup>

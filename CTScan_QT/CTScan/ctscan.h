@@ -13,6 +13,7 @@ class MotorControlWidget;
 class LineDetScanWidget;
 class ControllerInterface;
 class LineDetNetWork;
+class MsgListBox;
 class LineDetScanInterface;
 class CTScan : public QMainWindow
 {
@@ -33,6 +34,7 @@ private slots:
 	void copy();
 	void paste();
 	void controllerNetWorkStsSlot(bool sts);
+	void errorMsgSlot(QString msg);
 protected:
 #ifndef QT_NO_CONTEXTMENU
 	void contextMenuEvent(QContextMenuEvent *event) override;
@@ -51,10 +53,12 @@ private:
 	std::unique_ptr<LineDetScanWidget> d_line1Det1ScanWidget;
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
 	std::unique_ptr<ControllerInterface> d_controller;
-	std::vector<std::unique_ptr<LineDetNetWork>> d_lineDetNetWorkVector;
+	std::unique_ptr<MsgListBox> d_msg;
+	std::map<int, std::unique_ptr<LineDetNetWork>> d_lineDetNetWorkMap;
 	std::map<std::pair<int, int>, std::vector<std::unique_ptr<LineDetScanInterface>>> d_rayDetScanMap;
 	size_t frontImageIndex;
 	QSystemTrayIcon* tray;
+	QString	d_workDir;
 };
 //#ifdef TABLETRANSLATION
 //#ifdef TABLERADIAL

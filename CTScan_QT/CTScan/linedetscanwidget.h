@@ -40,4 +40,6 @@ private slots:
 	void showMotorTable();
 	void on_startButton_clicked();
 	void on_saveDirButton_clicked();
+	void on_ct3MultiLayerComboBox_currentIndexChanged(const QString& in_text);
+	void on_ct3LayerPosLineEdit_returnd();
 };

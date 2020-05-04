@@ -242,6 +242,7 @@ enum class LineDetNum
 };
 struct LineDetData
 {
+	char	LineDetID;
 	char	LineDetType;
 	short	NumberOfSystemHorizontalDetector;               //射线平面方向系统探测器数(此参数为探测器总数)
 	short	NumberOfCalibrateHorizontalDetector;            //射线平面方向校正用探测器数(此参数为校正用探测器数量)

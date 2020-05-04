@@ -138,6 +138,9 @@
     <ClCompile Include="linedetbkgtune.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="msglistbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -262,6 +265,9 @@
     <QtMoc Include="motorcontrolwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
+    <QtMoc Include="msglistbox.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ctscan.ui">
@@ -277,6 +283,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="motorcontrolwidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="msglistbox.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

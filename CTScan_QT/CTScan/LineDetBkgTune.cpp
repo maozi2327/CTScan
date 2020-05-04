@@ -5,7 +5,7 @@
 #include "LineDetImageProcess.h"
 #include "LineDetNetWork.h"
 
-LineDetBkgTune::LineDetBkgTune(ControllerInterface* in_controller) : LineDetScanInterface(in_controller)
+LineDetBkgTune::LineDetBkgTune(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWor) : LineDetScanInterface(in_controller, in_lineDetNetWor)
 {
 }
 

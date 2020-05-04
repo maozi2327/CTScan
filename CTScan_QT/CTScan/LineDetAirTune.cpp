@@ -74,7 +74,7 @@ void LineDetAirTune::saveFile()
 	d_lineDetImageProcess->createBkgDat(d_fileName, d_installDirectory);
 }
 
-LineDetAirTune::LineDetAirTune(ControllerInterface* in_controller) : LineDetScanInterface(in_controller)
+LineDetAirTune::LineDetAirTune(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWor) : LineDetScanInterface(in_controller, in_lineDetNetWor)
 {
 
 }

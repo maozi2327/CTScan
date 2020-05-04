@@ -3,7 +3,7 @@
 #include "../Public/util/TcpServer.h"
 #include <chrono>
 #include <algorithm>
-LineDetNetWork::LineDetNetWork()
+LineDetNetWork::LineDetNetWork(unsigned short in_port)
 	: d_server(new TcpServer(4, 4, 0
 		, [] {; }
 		, [this](char* in_char, int in_size) { DecodePackages(in_char, in_size); }

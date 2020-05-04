@@ -26,7 +26,11 @@ bool SetupDataParser::parseLineDetData(tinyxml2::XMLElement * in_element, int i)
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
-		if (strcmp(element->Value(), "LineDetType") == 0)
+		if (strcmp(element->Value(), "LideDetID") == 0)
+		{
+			localLineDetData.LineDetID = atoi(element->GetText());
+		}
+		else if (strcmp(element->Value(), "LineDetType") == 0)
 		{
 			if (strcmp(element->GetText(), "Arch") == 0)
 				localLineDetData.LineDetType = 0;

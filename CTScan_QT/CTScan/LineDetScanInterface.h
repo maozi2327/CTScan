@@ -15,6 +15,8 @@ class LineDetScanInterface : public QObject
 protected:
 	QTimer d_timer;
 	QString d_fileName;
+	QString d_orgPath;
+	QString d_filePath;
 	QString d_installDirectory;
 	bool d_threadRun;
 
@@ -46,11 +48,11 @@ protected:
 	virtual bool canScan() = 0;
 signals:
 	void signalGraduationCount(int in_count);
-
+	void errorMsgSignal(QString msg);
 public:
-	LineDetScanInterface(ControllerInterface* in_controller);
+	LineDetScanInterface(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWork);
 	virtual ~LineDetScanInterface();
-	void setFileName(QString& in_fileName) { d_fileName = in_fileName; };
+	void setFileName(QString& in_fileName, QString& in_orgPth, QString& in_filePth) { d_fileName = in_fileName; };
 	virtual bool startScan() = 0;
 	virtual void stopScan() = 0;
 };

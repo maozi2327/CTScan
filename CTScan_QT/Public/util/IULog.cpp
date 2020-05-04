@@ -5,17 +5,17 @@
 
 LOG_LEVEL CIULog::d_logLevel = LOG_LEVEL::LOG_LEVEL_INFO;
 QFile CIULog::d_logFile;
-bool CIULog::Init(QString pszLogFileName)
+bool CIULog::Init(QString& pszLogFileName)
 {
     if (pszLogFileName.size() == 0)
 		return false;
 
-	int slashIndex  = pszLogFileName.lastIndexOf('\\');
+	int slashIndex  = pszLogFileName.lastIndexOf('/');
 
 	if (slashIndex == -1)
 		return false;
 
-	QString folderName = pszLogFileName.left(pszLogFileName.size() - slashIndex);
+	QString folderName = pszLogFileName.left(slashIndex);
 	QDir  logDir;
 
 	if(logDir.mkpath(folderName) == false)
@@ -36,7 +36,7 @@ void CIULog::SetLevel(LOG_LEVEL nLevel)
     d_logLevel = nLevel;
 }
 
-bool CIULog::Log(LOG_LEVEL nLevel, char* pszFmt, ...)
+bool CIULog::Log(LOG_LEVEL nLevel, QString& pszFmt)
 {
     if (nLevel < d_logLevel)
         return false;
@@ -45,11 +45,7 @@ bool CIULog::Log(LOG_LEVEL nLevel, char* pszFmt, ...)
     QString strDebugInfo(QDateTime::currentDateTime().toString("hh:mm:ss.zzz"));
 	QString strLevel("[INFO]");
 	strDebugInfo.append(strLevel);
-	va_list ap;
-	va_start(ap, pszFmt);
-	QString apString;
-	apString.sprintf(pszFmt, ap);
-	strDebugInfo.append(apString);
+	strDebugInfo.append(pszFmt);
 	strDebugInfo += "\r\n";	
 	d_logFile.seek(d_logFile.size());
 	d_logFile.write(strDebugInfo.toLocal8Bit());
@@ -57,7 +53,7 @@ bool CIULog::Log(LOG_LEVEL nLevel, char* pszFmt, ...)
     return true;
 }
 
-bool CIULog::Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, char* pszFmt, ...)
+bool CIULog::Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, QString& pszFmt)
 {
 	if (nLevel < d_logLevel)
 		return false;
@@ -75,11 +71,7 @@ bool CIULog::Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, char* pszF
 		strLevel = "[Error]";
 
 	strDebugInfo.append(strLevel);
-	va_list ap;
-	va_start(ap, pszFmt);
-	QString apString;
-	apString.sprintf(pszFmt, ap);
-	strDebugInfo.append(apString);
+	strDebugInfo.append(pszFmt);
 	strDebugInfo += "\r\n";
 	d_logFile.seek(d_logFile.size());
 	d_logFile.write(strDebugInfo.toLocal8Bit());

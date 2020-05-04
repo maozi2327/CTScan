@@ -191,7 +191,7 @@ public:
 	void clearRowList();
 
 	bool getConnected();
-	LineDetNetWork();
+	LineDetNetWork(unsigned short in_port);
 	~LineDetNetWork();
 };
 

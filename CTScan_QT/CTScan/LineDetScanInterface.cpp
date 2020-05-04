@@ -1,12 +1,14 @@
 #include "stdafx.h"
 #include "linedetscaninterface.h"
+#include "../Public/util/iulog.h"
 #include "linedetnetwork.h"
 #include "linedetimageprocess.h"
 #include "../Public/util/thread.h"
 #include <algorithm>
 
 ICT_HEADER LineDetScanInterface::d_ictHeader;
-LineDetScanInterface::LineDetScanInterface(ControllerInterface * in_controller) : d_controller(in_controller)
+LineDetScanInterface::LineDetScanInterface(ControllerInterface * in_controller, LineDetNetWork* in_lineDetNetWork)
+	: d_controller(in_controller), d_lineDetNetWork(in_lineDetNetWork)
 {
 
 }
@@ -24,7 +26,8 @@ void LineDetScanInterface::stopScan()
 
 void LineDetScanInterface::saveOrgFile()
 {
-	d_lineDetImageProcess->saveOrgFile(d_fileName, &d_ictHeader, d_lineDetNetWork->getRowList(), 1);
+	QString fileFullName(d_orgPath + d_fileName);
+	d_lineDetImageProcess->saveOrgFile(fileFullName, &d_ictHeader, d_lineDetNetWork->getRowList(), 1);
 }
 
 bool LineDetScanInterface::setGenerialFileHeader()
@@ -70,8 +73,8 @@ bool LineDetScanInterface::setGenerialFileHeader()
 	d_ictHeader.ScanParameter.SpaceOfVerticalDetector = 0;
 	d_ictHeader.ScanParameter.HorizontalSectorAngle = d_setupData->lineDetData[d_lineDetIndex].HorizontalDetectorAngle;
 	d_ictHeader.ScanParameter.VerticalSectorAngle = 0;
-	d_ictHeader.ScanParameter.RadialPosition = d_SOD;
-	d_ictHeader.ScanParameter.SourceDetectorDistance = d_SDD;
+	d_ictHeader.ScanParameter.RadialPosition = d_controller->readAxisPostion(Axis::objRadial);
+	d_ictHeader.ScanParameter.SourceDetectorDistance = d_controller->readAxisPostion(Axis::detRadial);
 	d_ictHeader.ScanParameter.CollimationSize = d_colimateSize;
 	d_ictHeader.ScanParameter.LayerThickness = d_layerThickness;
 	d_ictHeader.ScanParameter.SampleTime = d_sampleTime / 1000;
@@ -133,11 +136,16 @@ void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)
 
 	d_ictHeader.ScanParameter.ViewDiameter = (float)((int)(100.0 * in_diameter)) / 100;
 }
+//__FUNCSIG__, __LINE__
+#define LOG_ERROR(MSG) emit(errorMsgSignal(MSG + QString(__FUNCSIG__) + QString::number(__LINE__)));
 
 bool LineDetScanInterface::canScan()
 {	//³õÊ¼»¯£¬Ì½²âÆ÷£¬Ö´ÐÐÃüÁî
-	if(!d_lineDetNetWork->getConnected())
+	if (!d_lineDetNetWork->getConnected())
+	{
+		LOG_ERROR(QString::fromLocal8Bit("Ì½²âÆ÷Î´Á¬½Ó£¡"));
 		return false;
+	}
 
 	if (!d_controller->getConnected())
 		return false;
