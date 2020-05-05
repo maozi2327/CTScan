@@ -96,6 +96,14 @@ void CTScan::errorMsgSlot(QString msg)
 	d_msg->logError(msg);
 }
 
+void CTScan::infoMsgSlot(QString msg)
+{
+}
+
+void CTScan::bugMsgSlot(QString msg)
+{
+}
+
 //void CTScan::on_pushButton_clicked()
 //{
 //	//if(!d_rayPanelMotion->isVisible())

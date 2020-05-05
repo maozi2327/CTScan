@@ -5,14 +5,12 @@
 enum class LOG_LEVEL
 {
     LOG_LEVEL_INFO,
-    LOG_LEVEL_WARNING,
-    LOG_LEVEL_ERROR
+    LOG_LEVEL_ERROR,
+	LOG_LEVEL_BUG,
 };
 
 //e.g. LOG_INFO(_T("GroupID=%u, GroupName=%s, GroupName=%s."), lpGroupInfo->d_nGroupCode, lpGroupInfo->d_strAccount.c_str(), lpGroupInfo->d_strName.c_str());
-#define LOG_INFO(info)     CIULog::Log(LOG_LEVEL::LOG_LEVEL_INFO, info)
-#define LOG_WARNING(warning)    CIULog::Log(LOG_LEVEL::LOG_LEVEL_WARNING, __FUNCSIG__, __LINE__, warning)
-#define LOG_ERROR(error)      CIULog::Log(LOG_LEVEL::LOG_LEVEL_ERROR, __FUNCSIG__,__LINE__, error)
+
 
 class CIULog
 {
@@ -23,9 +21,9 @@ public:
     static void SetLevel(LOG_LEVEL nLevel);
 	
 	//不输出线程ID号和所在函数签名、行号
-	static bool Log(LOG_LEVEL nLevel, QString& pszFmt);
+	//static bool Log(LOG_LEVEL nLevel, QString& pszFmt);
 	//输出线程ID号和所在函数签名、行号
-	static bool Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, QString& pszFmt);
+	static bool Log(LOG_LEVEL nLevel, QString& pszFmt);
 private:
     CIULog() = delete;
     ~CIULog() = delete;

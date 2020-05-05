@@ -31,11 +31,11 @@
     <Filter Include="Header Files\publicHeaders">
       <UniqueIdentifier>{accbcda0-a38a-4dad-858e-ddc6a97b9692}</UniqueIdentifier>
     </Filter>
-    <Filter Include="utility">
-      <UniqueIdentifier>{6442bf5d-ba88-4875-99ec-76643798f1fe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\lib">
       <UniqueIdentifier>{3eba4a28-4a96-4fb7-90d1-5f729f7e7346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utility">
+      <UniqueIdentifier>{6442bf5d-ba88-4875-99ec-76643798f1fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -112,25 +112,25 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\util\functions.cpp">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\util\iulog.cpp">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\util\serialportinterface.cpp">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\util\serialportutil.cpp">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\util\tcpclient.cpp">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\util\tcpserver.cpp">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\Public\util\thread.cpp">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="motorcontrolwidget.cpp">
       <Filter>Source Files</Filter>
@@ -189,16 +189,16 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\util\functions.h">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\util\iulog.h">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\util\serialportinterface.h">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\util\thread.h">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\headers\commandqueue.h">
       <Filter>Header Files\publicHeaders</Filter>
@@ -219,6 +219,9 @@
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\headers\setupdata.h">
+      <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\headers\macro.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
   </ItemGroup>
@@ -254,19 +257,19 @@
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="..\Public\util\serialportutil.h">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </QtMoc>
     <QtMoc Include="..\Public\util\tcpclient.h">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </QtMoc>
     <QtMoc Include="..\Public\util\tcpserver.h">
-      <Filter>utility</Filter>
+      <Filter>Header Files\utility</Filter>
     </QtMoc>
     <QtMoc Include="motorcontrolwidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="msglistbox.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

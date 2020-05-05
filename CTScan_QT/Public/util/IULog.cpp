@@ -36,37 +36,36 @@ void CIULog::SetLevel(LOG_LEVEL nLevel)
     d_logLevel = nLevel;
 }
 
-bool CIULog::Log(LOG_LEVEL nLevel, QString& pszFmt)
-{
-    if (nLevel < d_logLevel)
-        return false;
-    
-    char szTime[64] = { 0 };
-    QString strDebugInfo(QDateTime::currentDateTime().toString("hh:mm:ss.zzz"));
-	QString strLevel("[INFO]");
-	strDebugInfo.append(strLevel);
-	strDebugInfo.append(pszFmt);
-	strDebugInfo += "\r\n";	
-	d_logFile.seek(d_logFile.size());
-	d_logFile.write(strDebugInfo.toLocal8Bit());
-	d_logFile.flush();
-    return true;
-}
+//bool CIULog::Log(LOG_LEVEL nLevel, QString& pszFmt)
+//{
+//    if (nLevel < d_logLevel)
+//        return false;
+//    
+//    char szTime[64] = { 0 };
+//    QString strDebugInfo(QDateTime::currentDateTime().toString("hh:mm:ss.zzz"));
+//	QString strLevel("[INFO]");
+//	strDebugInfo.append(strLevel);
+//	strDebugInfo.append(pszFmt);
+//	strDebugInfo += "\r\n";	
+//	d_logFile.seek(d_logFile.size());
+//	d_logFile.write(strDebugInfo.toLocal8Bit());
+//	d_logFile.flush();
+//    return true;
+//}
 
-bool CIULog::Log(LOG_LEVEL nLevel, char* pszFunctionSig, int nLineNo, QString& pszFmt)
+bool CIULog::Log(LOG_LEVEL nLevel, QString& pszFmt)
 {
 	if (nLevel < d_logLevel)
 		return false;
 
 	char szTime[64] = { 0 };
 	QString strDebugInfo;
-	strDebugInfo.sprintf("[%s: %d]", pszFunctionSig, nLineNo);
-	strDebugInfo.append(QDateTime::currentDateTime().toString("hh:mm:ss.zzz"));
-
 	QString strLevel("[INFO]");
 
-	if (nLevel == LOG_LEVEL::LOG_LEVEL_WARNING)
-		strLevel = "[Warning]";
+	if (nLevel == LOG_LEVEL::LOG_LEVEL_BUG)
+		strLevel = "[Bug]";
+	else if (nLevel == LOG_LEVEL::LOG_LEVEL_INFO)
+		strLevel = "[Info]";
 	else if (nLevel == LOG_LEVEL::LOG_LEVEL_ERROR)
 		strLevel = "[Error]";
 

@@ -169,6 +169,7 @@
     <ClInclude Include="..\Public\headers\ictheader.h" />
     <ClInclude Include="..\Public\headers\list.h" />
     <ClInclude Include="..\Public\headers\machineType.h" />
+    <ClInclude Include="..\Public\headers\macro.h" />
     <ClInclude Include="..\Public\headers\setupdata.h" />
     <ClInclude Include="..\Public\lib\tinyxml2.h" />
     <QtMoc Include="ctscan.h">

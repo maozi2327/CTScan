@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_LineDetScanInterface_t {
-    QByteArrayData data[10];
-    char stringdata0[110];
+    QByteArrayData data[11];
+    char stringdata0[119];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,15 +37,16 @@ QT_MOC_LITERAL(1, 21, 21), // "signalGraduationCount"
 QT_MOC_LITERAL(2, 43, 0), // ""
 QT_MOC_LITERAL(3, 44, 8), // "in_count"
 QT_MOC_LITERAL(4, 53, 13), // "infoMsgSignal"
-QT_MOC_LITERAL(5, 67, 4), // "info"
-QT_MOC_LITERAL(6, 72, 14), // "errorMsgSignal"
-QT_MOC_LITERAL(7, 87, 5), // "error"
-QT_MOC_LITERAL(8, 93, 12), // "bugMsgSignal"
-QT_MOC_LITERAL(9, 106, 3) // "bug"
+QT_MOC_LITERAL(5, 67, 8), // "QString&"
+QT_MOC_LITERAL(6, 76, 4), // "info"
+QT_MOC_LITERAL(7, 81, 14), // "errorMsgSignal"
+QT_MOC_LITERAL(8, 96, 5), // "error"
+QT_MOC_LITERAL(9, 102, 12), // "bugMsgSignal"
+QT_MOC_LITERAL(10, 115, 3) // "bug"
 
     },
     "LineDetScanInterface\0signalGraduationCount\0"
-    "\0in_count\0infoMsgSignal\0info\0"
+    "\0in_count\0infoMsgSignal\0QString&\0info\0"
     "errorMsgSignal\0error\0bugMsgSignal\0bug"
 };
 #undef QT_MOC_LITERAL
@@ -66,14 +67,14 @@ static const uint qt_meta_data_LineDetScanInterface[] = {
  // signals: name, argc, parameters, tag, flags
        1,    1,   34,    2, 0x06 /* Public */,
        4,    1,   37,    2, 0x06 /* Public */,
-       6,    1,   40,    2, 0x06 /* Public */,
-       8,    1,   43,    2, 0x06 /* Public */,
+       7,    1,   40,    2, 0x06 /* Public */,
+       9,    1,   43,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
-    QMetaType::Void, QMetaType::QString,    5,
-    QMetaType::Void, QMetaType::QString,    7,
-    QMetaType::Void, QMetaType::QString,    9,
+    QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void, 0x80000000 | 5,    8,
+    QMetaType::Void, 0x80000000 | 5,   10,
 
        0        // eod
 };
@@ -100,21 +101,21 @@ void LineDetScanInterface::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
             }
         }
         {
-            using _t = void (LineDetScanInterface::*)(QString );
+            using _t = void (LineDetScanInterface::*)(QString & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LineDetScanInterface::infoMsgSignal)) {
                 *result = 1;
                 return;
             }
         }
         {
-            using _t = void (LineDetScanInterface::*)(QString );
+            using _t = void (LineDetScanInterface::*)(QString & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LineDetScanInterface::errorMsgSignal)) {
                 *result = 2;
                 return;
             }
         }
         {
-            using _t = void (LineDetScanInterface::*)(QString );
+            using _t = void (LineDetScanInterface::*)(QString & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LineDetScanInterface::bugMsgSignal)) {
                 *result = 3;
                 return;
@@ -167,21 +168,21 @@ void LineDetScanInterface::signalGraduationCount(int _t1)
 }
 
 // SIGNAL 1
-void LineDetScanInterface::infoMsgSignal(QString _t1)
+void LineDetScanInterface::infoMsgSignal(QString & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
-void LineDetScanInterface::errorMsgSignal(QString _t1)
+void LineDetScanInterface::errorMsgSignal(QString & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 
 // SIGNAL 3
-void LineDetScanInterface::bugMsgSignal(QString _t1)
+void LineDetScanInterface::bugMsgSignal(QString & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);

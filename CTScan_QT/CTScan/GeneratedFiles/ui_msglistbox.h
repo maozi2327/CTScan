@@ -12,7 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -23,7 +23,7 @@ class Ui_MsgListBox
 public:
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QListView *listView;
+    QListWidget *listWidget;
 
     void setupUi(QWidget *MsgListBox)
     {
@@ -43,12 +43,10 @@ public:
 
         verticalLayout->addWidget(label);
 
-        listView = new QListView(MsgListBox);
-        listView->setObjectName(QStringLiteral("listView"));
-        listView->setMinimumSize(QSize(300, 200));
-        listView->setMaximumSize(QSize(16777215, 200));
+        listWidget = new QListWidget(MsgListBox);
+        listWidget->setObjectName(QStringLiteral("listWidget"));
 
-        verticalLayout->addWidget(listView);
+        verticalLayout->addWidget(listWidget);
 
 
         retranslateUi(MsgListBox);

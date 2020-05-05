@@ -35,6 +35,8 @@ private slots:
 	void paste();
 	void controllerNetWorkStsSlot(bool sts);
 	void errorMsgSlot(QString msg);
+	void infoMsgSlot(QString msg);
+	void bugMsgSlot(QString msg);
 protected:
 #ifndef QT_NO_CONTEXTMENU
 	void contextMenuEvent(QContextMenuEvent *event) override;

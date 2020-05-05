@@ -4,6 +4,7 @@
 #include "setupdata.h"
 #include "ctrldata.h"
 #include "controllerinterface.h"
+#include "../Public/headers/macro.h"
 #include <memory>
 class Thread;
 class LineDetNetWork;
@@ -48,7 +49,7 @@ protected:
 	virtual bool canScan() = 0;
 signals:
 	void signalGraduationCount(int in_count);
-	void errorMsgSignal(QString msg);
+	LOGSIGNAL
 public:
 	LineDetScanInterface(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWork);
 	virtual ~LineDetScanInterface();

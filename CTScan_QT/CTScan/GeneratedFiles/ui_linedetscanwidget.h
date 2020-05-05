@@ -429,7 +429,7 @@ public:
 
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer_4, 8, 1, 1, 1);
+        gridLayout_2->addItem(verticalSpacer_4, 8, 0, 1, 2);
 
 
         gridLayout_5->addLayout(gridLayout_2, 0, 0, 1, 1);

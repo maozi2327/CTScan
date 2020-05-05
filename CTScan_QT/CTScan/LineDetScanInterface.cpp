@@ -109,6 +109,7 @@ void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)
 	if (d_standardInterpolation)		//确定3代扫描有效探测器数Nv
 	{
 		int	Nv;
+
 		if (leftMiddle == rightMiddle)
 			Nv = 2 * std::min<int>(rightMiddle, systemDetector - rightMiddle - 1) + 1;
 		else
@@ -136,8 +137,6 @@ void LineDetScanInterface::CalculateView_ValidDetector(float in_diameter)
 
 	d_ictHeader.ScanParameter.ViewDiameter = (float)((int)(100.0 * in_diameter)) / 100;
 }
-//__FUNCSIG__, __LINE__
-#define LOG_ERROR(MSG) emit(errorMsgSignal(MSG + QString(__FUNCSIG__) + QString::number(__LINE__)));
 
 bool LineDetScanInterface::canScan()
 {	//初始化，探测器，执行命令
