@@ -184,6 +184,7 @@ public:
 	bool ReadAmpSize();
 	bool ReadIntTime();
 	bool ReadDelayTime();
+	bool startExtTrigAcquire();
 	void DecodePackages(char* in_buff, int in_size);
 	int getGraduationCount();
 	int CollectUsefulData(char * in_buff, int in_size);

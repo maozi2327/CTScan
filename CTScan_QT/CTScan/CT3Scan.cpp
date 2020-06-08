@@ -9,6 +9,7 @@
 #include "../Public/util/functions.h"
 #include "motorcontrolwidget.h"
 #include "../Public/headers/setupdata.h"
+#include "../Public/headers/macro.h"
 
 CT3Scan::CT3Scan(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWor, CT3Data& in_data) : LineDetScanInterface(in_controller, in_lineDetNetWor)
 	, d_ct3Data(in_data)
@@ -36,19 +37,25 @@ bool CT3Scan::setScanParameter(float in_layer, int in_matrix, float in_view, int
 //检查扫描结束
 void CT3Scan::scanThread()
 {
-	while (d_threadRun)
+	if (d_lineDetNetWork->startExtTrigAcquire())
 	{
-		emit(signalGraduationCount(d_lineDetNetWork->getGraduationCount()));
-		
-		if (d_controller->readSaveStatus())
-		{
-			saveFile();
-			stopScan();
-			d_threadRun = false;
-		}
+		sendCmdToControl();
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		while (d_threadRun)
+		{
+			emit(signalGraduationCount(d_lineDetNetWork->getGraduationCount()));
+
+			if (d_controller->readSaveStatus())
+			{
+				saveFile();
+				stopScan();
+			}
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		}
 	}
+	else
+		;
 }
 
 #define	RTBUF_LEN	256						//定义接收/发送缓冲区长度
@@ -105,12 +112,12 @@ void CT3Scan::saveFile()
 bool CT3Scan::startScan()
 {	
 	if (canScan())
-		sendCmdToControl();
+	{
+		d_scanThread.reset(new Thread(std::bind(&CT3Scan::scanThread, this), std::ref(d_threadRun)));
+		return d_scanThread->detach();
+	}	
 	else
 		return false;
-
-	d_scanThread.reset(new Thread(std::bind(&CT3Scan::scanThread, this), std::ref(d_threadRun)));
-	return d_scanThread->detach();
 }
 
 CT3Data CT3Scan::getData()
@@ -148,9 +155,7 @@ bool CT3Scan::setGenerialFileHeader()
 	d_ictHeader.ScanParameter.Pixels = d_matrix;
 	d_ictHeader.ScanParameter.GraduationDirection = P_DIR;
 	d_ictHeader.ScanParameter.DelaminationMode = 0;
-
 	CalculateView_ValidDetector(d_view);
-
 	d_ictHeader.ScanParameter.InterpolationFlag = d_setupData->ct3InterpolationFlag;
 	d_ictHeader.ScanParameter.NumberOfInterpolation = (float)d_matrix / d_ictHeader.ScanParameter.NumberOfValidHorizontalDetector + 1;
 	int N = d_ictHeader.ScanParameter.NumberOfSystemHorizontalDetector;
@@ -180,5 +185,5 @@ bool CT3Scan::canScan()
 
 void CT3Scan::stopScan()
 {
-
+	d_threadRun = false;
 }

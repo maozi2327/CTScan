@@ -225,6 +225,22 @@ bool LineDetNetWork::ReadDelayTime()
 	return false;
 }
 
+bool LineDetNetWork::startExtTrigAcquire()
+{
+	clearRowList();
+
+	CMD_STRUCT cmdInfo;
+	cmdInfo.cmd = CMD_INTERNAL_COLLECT;
+	cmdInfo.cmd_len = 16;
+	cmdInfo.cmd_param = 1;
+	cmdInfo.respond_type = 0;
+
+	if (d_server->sendSyn((char*)(&cmdInfo), sizeof(cmdInfo)) == sizeof(cmdInfo))
+		return true;
+
+	return false;
+}
+
 void LineDetNetWork::DecodePackages(char * in_buff, int in_size)
 {
 	CMD_STRUCT cmdFeedback;

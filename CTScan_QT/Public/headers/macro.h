@@ -5,3 +5,8 @@
 
 #define LOG_ERROR(MSG) emit(errorMsgSignal(QString("[") + MSG + ']' + \
 	'[' + QString(__FUNCSIG__) + ']' + '[' + QString::number(__LINE__) + ']'));
+
+#define LOG_BUG(MSG) emit(errorMsgSignal(QString("[") + MSG + ']' + \
+	'[' + QString(__FUNCSIG__) + ']' + '[' + QString::number(__LINE__) + ']'));
+
+#define LOG_INFO(MSG) emit(errorMsgSignal(QString("[") + MSG + ']'));

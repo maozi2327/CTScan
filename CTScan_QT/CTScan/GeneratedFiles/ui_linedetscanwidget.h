@@ -829,7 +829,7 @@ public:
         retranslateUi(LineDetScanWidget);
 
         rayTab->setCurrentIndex(1);
-        scanModeTab->setCurrentIndex(0);
+        scanModeTab->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(LineDetScanWidget);
