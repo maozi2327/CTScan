@@ -33,8 +33,8 @@ Global
 		{F5BD4800-1C31-4A42-9880-118FD55DB3B0}.Release|x64.ActiveCfg = Release|x64
 		{F5BD4800-1C31-4A42-9880-118FD55DB3B0}.Release|x64.Build.0 = Release|x64
 		{F5BD4800-1C31-4A42-9880-118FD55DB3B0}.Release|x86.ActiveCfg = Release|x64
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|Win32.ActiveCfg = Debug|Win32
-		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|Win32.Build.0 = Debug|Win32
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|Win32.ActiveCfg = Debug|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|Win32.Build.0 = Debug|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.ActiveCfg = Debug|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.Build.0 = Debug|x64
 		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x86.ActiveCfg = Debug|Win32
@@ -82,7 +82,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3F25FC31-82ED-453D-9066-603636078347}
 		Qt5Version = msvc2017_64
+		SolutionGuid = {3F25FC31-82ED-453D-9066-603636078347}
 	EndGlobalSection
 EndGlobal

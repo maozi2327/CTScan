@@ -1,5 +1,6 @@
 #pragma once
 #include "conescanInterface.h"
+class PanelImageProcess;
 class ConeContinusScan :
 	public ConeScanInterface
 {

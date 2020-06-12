@@ -5,6 +5,7 @@
 #include "../Public/headers/CommandQueue.h"
 #include <tuple>
 #include <map>
+#include <functional>
 class PESiPanel :
 	public PanelInterface
 {
@@ -22,11 +23,11 @@ private:
 	const std::map<BinMode, std::tuple<QString, unsigned short>> d_binModeName;
 	unsigned short* pPESiDetAcqBuffer;
 	unsigned char* d_copyBuffer;
-	int d_frameCount;		//Ö¡¼ÆÊý
+	int d_frameCount;
 	size_t d_PESiDetBufferSize;
 	PESICON_SINGLE_MODE d_PESiContinusSingleMode;
 public:
-	PESiPanel();
+	PESiPanel(std::function<void(unsigned short*)> in_imageProcessCallBack);
 	~PESiPanel();
 	void stopAcquire();
 	bool initialise();

@@ -1,12 +1,18 @@
 #pragma once
 
+#include <QObject>
 #include "paneldll_global.h"
 #include "panelHeaders.h"
 #include <memory>
-class PANELDLL_EXPORT Panel
+#include "../Public/util/macro.h"
+#include <functional>
+class PANELDLL_EXPORT Panel	: public QObject
 {
+	Q_OBJECT
+signals:
+	LOGSIGNAL
 public:
-    Panel();
+    Panel(std::function<void(unsigned short*)> in_imageProcessCallBack);
 	virtual ~Panel() = 0;
 	virtual bool initialise() = 0;
 	virtual bool setSampleTime(int in_milliseconds) = 0;
@@ -27,5 +33,5 @@ public:
 class PANELDLL_EXPORT PanelFactory
 {
 public:
-	static std::unique_ptr<Panel> getPanel();
+	static std::unique_ptr<Panel> getPanel(std::function<void(unsigned short*)> in_imageProcessCallBack);
 };

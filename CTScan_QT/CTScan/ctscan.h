@@ -15,6 +15,7 @@ class ControllerInterface;
 class LineDetNetWork;
 class MsgListBox;
 class LineDetScanInterface;
+class PanelImageProcess;
 class CTScan : public QMainWindow
 {
     Q_OBJECT
@@ -56,6 +57,7 @@ private:
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
 	std::unique_ptr<ControllerInterface> d_controller;
 	std::unique_ptr<MsgListBox> d_msg;
+	std::unique_ptr<PanelImageProcess> d_panelImageProcess;
 	std::map<int, std::unique_ptr<LineDetNetWork>> d_lineDetNetWorkMap;
 	std::map<std::pair<int, int>, std::vector<std::unique_ptr<LineDetScanInterface>>> d_rayDetScanMap;
 	size_t frontImageIndex;

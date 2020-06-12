@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "conecontinusscan.h"
-#include "panelimageprocess.h"
+#include "../Public/headers/panelimageprocess.h"
 ConeContinusScan::ConeContinusScan(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose):
 	ConeScanInterface(in_panel, in_controller, in_ctDispose)
 {
@@ -26,7 +26,7 @@ void ConeContinusScan::scanThread(std::promise<bool>& in_promise)
 			saveFile(imagePtr);
 
 		if (d_is_dispose)
-			d_ctDispose->dispose(imagePtr);
+			;//d_ctDispose->dispose(imagePtr);
 
 		saveFile(imagePtr);
 		free(imagePtr);

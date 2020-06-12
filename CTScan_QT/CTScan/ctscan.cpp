@@ -5,6 +5,7 @@
 #include "simotioncontroller.h"
 #include "linedetscanwidget.h"
 #include "setupdataparser.h"
+#include "../Public/headers/panelimageprocess.h"
 #include "../Public/headers/SetupData.h"
 #include "msglistbox.h"
 #include "ct3Scan.h"
@@ -17,6 +18,7 @@ CTScan::CTScan(QWidget *parent)
 	, d_rayPanelMotion(new RayPanelMotion()), d_imageWidgetManager(new ImageWidgetManager())
 	, d_controller(new SimotionController()), d_motorControl(new MotorControlWidget(d_controller.get()))
 	, d_setupData(new SetupData), d_setupDataPaser(new SetupDataParser(d_setupData.get()))
+	, d_panelImageProcess(PanelImageProcessFactory::getPanelImageProcess())
 	, d_workDir(QCoreApplication::applicationDirPath())
 {
 	QString time = QDateTime::currentDateTime().time().toString();
@@ -67,7 +69,9 @@ CTScan::~CTScan()
 
 void CTScan::on_ray1LineDetButton_clicked()
 {
-	d_line1Det1ScanWidget->show();
+	QString fileName("0000.tif");
+	d_panelImageProcess->loadAirData(fileName);
+	//d_line1Det1ScanWidget->show();
 	//tray->show();
 }
 

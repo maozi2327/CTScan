@@ -69,7 +69,7 @@
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;FreeImage.lib;PanelDll.lib;Qt5Networkd.lib;Qt5SerialPortd.lib;$(SolutionDir)Public\lib\CtDispose.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;PanelDll.lib;PanelImageProcess.lib;Qt5Networkd.lib;Qt5SerialPortd.lib;$(SolutionDir)Public\lib\CtDispose.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
       <OutputFile>%(RelativeDir)\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -127,6 +127,7 @@
     <ClCompile Include="..\Public\lib\tinyxml2.cpp" />
     <ClCompile Include="..\Public\util\functions.cpp" />
     <ClCompile Include="..\Public\util\iulog.cpp" />
+    <ClCompile Include="..\Public\util\macro.cpp" />
     <ClCompile Include="..\Public\util\serialportinterface.cpp" />
     <ClCompile Include="..\Public\util\serialportutil.cpp" />
     <ClCompile Include="..\Public\util\tcpclient.cpp" />
@@ -152,7 +153,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="motorcontrolwidget.cpp" />
     <ClCompile Include="msglistbox.cpp" />
-    <ClCompile Include="panelimageprocess.cpp" />
     <ClCompile Include="panelScanInterface.cpp" />
     <ClCompile Include="raypanelmotionwidget.cpp" />
     <ClCompile Include="setupdataparser.cpp" />
@@ -165,11 +165,11 @@
   <ItemGroup>
     <ClInclude Include="..\Public\headers\commandqueue.h" />
     <ClInclude Include="..\Public\headers\ctrldata.h" />
-    <ClInclude Include="..\Public\headers\freeimage.h" />
     <ClInclude Include="..\Public\headers\ictheader.h" />
     <ClInclude Include="..\Public\headers\list.h" />
     <ClInclude Include="..\Public\headers\machineType.h" />
     <ClInclude Include="..\Public\headers\macro.h" />
+    <ClInclude Include="..\Public\headers\panelimageprocess.h" />
     <ClInclude Include="..\Public\headers\setupdata.h" />
     <ClInclude Include="..\Public\lib\tinyxml2.h" />
     <QtMoc Include="ctscan.h">
@@ -189,6 +189,7 @@
     </QtMoc>
     <ClInclude Include="..\Public\util\functions.h" />
     <ClInclude Include="..\Public\util\iulog.h" />
+    <ClInclude Include="..\Public\util\macro.h" />
     <ClInclude Include="..\Public\util\serialportinterface.h" />
     <QtMoc Include="..\Public\util\serialportutil.h">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -210,10 +211,6 @@
     <ClInclude Include="conescan.h" />
     <ClInclude Include="conescanInterface.h" />
     <ClInclude Include="ct3Scan.h" />
-    <QtMoc Include="PanelImageProcess.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
-    </QtMoc>
     <QtMoc Include="setupdataparser.h">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>

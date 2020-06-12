@@ -4,6 +4,7 @@
 #include "linedetnetwork.h"
 #include "linedetimageprocess.h"
 #include "../Public/util/thread.h"
+#include "controllerinterface.h"
 #include <algorithm>
 
 ICT_HEADER LineDetScanInterface::d_ictHeader;

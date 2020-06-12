@@ -3,13 +3,12 @@
 #include "ictheader.h"
 #include "setupdata.h"
 #include "ctrldata.h"
-#include "controllerinterface.h"
-#include "../Public/headers/macro.h"
+#include "../Public/util/macro.h"
 #include <memory>
 class Thread;
 class LineDetNetWork;
 class LineDetImageProcess;
-
+class ControllerInterface;
 class LineDetScanInterface : public QObject
 {
 	Q_OBJECT

@@ -57,9 +57,6 @@
     <ClCompile Include="panelScanInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="panelimageprocess.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -141,6 +138,9 @@
     <ClCompile Include="msglistbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Public\util\macro.cpp">
+      <Filter>Header Files\utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -206,9 +206,6 @@
     <ClInclude Include="..\Public\headers\ctrldata.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\headers\freeimage.h">
-      <Filter>Header Files\publicHeaders</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\headers\ictheader.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
@@ -224,11 +221,14 @@
     <ClInclude Include="..\Public\headers\macro.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\util\macro.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\headers\panelimageprocess.h">
+      <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PanelImageProcess.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="setupdataparser.h">
       <Filter>Source Files</Filter>
     </QtMoc>

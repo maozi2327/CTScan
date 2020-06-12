@@ -9,7 +9,8 @@
 #include "../Public/util/functions.h"
 #include "motorcontrolwidget.h"
 #include "../Public/headers/setupdata.h"
-#include "../Public/headers/macro.h"
+#include "../Public/util/macro.h"
+#include "simotioncontroller.h"
 
 CT3Scan::CT3Scan(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWor, CT3Data& in_data) : LineDetScanInterface(in_controller, in_lineDetNetWor)
 	, d_ct3Data(in_data)

@@ -1,8 +1,8 @@
 #pragma once
 #include <future>
 #include <memory>
-#include "..\PanelDll\panel.h"
-#include "panelimageprocess.h"
+#include "../PanelDll/panel.h"
+#include "../Public/headers/panelimageprocess.h"
 #include "controllerinterface.h"
 
 class ConeScanInterface
