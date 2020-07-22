@@ -1,8 +1,6 @@
 #include "PanelInterface.h"
 
-PanelInterface::PanelInterface(std::function<void(unsigned short*)> in_imageProcessCallBack):
-	Panel(in_imageProcessCallBack),
-	d_imageProcCallback(in_imageProcessCallBack)
+PanelInterface::PanelInterface(): Panel()
 {
 
 }
@@ -22,6 +20,10 @@ bool PanelInterface::setFrames(int in_frames)
 size_t PanelInterface::getFrameSize()
 {
 	return d_frameSize;
+}
+void PanelInterface::setFrameCallback(std::function<void(unsigned short*)> in_imageProcessCallBack)
+{
+	d_imageProcCallback = in_imageProcessCallBack;
 }
 bool PanelInterface::getPanelSize(int& out_width, int& out_height)
 {

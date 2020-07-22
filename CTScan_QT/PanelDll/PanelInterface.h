@@ -9,7 +9,7 @@
 class PanelInterface : public Panel
 {
 public:
-    PanelInterface(std::function<void(unsigned short*)> in_imageProcessCallBack);
+    PanelInterface();
     virtual ~PanelInterface();
 
 protected:
@@ -36,4 +36,5 @@ public:
     virtual bool getPanelSize(int& out_width, int& out_height);
     virtual bool setPanelSize(int in_width, int in_height);
     virtual size_t getFrameSize();
+	virtual void setFrameCallback(std::function<void(unsigned short*)> in_imageProcessCallBack);
 };

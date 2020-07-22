@@ -31,7 +31,7 @@ QT_BEGIN_NAMESPACE
 class Ui_ConeScanWidget
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_3;
     QGroupBox *groupBox;
     QVBoxLayout *verticalLayout;
@@ -105,15 +105,15 @@ public:
         ConeScanWidget->setMinimumSize(QSize(280, 550));
         ConeScanWidget->setMaximumSize(QSize(50000, 550));
         ConeScanWidget->setAcceptDrops(false);
-        widget = new QWidget(ConeScanWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(20, 11, 252, 531));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(ConeScanWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 11, 252, 531));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        groupBox = new QGroupBox(widget);
+        groupBox = new QGroupBox(layoutWidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
@@ -185,7 +185,7 @@ public:
 
         verticalLayout_3->addWidget(groupBox);
 
-        tabWidget = new QTabWidget(widget);
+        tabWidget = new QTabWidget(layoutWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setMinimumSize(QSize(250, 0));
         tabWidget->setMaximumSize(QSize(250, 500));
@@ -529,8 +529,23 @@ public:
         gridLayout_2->addWidget(coneJointRotScanProgressBar, 10, 0, 1, 3);
 
         tabWidget->addTab(coneJointRotScanTab, QString());
+        coneJointRotScanfileNameEdit->raise();
+        coneJointRotScanGraduationStaticLabel_2->raise();
+        coneJointRotScanViewSpinBox->raise();
+        coneJointRotScanGraduationStaticLabel->raise();
+        coneJointRotScanMatrixComboBox->raise();
+        coneJointRotScanFrameAverageStaticLabel->raise();
+        coneJointRotScanFrameAverageSpinBox->raise();
+        coneJointRotScandiskAvailableStaticLabel->raise();
+        coneJointRotScanDiskAvailableLabel->raise();
+        coneJointRotScanNecessaryDiskStaticLabel->raise();
+        coneJointRotScanNecessaryDiskLabel->raise();
+        coneJointRotScanSampleTimeEstimateStaticLabel->raise();
+        coneJointRotScanSampleTimeEstimateLabel->raise();
+        coneJointRotScanleakSampleCheckBox->raise();
         coneJointRotScanBeginSampleButton->raise();
         coneJointRotScanProgressBar->raise();
+        coneJointRotScanSaveDirButton->raise();
         coneJointRotScanFramesStaticLabel->raise();
         coneJointRotScanframesComboBox->raise();
 

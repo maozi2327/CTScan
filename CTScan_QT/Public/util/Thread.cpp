@@ -31,7 +31,7 @@ bool Thread::detach()
 	{
 		std::function<void()> sendThreadFun = std::bind(&Thread::realThread, this);
 		d_thread.reset(new std::thread(sendThreadFun));
-		d_thread->join();
+		d_thread->detach();
 		return true;
 	}
 

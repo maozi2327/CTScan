@@ -28,7 +28,7 @@
   <property name="windowTitle">
    <string>锥束扫描</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -973,10 +973,23 @@
          </widget>
         </item>
        </layout>
-       <zorder>layoutWidget</zorder>
+       <zorder>coneJointRotScanfileNameEdit</zorder>
+       <zorder>coneJointRotScanGraduationStaticLabel_2</zorder>
+       <zorder>coneJointRotScanViewSpinBox</zorder>
+       <zorder>coneJointRotScanGraduationStaticLabel</zorder>
+       <zorder>coneJointRotScanMatrixComboBox</zorder>
+       <zorder>coneJointRotScanFrameAverageStaticLabel</zorder>
+       <zorder>coneJointRotScanFrameAverageSpinBox</zorder>
+       <zorder>coneJointRotScandiskAvailableStaticLabel</zorder>
+       <zorder>coneJointRotScanDiskAvailableLabel</zorder>
+       <zorder>coneJointRotScanNecessaryDiskStaticLabel</zorder>
+       <zorder>coneJointRotScanNecessaryDiskLabel</zorder>
+       <zorder>coneJointRotScanSampleTimeEstimateStaticLabel</zorder>
+       <zorder>coneJointRotScanSampleTimeEstimateLabel</zorder>
+       <zorder>coneJointRotScanleakSampleCheckBox</zorder>
        <zorder>coneJointRotScanBeginSampleButton</zorder>
        <zorder>coneJointRotScanProgressBar</zorder>
-       <zorder></zorder>
+       <zorder>coneJointRotScanSaveDirButton</zorder>
        <zorder>coneJointRotScanFramesStaticLabel</zorder>
        <zorder>coneJointRotScanframesComboBox</zorder>
       </widget>

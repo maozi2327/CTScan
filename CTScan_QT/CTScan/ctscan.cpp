@@ -14,11 +14,9 @@
 
 CTScan::CTScan(QWidget *parent)
     : QMainWindow(parent)
-	, d_panel(PanelFactory::getPanel())
 	, d_rayPanelMotion(new RayPanelMotion()), d_imageWidgetManager(new ImageWidgetManager())
 	, d_controller(new SimotionController()), d_motorControl(new MotorControlWidget(d_controller.get()))
 	, d_setupData(new SetupData), d_setupDataPaser(new SetupDataParser(d_setupData.get()))
-	, d_panelImageProcess(PanelImageProcessFactory::getPanelImageProcess())
 	, d_workDir(QCoreApplication::applicationDirPath())
 {
 	QString time = QDateTime::currentDateTime().time().toString();

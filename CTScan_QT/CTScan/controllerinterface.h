@@ -22,6 +22,7 @@ public:
 	virtual ~ControllerInterface();
 	
 	virtual bool getConnected() = 0;
+	virtual bool checkReadyToScan() = 0;
 
 	virtual bool initialSend() = 0;
 	virtual bool stopAll() = 0;

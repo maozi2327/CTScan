@@ -27,7 +27,7 @@ private:
 	size_t d_PESiDetBufferSize;
 	PESICON_SINGLE_MODE d_PESiContinusSingleMode;
 public:
-	PESiPanel(std::function<void(unsigned short*)> in_imageProcessCallBack);
+	PESiPanel();
 	~PESiPanel();
 	void stopAcquire();
 	bool initialise();

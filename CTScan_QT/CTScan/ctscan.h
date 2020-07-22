@@ -4,7 +4,6 @@
 #include "ui_ctscan.h"
 #include "imagewidgetmanager.h"
 #include "conescaninterface.h"
-#include "..\PanelDll\panel.h"
 #include <memory>
 struct SetupData;
 class SetupDataParser;
@@ -15,7 +14,6 @@ class ControllerInterface;
 class LineDetNetWork;
 class MsgListBox;
 class LineDetScanInterface;
-class PanelImageProcess;
 class CTScan : public QMainWindow
 {
     Q_OBJECT
@@ -24,7 +22,7 @@ public:
     CTScan(QWidget *parent = Q_NULLPTR);
 	~CTScan();
 
-public slots:
+private slots:
 	void on_ray1LineDetButton_clicked();
 	void on_ray1PanelDetButton_clicked();
 	void on_ray2LineDetButton_clicked();
@@ -52,12 +50,10 @@ private:
 	std::unique_ptr<MotorControlWidget> d_motorControl;
 	std::unique_ptr<ConeScanInterface> d_scanInterface;
 	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;
-	std::unique_ptr<Panel> d_panel;
 	std::unique_ptr<LineDetScanWidget> d_line1Det1ScanWidget;
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
 	std::unique_ptr<ControllerInterface> d_controller;
 	std::unique_ptr<MsgListBox> d_msg;
-	std::unique_ptr<PanelImageProcess> d_panelImageProcess;
 	std::map<int, std::unique_ptr<LineDetNetWork>> d_lineDetNetWorkMap;
 	std::map<std::pair<int, int>, std::vector<std::unique_ptr<LineDetScanInterface>>> d_rayDetScanMap;
 	size_t frontImageIndex;

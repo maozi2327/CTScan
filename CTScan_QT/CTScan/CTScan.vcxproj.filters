@@ -54,9 +54,6 @@
     <ClCompile Include="raypanelmotionwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="panelScanInterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -153,9 +150,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="panelScanInterface.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="linescaninterface.h">

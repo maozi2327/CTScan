@@ -1,36 +1,53 @@
 #include "stdafx.h"
 #include "ConeScan.h"
-#include "../PanelDll/PanelInterface.h"
+#include "../Public/headers/panelimageprocess.h"
+#include "controllerinterface.h"
 
-ConeScan::ConeScan()
+ConeScan::ConeScan(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose) :
+	ConeScanInterface(in_panel, in_controller, in_ctDispose)
 {
+
 }
-
-
 ConeScan::~ConeScan()
 {
+
 }
+
 void ConeScan::setFileName(QString in_fileName)
 {
 	d_fileName = in_fileName;
 }
-bool ConeScan::scanStart()
-{
-	if(!d_panelInterface->setSampleMode(SampleMode::exTrigger))
-		return false;
 
-	d_panelInterface->beginAcquire(0);
+void ConeScan::frameProcessCallback(unsigned short * in_image)
+{
+	ConeScanInterface::frameProcessCallback(in_image);
+}
+
+bool ConeScan::beginScan()
+{
+	d_controller->sendToControl(0, 0);
+	d_scanThread.reset(new Thread(std::bind(&ConeScan::scanThread, this), std::ref(d_scanThreadRun)));
+	d_scanThread->detach();
+	d_imageProcessThread.reset(new Thread(std::bind(&ConeScan::imagePrecessThread, this), std::ref(d_imageProcessThreadRun)));
+	d_scanThread->detach();
+	std::function<void(unsigned short *)> frameCallback = std::bind(&ConeScan::frameProcessCallback, this, std::placeholders::_1);
+	d_panel->setFrameCallback(frameCallback);
+	d_panel->beginAcquire(0);
+	return true;
+}
+
+bool ConeScan::stopScan()
+{
+	return false;
 }
 void ConeScan::scanThread()
 {
-	while (true)
+	while (d_scanThread)
 	{
-		std::this_thread::sleep_for(std::chrono::microseconds(50));
-		unsigned short* image;
-		d_imageQueue.pop(image);
+
 	}
 }
-bool ConeScan::scanStop()
+bool ConeScan::saveFile(unsigned short * in_image)
 {
 	return false;
 }

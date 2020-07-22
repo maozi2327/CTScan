@@ -5,13 +5,13 @@
 PESiPanel* ptrPESiPanel;
 
 //TODO_DJ£∫BinMode≥ı ºªØ
-PESiPanel::PESiPanel(std::function<void(unsigned short*)> in_imageProcessCallBack) : d_binModeName(
+PESiPanel::PESiPanel() : d_binModeName(
 	{{ BinMode::BinMode1, {QString("1x1"), 1}},
 	 { BinMode::BinMode2, {QString("1x1"), 1}},
 	 { BinMode::BinMode3, {QString("1x1"), 1}},
 	 { BinMode::BinMode4, {QString("1x1"), 1}},
 	 { BinMode::BinMode5, {QString("1x1"), 1}}}),
-	PanelInterface(in_imageProcessCallBack)
+	PanelInterface()
 {
 	
 	ptrPESiPanel = this;

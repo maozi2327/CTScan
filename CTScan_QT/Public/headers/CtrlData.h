@@ -980,14 +980,14 @@ struct ConeScanCmdData{
 	float 	sampleTime;										//投影采样时间Tp(4-2000ms)
 	WORD	frame;											//帧数
 	short	orientInc;									   	//分度方位角增量(度,0-360)
-	BYTE		b180Scan;									//180度扫描标志(0-360度;1-180度)
+	BYTE	b180Scan;									//180度扫描标志(0-360度;1-180度)
 	WORD	circleAmount;								   	//分度圆周数CN
 	float	centerOffset;								   	//回转中心偏移(mm)
 	float	firstLayerOffset;							   	//第1层偏移(mm)
 	float	helixSpace;									   	//螺距(mm)
-	WORD crossGradAngle;									//交错扫描用分度角（30°，45°，60°，90°）
-	BYTE		bCrossEquAngle;								//交错扫描用等间距/等角度标志(0-等间距，1-等角度)
-	BYTE		bEnableDetYMove;							//探测器平移轴运动与否(0-不运动，1-运动)
+	WORD	crossGradAngle;									//交错扫描用分度角（30°，45°，60°，90°）
+	BYTE	bCrossEquAngle;								//交错扫描用等间距/等角度标志(0-等间距，1-等角度)
+	BYTE	bEnableDetYMove;							//探测器平移轴运动与否(0-不运动，1-运动)
 };					
 
 //分层零点标定命令CMD_CAL_LAYER_ZERO参数字结构

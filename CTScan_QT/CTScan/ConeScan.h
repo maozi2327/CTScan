@@ -1,19 +1,20 @@
 #pragma once
-#include "panelScanInterface.h"
- 
-class PanelInterface;
+#include "conescanInterface.h"
+
+class PanelImageProcess;
 class ConeScan :
-	public panelScanInterface
+	public ConeScanInterface
 {
 private:
-	PanelInterface* d_panelInterface;
 public:
-	ConeScan();
+	ConeScan(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose);
 	~ConeScan();
 	virtual void setFileName(QString in_fileName);
-	virtual bool scanStart();
-	virtual bool scanStop();
-	virtual bool intialise();
+	virtual void frameProcessCallback(unsigned short*);
+	virtual bool beginScan();
+	virtual bool stopScan();
 	virtual void scanThread();
+	virtual bool saveFile(unsigned short* in_image);
+	virtual bool intialise();
 };
 

@@ -12,13 +12,14 @@ class PANELDLL_EXPORT Panel	: public QObject
 signals:
 	LOGSIGNAL
 public:
-    Panel(std::function<void(unsigned short*)> in_imageProcessCallBack);
+    Panel();
 	virtual ~Panel() = 0;
 	virtual bool initialise() = 0;
 	virtual bool setSampleTime(int in_milliseconds) = 0;
 	virtual bool setFrames(int in_frames) = 0;
 	virtual bool setSampleMode(SampleMode in_sampleMode) = 0;
 	virtual bool setGainFactor(int in_gainFactor) = 0;
+	virtual bool getConnected() = 0;
 
 	//采集多帧时会将数据连续存储在同一内存区域
 	virtual bool getPanelSize(int& out_width, int& out_height) = 0;
@@ -29,9 +30,10 @@ public:
 	virtual int getImageQuantity() = 0;
 	virtual bool getHeadImage(unsigned short** in_imageData) = 0;
 	virtual void clearImageQueue() = 0;
+	virtual void setFrameCallback(std::function<void(unsigned short*)> in_imageProcessCallBack) =  0;
 };
 class PANELDLL_EXPORT PanelFactory
 {
 public:
-	static std::unique_ptr<Panel> getPanel(std::function<void(unsigned short*)> in_imageProcessCallBack);
+	static std::unique_ptr<Panel> getPanel();
 };
