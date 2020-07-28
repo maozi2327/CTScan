@@ -38,5 +38,7 @@ public:
 	bool setGainFactor(int in_gainFactor);
 	void OnEndPESiDetFrameCallback(HACQDESC hAcqDesc);			//声明每帧图像采集回调函数
 	void OnEndPESiDetAcqCallback(HACQDESC hAcqDesc);
+	virtual bool getReady();
+	virtual bool getConnected();
 };
 

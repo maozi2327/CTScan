@@ -1,63 +1,70 @@
 #pragma once
-
 #include "panelimageprocess_global.h"
 #include <QString>
-class PanelImageProcess
+class PanelImageProcess 
 {
+private:
+	class Impl;
+	std::unique_ptr<Impl> d_impl;
+	bool loadTiff(const QString& in_sourceFile, unsigned short*& in_data);
+	bool saveTiff(const QString& in_sourceFile);
 public:
-	PanelImageProcess() = default;
-	virtual ~PanelImageProcess() = default;
-	virtual int createBkgFileToFile(QString& in_sourceFile, QString& in_destFile) = 0;
-	virtual int createBkgFileToData(QString& in_sourceFile) = 0 ;
-	virtual int createBkgDataToFile(unsigned short** in_sourceData, QString& in_destFile, int in_line, int in_column, int in_frames) = 0 ;
-	virtual int createBkgDataToData(unsigned short** in_sourceData, unsigned short* in_destData,
-		int in_line, int in_column, int in_frames) = 0 ;
+	PanelImageProcess();
+	~PanelImageProcess();
 
-	virtual int createAirFileToFile(QString& in_sourceFile, QString& in_destFile, QString& d_bkgFile) = 0 ;
-	virtual int createAirFileToData(QString& in_sourceFile, QString& d_bkgFile) = 0 ;
-	virtual int createAirDataToFile(unsigned short** in_sourceData, QString& in_destFile, QString& d_bkgFile, int in_line,
-		int in_column, int in_frames) = 0 ;
-	virtual int createAirDataToData(unsigned short** in_sourceData, QString& d_bkgFile,
-		int in_line, int in_column, int in_frames) = 0 ;
+	int createBkgFileToFile(const QString& in_sourceFile, const QString& in_destFile);
+	int createBkgFileToData(const QString& in_sourceFile);
+	int createBkgDataToFile(unsigned short** in_sourceData, const QString& in_destFile, int in_line, int in_column, int in_frames);
+	int createBkgDataToData(unsigned short** in_sourceData, unsigned short* in_destData,
+		int in_line, int in_column, int in_frames);
 
-	virtual int bkgCorrectFileToFile(QString& in_sourceFile, QString& in_destFile) = 0 ;
-	virtual int bkgCorrectFileToData(QString& in_sourceFile) = 0 ;
-	virtual int bkgCorrectDataToFile(unsigned short* in_sourceData, QString& in_destFile, int in_line, int in_column) = 0 ;
-	virtual int bkgCorrectDataToData(unsigned short* in_sourceData, int in_line, int in_column) = 0 ;
+	int createAirFileToFile(const QString& in_sourceFile, const QString& in_destFile, const QString& d_bkgFile);
+	int createAirFileToData(const QString& in_sourceFile, const QString& d_bkgFile);
+	int createAirDataToFile(unsigned short** in_sourceData, const QString& in_destFile, const QString& d_bkgFile, int in_line,
+		int in_column, int in_frames);
+	int createAirDataToData(unsigned short** in_sourceData, const QString& d_bkgFile,
+		int in_line, int in_column, int in_frames);
 
-	virtual int airCorrectFileToFile(QString& in_sourceFile, QString& in_destFile) = 0 ;
-	virtual int airCorrectFileToData(QString& in_sourceFile) = 0 ;
-	virtual int airCorrectDataToFile(unsigned short* in_sourceData, QString& in_destFile, int in_line, int in_column) = 0 ;
-	virtual int airCorrectDataToData(unsigned short* in_sourceData, int in_line, int in_column) = 0 ;
+	int bkgCorrectFileToFile(const QString& in_sourceFile, const QString& in_destFile);
+	int bkgCorrectFileToData(const QString& in_sourceFile);
+	int bkgCorrectDataToFile(unsigned short* in_sourceData, const QString& in_destFile, int in_line, int in_column);
+	int bkgCorrectDataToData(unsigned short* in_sourceData, int in_line, int in_column);
 
-	virtual int defectCorrectFileToFile(QString& in_sourceFile, QString& in_destFile) = 0 ;
-	virtual int defectCorrectFileToData(QString& in_sourceFile) = 0 ;
-	virtual int defectCorrectDataToFile(unsigned short* in_sourceData, QString& in_destFile, int in_line, int in_column) = 0 ;
-	virtual int defectCorrectDataToData(unsigned short* in_sourceData, int in_line, int in_column) = 0 ;
+	int airCorrectFileToFile(const QString& in_sourceFile, const QString& in_destFile);
+	int airCorrectFileToData(const QString& in_sourceFile);
+	int airCorrectDataToFile(unsigned short* in_sourceData, const QString& in_destFile, int in_line, int in_column);
+	int airCorrectDataToData(unsigned short* in_sourceData, int in_line, int in_column);
 
-	virtual int binProcessFileToFile(QString& in_sourceFile, QString& in_destFile, int in_binWidth, int in_binHeight) = 0 ;
-	virtual int binProcessFileToData(QString& in_sourceFile, int in_binWidth, int in_binHeight) = 0 ;
-	virtual int binProcessDataToFile(unsigned short* in_sourceData, QString& in_destFile, int in_line, int in_column
-		, int in_binWidth, int in_binHeight) = 0 ;
-	virtual int binProcessDataToData(unsigned short* in_sourceData, int in_line, int in_column
-		, int in_binWidth, int in_binHeight) = 0 ;
+	int defectCorrectFileToFile(const QString& in_sourceFile, const QString& in_destFile);
+	int defectCorrectFileToData(const QString& in_sourceFile);
+	int defectCorrectDataToFile(unsigned short* in_sourceData, const QString& in_destFile, int in_line, int in_column);
+	int defectCorrectDataToData(unsigned short* in_sourceData, int in_line, int in_column);
 
-	virtual int rotateProcessFileToFile(QString& in_sourceFile, QString& in_destFile, int in_iRotationType, int iRotationAngle) = 0 ;
-	virtual int rotateProcessFileToData(QString& in_sourceFile, int in_iRotationType, int iRotationAngle) = 0 ;
-	virtual int rotateProcessDataToFile(unsigned short* in_sourceData, QString& in_destFile, int in_line,
-		int in_column, int in_iRotationType, int iRotationAngle) = 0 ;
-	virtual int rotateProcessDataToData(unsigned short* in_sourceData, int in_line, int in_column,
-		int in_iRotationType, int iRotationAngle) = 0 ;
+	int binProcessFileToFile(const QString& in_sourceFile, const QString& in_destFile, int in_binWidth, int in_binHeight);
+	int binProcessFileToData(const QString& in_sourceFile, int in_binWidth, int in_binHeight);
+	int binProcessDataToFile(unsigned short* in_sourceData, const QString& in_destFile, int in_line, int in_column
+		, int in_binWidth, int in_binHeight);
+	int binProcessDataToData(unsigned short* in_sourceData, int in_line, int in_column
+		, int in_binWidth, int in_binHeight);
 
-	virtual int mergeProcessFileToFile(QString& in_sourceFile, QString& in_destFile) = 0 ;
-	virtual int mergeProcessFileToData(QString& in_sourceFile) = 0 ;
-	virtual int mergeProcessDataToFile(unsigned short** in_sourceData, QString& in_destFile, int in_frames, int in_line, int in_column) = 0 ;
-	virtual int mergeProcessDataToData(unsigned short** in_sourceData, int in_frames, int in_line, int in_column) = 0 ;
+	int rotateProcessFileToFile(const QString& in_sourceFile, const QString& in_destFile, int in_iRotationType, int iRotationAngle);
+	int rotateProcessFileToData(const QString& in_sourceFile, int in_iRotationType, int iRotationAngle);
+	int rotateProcessDataToFile(unsigned short* in_sourceData, const QString& in_destFile, int in_line,
+		int in_column, int in_iRotationType, int iRotationAngle);
+	int rotateProcessDataToData(unsigned short* in_sourceData, int in_line, int in_column,
+		int in_iRotationType, int iRotationAngle);
 
-	virtual int dataSplice(QString& in_pathA, QString& in_pathB, QString& in_pathFinal, int& progress) = 0 ;
-	virtual bool loadBkgData(QString& d_bkgFileName) = 0 ;
-	virtual bool loadAirData(QString& d_bkgFileName) = 0 ;
-	virtual bool saveMultiBitmapDataToFile(unsigned short** in_sourceData, int in_frames, int in_line, int in_column) = 0;
+	int mergeProcessFileToFile(const QString& in_sourceFile, const QString& in_destFile);
+	int mergeProcessFileToData(const QString& in_sourceFile);
+	int mergeProcessDataToFile(unsigned short** in_sourceData, const QString& in_destFile, int in_frames, int in_line, int in_column);
+	int mergeProcessDataToData(unsigned short** in_sourceData, int in_frames, int in_line, int in_column);
+
+	bool saveMultiBitmapDataToFile(unsigned short** in_sourceData, int in_frames, int in_line, int in_column);
+	bool saveSingleBitmapDataToFile(unsigned short* in_sourceData, int in_line, int in_column);
+	int dataSplice(const QString& in_pathA, const QString& in_pathB, const QString& in_pathFinal, int& progress);
+	bool loadBkgData(const QString& d_bkgFileName);
+	bool loadAirData(const QString& d_bkgFileName);
+	bool loadDefectData(const QString& d_bkgFileName);
 };
 
 class PANELIMAGEPROCESS_EXPORT PanelImageProcessFactory

@@ -153,6 +153,14 @@ void CALLBACK PESiPanel::OnEndPESiDetAcqCallback(HACQDESC hAcqDesc)
 {
 
 }
+bool PESiPanel::getReady()
+{
+	return false;
+}
+bool PESiPanel::getConnected()
+{
+	return false;
+}
 bool PESiPanel::setSampleTime(int in_milliseconds)
 {
 	unsigned int iRet;

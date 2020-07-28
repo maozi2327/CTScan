@@ -6,20 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>289</width>
-    <height>550</height>
+    <width>300</width>
+    <height>479</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>280</width>
-    <height>550</height>
+    <width>300</width>
+    <height>470</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>50000</width>
-    <height>550</height>
+    <width>300</width>
+    <height>1000</height>
    </size>
   </property>
   <property name="acceptDrops">
@@ -28,176 +34,261 @@
   <property name="windowTitle">
    <string>锥束扫描</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>11</y>
+     <x>10</x>
+     <y>21</y>
      <width>252</width>
-     <height>531</height>
+     <height>444</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QGroupBox" name="groupBox">
+     <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,1,0">
+      <item row="0" column="0">
+       <widget class="QLabel" name="sampleTimeStaticLabel">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>曝光时间：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="sampleTimeEdit">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="gainStaticLabel">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>增益：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QComboBox" name="gainGroupBox">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="singleShotFramesStaticLabel">
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>帧数：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QComboBox" name="singleShotFramesComboBox">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>80</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QCheckBox" name="bkgTuneCheckBox">
+        <property name="text">
+         <string>背景</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="airTuneCheckBox">
+        <property name="text">
+         <string>空气</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="defectTuneCheckBox">
+        <property name="text">
+         <string>坏像素</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="averageCheckBox">
+        <property name="text">
+         <string>帧平均</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="bkgTuneButton">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>背景校正</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="airTuneButton">
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>空气校正</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="singleShotButton">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
       <property name="minimumSize">
        <size>
-        <width>250</width>
-        <height>100</height>
+        <width>220</width>
+        <height>30</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>250</width>
-        <height>100</height>
+        <width>300</width>
+        <height>30</height>
        </size>
       </property>
-      <property name="title">
-       <string>校正/拍片</string>
+      <property name="text">
+       <string>拍片</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="spacing">
-        <number>6</number>
-       </property>
-       <property name="leftMargin">
-        <number>2</number>
-       </property>
-       <property name="topMargin">
-        <number>6</number>
-       </property>
-       <property name="rightMargin">
-        <number>2</number>
-       </property>
-       <property name="bottomMargin">
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,0,0">
-         <property name="rightMargin">
-          <number>10</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="singleShotSpacerStaticLabel">
-           <property name="text">
-            <string>------------------</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="singleShotFramesStaticLabel">
-           <property name="maximumSize">
-            <size>
-             <width>50</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>帧数：</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="singleShotFramesComboBox">
-           <property name="minimumSize">
-            <size>
-             <width>78</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>78</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="inputMethodHints">
-            <set>Qt::ImhNone</set>
-           </property>
-           <property name="editable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="bkgTuneButton">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>背景校正</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="airTuneButton">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>空气校正</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="singleShotButton">
-           <property name="minimumSize">
-            <size>
-             <width>80</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>80</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>拍片</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
      </widget>
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="minimumSize">
        <size>
-        <width>250</width>
+        <width>80</width>
         <height>0</height>
        </size>
       </property>
@@ -211,7 +302,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -223,18 +314,18 @@
        <attribute name="title">
         <string>锥束扫描</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout">
+       <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
          <widget class="QPushButton" name="coneScanSaveDirButton">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>60</width>
             <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
+            <width>60</width>
             <height>25</height>
            </size>
           </property>
@@ -243,7 +334,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1" colspan="2">
+        <item row="0" column="1" colspan="3">
          <widget class="QLineEdit" name="coneScanFileNameEdit">
           <property name="minimumSize">
            <size>
@@ -253,13 +344,45 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
+            <width>1000</width>
             <height>25</height>
            </size>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
+         <widget class="QPushButton" name="coneScanLeakSamplePushButton">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>缺图采集</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" colspan="3">
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>157</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0">
          <widget class="QLabel" name="coneScanGraduationStaticLabel">
           <property name="minimumSize">
            <size>
@@ -278,8 +401,33 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="2">
+        <item row="2" column="1">
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>71</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="2" colspan="2">
          <widget class="QComboBox" name="coneScanMatrixComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="inputMethodHints">
            <set>Qt::ImhNone</set>
           </property>
@@ -288,7 +436,7 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="3" column="0">
          <widget class="QLabel" name="coneScanFramesStaticLabel">
           <property name="maximumSize">
            <size>
@@ -301,8 +449,20 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
+        <item row="3" column="2" colspan="2">
          <widget class="QComboBox" name="coneScanframesComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="inputMethodHints">
            <set>Qt::ImhNone</set>
           </property>
@@ -311,7 +471,7 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="4" column="0">
          <widget class="QLabel" name="coneScanFrameAverageStaticLabel">
           <property name="minimumSize">
            <size>
@@ -330,7 +490,7 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="4" column="2" colspan="2">
          <widget class="QSpinBox" name="coneScanFrameAverageSpinBox">
           <property name="minimumSize">
            <size>
@@ -346,237 +506,41 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0" colspan="2">
-         <widget class="QLabel" name="coneScanDiskAvailableStaticLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>硬盘剩余空间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QLabel" name="coneScanDiskAvailableLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0" colspan="2">
-         <widget class="QLabel" name="coneScanNecessaryDiskStaticLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>采集需要空间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QLabel" name="coneScanNecessaryDiskLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0" colspan="2">
-         <widget class="QLabel" name="coneScanSampleTimeEstimateStaticLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>预计采集时间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="2">
-         <widget class="QLabel" name="coneScanSampleTimeEstimateLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>预计采集时间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="0" colspan="2">
-         <spacer name="coneScanLeakSampleSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>137</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="7" column="2">
-         <widget class="QCheckBox" name="coneScanLeakSampleCheckBox">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>缺图采集</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QCheckBox" name="coneScanAirTuneCheckBox">
-            <property name="text">
-             <string>空气</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="coneScanBkgTuneCheckBox">
-            <property name="text">
-             <string>背景</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="coneScanDefectTuneCheckBox">
-            <property name="text">
-             <string>坏像素</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="coneScanAllTuneCheckBox">
-            <property name="text">
-             <string>全部</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="9" column="0" colspan="3">
-         <widget class="QProgressBar" name="coneScanProgressBar">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="value">
-           <number>24</number>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="textDirection">
-           <enum>QProgressBar::TopToBottom</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="0" colspan="3">
+        <item row="5" column="0" colspan="3">
          <widget class="QPushButton" name="coneScanBeginSampleButton">
           <property name="minimumSize">
            <size>
-            <width>200</width>
+            <width>150</width>
             <height>50</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>1000</width>
+            <width>150</width>
             <height>50</height>
            </size>
           </property>
           <property name="text">
            <string>开始扫描</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>停止</string>
           </property>
          </widget>
         </item>
@@ -586,18 +550,18 @@
        <attribute name="title">
         <string>锥束转台平移</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
+       <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
          <widget class="QPushButton" name="coneJointRotScanSaveDirButton">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>60</width>
             <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>30</width>
+            <width>60</width>
             <height>25</height>
            </size>
           </property>
@@ -606,7 +570,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1" colspan="2">
+        <item row="0" column="1" colspan="3">
          <widget class="QLineEdit" name="coneJointRotScanfileNameEdit">
           <property name="minimumSize">
            <size>
@@ -616,40 +580,43 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
+            <width>1000</width>
             <height>25</height>
            </size>
           </property>
          </widget>
         </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QLabel" name="coneJointRotScanGraduationStaticLabel_2">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="coneJointRotScanleakSamplePushButton">
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>60</width>
             <height>25</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
+            <width>60</width>
             <height>25</height>
            </size>
           </property>
           <property name="text">
-           <string>视场直径</string>
+           <string>缺图采集</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="2">
-         <widget class="QComboBox" name="coneJointRotScanViewSpinBox">
-          <property name="inputMethodHints">
-           <set>Qt::ImhNone</set>
+        <item row="1" column="1" colspan="3">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-          <property name="editable">
-           <bool>true</bool>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>157</width>
+            <height>20</height>
+           </size>
           </property>
-         </widget>
+         </spacer>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="coneJointRotScanGraduationStaticLabel">
@@ -670,8 +637,33 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
+        <item row="2" column="1">
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>71</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="2" colspan="2">
          <widget class="QComboBox" name="coneJointRotScanMatrixComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="inputMethodHints">
            <set>Qt::ImhNone</set>
           </property>
@@ -693,8 +685,20 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="3" column="2" colspan="2">
          <widget class="QComboBox" name="coneJointRotScanframesComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="inputMethodHints">
            <set>Qt::ImhNone</set>
           </property>
@@ -722,7 +726,7 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="2">
+        <item row="4" column="2" colspan="2">
          <widget class="QSpinBox" name="coneJointRotScanFrameAverageSpinBox">
           <property name="minimumSize">
            <size>
@@ -738,204 +742,23 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="0" colspan="2">
-         <widget class="QLabel" name="coneJointRotScandiskAvailableStaticLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>硬盘剩余空间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QLabel" name="coneJointRotScanDiskAvailableLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0" colspan="2">
-         <widget class="QLabel" name="coneJointRotScanNecessaryDiskStaticLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>采集需要空间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="2">
-         <widget class="QLabel" name="coneJointRotScanNecessaryDiskLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="0" colspan="2">
-         <widget class="QLabel" name="coneJointRotScanSampleTimeEstimateStaticLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>预计采集时间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="2">
-         <widget class="QLabel" name="coneJointRotScanSampleTimeEstimateLabel">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>预计采集时间</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="0" colspan="2">
-         <spacer name="coneJointRotScanleakSampleSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>137</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="8" column="2">
-         <widget class="QCheckBox" name="coneJointRotScanleakSampleCheckBox">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>缺图采集</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="0" colspan="3">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QCheckBox" name="coneJointRotScanAirTuneCheckBox">
-            <property name="text">
-             <string>空气</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="coneJointRotScanBkgTunecheckBox">
-            <property name="text">
-             <string>背景</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="coneJointRotScanDefectTuneCheckBox">
-            <property name="text">
-             <string>坏像素</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="coneJointRotScanAllTuneCheckBox">
-            <property name="text">
-             <string>全部</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="11" column="0" colspan="3">
+        <item row="5" column="0" colspan="3">
          <widget class="QPushButton" name="coneJointRotScanBeginSampleButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize">
            <size>
-            <width>200</width>
+            <width>150</width>
             <height>50</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>1000</width>
+            <width>150</width>
             <height>50</height>
            </size>
           </property>
@@ -944,54 +767,37 @@
           </property>
          </widget>
         </item>
-        <item row="10" column="0" colspan="3">
-         <widget class="QProgressBar" name="coneJointRotScanProgressBar">
+        <item row="5" column="3">
+         <widget class="QPushButton" name="pushButton">
           <property name="minimumSize">
            <size>
-            <width>0</width>
-            <height>25</height>
+            <width>50</width>
+            <height>50</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>16777215</width>
-            <height>25</height>
+            <width>50</width>
+            <height>50</height>
            </size>
           </property>
-          <property name="value">
-           <number>24</number>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="textDirection">
-           <enum>QProgressBar::TopToBottom</enum>
+          <property name="text">
+           <string>停止</string>
           </property>
          </widget>
         </item>
        </layout>
+       <zorder>coneJointRotScanSaveDirButton</zorder>
        <zorder>coneJointRotScanfileNameEdit</zorder>
-       <zorder>coneJointRotScanGraduationStaticLabel_2</zorder>
-       <zorder>coneJointRotScanViewSpinBox</zorder>
+       <zorder>coneJointRotScanleakSamplePushButton</zorder>
+       <zorder>coneJointRotScanBeginSampleButton</zorder>
        <zorder>coneJointRotScanGraduationStaticLabel</zorder>
        <zorder>coneJointRotScanMatrixComboBox</zorder>
        <zorder>coneJointRotScanFrameAverageStaticLabel</zorder>
        <zorder>coneJointRotScanFrameAverageSpinBox</zorder>
-       <zorder>coneJointRotScandiskAvailableStaticLabel</zorder>
-       <zorder>coneJointRotScanDiskAvailableLabel</zorder>
-       <zorder>coneJointRotScanNecessaryDiskStaticLabel</zorder>
-       <zorder>coneJointRotScanNecessaryDiskLabel</zorder>
-       <zorder>coneJointRotScanSampleTimeEstimateStaticLabel</zorder>
-       <zorder>coneJointRotScanSampleTimeEstimateLabel</zorder>
-       <zorder>coneJointRotScanleakSampleCheckBox</zorder>
-       <zorder>coneJointRotScanBeginSampleButton</zorder>
-       <zorder>coneJointRotScanProgressBar</zorder>
-       <zorder>coneJointRotScanSaveDirButton</zorder>
        <zorder>coneJointRotScanFramesStaticLabel</zorder>
        <zorder>coneJointRotScanframesComboBox</zorder>
+       <zorder>pushButton</zorder>
       </widget>
      </widget>
     </item>

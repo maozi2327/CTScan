@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "ConeScan.h"
 #include "../Public/headers/panelimageprocess.h"
+#include "../Public/headers/setupdata.h"
 #include "controllerinterface.h"
+
 
 ConeScan::ConeScan(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose) :
 	ConeScanInterface(in_panel, in_controller, in_ctDispose)
@@ -25,15 +27,6 @@ void ConeScan::frameProcessCallback(unsigned short * in_image)
 
 bool ConeScan::beginScan()
 {
-	d_controller->sendToControl(0, 0);
-	d_scanThread.reset(new Thread(std::bind(&ConeScan::scanThread, this), std::ref(d_scanThreadRun)));
-	d_scanThread->detach();
-	d_imageProcessThread.reset(new Thread(std::bind(&ConeScan::imagePrecessThread, this), std::ref(d_imageProcessThreadRun)));
-	d_scanThread->detach();
-	std::function<void(unsigned short *)> frameCallback = std::bind(&ConeScan::frameProcessCallback, this, std::placeholders::_1);
-	d_panel->setFrameCallback(frameCallback);
-	d_panel->beginAcquire(0);
-	return true;
 }
 
 bool ConeScan::stopScan()
@@ -44,8 +37,12 @@ void ConeScan::scanThread()
 {
 	while (d_scanThread)
 	{
-
+		
 	}
+}
+bool ConeScan::loadAirData()
+{
+	return d_imageProcess->loadAirData(QString("air.tif"));
 }
 bool ConeScan::saveFile(unsigned short * in_image)
 {
@@ -54,4 +51,31 @@ bool ConeScan::saveFile(unsigned short * in_image)
 bool ConeScan::intialise()
 {
 	return false;
+}
+
+void ConeScan::sendCmdToController()
+{
+	char buf[RTBUF_LEN];
+	ConeScanCmdData	cmdData, *pCmdData;
+	cmdData.stsBit.s.translationCone = 0;
+	cmdData.stsBit.s.currentLayer = 1;
+	cmdData.stsBit.s.coneHelix = 0;
+	cmdData.projectionAmount = d_framesPerGraduation * d_graduation;
+	cmdData.sampleTime = d_sampleTime;
+	cmdData.orientInc = d_orientInc;
+	cmdData.circleAmount = 1;
+	cmdData.centerOffset = 0;
+	cmdData.firstLayerOffset = 0;
+	cmdData.helixSpace = 0;
+	cmdData.b180Scan = 0;
+	cmdData.centerOffset = 0;
+	cmdData.stsBit.s.coneHelix = 0;
+	COMM_PACKET* ptr = (COMM_PACKET*)buf;
+	ptr->tagHead[0] = 0x55;
+	ptr->tagHead[1] = 0xaa;
+	ptr->tagHead[2] = 0x5a;
+	ptr->typeCode = CMD_CONE_SCAN;
+	ptr->tagLen = 3 + sizeof(ConeScanCmdData);
+	memcpy(buf + 6, &cmdData, sizeof(cmdData));
+	d_controller->sendToControl(buf, 6 + sizeof(ConeScanCmdData));
 }

@@ -41,10 +41,17 @@ bool ConeContinusScan::saveFile(unsigned short* in_image)
 
 bool ConeContinusScan::beginScan()
 {
-	d_controller->sendToControl(0 , 0);
-	d_ringThreadPromisePtr.reset(new std::promise<bool>);
-	std::function<void()> threadFun = std::bind(&ConeContinusScan::scanThread, this, std::ref(*d_ringThreadPromisePtr));
-	std::thread(threadFun).detach();
+	if (!canScan())
+		return false;
+
+	d_controller->sendToControl(0, 0);
+	d_scanThread.reset(new Thread(std::bind(&ConeContinusScan::scanThread, this), std::ref(d_scanThreadRun)));
+	d_scanThread->detach();
+	d_imageProcessThread.reset(new Thread(std::bind(&ConeContinusScan::imagePrecessThread, this), std::ref(d_imageProcessThreadRun)));
+	d_scanThread->detach();
+	std::function<void(unsigned short *)> frameCallback = std::bind(&ConeContinusScan::frameProcessCallback, this, std::placeholders::_1);
+	d_panel->setFrameCallback(frameCallback);
+	d_panel->beginAcquire(0);
 	return true;
 }
 bool ConeContinusScan::stopScan()

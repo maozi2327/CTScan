@@ -17,6 +17,7 @@ ConeScanWidget::~ConeScanWidget()
 void ConeScanWidget::on_coneScanBeginSampleButton_clicked()
 {
 	d_scan.reset(new ConeScan(d_panel.get(), d_controller, d_panelImageProcess.get()));
-	
+	d_scan->setDisposeFlag(ui.bkgTuneCheckBox->isChecked(), ui.airTuneCheckBox->isChecked(),
+		ui.defectTuneCheckBox->isChecked(), true);
 }
  

@@ -20,6 +20,7 @@ public:
 	virtual bool setSampleMode(SampleMode in_sampleMode) = 0;
 	virtual bool setGainFactor(int in_gainFactor) = 0;
 	virtual bool getConnected() = 0;
+	virtual bool getReady() = 0;
 
 	//采集多帧时会将数据连续存储在同一内存区域
 	virtual bool getPanelSize(int& out_width, int& out_height) = 0;

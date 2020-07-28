@@ -14,7 +14,6 @@ private:
 	virtual bool saveFile(unsigned short* in_image);
 	bool checkMemory();
 protected:
-	int d_graduation;
 	QString d_fileFolder;
 	QString d_fileName;
 	bool d_isSaveOrg;
@@ -26,10 +25,12 @@ protected:
 	bool d_orgFlag;
 	int d_width;
 	int d_height;
-	int d_frames;
+	int d_framesPerGraduation;
 	int d_graduation;
 	int d_round;
 	int d_imageProcessSleep;
+	int d_sampleTime;
+	float d_orientInc;
 
 
 	mutable std::mutex d_hmtxQ;
@@ -42,9 +43,13 @@ protected:
 	virtual void scanThread() = 0;
 	bool d_scanThreadRun;
 	std::unique_ptr<Thread> d_imageProcessThread;
-	virtual void imagePrecessThread();
+	virtual void imageProcessThread();
 	bool d_imageProcessThreadRun;
-	virtual bool canScan() = 0;
+	virtual bool canScan();
+	virtual void sendCmdToController() = 0;
+	virtual bool loadBkgData();
+	virtual bool loadAirData() = 0;
+	virtual bool loadDefectData();
 public:
 	ConeScanInterface(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose);
 	virtual ~ConeScanInterface();
@@ -54,7 +59,7 @@ public:
 	virtual void setGraduation(int in_graduation) { d_graduation = in_graduation; };
 	virtual bool stopScan() = 0;
 	virtual bool intialise() = 0;
-	virtual bool beginScan() = 0;
+	virtual bool beginScan();
 
 signals:
 	LOGSIGNAL

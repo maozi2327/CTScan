@@ -100,7 +100,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="panelimageprocess.cpp" />
-    <ClCompile Include="panelimageprocessinstance.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -109,7 +108,6 @@
   <ItemGroup>
     <ClInclude Include="MicroDataCorrection.h" />
     <ClInclude Include="panelimageprocess.h" />
-    <ClInclude Include="panelimageprocessinstance.h" />
     <ClInclude Include="panelimageprocess_global.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

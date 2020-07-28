@@ -2,7 +2,7 @@
 #include "conescaninterface.h"
 #include "controllerinterface.h"
 #include "imageprocess.h"
-
+#include "../../Public/util/functions.h"
 ConeScanInterface::ConeScanInterface(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_imageProcess):
 	d_panel(in_panel), d_controller(in_controller), d_imageProcess(in_imageProcess),
 	d_imageProcessSleep(300)
@@ -18,7 +18,7 @@ ConeScanInterface::~ConeScanInterface()
 bool ConeScanInterface::saveFile(unsigned short * in_image)
 {
 	if (d_orgFlag && !d_averageFlag)
-		d_imageProcess->saveMultiBitmapDataToFile(in_image, d_frames, d_height, d_width);
+		d_imageProcess->saveMultiBitmapDataToFile(in_image, d_framesPerGraduation, d_height, d_width);
 	else if (d_orgFlag && !d_averageFlag)
 		d_imageProcess->saveSingleBitmapDataToFile(in_image, d_height, d_width);
 
@@ -34,12 +34,13 @@ bool ConeScanInterface::saveFile(unsigned short * in_image)
 
 bool ConeScanInterface::checkMemory()
 {
-	size_t allImageSize = size_t(d_frames) * d_width * d_height * sizeof(unsigned short);
+	size_t allImageSize = size_t(d_framesPerGraduation) * d_graduation *d_width * d_height * 
+		sizeof(unsigned short) / (1024 * 1024);
 
 	if (d_isSaveOrg)
 		allImageSize *= 2;
-
-	return false;
+	
+	return allImageSize < getDiskFreeSpace(d_fileFolder);
 }
 
 void ConeScanInterface::frameProcessCallback(unsigned short * in_image)
@@ -48,7 +49,7 @@ void ConeScanInterface::frameProcessCallback(unsigned short * in_image)
 	d_imageList.push_back(in_image);
 }
 
-void ConeScanInterface::imagePrecessThread()
+void ConeScanInterface::imageProcessThread()
 {
 	while (true)
 	{
@@ -57,7 +58,8 @@ void ConeScanInterface::imagePrecessThread()
 		{
 			std::lock_guard<std::mutex> lock(d_hmtxQ);
 
-			if (d_imageList.size() != 0) {
+			if (d_imageList.size() != 0) 
+			{
 				imageData = d_imageList.front();
 				d_imageList.pop_front();
 			}
@@ -70,9 +72,38 @@ void ConeScanInterface::imagePrecessThread()
 
 bool ConeScanInterface::canScan()
 {
-	return d_controller->checkReadyToScan() && checkMemory() && d_panel->getConnected();
+	QString str;
+	
+	if (!checkMemory)
+	{
+		LOG_ERROR(str.fromLocal8Bit("Ó²ÅÌ¿Õ¼ä²»×ã"));
+		return false;
+	}
+
+	if (!d_controller->checkReadyToScan())
+	{
+		LOG_ERROR(str.fromLocal8Bit("¿ØÖÆÆ÷Î´¾ÍÐ÷"));
+		return false;
+	}
+
+	if (!d_panel->getReady())
+	{
+		LOG_ERROR(str.fromLocal8Bit("Ì½²âÆ÷Î´¾ÍÐ÷"));
+		return false;
+	}
+
+	return true;
 }
 
+bool ConeScanInterface::loadBkgData()
+{
+	return d_imageProcess->loadBkgData(QString("bkg.tif"));
+}
+
+bool ConeScanInterface::loadDefectData()
+{
+	return d_imageProcess->loadDefectData(QString("defect.tif"));
+}
 void ConeScanInterface::setFileName(QString & in_fileFolder, QString & in_name)
 {
 	d_fileFolder = in_fileFolder;
@@ -90,6 +121,16 @@ void ConeScanInterface::setDisposeFlag(bool in_bkgFlag, bool in_airFlag,
 
 bool ConeScanInterface::beginScan()
 {
-	d_controller->checkReadyToScan();
-	return false;
+	if (!canScan())
+		return false;
+
+	sendCmdToController();
+	d_scanThread.reset(new Thread(std::bind(&ConeScanInterface::scanThread, this), std::ref(d_scanThreadRun)));
+	d_scanThread->detach();
+	d_imageProcessThread.reset(new Thread(std::bind(&ConeScanInterface::imageProcessThread, this), std::ref(d_imageProcessThreadRun)));
+	d_scanThread->detach();
+	std::function<void(unsigned short *)> frameCallback = std::bind(&ConeScanInterface::frameProcessCallback, this, std::placeholders::_1);
+	d_panel->setFrameCallback(frameCallback);
+	d_panel->beginAcquire(0);
+	return true;
 }

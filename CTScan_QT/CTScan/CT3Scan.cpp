@@ -59,14 +59,6 @@ void CT3Scan::scanThread()
 		;
 }
 
-#define	RTBUF_LEN	256						//定义接收/发送缓冲区长度
-struct COMM_PACKET 
-{
-	BYTE	tagHead[3];						//包头(0x55,0xaa,0x5a)
-	BYTE	typeCode;						//类型码
-	WORD	tagLen;							//包长(=参数字节数+3, 实际命令数据包长度=包长+4)
-	BYTE	data[RTBUF_LEN - 6];			//命令参数
-};
 
 void CT3Scan::sendCmdToControl()
 {
