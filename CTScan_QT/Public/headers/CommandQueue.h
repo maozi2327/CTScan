@@ -26,6 +26,8 @@ public:
         return d_queue.size();
     }
 
+	size_t getQueueSize() { return d_queue.size(); }
+
     bool push(T& in_cmd, millseconds in_timeOut = millseconds(10))
     {
         std::lock_guard<std::mutex> lk(d_hmtxQ);
@@ -37,9 +39,8 @@ public:
     bool pop(T& in_cmd, millseconds in_timeOut = millseconds(10))
     {
         std::unique_lock<std::mutex> lk(d_hmtxQ);
-        int size = d_queue.size();
 
-		if (d_con.wait_for(lk, in_timeOut, [&] { return size != 0; }))
+		if (d_con.wait_for(lk, in_timeOut, [=] { return getQueueSize() != 0; }))
 		{
 			in_cmd = d_queue.front();
 			d_queue.pop();

@@ -22,6 +22,7 @@ protected:
     int d_gainFactor;
 	size_t d_frameSize;
     SampleMode d_sampleMode;
+	float d_pixelSize;
 
 public:
     virtual bool setSampleTime(int in_milliseconds) = 0;
@@ -33,8 +34,11 @@ public:
 	virtual void stopAcquire() = 0;
 	virtual bool initialise() = 0;
     //采集多帧时会将数据连续存储在同一内存区域
+	virtual int getSampleTime();
     virtual bool getPanelSize(int& out_width, int& out_height);
+	virtual bool getPanelSize(int& out_width, int& out_height);
     virtual bool setPanelSize(int in_width, int in_height);
     virtual size_t getFrameSize();
+	virtual float getPixelSize();
 	virtual void setFrameCallback(std::function<void(unsigned short*)> in_imageProcessCallBack);
 };

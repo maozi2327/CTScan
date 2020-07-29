@@ -8,7 +8,6 @@ class ConeScan :
 public:
 	ConeScan(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose);
 	~ConeScan();
-	virtual void setFileName(QString in_fileName);
 	virtual void frameProcessCallback(unsigned short*);
 	virtual bool beginScan();
 	virtual bool stopScan();
@@ -18,7 +17,7 @@ public:
 protected:
 	virtual void scanThread();
 	virtual bool loadAirData();
-
+	virtual bool writeParameterFile();
 private:
 	void sendCmdToController();
 };

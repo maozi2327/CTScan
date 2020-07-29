@@ -17,17 +17,23 @@ ConeScanInterface::~ConeScanInterface()
 
 bool ConeScanInterface::saveFile(unsigned short * in_image)
 {
+	QString index;
+	index.sprintf("%4d", d_graduationCount);
+	auto completeOrgFileName = d_fileFolder + d_fileName + "org/" + index;
+
 	if (d_orgFlag && !d_averageFlag)
-		d_imageProcess->saveMultiBitmapDataToFile(in_image, d_framesPerGraduation, d_height, d_width);
+		d_imageProcess->saveMultiBitmapDataToFile(in_image, completeOrgFileName + d_fileName, d_framesPerGraduation, d_height, d_width);
 	else if (d_orgFlag && !d_averageFlag)
-		d_imageProcess->saveSingleBitmapDataToFile(in_image, d_height, d_width);
+		d_imageProcess->saveSingleBitmapDataToFile(in_image, completeOrgFileName + d_fileName, d_height, d_width);
+
+	auto completeImageFileName = d_fileFolder + d_fileName + "ct/" + index;
 
 	if (d_bkgFlag && !d_airFlag && !d_defectFlag)
-		d_imageProcess->bkgCorrectDataToFile(in_image, d_fileName, d_height, d_width);
+		d_imageProcess->bkgCorrectDataToFile(in_image, completeImageFileName + d_fileName, d_height, d_width);
 	else if (d_bkgFlag && d_airFlag && !d_defectFlag)
-		d_imageProcess->airCorrectDataToFile(in_image, d_fileName, d_height, d_width);
+		d_imageProcess->airCorrectDataToFile(in_image, completeImageFileName + d_fileName, d_height, d_width);
 	else if (d_bkgFlag && d_airFlag && d_defectFlag)
-		d_imageProcess->defectCorrectDataToFile(in_image, d_fileName, d_height, d_width);
+		d_imageProcess->defectCorrectDataToFile(in_image, completeImageFileName + d_fileName, d_height, d_width);
 
 	return false;
 }
@@ -47,6 +53,7 @@ void ConeScanInterface::frameProcessCallback(unsigned short * in_image)
 {
 	std::lock_guard<std::mutex> lock(d_hmtxQ);
 	d_imageList.push_back(in_image);
+	d_con.notify_one();
 }
 
 void ConeScanInterface::imageProcessThread()
@@ -54,19 +61,36 @@ void ConeScanInterface::imageProcessThread()
 	while (true)
 	{
 		unsigned short* imageData = nullptr;
-
 		{
-			std::lock_guard<std::mutex> lock(d_hmtxQ);
+			std::unique_lock<std::mutex> lock(d_hmtxQ);
+			d_con.wait(lock, [this] { d_imageList.size() != 0; });
 
-			if (d_imageList.size() != 0) 
+			if (++d_frameCount == d_framesPerGraduation)
 			{
-				imageData = d_imageList.front();
-				d_imageList.pop_front();
+				if (d_frameCount == 1)
+				{
+					imageData = d_imageList.front();
+					d_imageList.pop_front();
+				}
+				else
+				{
+					char* imageMem = (char*)malloc(d_frameSize);
+					int count = 0;
+					
+					while (count++ != d_framesPerGraduation)
+					{
+						memcpy(imageMem + d_frameSize * count, d_imageList.front(), d_frameSize);
+						free(d_imageList.front());
+						d_imageList.pop_front();
+					}
+					
+					imageData = (unsigned short*)imageMem;
+				}
+				d_frameCount = 0;
 			}
 		}
-
-		if (imageData != nullptr)
-			saveFile(imageData);
+		++d_graduationCount;
+		saveFile(imageData);
 	}
 }
 
@@ -104,7 +128,7 @@ bool ConeScanInterface::loadDefectData()
 {
 	return d_imageProcess->loadDefectData(QString("defect.tif"));
 }
-void ConeScanInterface::setFileName(QString & in_fileFolder, QString & in_name)
+void ConeScanInterface::setFileName(QString& in_fileFolder, QString & in_name)
 {
 	d_fileFolder = in_fileFolder;
 	d_fileName = in_name;

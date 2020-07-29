@@ -21,9 +21,17 @@ size_t PanelInterface::getFrameSize()
 {
 	return d_frameSize;
 }
+float PanelInterface::getPixelSize()
+{
+	return d_pixelSize;
+}
 void PanelInterface::setFrameCallback(std::function<void(unsigned short*)> in_imageProcessCallBack)
 {
 	d_imageProcCallback = in_imageProcessCallBack;
+}
+int PanelInterface::getSampleTime()
+{
+	return d_sampleTime;
 }
 bool PanelInterface::getPanelSize(int& out_width, int& out_height)
 {

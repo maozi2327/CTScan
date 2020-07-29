@@ -16,6 +16,7 @@ private:
 protected:
 	QString d_fileFolder;
 	QString d_fileName;
+	QString d_parameterFileName;
 	bool d_isSaveOrg;
 	bool d_isDispose;
 	bool d_bkgFlag;
@@ -27,14 +28,18 @@ protected:
 	int d_height;
 	int d_framesPerGraduation;
 	int d_graduation;
+	int d_graduationCount;
 	int d_round;
 	int d_imageProcessSleep;
 	int d_sampleTime;
+	int d_frameCount;
+	size_t d_frameSize;
 	float d_orientInc;
 
 
 	mutable std::mutex d_hmtxQ;
 	std::list<unsigned short*> d_imageList;
+	std::condition_variable d_con;
 	Panel* d_panel;
 	ControllerInterface* d_controller;
 	PanelImageProcess* d_imageProcess;
@@ -49,6 +54,7 @@ protected:
 	virtual void sendCmdToController() = 0;
 	virtual bool loadBkgData();
 	virtual bool loadAirData() = 0;
+	virtual bool writeParameterFile() = 0;
 	virtual bool loadDefectData();
 public:
 	ConeScanInterface(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose);

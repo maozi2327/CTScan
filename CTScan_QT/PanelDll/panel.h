@@ -23,7 +23,9 @@ public:
 	virtual bool getReady() = 0;
 
 	//采集多帧时会将数据连续存储在同一内存区域
+	virtual int getSampleTime() = 0;
 	virtual bool getPanelSize(int& out_width, int& out_height) = 0;
+	virtual float getPixelSize() = 0;
 	virtual bool setPanelSize(int in_width, int in_height) = 0;
 	virtual size_t getFrameSize() = 0;
 	virtual bool beginAcquire(unsigned short d_quantity) = 0;

@@ -294,12 +294,12 @@ int PanelImageProcess::mergeProcessDataToData(unsigned short** in_sourceData, in
 	return _nCTMergeFrames(in_sourceData, nullptr, d_impl->d_correctedData, nullptr, in_frames, in_line, in_column);
 }
 
-bool PanelImageProcess::saveMultiBitmapDataToFile(unsigned short ** in_sourceData, int in_frames, int in_line, int in_column)
+bool PanelImageProcess::saveMultiBitmapDataToFile(unsigned short * in_sourceData, const QString& in_destFile, int in_frames, int in_line, int in_column)
 {
 	return false;
 }
 
-bool PanelImageProcess::saveSingleBitmapDataToFile(unsigned short * in_sourceData, int in_line, int in_column)
+bool PanelImageProcess::saveSingleBitmapDataToFile(unsigned short * in_sourceData, const QString& in_destFile, int in_line, int in_column)
 {
 	return false;
 }

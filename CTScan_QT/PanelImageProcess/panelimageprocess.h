@@ -59,8 +59,8 @@ public:
 	int mergeProcessDataToFile(unsigned short** in_sourceData, const QString& in_destFile, int in_frames, int in_line, int in_column);
 	int mergeProcessDataToData(unsigned short** in_sourceData, int in_frames, int in_line, int in_column);
 
-	bool saveMultiBitmapDataToFile(unsigned short** in_sourceData, int in_frames, int in_line, int in_column);
-	bool saveSingleBitmapDataToFile(unsigned short* in_sourceData, int in_line, int in_column);
+	bool saveMultiBitmapDataToFile(unsigned short* in_sourceData, const QString& in_destFile, int in_frames, int in_line, int in_column);
+	bool saveSingleBitmapDataToFile(unsigned short* in_sourceData, const QString& in_destFile, int in_line, int in_column);
 	int dataSplice(const QString& in_pathA, const QString& in_pathB, const QString& in_pathFinal, int& progress);
 	bool loadBkgData(const QString& d_bkgFileName);
 	bool loadAirData(const QString& d_bkgFileName);
