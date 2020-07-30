@@ -67,8 +67,8 @@ CTScan::~CTScan()
 
 void CTScan::on_ray1LineDetButton_clicked()
 {
-	QString fileName("0000.tif");
-	d_panelImageProcess->loadAirData(fileName);
+	//QString fileName("0000.tif");
+	//d_panelImageProcess->loadAirData(fileName);
 	//d_line1Det1ScanWidget->show();
 	//tray->show();
 }

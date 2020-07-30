@@ -73,10 +73,10 @@ static const uint qt_meta_data_CTScan[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x0a /* Public */,
-       3,    0,   70,    2, 0x0a /* Public */,
-       4,    0,   71,    2, 0x0a /* Public */,
-       5,    0,   72,    2, 0x0a /* Public */,
+       1,    0,   69,    2, 0x08 /* Private */,
+       3,    0,   70,    2, 0x08 /* Private */,
+       4,    0,   71,    2, 0x08 /* Private */,
+       5,    0,   72,    2, 0x08 /* Private */,
        6,    0,   73,    2, 0x08 /* Private */,
        7,    0,   74,    2, 0x08 /* Private */,
        8,    0,   75,    2, 0x08 /* Private */,

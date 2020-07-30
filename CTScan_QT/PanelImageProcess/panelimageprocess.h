@@ -1,7 +1,7 @@
 #pragma once
 #include "panelimageprocess_global.h"
 #include <QString>
-class PanelImageProcess 
+class PANELIMAGEPROCESS_EXPORT PanelImageProcess
 {
 private:
 	class Impl;

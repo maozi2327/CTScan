@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "conescanwidget.h"
 #include "conescan.h"
+#include "scanprogresswidget.h"
 ConeScanWidget::ConeScanWidget(ControllerInterface* in_controller, QWidget *parent)
 	: QWidget(parent)
 	, d_panel(PanelFactory::getPanel()), d_controller(in_controller)
@@ -12,6 +13,14 @@ ConeScanWidget::ConeScanWidget(ControllerInterface* in_controller, QWidget *pare
 ConeScanWidget::~ConeScanWidget()
 {
 
+}
+
+void ConeScanWidget::on_scanProgressUpdated()
+{
+	int thisRound, allProgress;
+	QString msg;
+	d_scan->getScanProgress(thisRound, allProgress, msg);
+	d_scanProgressWidget->setProgress(thisRound, allProgress, msg);
 }
 
 void ConeScanWidget::on_coneScanBeginSampleButton_clicked()

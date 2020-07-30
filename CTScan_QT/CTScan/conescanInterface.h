@@ -10,9 +10,9 @@
 class ControllerInterface;
 class ConeScanInterface : public QObject
 {
+	Q_OBJECT
 private:
-	virtual bool saveFile(unsigned short* in_image);
-	bool checkMemory();
+	;
 protected:
 	QString d_fileFolder;
 	QString d_fileName;
@@ -35,7 +35,7 @@ protected:
 	int d_frameCount;
 	size_t d_frameSize;
 	float d_orientInc;
-
+	std::vector<QString> d_parameterText;
 
 	mutable std::mutex d_hmtxQ;
 	std::list<unsigned short*> d_imageList;
@@ -54,8 +54,11 @@ protected:
 	virtual void sendCmdToController() = 0;
 	virtual bool loadBkgData();
 	virtual bool loadAirData() = 0;
-	virtual bool writeParameterFile() = 0;
+	virtual bool writeParameterFile();
+	virtual bool makeParameterText();
 	virtual bool loadDefectData();
+	virtual bool saveFile(unsigned short* in_image);
+	bool checkMemory();
 public:
 	ConeScanInterface(Panel* in_panel, ControllerInterface* in_controller, PanelImageProcess* in_ctDispose);
 	virtual ~ConeScanInterface();
@@ -66,7 +69,7 @@ public:
 	virtual bool stopScan() = 0;
 	virtual bool intialise() = 0;
 	virtual bool beginScan();
-
+	virtual void getScanProgress(int& in_out_thisRound, int& in_out_allProgress, QString& imagesCollectedAndSpaceOccupied);
 signals:
 	LOGSIGNAL
 };

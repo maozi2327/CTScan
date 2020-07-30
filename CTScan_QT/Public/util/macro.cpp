@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "macro.h"
 
 QString makeMessage(const char* pszFmt, ...)

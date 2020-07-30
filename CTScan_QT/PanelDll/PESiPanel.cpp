@@ -11,7 +11,7 @@ PESiPanel::PESiPanel() : d_binModeName(
 	 { BinMode::BinMode3, {QString("1x1"), 1}},
 	 { BinMode::BinMode4, {QString("1x1"), 1}},
 	 { BinMode::BinMode5, {QString("1x1"), 1}}}),
-	PanelInterface()
+	Panel()
 {
 	
 	ptrPESiPanel = this;
@@ -157,9 +157,17 @@ bool PESiPanel::getReady()
 {
 	return false;
 }
+int PESiPanel::getSampleTime()
+{
+	return 0;
+}
 bool PESiPanel::getConnected()
 {
 	return false;
+}
+size_t PESiPanel::getFrameSize()
+{
+	return size_t();
 }
 bool PESiPanel::setSampleTime(int in_milliseconds)
 {
@@ -312,4 +320,31 @@ bool PESiPanel::beginAcquire(unsigned short d_quantity)
 void PESiPanel::stopAcquire()
 {
 	Acquisition_Abort(hPESiAcqDesc);
+}
+bool PESiPanel::setFrames(int in_frames)
+{
+	d_frames = in_frames;
+	d_frameSize = d_width * d_height * d_frames * sizeof(unsigned short);
+	return true;
+}
+float PESiPanel::getPixelSize()
+{
+	return d_pixelSize;
+}
+void PESiPanel::setFrameCallback(std::function<void(unsigned short*)> in_imageProcessCallBack)
+{
+	d_imageProcCallback = in_imageProcessCallBack;
+}
+bool PESiPanel::getPanelSize(int& out_width, int& out_height)
+{
+	out_width = d_width;
+	out_height = d_height;
+	return true;
+}
+
+bool PESiPanel::setPanelSize(int in_width, int in_height)
+{
+	d_width = in_width;
+	d_height = in_height;
+	return true;
 }

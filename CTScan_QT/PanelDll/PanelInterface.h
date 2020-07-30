@@ -36,7 +36,6 @@ public:
     //采集多帧时会将数据连续存储在同一内存区域
 	virtual int getSampleTime();
     virtual bool getPanelSize(int& out_width, int& out_height);
-	virtual bool getPanelSize(int& out_width, int& out_height);
     virtual bool setPanelSize(int in_width, int in_height);
     virtual size_t getFrameSize();
 	virtual float getPixelSize();

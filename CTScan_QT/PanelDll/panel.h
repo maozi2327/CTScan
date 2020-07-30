@@ -30,9 +30,6 @@ public:
 	virtual size_t getFrameSize() = 0;
 	virtual bool beginAcquire(unsigned short d_quantity) = 0;
 	virtual void stopAcquire() = 0;
-	virtual int getImageQuantity() = 0;
-	virtual bool getHeadImage(unsigned short** in_imageData) = 0;
-	virtual void clearImageQueue() = 0;
 	virtual void setFrameCallback(std::function<void(unsigned short*)> in_imageProcessCallBack) =  0;
 };
 class PANELDLL_EXPORT PanelFactory

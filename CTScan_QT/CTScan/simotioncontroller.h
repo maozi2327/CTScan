@@ -114,6 +114,7 @@ public:
 	~SimotionController();
 	
 	virtual bool getConnected();
+	virtual bool checkReadyToScan();
 
 	virtual bool initialSend();
 	virtual bool stopAll();

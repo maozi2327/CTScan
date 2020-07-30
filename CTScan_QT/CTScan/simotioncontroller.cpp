@@ -65,6 +65,11 @@ bool SimotionController::getConnected()
 	return d_connected;
 }
 
+bool SimotionController::checkReadyToScan()
+{
+	return false;
+}
+
 template<typename T1, typename T2>
 inline bool GetResult(T1& t1, T2 t2, std::mutex& d_mutex, std::condition_variable& d_con)
 {

@@ -7,6 +7,8 @@
 class PanelImageProcess;
 class ConeScanInterface;
 class ControllerInterface;
+class ScanProgressWidget;
+
 
 class ConeScanWidget : public QWidget
 {
@@ -22,6 +24,8 @@ private:
 	std::unique_ptr<Panel> d_panel;
 	std::unique_ptr<PanelImageProcess> d_panelImageProcess;
 	ControllerInterface* d_controller;
+	std::unique_ptr<ScanProgressWidget> d_scanProgressWidget;
 private slots:
 	void on_coneScanBeginSampleButton_clicked();
+	void on_scanProgressUpdated();
 };

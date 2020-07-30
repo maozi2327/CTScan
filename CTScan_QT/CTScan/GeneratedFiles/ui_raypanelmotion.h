@@ -78,7 +78,7 @@ public:
     {
         if (rayPanelMotionWidget->objectName().isEmpty())
             rayPanelMotionWidget->setObjectName(QStringLiteral("rayPanelMotionWidget"));
-        rayPanelMotionWidget->resize(400, 598);
+        rayPanelMotionWidget->resize(400, 987);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);

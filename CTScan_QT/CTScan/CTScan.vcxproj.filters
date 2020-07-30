@@ -138,6 +138,9 @@
     <ClCompile Include="..\Public\util\macro.cpp">
       <Filter>Header Files\utility</Filter>
     </ClCompile>
+    <ClCompile Include="scanprogresswidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -171,9 +174,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="ct3Scan.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="conescanInterface.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="conescan.h">
@@ -221,6 +221,9 @@
     <ClInclude Include="..\Public\headers\panelimageprocess.h">
       <Filter>Header Files\publicHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\util\stdafx.h">
+      <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="setupdataparser.h">
@@ -265,6 +268,12 @@
     <QtMoc Include="msglistbox.h">
       <Filter>Source Files</Filter>
     </QtMoc>
+    <QtMoc Include="scanprogresswidget.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="conescanInterface.h">
+      <Filter>Source Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="ctscan.ui">
@@ -285,6 +294,9 @@
     <QtUic Include="msglistbox.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="scanprogresswidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CTScan.rc" />
@@ -298,5 +310,8 @@
     <QtRcc Include="ctscan.qrc">
       <Filter>Source Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

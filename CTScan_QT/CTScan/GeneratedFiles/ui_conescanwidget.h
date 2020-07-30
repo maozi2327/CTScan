@@ -29,7 +29,7 @@ QT_BEGIN_NAMESPACE
 class Ui_ConeScanWidget
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout_3;
     QLabel *sampleTimeStaticLabel;
@@ -94,10 +94,10 @@ public:
         ConeScanWidget->setMinimumSize(QSize(300, 470));
         ConeScanWidget->setMaximumSize(QSize(300, 1000));
         ConeScanWidget->setAcceptDrops(false);
-        widget = new QWidget(ConeScanWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 21, 252, 444));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(ConeScanWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 21, 252, 444));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -105,7 +105,7 @@ public:
         gridLayout_3 = new QGridLayout();
         gridLayout_3->setSpacing(6);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        sampleTimeStaticLabel = new QLabel(widget);
+        sampleTimeStaticLabel = new QLabel(layoutWidget);
         sampleTimeStaticLabel->setObjectName(QStringLiteral("sampleTimeStaticLabel"));
         sampleTimeStaticLabel->setMinimumSize(QSize(60, 16));
         sampleTimeStaticLabel->setMaximumSize(QSize(60, 16));
@@ -116,34 +116,34 @@ public:
 
         gridLayout_3->addItem(horizontalSpacer, 0, 1, 1, 1);
 
-        sampleTimeEdit = new QLineEdit(widget);
+        sampleTimeEdit = new QLineEdit(layoutWidget);
         sampleTimeEdit->setObjectName(QStringLiteral("sampleTimeEdit"));
         sampleTimeEdit->setMinimumSize(QSize(80, 20));
         sampleTimeEdit->setMaximumSize(QSize(80, 20));
 
         gridLayout_3->addWidget(sampleTimeEdit, 0, 2, 1, 1);
 
-        gainStaticLabel = new QLabel(widget);
+        gainStaticLabel = new QLabel(layoutWidget);
         gainStaticLabel->setObjectName(QStringLiteral("gainStaticLabel"));
         gainStaticLabel->setMinimumSize(QSize(30, 16));
         gainStaticLabel->setMaximumSize(QSize(30, 16));
 
         gridLayout_3->addWidget(gainStaticLabel, 1, 0, 1, 1);
 
-        gainGroupBox = new QComboBox(widget);
+        gainGroupBox = new QComboBox(layoutWidget);
         gainGroupBox->setObjectName(QStringLiteral("gainGroupBox"));
         gainGroupBox->setMinimumSize(QSize(80, 20));
         gainGroupBox->setMaximumSize(QSize(80, 20));
 
         gridLayout_3->addWidget(gainGroupBox, 1, 2, 1, 1);
 
-        singleShotFramesStaticLabel = new QLabel(widget);
+        singleShotFramesStaticLabel = new QLabel(layoutWidget);
         singleShotFramesStaticLabel->setObjectName(QStringLiteral("singleShotFramesStaticLabel"));
         singleShotFramesStaticLabel->setMaximumSize(QSize(50, 16777215));
 
         gridLayout_3->addWidget(singleShotFramesStaticLabel, 2, 0, 1, 1);
 
-        singleShotFramesComboBox = new QComboBox(widget);
+        singleShotFramesComboBox = new QComboBox(layoutWidget);
         singleShotFramesComboBox->setObjectName(QStringLiteral("singleShotFramesComboBox"));
         singleShotFramesComboBox->setMinimumSize(QSize(80, 0));
         singleShotFramesComboBox->setMaximumSize(QSize(80, 16777215));
@@ -159,22 +159,22 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        bkgTuneCheckBox = new QCheckBox(widget);
+        bkgTuneCheckBox = new QCheckBox(layoutWidget);
         bkgTuneCheckBox->setObjectName(QStringLiteral("bkgTuneCheckBox"));
 
         horizontalLayout->addWidget(bkgTuneCheckBox);
 
-        airTuneCheckBox = new QCheckBox(widget);
+        airTuneCheckBox = new QCheckBox(layoutWidget);
         airTuneCheckBox->setObjectName(QStringLiteral("airTuneCheckBox"));
 
         horizontalLayout->addWidget(airTuneCheckBox);
 
-        defectTuneCheckBox = new QCheckBox(widget);
+        defectTuneCheckBox = new QCheckBox(layoutWidget);
         defectTuneCheckBox->setObjectName(QStringLiteral("defectTuneCheckBox"));
 
         horizontalLayout->addWidget(defectTuneCheckBox);
 
-        averageCheckBox = new QCheckBox(widget);
+        averageCheckBox = new QCheckBox(layoutWidget);
         averageCheckBox->setObjectName(QStringLiteral("averageCheckBox"));
 
         horizontalLayout->addWidget(averageCheckBox);
@@ -185,7 +185,7 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        bkgTuneButton = new QPushButton(widget);
+        bkgTuneButton = new QPushButton(layoutWidget);
         bkgTuneButton->setObjectName(QStringLiteral("bkgTuneButton"));
         bkgTuneButton->setMinimumSize(QSize(60, 30));
         bkgTuneButton->setMaximumSize(QSize(60, 30));
@@ -196,7 +196,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_6);
 
-        airTuneButton = new QPushButton(widget);
+        airTuneButton = new QPushButton(layoutWidget);
         airTuneButton->setObjectName(QStringLiteral("airTuneButton"));
         airTuneButton->setMinimumSize(QSize(60, 30));
         airTuneButton->setMaximumSize(QSize(60, 30));
@@ -206,7 +206,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        singleShotButton = new QPushButton(widget);
+        singleShotButton = new QPushButton(layoutWidget);
         singleShotButton->setObjectName(QStringLiteral("singleShotButton"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
@@ -218,7 +218,7 @@ public:
 
         verticalLayout->addWidget(singleShotButton);
 
-        tabWidget = new QTabWidget(widget);
+        tabWidget = new QTabWidget(layoutWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
@@ -441,7 +441,7 @@ public:
 
         retranslateUi(ConeScanWidget);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ConeScanWidget);
