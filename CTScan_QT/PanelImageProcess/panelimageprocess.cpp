@@ -309,7 +309,7 @@ int PanelImageProcess::dataSplice(const QString & in_pathA, const QString & in_p
 	QByteArray pathA = in_pathA.toLocal8Bit();
 	QByteArray pathB = in_pathB.toLocal8Bit();
 	QByteArray pathFinal = in_pathFinal.toLocal8Bit();
-	return _nCTDataSplicing_Detector(pathA.data(), pathB.data(), pathFinal.data(), &progress);
+	return 0;//_nCTDataSplicing_Detector(pathA.data(), pathB.data(), pathFinal.data(), &progress);
 }
 
 bool PanelImageProcess::loadBkgData(const QString& d_bkgFileName)

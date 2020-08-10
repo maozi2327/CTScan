@@ -1,4 +1,7 @@
 #pragma once
+#pragma comment(lib, "./public/lib/MicroDataCorrectionDll.lib")
+#pragma comment(lib, "./public/lib/tiff.lib")
+
 #include "panelimageprocess_global.h"
 #include <QString>
 class PANELIMAGEPROCESS_EXPORT PanelImageProcess

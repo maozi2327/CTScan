@@ -1,4 +1,6 @@
 #pragma once
+#pragma comment(lib, "./public/lib/xisl.lib")
+
 #include <qstring.h>
 #include <vector>
 #include "panelHeaders.h"

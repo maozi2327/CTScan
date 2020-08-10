@@ -138,9 +138,6 @@
     <ClCompile Include="..\Public\util\macro.cpp">
       <Filter>Header Files\utility</Filter>
     </ClCompile>
-    <ClCompile Include="scanprogresswidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -266,9 +263,6 @@
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="msglistbox.h">
-      <Filter>Source Files</Filter>
-    </QtMoc>
-    <QtMoc Include="scanprogresswidget.h">
       <Filter>Source Files</Filter>
     </QtMoc>
     <QtMoc Include="conescanInterface.h">
