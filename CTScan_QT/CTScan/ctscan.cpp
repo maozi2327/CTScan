@@ -4,6 +4,7 @@
 #include "raypanelmotionwidget.h"
 #include "simotioncontroller.h"
 #include "linedetscanwidget.h"
+#include "conescanwidget.h"
 #include "setupdataparser.h"
 #include "../Public/headers/panelimageprocess.h"
 #include "../Public/headers/SetupData.h"
@@ -57,6 +58,8 @@ CTScan::CTScan(QWidget *parent)
 	std::vector<LineDetScanInterface*> scanVector(uniquePtrVector.size());
 	std::transform(uniquePtrVector.begin(), uniquePtrVector.end(), scanVector.begin(),
 		[](std::unique_ptr<LineDetScanInterface>& elem) { return elem.get(); });
+
+	d_lineDetScanWidget[std::pair<int, int>(1 ,1)].reset(new LineDetScanWidget(d_motorControl.get(), scanVector, d_setupData.get()));
 	d_line1Det1ScanWidget.reset(new LineDetScanWidget(d_motorControl.get(), scanVector, d_setupData.get()));
 }
 
@@ -65,7 +68,7 @@ CTScan::~CTScan()
 
 }
 
-void CTScan::on_ray1LineDetButton_clicked()
+void CTScan::on_ray1LineDet1Button_clicked()
 {
 	//QString fileName("0000.tif");
 	//d_panelImageProcess->loadAirData(fileName);
@@ -73,17 +76,17 @@ void CTScan::on_ray1LineDetButton_clicked()
 	//tray->show();
 }
 
-void CTScan::on_ray1PanelDetButton_clicked()
+void CTScan::on_ray1PanelDet1Button_clicked()
+{
+	d_conesc
+}
+
+void CTScan::on_ray2LineDet1Button_clicked()
 {
 
 }
 
-void CTScan::on_ray2LineDetButton_clicked()
-{
-
-}
-
-void CTScan::on_ray2PanelDetButton_clicked()
+void CTScan::on_ray2PanelDet1Button_clicked()
 {
 
 }
@@ -114,7 +117,7 @@ void CTScan::bugMsgSlot(QString msg)
 //}
 void CTScan::cut()
 {
-	hide();                 /* 隐藏窗口 */
+	hide();                 /* 最小化到托盘 */
 }
 
 

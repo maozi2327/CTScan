@@ -142,7 +142,6 @@ bool CT3Scan::setGenerialFileHeader()
 	d_ictHeader.ReconstructParameter.NumberOfGraduationOfCt2 = 0;
 	d_ictHeader.ReconstructParameter.SerialOfGraduationOfCt2 = 0;
 	d_ictHeader.ScanParameter.ViewDiameter = d_viewDiameter;
-	d_ictHeader.ScanParameter.LeftSerialNoOfTable = 0;
 	d_ictHeader.ScanParameter.NumberOfTable = 1;
 	d_ictHeader.ScanParameter.LargeViewCenterOffset = 0;
 	d_ictHeader.ScanParameter.Pixels = d_matrix;

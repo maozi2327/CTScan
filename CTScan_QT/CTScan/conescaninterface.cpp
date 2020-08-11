@@ -233,6 +233,9 @@ bool ConeScanInterface::beginScan()
 	if(!writeParameterFile())
 		return false;
 
+	if (!loadAirData())
+		return false;
+
 	sendCmdToController();
 	d_scanThread.reset(new Thread(std::bind(&ConeScanInterface::scanThread, this), std::ref(d_scanThreadRun)));
 	d_scanThread->detach();

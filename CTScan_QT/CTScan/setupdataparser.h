@@ -2,6 +2,7 @@
 
 #include <QObject>
 #include "../Public/lib/tinyxml2.h"
+#include "../Public/headers/SetupData.h"
 struct SetupData;
 class SetupDataParser : public QObject
 {
@@ -17,9 +18,9 @@ private:
 	bool parsePanelDetSection(tinyxml2::XMLElement* in_element);
 	bool parsePanelDetData(tinyxml2::XMLElement* in_element, int in_number);
 	bool parsekVRaySection(tinyxml2::XMLElement* in_element);
-	bool parsekVRayData(tinyxml2::XMLElement* in_element, int in_number);
+	bool parsekVRayData(tinyxml2::XMLElement* in_element, int in_number, kVRayData& in_kvRayData);
 	bool parseAcceleratorSection(tinyxml2::XMLElement* in_element);
-	bool parseAcceleratorData(tinyxml2::XMLElement* in_element, int in_number);
+	bool parseAcceleratorData(tinyxml2::XMLElement* in_element, int in_number, AcceleratorData& in_accData);
 	bool parseScanModeSection(tinyxml2::XMLElement* in_element);
 	bool parseAxisDefinition(tinyxml2::XMLElement* in_element);
 	bool parseCT2Data(tinyxml2::XMLElement* in_element);

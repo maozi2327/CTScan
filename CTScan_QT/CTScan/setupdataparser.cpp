@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "setupdataparser.h"
-#include "../Public/headers/SetupData.h"
 #include <regex>
 
 bool SetupDataParser::parseLineDetSection(tinyxml2::XMLElement * in_element)
@@ -149,29 +148,31 @@ bool SetupDataParser::parsekVRaySection(tinyxml2::XMLElement * in_element)
 	for (auto element1 = element; i != d_setupData->kVRayNum && element1 != nullptr;
 		element1 = element1->NextSiblingElement(), ++i)
 	{
-		if (!parsekVRayData(element1, i))
-			return false;
+		kVRayData localData;
+		
+		if (parsekVRayData(element1, i, localData))
+			d_setupData->kVRayData.push_back(localData);
+		else
+			;
 	}
 
 	return true;
 }
 
-bool SetupDataParser::parsekVRayData(tinyxml2::XMLElement * in_element, int in_number)
+bool SetupDataParser::parsekVRayData(tinyxml2::XMLElement * in_element, int in_number, kVRayData& in_kvRayData)
 {
-	kVRayData localData;
-	
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
 		if (strcmp(element->Value(), "rayType") == 0)
-			strcpy(localData.rayType, element->GetText());
+			strcpy(in_kvRayData.rayType, element->GetText());
 		else if (strcmp(element->Value(), "rayEnergy") == 0)
-			localData.rayEnergy = atof(element->GetText());
+			in_kvRayData.rayEnergy = atof(element->GetText());
 		else if (strcmp(element->Value(), "rayDoseRate") == 0)
-			localData.rayDoseRate = atof(element->GetText());
+			in_kvRayData.rayDoseRate = atof(element->GetText());
 	}
 
-	return false;
+	return true;
 }
 
 bool SetupDataParser::parseAcceleratorSection(tinyxml2::XMLElement * in_element)
@@ -183,28 +184,30 @@ bool SetupDataParser::parseAcceleratorSection(tinyxml2::XMLElement * in_element)
 	for (auto element1 = element; i != d_setupData->acceleratorNum && element1 != nullptr;
 		element1 = element1->NextSiblingElement(), ++i)
 	{
-		if (!parseAcceleratorData(element1, i))
+		AcceleratorData localData;
+
+		if (!parseAcceleratorData(element1, i, localData))
 			return false;
+		else
+			;
 	}
 
 	return true;
 }
 
-bool SetupDataParser::parseAcceleratorData(tinyxml2::XMLElement * in_element, int in_number)
+bool SetupDataParser::parseAcceleratorData(tinyxml2::XMLElement * in_element, int in_number, AcceleratorData& in_accData)
 {
-	AcceleratorData localData;
-
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
 		if (strcmp(element->Value(), "rayType") == 0)
-			strcpy(localData.rayType, element->GetText());
+			strcpy(in_accData.rayType, element->GetText());
 		else if (strcmp(element->Value(), "rayEnergy") == 0)
-			localData.rayEnergy = atof(element->GetText());
+			in_accData.rayEnergy = atof(element->GetText());
 		else if (strcmp(element->Value(), "rayDoseRate") == 0)
-			localData.rayDoseRate = atof(element->GetText());
+			in_accData.rayDoseRate = atof(element->GetText());
 		else if (strcmp(element->Value(), "accRiseTime") == 0)
-			localData.accRiseTime = atoi(element->GetText());
+			in_accData.accRiseTime = atoi(element->GetText());
 		else if (strcmp(element->Value(), "syncFreqDefine") == 0)
 		{
 			std::regex pattern("\\d+");
@@ -213,11 +216,11 @@ bool SetupDataParser::parseAcceleratorData(tinyxml2::XMLElement * in_element, in
 			int index = 0;
 
 			for (std::sregex_iterator it(str.begin(), str.end(), pattern), end_it; it != end_it; ++it, ++index)
-				localData.syncFreqDefine.push_back(stoi(it->str()));
+				in_accData.syncFreqDefine.push_back(stoi(it->str()));
 		}
 	}
 
-	return false;
+	return true;
 }
 void insertNumericDataFromString(std::vector<unsigned short>& int_data, tinyxml2::XMLElement * in_element)
 {

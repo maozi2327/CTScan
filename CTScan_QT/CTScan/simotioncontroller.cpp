@@ -23,8 +23,6 @@ SimotionController::SimotionController()
 		while (d_threadRun)
 		{
 			std::this_thread::sleep_for(intervel);
-			//std::weak_ptr<SimotionController> thisWeak = shared_from_this();
-			//auto shared = thisWeak.lock();
 
 			if (true)
 			{

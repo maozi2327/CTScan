@@ -1,54 +1,62 @@
-//-----------------------------------------------------------------------------
-//工业CT数据采集/处理文件头定义(V2.3)
-//重庆大学ICT研究中心,明视科技分公司.								2005.01.19
-//增加三维CT扫描参数												2006.04.20
-//V2.3版本开始作为重庆真测科技股份有限公司数据文件格式				2010.05.19
+// -----------------------------------------------------------------------------
+// 工业CT数据采集/处理文件头定义(V2.2)
+// 重庆大学ICT研究中心,明视科技分公司.								2005.01.19
+// V2.3版本开始作为重庆真测科技股份有限公司数据文件格式				2010.05.19
+// 增加三维CT扫描参数												2006.04.20
 
-//2007.07.13修改如下:
-//1. 将SpaceBetweenLayer(多层CT层距)和LayerThicknessOfDR(DR分层厚度)合并为LayerThickness(分层厚度)
-//2. 增加TotalLayers2(第二段DR扫描总层数)
-//3. 增加FirstSectStartCoordinateOfDR(第一段DR扫描起始坐标X1),SecondSectStartCoordinateOfDR(第二段DR扫描起始坐标X3)
+// 2007.07.13修改如下:
+// 1. 将SpaceBetweenLayer(多层CT层距)和LayerThicknessOfDR(DR分层厚度)合并为LayerThickness(分层厚度)
+// 2. 增加TotalLayers2(第二段DR扫描总层数)
+// 3. 增加FirstSectStartCoordinateOfDR(第一段DR扫描起始坐标X1),SecondSectStartCoordinateOfDR(第二段DR扫描起始坐标X3)
 
-//2007.07.26修改如下:
-//1. 增加重建参数
+// 2007.07.26修改如下:
+// 1. 增加重建参数
 
-//2007.10.04修改如下:
-//1. 将LayerThickness命名修改为SpaceBetweenLayer
-//2. 增加2代扫描重建参数: NumberOfGraduationOfCt2,SerialOfGraduationOfCt2
-//3. 增加3代扫描起始分度号: graduationBase
-//3. 增加射线平面方向中心探测器序号SerialNo1OfMiddleHorizontalDetector/SerialNo2OfMiddleHorizontalDetector
-//   用于数据校正时确定中间探测器(扇面中心射线通过探测器时序号1/2相同;
-//   扇面中心射线通过两个探测器中间时,序号1/2相差1)
+// 2007.10.04修改如下:
+// 1. 将LayerThickness命名修改为SpaceBetweenLayer
+// 2. 增加2代扫描重建参数: NumberOfGraduationOfCt2,SerialOfGraduationOfCt2
+// 3. 增加3代扫描起始分度号: graduationBase
+// 3. 增加射线平面方向中心探测器序号SerialNo1OfMiddleHorizontalDetector/SerialNo2OfMiddleHorizontalDetector
+//    用于数据校正时确定中间探测器(扇面中心射线通过探测器时序号1/2相同;
+//    扇面中心射线通过两个探测器中间时,序号1/2相差1)
 
-//2008.04.24修改如下:
+// 2008.04.24修改如下:
 //	 ICT_HEADER 改为ICT_HEADER21表示2.1版本格式, 对应DATAFORMAT21, 数据总行数为 WORD
 //   增加ICT_HEADER22表示2.2版本格式, 对应DATAFORMAT22, 数据总行数改为 DWORD
 //   扫描参数中增加NumberOfTable表示扫描时使用的转台数量
 
-//2008.10.06增加测试工件信息:
-//1. 增加工件生产线和工件制造日期项
-//2. 为适应DR系统单车双工件模式, 增加工件2名称,编号,生产线,制造日期信息; 
+// 2008.10.06增加测试工件信息:
+// 1. 增加工件生产线和工件制造日期项
+// 2. 为适应DR系统单车双工件模式, 增加工件2名称,编号,生产线,制造日期信息; 
 //   原来的工件名称,编号及新增的工件生产线和工件制造日期项作为工件1的有关信息.
 
-//2009.06.17修改如下:
-//1. 将原CT扫描起始方位角Azimuth, 在DR扫描方式下定义为DR扫描角度
+// 2009.06.17修改如下:
+// 1. 将原CT扫描起始方位角Azimuth, 在DR扫描方式下定义为DR扫描角度
 
-//2010.05.19修改:
-//1. 版本号定义为V2.3
-//2. 将射线平面图像尺寸代号Pixels修改为直接表示像素个数
-//3. 增加Ⅱ代扫描开始/结束探测器序号BeginSerialNoOfCt2Detector/EndSerialNoOfCt2Detector
-//4. V2.3中不使用预置同步脉冲数SetupSynchPulseNumber,该字段保留
-//5. V2.3中不使用第二段DR扫描总层数TotalLayers2,该字段保留
-//6. V2.3中不使用第二段DR扫描起始坐标SecondSectStartCoordinateOfDR,该字段保留
+// 2010.05.19修改:
+// 1. 版本号定义为V2.3
+// 2. 将射线平面图像尺寸代号Pixels修改为直接表示像素个数
+// 3. 增加Ⅱ代扫描开始/结束探测器序号BeginSerialNoOfCt2Detector/EndSerialNoOfCt2Detector
+// 4. V2.3中不使用预置同步脉冲数SetupSynchPulseNumber,该字段保留
+// 5. V2.3中不使用第二段DR扫描总层数TotalLayers2,该字段保留
+// 6. V2.3中不使用第二段DR扫描起始坐标SecondSectStartCoordinateOfDR,该字段保留
 
-//2011.12.26修改:
-//1. 在结构SCANPARAMETER中增加大视场扫描回转中心偏置参数LargeViewCenterOffset
+// 2011.12.26修改:
+// 1. 在结构SCANPARAMETER中增加大视场扫描回转中心偏置参数LargeViewCenterOffset
 
-//2013.01.08修改:
-//1. 在结构SCANPARAMETER中增加多个小转台扫描情况下左侧转台序号(0开始)LeftSerialNoOfTable
+// 2012.07.12修改:
+// 1. 在结构SCANPARAMETER中增加工件偏摆角度DeflectionAngle
+
+// 2013.03.07修改:
+// 1. 在结构SCANPARAMETER中增加DR扫描第1次扫描方向参数DR1stScanDir(0-正向, 1-负向), 用于数据排序
+
+// 2020.07.23修改
+// 1.Ⅱ代扫描增加中心切与内切扫描
 //-----------------------------------------------------------------------------
-#ifndef __d_ictHeader_H
-#define __d_ictHeader_H
+//-----------------------------------------------------------------------------
+
+#ifndef __ICTHEADER_H
+#define __ICTHEADER_H
 
 #ifndef	ULONG
 #define	ULONG	unsigned long
@@ -73,7 +81,7 @@
 #define	MainVersion23	2											//定义主版本号
 #define	SubVersion23	3											//定义次版本号
 
-//探测器结构形式名定义
+// 探测器结构形式名定义
 #ifndef	_DETECTOR_STRUCT_NAME
 #define	_DETECTOR_STRUCT_NAME
 enum{
@@ -83,49 +91,45 @@ enum{
 };
 #endif
 
-//扫描方式: 0-Ⅰ代扫描,1-Ⅱ代扫描,2-Ⅲ代扫描,3-DR扫描，4-局部扫描,5-螺旋扫描,6-锥束扫描,7-锥束螺旋扫描
-//          8-背景扫描,9-空气扫描,10-分层零点标定扫描,11-回转中心标定扫描,12-大视场扫描 
-//扫描模式符号名定义
+// 扫描方式: 0-Ⅰ代扫描,1-Ⅱ代扫描,2-Ⅲ代扫描,3-DR扫描，4-局部扫描,5-螺旋扫描,6-锥束扫描,7-锥束螺旋扫描
+// 扫描模式符号名定义
 #ifndef	_SCAN_MODE_NAME
 #define	_SCAN_MODE_NAME
-enum class ScanMode
-{
+enum{
 	NO_SCAN		=	-1,												//无扫描操作
-	CT1_SCAN,														//Ⅰ代扫描
-	CT2_SCAN,														//Ⅱ代扫描
-	CT3_SCAN,														//Ⅲ代扫描
-	DR_SCAN,														//DR扫描
-	LOCAL_SCAN,														//局部扫描
-	HELIX_SCAN,														//螺旋扫描
-	CONE_SCAN,														//锥束扫描
-	CONEHELIX_SCAN,													//锥束螺旋扫描
-	BKG_SCAN,														//本底校正扫描(固定采集512个分度)
-	AIR_SCAN,														//空气校正扫描(固定采集512个分度)
-	CAL_LAYER_ZERO_SCAN,											//标定分层零点扫描(固定采集400点)
-	CAL_CENTER_SCAN,												//标定回转中心扫描
-	LARGE_VIEW_SCAN,												//大视场扫描(回转中心偏置扫描)
-	CONFIG_SCAN,                                            //组态扫描
-	//2017.03.29增加
-	DEF_MAP_SCAN,											//坏像素校正扫描
-	CONEPOINT_SCAN,											//点对点锥束扫描（到位一次采集一次，不需要同步脉冲）
-	CROSS_SCAN,												//交错扫描（分度角加对搓采束）
-	SINGLE_CROSS_SCAN,										//静态交错(只移动射线源)扫描（分度角加对搓采束）
-	CONE_LARGE_VIEW_SCAN,									//锥束大视场扫描
-	CONEHELIX_POINT_SCAN,									//锥束螺旋点位扫描
-	//CONE_SCAN_2TABLE,										//锥束扫描
-	CONE_JOINT_SCAN,                                        //锥束拼接扫描
-	CONE_JOINT_ROT_SCAN,                                        //锥束拼接扫描
+	CT1_SCAN,														//Ⅰ代扫描 0
+	CT2_SCAN,														//Ⅱ代扫描 1 
+	CT3_SCAN,														//Ⅲ代扫描 2
+	DR_SCAN,														//DR扫描   3
+	LOCAL_SCAN,														//局部扫描 4
+	HELIX_SCAN,														//螺旋扫描 5
+	CONE_SCAN,														//锥束扫描 6
+	CONEHELIX_SCAN,													//锥束螺旋扫描 7
+	BKG_SCAN,														//本底校正扫描(固定采集512个分度) 8
+	AIR_SCAN,														//空气校正扫描(固定采集512个分度) 9
+	CAL_LAYER_ZERO_SCAN,											//标定分层零点扫描(固定采集400点) 10
+	CAL_CENTER_SCAN,												//标定回转中心扫描 11
+	LARGE_VIEW_SCAN,												//大视场扫描(回转中心偏置扫描) 12
 	_MAX_SCANMODE_ITEM
 };
 #endif
 
-//定义数据类型
+// 定义数据类型
 enum{
 	CHARDATA	=	1,												//字符型
 	INTDATA,														//整型
 	LONGDATA,														//长整型
 	FLOATDATA,														//浮点型
 	DOUBLEDATA														//双精度型
+};
+
+// 二代扫描方式
+enum
+{
+	MIDFAN_360 = 0,     // 中心切 360°
+	MIDFAN_180,			// 中心切 180°
+	MIDFAN_180_INTER,   // 中心切 180°间隔
+	INERFAN_360         // 内切 360°
 };
 
 #define	PWDLEN		128												//定义密码串长度
@@ -208,13 +212,22 @@ typedef	struct	_WORKPIECEMESSAGE23{
 }WORKPIECEMESSAGE23;
 
 //****** 扫描参数信息 380 bytes **********************************************************
-typedef	struct	_SCANPARAMETER{
-	WORD	ScanMode;												//扫描方式: 0-Ⅰ代扫描,1-Ⅱ代扫描,2-Ⅲ代扫描,3-DR扫描，4-局部扫描,5-螺旋扫描,6-锥束扫描
-	WORD	Ct2ScanMode;											//2代扫描模式:  0-360°,1-180°,2-180°间隔
-		//Ⅱ代扫描时,双向表示平移为正反两个方向采集数据
-		//Ⅲ代扫描时,双向表示相邻两层插值方向相反
-		//DR扫描时,双向表示分层为正反两个方向采集数据
+typedef	struct	_SCANPARAMETER23{
+	WORD	ScanMode;												// 扫描方式: 0-Ⅰ代扫描,1-Ⅱ代扫描,2-Ⅲ代扫描,3-DR扫描，4-局部扫描,5-螺旋扫描,6-锥束扫描
+	
+	// 2代扫描模式:
+	// 0 ： 中心切 360°
+	// 1 :  中心切 180°,
+	// 2 :  中心切 180°，间隔
+	// 3 :  内切 360°
+	WORD	Ct2ScanMode;
+																
+	// Ⅱ代扫描时,双向表示平移为正反两个方向采集数据
+	// Ⅲ代扫描时,双向表示相邻两层插值方向相反
+	// DR扫描时,双向表示分层为正反两个方向采集数据
 	WORD	ScanDirectionMode;										//扫描方向: 0-单向,1-双向
+	
+
 	WORD	DataTransferMode;										//数据传送方式: 0-整体传送, 1-边扫描边传送
 
 	WORD	Pixels;													//V2.3中定义为射线平面图像像素个数(投影数), 取消V2.2中代号表示方式
@@ -241,36 +254,37 @@ typedef	struct	_SCANPARAMETER{
 	WORD	GraduationDirection;									//分度方向:N_DIR-顺时针(负方向),P_DIR-逆时针(正方向)
 	WORD	NumberOfGraduation;										//分度次数(指单螺距、锥束扫描、或二维CT旋转一周分度数)
 	WORD	InterpolationFlag;										//插值数标志:0-标准插值,1-插值数＋1
-	WORD	NumberOfInterpolation;									//3代/DR/螺旋扫描插值次数(标准插值次数)
-	WORD	NumberOfTranslation;									//2代平移采样点数
+	WORD	NumberOfInterpolation;									//插值次数(标准插值次数)
+	WORD	NumberOfTranslation;									//平移采样点数
 	WORD	DelaminationMode;										//CT分层方式:0-等层距,1-不等层距,2-当前层距
 	float	HelixScanPitch;											//螺旋扫描螺距大小,单位:mm
-	WORD	TotalLayers;											//CT扫描总层数或第一段DR扫描总层数
-	WORD	TotalLayers2;											//第二段DR扫描总层数,只有一段DR扫描时填写0. V2.3版本不用
+	WORD	TotalLayers;											//CT扫描总层数或第一段DR扫描总层数,范围:1-9999
+	WORD	TotalLayers2;											//第二段DR扫描总层数,范围:0-9999,只有一段DR扫描时填写0. V2.3版本不用
 	float	CurrentLayerCoordinate;									//当前层坐标,单位:mm
 	float	SpaceBetweenLayer;										//CT层距/DR分层厚度(层间距,两段DR扫描时每段层间距相同),单位:mm
-	float	FirstSectStartCoordinateOfDR;							//第一段DR扫描起始坐标Z1, 单位:mm
-	float	SecondSectStartCoordinateOfDR;							//第二段DR扫描起始坐标Z3, 单位:mm
+	float	FirstSectStartCoordinateOfDR;							//第一段DR扫描起始坐标X1, 单位:mm
+	float	SecondSectStartCoordinateOfDR;							//第二段DR扫描起始坐标X3, 单位:mm
 	WORD	SetupSynchPulseNumber;									//预置同步脉冲数(加速器情况, 在V2.3版本中不再使用)
 	float	SampleTime;												//采样时间, 单位:秒
 	WORD	UsedScanTime;											//实际扫描时间(s)
 	float	TemperatureValue;										//探测系统设置温度值(°)
 	char	FilenameTemperature[32];								//探测系统实时温度记录文件名
-	char	FilenameOfCTdata[32];									//DR,CT数据文件名(用于存放CT、DR、锥束扫描数据)
+	char	FilenameOfCTdata[32];									//CT数据文件名,按Windows文件名定义的字符串(用于存放CT、DR、锥束扫描数据)
 	char	FilenameOf2CTdata[32];									//Ⅱ代数据边采边传文件名(即数据文件名加上编号(00-31))
 	char	FilenameOfPictureData[32];								//图像数据文件名, 按Windows文件名定义的字符串
 	WORD	NumberOfTable;											//扫描检测使用的转台数量(缺省为1, 2表示两个转台)
 	
 	WORD	BeginSerialNoOfCt2Detector;								//Ⅱ代扫描开始探测器序号(从0开始), V2.3中新增
 	WORD	EndSerialNoOfCt2Detector;								//Ⅱ代扫描结束探测器序号(从0开始), V2.3中新增
-
-	WORD	LeftSerialNoOfTable;									//多个小转台扫描情况下左侧转台序号(0开始)
+    //2013.4.1
+	WORD	DR1stScanDir;											//DR扫描第1次扫描方向(0-正向, 1-负向)
 	//为了保持编译时对齐
 	BYTE	reserved1[2];											//保留字节
-	float	LargeViewCenterOffset;									//大视场扫描回转中心偏置(同时用作多转台扫描中心偏移)
+	float	LargeViewCenterOffset;									//大视场扫描回转中心偏置(mm)
+	float	DeflectionAngle;										//偏摆角度(°)	
+	BYTE	reserved2[102];											//保留字节
 
-	BYTE	reserved2[106];											//保留字节
-}SCANPARAMETER;
+}SCANPARAMETER23;
 //说明:
 //(1) 射线平面方向单个探测器夹角Ah=射线平面方向扇角/(射线平面方向系统探测器数-1)
 //(2) 射线平面垂直方向单个探测器夹角Av=射线平面垂直方向扇角/(射线平面垂直方向系统探测器数-1)
@@ -282,15 +296,70 @@ typedef	struct	_SCANPARAMETER{
 //		3) 计算出Nv后对D进行修正: 
 //			D = 2*Q*sin[(Nv-1)/2*Ah]
 //(4) 标准插值数=UINT(射线平面图像像素个数Pixels/射线平面方向系统探测器数Na), UINT(.)为向上取整函数.
-//(5) Ⅱ代扫描使用的探测器数N2=Ⅱ代扫描结束探测器序号 - Ⅱ代扫描开始探测器序号 + 1
-//(6) Ⅱ代扫描扇角=Ⅱ代扫描使用的探测器数N2*射线平面方向单个探测器夹角Ah
-//(7) Ⅱ代扫描分度角由分度数确定
+//(5) 采用精细扫描时, 射线平面图像像素个数Pixels(即投影数)加倍, 插值次数按(4)计算
+//(6) Ⅱ代扫描使用的探测器数N2=Ⅱ代扫描结束探测器序号 - Ⅱ代扫描开始探测器序号 + 1
+//(7) Ⅱ代扫描扇角=Ⅱ代扫描使用的探测器数N2*射线平面方向单个探测器夹角Ah
 //向上取整函数y=UINT(x)定义:
 //		if INT(x)==x
 //			y = x;
 //		else
 //			y = INT(x)+1
+//****** 扫描参数信息 380 bytes **********************************************************
+typedef	struct	_SCANPARAMETER22{
+	WORD	ScanMode;										//扫描方式: 0-Ⅰ代扫描,1-Ⅱ代扫描,2-Ⅲ代扫描,3-DR扫描，4-局部扫描,5-螺旋扫描,6-锥束扫描
+	WORD	Ct2ScanMode;									//2代扫描模式:  0-360°,1-180°,2-180°间隔
+		//Ⅱ代扫描时,双向表示平移为正反两个方向采集数据
+		//Ⅲ代扫描时,双向表示相邻两层插值方向相反
+		//DR扫描时,双向表示分层为正反两个方向采集数据
+	WORD	ScanDirectionMode;							//扫描方向: 0-单向,1-双向
+	WORD	DataTransferMode;								//数据传送方式: 0-整体传送, 1-边扫描边传送
 
+	WORD	Pixels;											//水平图像尺寸代号: 0-64,1-128,2-256,3-512,4-1024,5-2048,6-4096
+	float	ViewDiameter;									//视场直径(mm)
+	float	RadialDistanceInLocal;						//局部扫描时扫描视场中心至回转中心距离(mm)
+	float	AngleInLocal;									//局部扫描时回转中心与扫描视场中心连线与水平正半轴起始夹角(°)
+
+	WORD	CollimationSize;								//准直器尺寸代号:0,1,2...   准直器宽度
+	float CollimationThickness;						//准直器高度/断层厚度(mm)
+	WORD  DetectorStyle;                         //当前使用的探测器结构(0-弧形, 1-直线, 2-平板)
+	WORD	NumberOfSystemHorizontalDetector;		//水平方向系统探头数(横向, 弧形/直线探测器)
+	WORD	NumberOfValidHorizontalDetector;			//水平方向有效探头数(横向, 弧形/直线探测器)
+	WORD	SerialNo1OfMiddleHorizontalDetector;	//水平方向中心探测器序号1(横向, 弧形/直线探测器, 从0开始计算)
+	WORD	SerialNo2OfMiddleHorizontalDetector;	//水平方向中心探测器序号2(横向, 弧形/直线探测器, 从0开始计算)
+	WORD  NumberofSystemVerticalDetector;			//垂直方向系统探测器数(列向)
+	WORD  NumberofValidVerticalDetector;			//垂直方向有效探测器数(列向)
+	float	SpaceOfHorizontalDetector;					//水平方向有效探测器间距(mm)
+	float	SpaceOfVerticalDetector;					//垂直方向有效探测器间距(mm)(螺旋扫描多排探测器合并使用情况下为相邻两行数据中心探测器距离)
+	float	HorizontalSectorAngle;						//水平方向有效扇角值(°)	
+	float VerticalSectorAngle;							//垂直方向有效扇角值(°)
+	float	RadialPosition;								//焦点到旋转中心距离(径向位置)(mm)    
+	float SourceDetectorDistance;						//焦点到探测器距离(mm)
+	float	Azimuth;											//扫描时分度起始方位角(°)
+	WORD	GraduationDirection;							//分度方向:0-顺时针,1-逆时针(正方向)
+	WORD	NumberOfGraduation;							//分度次数(指单螺距、锥束扫描、或二维CT旋转一周分度数)
+	WORD	InterpolationFlag;							//插值数标志:0-标准插值,1-插值数＋1
+	WORD	NumberOfInterpolation;						//插值次数(标准插值次数)
+	WORD	NumberOfTranslation;							//平移采样点数
+	WORD	DelaminationMode;								//CT分层方式:0-等层距,1-不等层距,2-当前层距
+	float HelicalScanPitch;								//螺旋扫描螺距大小,单位:mm
+	WORD	TotalLayers;									//CT扫描总层数或第一段DR扫描总层数,范围:1-9999
+	WORD	TotalLayers2;									//第二段DR扫描总层数,范围:0-9999,只有一段DR扫描时填写0
+	float	CurrentLayerCoordinate;						//当前层坐标,单位:mm
+	float	SpaceBetweenLayer;							//CT层距/DR分层厚度(层间距,两段DR扫描时每段层间距相同),单位:mm
+	float	FirstSectStartCoordinateOfDR;				//第一段DR扫描起始坐标X1, 单位:mm
+	float	SecondSectStartCoordinateOfDR;			//第二段DR扫描起始坐标X3, 单位:mm
+	WORD	SetupSynchPulseNumber;						//预置同步脉冲数(加速器情况)
+	float	SampleTime;										//射束采样时间, 单位:秒
+	WORD	UsedScanTime;									//实际扫描时间(s)
+	float	TemputreValue;									//探测系统设置温度值(°)
+	char	FilenameTemperature[32];					//探测系统实时温度记录文件名
+	char	FilenameOfCTdata[32];						//CT数据文件名,按Windows文件名定义的字符串(用于存放CT、DR、锥束扫描数据)
+	char	FilenameOf2CTdata[32];						//Ⅱ代数据边采边传文件名(即数据文件名加上编号(00-31))
+	char	FilenameOfPictureData[32];					//图像数据文件名, 按Windows文件名定义的字符串
+	WORD	NumberOfTable;									//扫描检测使用的转台数量(缺省为1, 2表示两个转台)
+
+	BYTE	reserved[122];									//保留字节
+}SCANPARAMETER22;
 //****** 系统参数信息 192 bytes ***********************************************************
 typedef	struct	_SYSTEMPARAMETER{
 	char	ModelOfCT[32];											//CT设备型号
@@ -338,7 +407,7 @@ typedef	struct	_DATAFORMAT21{
 }DATAFORMAT21;
 
 #pragma pack(1)														//按字节对齐数据
-//****** 数据格式信息 32 bytes  (V2.2版本以上用)***********************************************************
+//****** 数据格式信息 32 bytes  (V2.2版本用)***********************************************************
 typedef	struct	_DATAFORMAT{
 	WORD	DataType;												//数据存储类型: char=01,int=02,unsigned long=03,float=04,double=05
 	DWORD	TotalLines;												//数据总行数  .2008-01-23由WORD改为DWORD,同时版本号从V2.1 改为V2.2
@@ -359,7 +428,7 @@ typedef	struct	_X22DATAFORMAT{
 #pragma pack(8)														//按缺省值对齐数据
 
 //****** 保留字节长度 *******************************************************************
-#define	RESERVEDBYTES	2048-4-2-PWDLEN-sizeof(TASKMESSAGE)-sizeof(WORKPIECEMESSAGE)-sizeof(SCANPARAMETER)-sizeof(SYSTEMPARAMETER)-sizeof(RECONSTRUCTMESSAGE)-sizeof(IDENTIFYMESSAGE)-sizeof(DATAFORMAT)
+#define	RESERVEDBYTES	2048-4-2-PWDLEN-sizeof(TASKMESSAGE)-sizeof(WORKPIECEMESSAGE)-sizeof(SCANPARAMETER22)-sizeof(SYSTEMPARAMETER)-sizeof(RECONSTRUCTMESSAGE)-sizeof(IDENTIFYMESSAGE)-sizeof(DATAFORMAT)
 
 //****** 头文件信息(V2.1版本使用) *********************************************************************
 typedef	struct _ICT_HEADER21{
@@ -368,7 +437,7 @@ typedef	struct _ICT_HEADER21{
 	BYTE				reserved1[2];								//保留
 	TASKMESSAGE			Task;										//测试任务信息
 	WORKPIECEMESSAGE	Workpiece;									//测试工件信息
-	SCANPARAMETER		ScanParameter;								//扫描参数
+	SCANPARAMETER22		ScanParameter;								//扫描参数
 	SYSTEMPARAMETER		SystemParameter;							//系统参数
 	RECONSTRUCTMESSAGE	ReconstructParameter;						//重建参数
 	IDENTIFYMESSAGE		IdentifyMessage;							//图像识别信息
@@ -386,7 +455,7 @@ typedef	struct _ICT_HEADER22{
 	BYTE				reserved1[2];								//保留
 	TASKMESSAGE			Task;										//测试任务信息
 	WORKPIECEMESSAGE	Workpiece;									//测试工件信息
-	SCANPARAMETER		ScanParameter;								//扫描参数
+	SCANPARAMETER22		ScanParameter;								//扫描参数
 	SYSTEMPARAMETER		SystemParameter;							//系统参数
 	RECONSTRUCTMESSAGE	ReconstructParameter;						//重建参数
 	IDENTIFYMESSAGE		IdentifyMessage;							//图像识别信息
@@ -399,13 +468,13 @@ typedef	struct _ICT_HEADER22{
 //****** 保留字节长度 *******************************************************************
 #define	RESERVEDBYTES23	2048-4-2-PWDLEN-sizeof(TASKMESSAGE)-sizeof(WORKPIECEMESSAGE23)-sizeof(SCANPARAMETER)-sizeof(SYSTEMPARAMETER)-sizeof(RECONSTRUCTMESSAGE)-sizeof(IDENTIFYMESSAGE)-sizeof(DATAFORMAT)
 //****** 头文件信息 (V2.3版本使用)*********************************************************************
-typedef	struct _ICT_HEADER{
+typedef	struct _ICT_HEADER23{
 	BYTE				MainVersion;								//版本标识(主版本号: 0x02)
 	BYTE				SubVersion;									//版本标识(次版本号: 0x03)
 	BYTE				reserved1[2];								//保留
 	TASKMESSAGE			Task;										//测试任务信息
 	WORKPIECEMESSAGE23	Workpiece;									//测试工件信息
-	SCANPARAMETER		ScanParameter;								//扫描参数
+	SCANPARAMETER23		ScanParameter;								//扫描参数
 	SYSTEMPARAMETER		SystemParameter;							//系统参数
 	RECONSTRUCTMESSAGE	ReconstructParameter;						//重建参数
 	IDENTIFYMESSAGE		IdentifyMessage;							//图像识别信息
@@ -413,7 +482,7 @@ typedef	struct _ICT_HEADER{
 	BYTE	       		reserved2[RESERVEDBYTES];					//保留(316)
 	WORD				SizeofHeader;								//文件头尺寸: >2048(文件头尺寸为随机长度)
 	BYTE				Password[PWDLEN];							//加密字符串
-}ICT_HEADER;
+}ICT_HEADER23;
 
 //****** 头文件信息 (V2.2版本使用---非标准)*********************************************************************
 typedef	struct _X22ICT_HEADER{
@@ -422,7 +491,7 @@ typedef	struct _X22ICT_HEADER{
 	BYTE				reserved1[2];								//保留
 	TASKMESSAGE			Task;										//测试任务信息
 	WORKPIECEMESSAGE	Workpiece;									//测试工件信息
-	SCANPARAMETER		ScanParameter;								//扫描参数
+	SCANPARAMETER22		ScanParameter;								//扫描参数
 	SYSTEMPARAMETER		SystemParameter;							//系统参数
 	RECONSTRUCTMESSAGE	ReconstructParameter;						//重建参数
 	IDENTIFYMESSAGE		IdentifyMessage;							//图像识别信息

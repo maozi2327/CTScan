@@ -38,7 +38,7 @@ protected:
 	std::unique_ptr<Thread> d_scanThread;
 	RayType d_rayType;
 	SetupData* d_setupData;
-	static ICT_HEADER d_ictHeader;
+	static ICT_HEADER23 d_ictHeader;
 	virtual void scanThread() = 0;
 	void saveOrgFile();
 	virtual bool setGenerialFileHeader();

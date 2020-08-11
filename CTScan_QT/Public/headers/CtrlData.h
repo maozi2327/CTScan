@@ -1210,7 +1210,7 @@ struct FILENAME_FLAG{
 	char	orgFileName[MAX_PATH];									//全路径原始数据文件名
 	int		bReconstruction;										//处理完数据重建图像标志:1-Reconstruction
 	//面阵参数
-	ICT_HEADER d_ictHeaderForPan;										//数据头结构变量
+	ICT_HEADER23 d_ictHeaderForPan;										//数据头结构变量
 	char	darkFilePath[MAX_PATH];									//全路径暗场数据文件名
 	char	gainFilePath[MAX_PATH];									//全路径增益数据文件名
 	char	defectFilePath[MAX_PATH];								//全路径坏像素数据文件名

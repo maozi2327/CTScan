@@ -14,41 +14,44 @@
 #define	EN_ABNORMALDETECTOR 	0x0080		// 允许处理异常探测器
 #define EN_MOVETWOPIXELS        0x0100      // 允许使用多扫的CT分度来进行一致性校正
 #define EN_DEFECT               0x0200      // 允许进行坏像素校正
+#define EN_DOSEDOWN             0x0400      // 允许射线掉束校正
 #define	EN_SAVEEXTORG			0x8000		// 允许保存处理后的原始数据
  
 //定义函数返回代码
-#define	SUCCESS					0			//成功
-#define	ERR_NO_FILE				1			//文件不存在
-#define	ERR_IN_FILEHEAD	    	2			//文件头错误(尺寸不匹配)
-#define	ERR_NO_DATA				3			//文件无数据
-#define	ERR_DATA				4			//数据错误
-#define	ERR_UNFINISH			5			//数据处理失败(未完成)
-#define	ERR_OPEN_FILE			6			//打开新文件错误
-#define	ERR_WRITE_FILE			7			//写文件错误
-#define	ERR_DATA_SORT			8			//排序错(数据不足)
-#define	ERR_IN_MEMORY			9			//内存分配错误
-#define	ERR_OPEN_BKG_FILE		10			//本底数据文件不存在
-#define	ERR_BKG_DATA			11			//本底数据文件错误
-#define	ERR_OPEN_AIR_FILE		12			//空气系数文件不存在
-#define	ERR_AIR_DATA			13			//空气系数文件错误
-#define	ERR_SCAN_MODE			14			//无效扫描方式
-#define	ERR_INTERP_TUNE_fI	    15		   	//插值校正失败,第一个插值点无数据
-#define	ERR_INTERP_TUNE_lI	    16		    //插值校正失败,最后一个插值点无数据
-#define	ERR_INTERP_TUNE_0AVE	17			//插值校正失败,探测器数据均值出现0
-#define	ERR_IN_FILEFORMAT		18			//文件版本或格式错误
-#define	ERR_IN_COLLIMATE		19			//准直孔代号错误
-#define	ERR_IN_RANGE_TUNE		20			//动态范围校正失败(扫描方式不匹配，未校正)
-#define	ERR_IN_BIAS				21			//动态范围校正失败(校正探测器数据方差太大或均值太小)
-#define	ERR_IN_MEAN				22			//剂量校正失败(校正探测器数据均值太小)
-#define	ERR_UPDATE_BKG			23			//本底数据错误,未更新
-#define	ERR_OPEN_HD_FILE		24			//硬化校正系数文件不存在
-#define	ERR_HD_DATA				25			//硬化校正系数数据文件错误
-#define	ERR_IN_DATAFORMAT		26			//数据格式错误
-#define	ERR_IN_FdNORMAL	    	27			//分度规范化
-#define	ERR_IN_FdSERIAL	    	28			//分度序号规范化
-#define	ERR_IN_SCANMODE	    	41			//不支持该扫描方式(旋转中心确定)
-#define	ERR_IN_SCANRANGE	    42			//不支持该扫描范围(旋转中心确定)
-#define ERR_IN_DATA_GRA         43          //分度出现错误
+#define	SUCCESS					0			// 成功
+#define	ERR_NO_FILE				1			// 文件不存在
+#define	ERR_IN_FILEHEAD	    	2			// 文件头错误(尺寸不匹配)
+#define	ERR_NO_DATA				3			// 文件无数据
+#define	ERR_DATA				4			// 数据错误
+#define	ERR_UNFINISH			5			// 数据处理失败(未完成)
+#define	ERR_OPEN_FILE			6			// 打开新文件错误
+#define	ERR_WRITE_FILE			7			// 写文件错误
+#define	ERR_DATA_SORT			8			// 排序错(数据不足)
+#define	ERR_IN_MEMORY			9			// 内存分配错误
+#define	ERR_OPEN_BKG_FILE		10			// 本底数据文件不存在
+#define	ERR_BKG_DATA			11			// 本底数据文件错误
+#define	ERR_OPEN_AIR_FILE		12			// 空气系数文件不存在
+#define	ERR_AIR_DATA			13			// 空气系数文件错误
+#define	ERR_SCAN_MODE			14			// 无效扫描方式
+#define	ERR_INTERP_TUNE_fI	    15		   	// 插值校正失败,第一个插值点无数据
+#define	ERR_INTERP_TUNE_lI	    16		    // 插值校正失败,最后一个插值点无数据
+#define	ERR_INTERP_TUNE_0AVE	17			// 插值校正失败,探测器数据均值出现0
+#define	ERR_IN_FILEFORMAT		18			// 文件版本或格式错误
+#define	ERR_IN_COLLIMATE		19			// 准直孔代号错误
+#define	ERR_IN_RANGE_TUNE		20			// 动态范围校正失败(扫描方式不匹配，未校正)
+#define	ERR_IN_BIAS				21			// 动态范围校正失败(校正探测器数据方差太大或均值太小)
+#define	ERR_IN_MEAN				22			// 剂量校正失败(校正探测器数据均值太小)
+#define	ERR_UPDATE_BKG			23			// 本底数据错误,未更新
+#define	ERR_OPEN_HD_FILE		24			// 硬化校正系数文件不存在
+#define	ERR_HD_DATA				25			// 硬化校正系数数据文件错误
+#define	ERR_IN_DATAFORMAT		26			// 数据格式错误
+#define	ERR_IN_FdNORMAL	    	27			// 分度规范化
+#define	ERR_IN_FdSERIAL	    	28			// 分度序号规范化
+#define	ERR_IN_SCANMODE	    	41			// 不支持该扫描方式(旋转中心确定)
+#define	ERR_IN_SCANRANGE	    42			// 不支持该扫描范围(旋转中心确定)
+#define ERR_IN_DATA_GRA         43          // 分度出现错误
+#define ERR_IN_PARAMETER        44          // 入参错误
+#define ERR_IN_FUNC             45          // 内部函数出现错误
 
 #define	MAX_DATA		1000000				// 探测器最大数据(10^6)
 #define	MIN_DATA		1000				// 探测器最小数据
@@ -108,7 +111,8 @@ const char dSzResult[][128] =
 	"",														// 40
 	"不支持该扫描方式",										// 41
 	"不支持该扫描范围",										// 42
-	""
+	"分度出现错误",                                         // 43
+	"函数入参错误"                                          // 44
 };
 
 /********************************* 结构体 ***********************************/
@@ -121,7 +125,6 @@ typedef	struct _Coefficient
 	WORD nCol;
 }Coefficient;
 
-
 /********************************************************************************
 函数名：fDataDispose
 
@@ -131,6 +134,7 @@ typedef	struct _Coefficient
 	char *pcSys  :		 系统路径（文件夹）
 	char *pcSrcFile  :   源文件路径
 	char *pcDesFolder  : 目标文件的文件夹路径
+	char *pcDesFile  :   目标文件的文件路径全名（用于输出）
 	WORD operate :       操作使能字
 
 函数返回值：
@@ -142,6 +146,33 @@ int fDataDispose
 	char *pcSys,
 	char *pcSrcFile,
 	char *pcDesFolder,
+	char *pcDesFile,
+	WORD wOperate
+);
+
+/********************************************************************************
+函数名：fDataDispose_Linear
+
+定义：  数据校正
+		直线运动插值
+
+入口参数：
+	char *pcSys  :		 系统路径（文件夹）
+	char *pcSrcFile  :   源文件路径
+	char *pcDesFolder  : 目标文件的文件夹路径
+	char *pcDesFile  :   目标文件的文件路径全名（用于输出）
+	WORD operate :       操作使能字
+
+函数返回值：
+	0			:	 处理成功
+	其他		:	 错误代码
+*********************************************************************************/
+int fDataDispose_Linear
+(
+	char *pcSys,
+	char *pcSrcFile,
+	char *pcDesFolder,
+	char *pcDesFile,
 	WORD wOperate
 );
 
@@ -184,6 +215,32 @@ int fCreateAirRatio
 );
 
 /********************************************************************************
+函数名：fCreateAirRatio_Linear
+
+定义：  生成空气校正数据
+		直线运动插值
+
+入口参数：
+	char *pcSys			:	系统文件夹路径
+	char *pcSrcFolder   :	源文件路径文件夹
+							该文件夹内的空气文件依据插值顺序命名位：
+							AIR_000.ORG
+							AIR_001.ORG
+							....
+	int iInterpolation  :   插值次数
+
+函数返回值：
+	0			:		处理成功
+	其他		:		错误代码
+*********************************************************************************/
+int fCreateAirRatio_Linear
+(
+	char *pcSys,
+	char *pcSrcFolder,
+	int iInterpolation
+);
+
+/********************************************************************************
 函数名：saveOrgHeaderAndList
 
 定义：  将文件头和链表中数据加密后保存到文件中
@@ -209,5 +266,19 @@ int saveOrgHeaderAndList
 	void *pListItem,
 	int iPw
 );
+
+/********************************************************************************
+函数名：DR2BMP
+
+定义：  
+
+入口参数：
+	char *pcDRSrc ： DR文件路径全名
+
+函数返回值：
+	0			:	处理成功
+	其他		:	错误代码
+*********************************************************************************/
+int DR2BMP(char *pcDRSrc);
 
 #endif

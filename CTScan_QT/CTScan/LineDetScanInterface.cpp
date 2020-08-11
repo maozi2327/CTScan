@@ -7,7 +7,7 @@
 #include "controllerinterface.h"
 #include <algorithm>
 
-ICT_HEADER LineDetScanInterface::d_ictHeader;
+ICT_HEADER23 LineDetScanInterface::d_ictHeader;
 LineDetScanInterface::LineDetScanInterface(ControllerInterface * in_controller, LineDetNetWork* in_lineDetNetWork)
 	: d_controller(in_controller), d_lineDetNetWork(in_lineDetNetWork)
 {

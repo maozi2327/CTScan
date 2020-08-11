@@ -9,7 +9,6 @@
 bool LineDetAirTune::setGenerialFileHeader()
 {
 	LineDetScanInterface::setGenerialFileHeader();
-	d_ictHeader.ScanParameter.LeftSerialNoOfTable = 0;				//左侧小转台序号(0开始)
 	d_ictHeader.ScanParameter.NumberOfTable = 1;					//校正扫描转台数量
 	d_ictHeader.ScanParameter.LargeViewCenterOffset = 0;			//大视场扫描回转中心偏置(同时用于多转台扫描回转中心偏移)
 	d_ictHeader.ScanParameter.Pixels = TUNE_PROJECTIONS;			//V2.3中定义为射线平面图像像素个数(投影数M), 取消V2.2中代号表示方式

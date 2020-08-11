@@ -23,6 +23,35 @@ DNS服务器:	202.202.0.33
 #define	MAX_COMMONMODE_ITEM	20										//最大常用模式项数
 #define	MAX_SCANCONFIG_ITEM	32										//最大扫描组态项数
 
+enum class ScanMode
+{
+	NO_SCAN = -1,												//无扫描操作
+	CT1_SCAN,														//Ⅰ代扫描
+	CT2_SCAN,														//Ⅱ代扫描
+	CT3_SCAN,														//Ⅲ代扫描
+	DR_SCAN,														//DR扫描
+	LOCAL_SCAN,														//局部扫描
+	HELIX_SCAN,														//螺旋扫描
+	CONE_SCAN,														//锥束扫描
+	CONEHELIX_SCAN,													//锥束螺旋扫描
+	BKG_SCAN,														//本底校正扫描(固定采集512个分度)
+	AIR_SCAN,														//空气校正扫描(固定采集512个分度)
+	CAL_LAYER_ZERO_SCAN,											//标定分层零点扫描(固定采集400点)
+	CAL_CENTER_SCAN,												//标定回转中心扫描
+	LARGE_VIEW_SCAN,												//大视场扫描(回转中心偏置扫描)
+	CONFIG_SCAN,                                            //组态扫描
+	//2017.03.29增加
+	DEF_MAP_SCAN,											//坏像素校正扫描
+	CONEPOINT_SCAN,											//点对点锥束扫描（到位一次采集一次，不需要同步脉冲）
+	CROSS_SCAN,												//交错扫描（分度角加对搓采束）
+	SINGLE_CROSS_SCAN,										//静态交错(只移动射线源)扫描（分度角加对搓采束）
+	CONE_LARGE_VIEW_SCAN,									//锥束大视场扫描
+	CONEHELIX_POINT_SCAN,									//锥束螺旋点位扫描
+	//CONE_SCAN_2TABLE,										//锥束扫描
+	CONE_JOINT_SCAN,                                        //锥束拼接扫描
+	CONE_JOINT_ROT_SCAN,                                        //锥束拼接扫描
+	_MAX_SCANMODE_ITEM
+};
 //射线源符号名定义
 enum
 {
