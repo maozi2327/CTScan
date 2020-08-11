@@ -5,7 +5,7 @@
 	<LineDetSection>
 		<Num>1</Num>
 		<LineDetData>
-			<LideDetID>1</LideDetID>
+			<LideDetID>0</LideDetID>
 			<LineDetType>Arch<!--线阵类型-->
 			</LineDetType>
 			<NumberOfCalibrateHorizontalDetector>608<!--探测器通道数量-->
@@ -28,6 +28,7 @@
 	<PanDetSection>
 		<num>1</num>
 		<PanDetData>
+			<PanelDetID>0</PanelDetID>
 			<PandetType>PE1621</PandetType>
 			<horizontalPixels>2048</horizontalPixels>
 			<verticalPixels>2048</verticalPixels>
