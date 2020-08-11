@@ -293,6 +293,7 @@ struct LineDetData
 };
 struct PanDetData
 {
+	char PanelDetID;
 	char PandetType[32];
 	short horizontalPixels;
 	short verticalPixels;

@@ -138,6 +138,12 @@
     <ClCompile Include="..\Public\util\macro.cpp">
       <Filter>Header Files\utility</Filter>
     </ClCompile>
+    <ClCompile Include="drscan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ct2scan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -220,6 +226,12 @@
     </ClInclude>
     <ClInclude Include="..\Public\util\stdafx.h">
       <Filter>Header Files\publicHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="drscan.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ct2scan.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -138,8 +138,10 @@
     <ClCompile Include="conescaninterface.cpp" />
     <ClCompile Include="conescanwidget.cpp" />
     <ClCompile Include="controllerinterface.cpp" />
+    <ClCompile Include="ct2scan.cpp" />
     <ClCompile Include="ct3scan.cpp" />
     <ClCompile Include="ctscan.cpp" />
+    <ClCompile Include="drscan.cpp" />
     <ClCompile Include="imageprocess.cpp" />
     <ClCompile Include="imagewidget.cpp" />
     <ClCompile Include="imagewidgetmanager.cpp" />
@@ -216,6 +218,7 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort;.\GeneratedFiles\$(ConfigurationName)</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;%(PreprocessorDefinitions)</Define>
     </QtMoc>
+    <ClInclude Include="ct2scan.h" />
     <ClInclude Include="ct3Scan.h" />
     <QtMoc Include="setupdataparser.h">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
@@ -252,6 +255,7 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtSerialPort</IncludePath>
     </QtMoc>
+    <ClInclude Include="drscan.h" />
     <ClInclude Include="imageprocess.h" />
     <ClInclude Include="imagewidgetmanager.h" />
     <ClInclude Include="linedetairtune.h" />

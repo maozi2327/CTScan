@@ -115,7 +115,9 @@ bool SetupDataParser::parsePanelDetData(tinyxml2::XMLElement * in_element, int i
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
-		if (strcmp(element->Value(), "PandetType") == 0)
+		if (strcmp(element->Value(), "PanelDetID") == 0)
+			localPanDetData.PanelDetID = atoi(element->GetText());
+		else if (strcmp(element->Value(), "PandetType") == 0)
 			strcpy(localPanDetData.PandetType, element->GetText());
 		else if (strcmp(element->Value(), "horizontalPixels") == 0)
 			localPanDetData.horizontalPixels, atoi(element->GetText());

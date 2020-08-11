@@ -10,6 +10,8 @@
 #include "../Public/headers/SetupData.h"
 #include "msglistbox.h"
 #include "ct3Scan.h"
+#include "ct2Scan.h"
+#include "drscan.h"
 #include "linedetnetwork.h"
 #include "msglistbox.h"
 
@@ -41,26 +43,39 @@ CTScan::CTScan(QWidget *parent)
 		std::unique_ptr<LineDetNetWork> ptr(new LineDetNetWork(d_setupData->lineDetData[i].nAcquireClientPort));
 		d_lineDetNetWorkMap.insert({ d_setupData->lineDetData[i].LineDetID,  std::move(ptr) });
 	}
-		
-	auto& data = d_setupData->ct3Data;
-	auto matrixItr = std::find_if(data.begin(), data.end(),	[](CT3Data elem) { return elem.Det == 1 && elem.Ray == 1; });
 
-	if (matrixItr != data.end())
+	//查找同一种扫描方式有几种射线源和探测器组合，有几种就初始化几个线阵扫描和面阵扫描的widget
+	for (auto& matrixItr : d_setupData->ct3Data)
 	{
 		std::unique_ptr<LineDetScanInterface> scan(new CT3Scan(d_controller.get(),
-			d_lineDetNetWorkMap[matrixItr->Det].get(), *matrixItr));
+			d_lineDetNetWorkMap[matrixItr.Det].get(), matrixItr));
 		connect(scan.get(), &LineDetScanInterface::errorMsgSignal, this, &CTScan::errorMsgSlot);
-		d_rayDetScanMap[{1, 1}].push_back(std::move(scan));
+		d_rayLineDetScanMap[{matrixItr.Ray, matrixItr.Det}].push_back(std::move(scan));
 	}
 
-	using pair = std::pair<std::pair<int, int>, std::vector<std::unique_ptr<LineDetScanInterface>>>;
-	auto& uniquePtrVector = d_rayDetScanMap[{1, 1}];
-	std::vector<LineDetScanInterface*> scanVector(uniquePtrVector.size());
-	std::transform(uniquePtrVector.begin(), uniquePtrVector.end(), scanVector.begin(),
-		[](std::unique_ptr<LineDetScanInterface>& elem) { return elem.get(); });
+	for (auto& matrixItr : d_setupData->ct2Data)
+	{
+		std::unique_ptr<LineDetScanInterface> scan(new Ct2Scan(d_controller.get(),
+			d_lineDetNetWorkMap[matrixItr.Det].get(), matrixItr));
+		connect(scan.get(), &LineDetScanInterface::errorMsgSignal, this, &CTScan::errorMsgSlot);
+		d_rayLineDetScanMap[{matrixItr.Ray, matrixItr.Det}].push_back(std::move(scan));
+	}
 
-	d_lineDetScanWidget[std::pair<int, int>(1 ,1)].reset(new LineDetScanWidget(d_motorControl.get(), scanVector, d_setupData.get()));
-	d_line1Det1ScanWidget.reset(new LineDetScanWidget(d_motorControl.get(), scanVector, d_setupData.get()));
+	for (auto& matrixItr : d_setupData->drScanData)
+	{
+		std::unique_ptr<LineDetScanInterface> scan(new DrScan(d_controller.get(),
+			d_lineDetNetWorkMap[matrixItr.Det].get(), matrixItr));
+		connect(scan.get(), &LineDetScanInterface::errorMsgSignal, this, &CTScan::errorMsgSlot);
+		d_rayLineDetScanMap[{matrixItr.Ray, matrixItr.Det}].push_back(std::move(scan));
+	}
+
+	for (auto& scan : d_rayLineDetScanMap)
+	{
+		std::vector<LineDetScanInterface*> scanVector(scan.second.size());
+		std::transform(scan.second.begin(), scan.second.end(), scanVector.begin(),
+			[](std::unique_ptr<LineDetScanInterface>& elem) { return elem.get(); });
+		d_lineDetScanWidget[scan.first].reset(new LineDetScanWidget(d_motorControl.get(), scanVector, d_setupData.get()));
+	}
 }
 
 CTScan::~CTScan()

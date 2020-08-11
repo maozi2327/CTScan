@@ -61,8 +61,8 @@
 			<syncFreqDefine>50,100,150,200,250</syncFreqDefine>
 		</AcceleratorData>
 	</AcceleratorSection>
-	<ScanModeSection>
-		<RayDetCouple Ray="1" Det="1">
+	<LineDetScanModeSection>
+		<RayDetCouple Ray="0" LineDet="0">
 			<ScanType Type="CT2">
 				<View>800</View>
 				<Matrix>1024,2048</Matrix>
@@ -81,7 +81,9 @@
 				<drScanAngleDefine>ONEANGLE</drScanAngleDefine>
 			</ScanType>
 		</RayDetCouple>
-		<RayDetCouple Ray="1" Det="2">
+	</LineDetScanModeSection>
+	<PanelDetScanModeSection>
+		<RayDetCouple Ray="0" PanelDet="0">
 			<ScanType Type="CONE_SCAN">
 				<Matrix>256,512,1024,2048</Matrix>
 			</ScanType>
@@ -90,16 +92,12 @@
 				<Matrix>256,512,1024,2048</Matrix>
 			</ScanType>
 		</RayDetCouple>
-		<RayDetCouple Ray="2" Det="2">
+		<RayDetCouple Ray="1" PanelDet="0">
 			<ScanType Type="CONE_SCAN">
 				<Matrix>256,512,1024,2048</Matrix>
 			</ScanType>
-			<ScanType Type="CONE_JOINT_ROT_SCAN">
-				<View>500</View>
-				<Matrix>256,512,1024,2048</Matrix>
-			</ScanType>
 		</RayDetCouple>
-	</ScanModeSection>
+	</PanelDetScanModeSection>
 	<AxisDefinition>
 		<Axis Name="ObjRotation"/>
 		<Axis Name="ObjTranslation"/>
