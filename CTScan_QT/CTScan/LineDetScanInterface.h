@@ -20,7 +20,6 @@ protected:
 	QString d_installDirectory;
 	bool d_threadRun;
 
-	ControllerInterface* d_controller;
 	int	d_AccIndex;
 	int d_accFrecIndex;
 	int	d_TubeIndex;
@@ -35,6 +34,7 @@ protected:
 	int d_matrix;
 	LineDetNetWork* d_lineDetNetWork;
 	LineDetImageProcess* d_lineDetImageProcess;
+	ControllerInterface* d_controller;
 	std::unique_ptr<Thread> d_scanThread;
 	RayType d_rayType;
 	SetupData* d_setupData;
@@ -44,7 +44,6 @@ protected:
 	virtual bool setGenerialFileHeader();
 	virtual void sendCmdToControl() = 0;
 	void CalculateView_ValidDetector(float in_diameter);
-	virtual bool checkScanAble() = 0;
 	virtual bool canScan() = 0;
 signals:
 	void signalGraduationCount(int in_count);
@@ -53,6 +52,6 @@ public:
 	LineDetScanInterface(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWork);
 	virtual ~LineDetScanInterface();
 	void setFileName(QString& in_fileName, QString& in_orgPth, QString& in_filePth) { d_fileName = in_fileName; };
-	virtual bool startScan() = 0;
+	virtual bool beginScan() = 0;
 	virtual void stopScan() = 0;
 };

@@ -60,17 +60,17 @@ void MotorControlWidget::on_objTranslationPositiveButton_clicked()
 
 void MotorControlWidget::on_objRadialAbsPosButton_clicked()
 {
-	d_controller->axisAbsMove(Axis::objTranslation, ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisAbsMove(Axis::objTranslation, ui.objRadialPosEdit->text().toFloat());
 }
 
 void MotorControlWidget::on_objRadialNegativeButton_clicked()
 {
-	d_controller->axisRelMove(Axis::objTranslation, -ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisRelMove(Axis::objTranslation, -ui.objRadialPosEdit->text().toFloat());
 }
 
 void MotorControlWidget::on_objRadialPositiveButton_clicked()
 {
-	d_controller->axisRelMove(Axis::objTranslation, ui.objTranslationPosEdit->text().toFloat());
+	d_controller->axisRelMove(Axis::objTranslation, ui.objRadialPosEdit->text().toFloat());
 }
 
 void MotorControlWidget::on_detLayerAbsPosButton_clicked()

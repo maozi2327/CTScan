@@ -25,10 +25,10 @@ public:
     QWidget *centralWidget;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
-    QPushButton *ray1LineDet1Button;
-    QPushButton *ray1PanelDet1Button;
-    QPushButton *ray2LineDet1Button;
-    QPushButton *ray2PanelDet1Button;
+    QPushButton *ray0LineDet0Button;
+    QPushButton *ray0PanelDet0Button;
+    QPushButton *ray1LineDet0Button;
+    QPushButton *ray1PanelDet0Button;
     QPushButton *pushButton;
     QStatusBar *statusBar;
 
@@ -48,38 +48,38 @@ public:
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        ray1LineDet1Button = new QPushButton(layoutWidget);
-        ray1LineDet1Button->setObjectName(QStringLiteral("ray1LineDet1Button"));
-        ray1LineDet1Button->setMinimumSize(QSize(110, 60));
-        ray1LineDet1Button->setMaximumSize(QSize(110, 60));
+        ray0LineDet0Button = new QPushButton(layoutWidget);
+        ray0LineDet0Button->setObjectName(QStringLiteral("ray0LineDet0Button"));
+        ray0LineDet0Button->setMinimumSize(QSize(110, 60));
+        ray0LineDet0Button->setMaximumSize(QSize(110, 60));
 
-        verticalLayout->addWidget(ray1LineDet1Button);
+        verticalLayout->addWidget(ray0LineDet0Button);
 
-        ray1PanelDet1Button = new QPushButton(layoutWidget);
-        ray1PanelDet1Button->setObjectName(QStringLiteral("ray1PanelDet1Button"));
-        ray1PanelDet1Button->setMinimumSize(QSize(110, 60));
-        ray1PanelDet1Button->setMaximumSize(QSize(110, 60));
+        ray0PanelDet0Button = new QPushButton(layoutWidget);
+        ray0PanelDet0Button->setObjectName(QStringLiteral("ray0PanelDet0Button"));
+        ray0PanelDet0Button->setMinimumSize(QSize(110, 60));
+        ray0PanelDet0Button->setMaximumSize(QSize(110, 60));
 
-        verticalLayout->addWidget(ray1PanelDet1Button);
+        verticalLayout->addWidget(ray0PanelDet0Button);
 
-        ray2LineDet1Button = new QPushButton(layoutWidget);
-        ray2LineDet1Button->setObjectName(QStringLiteral("ray2LineDet1Button"));
-        ray2LineDet1Button->setMinimumSize(QSize(110, 60));
-        ray2LineDet1Button->setMaximumSize(QSize(110, 60));
+        ray1LineDet0Button = new QPushButton(layoutWidget);
+        ray1LineDet0Button->setObjectName(QStringLiteral("ray1LineDet0Button"));
+        ray1LineDet0Button->setMinimumSize(QSize(110, 60));
+        ray1LineDet0Button->setMaximumSize(QSize(110, 60));
 
-        verticalLayout->addWidget(ray2LineDet1Button);
+        verticalLayout->addWidget(ray1LineDet0Button);
 
-        ray2PanelDet1Button = new QPushButton(layoutWidget);
-        ray2PanelDet1Button->setObjectName(QStringLiteral("ray2PanelDet1Button"));
+        ray1PanelDet0Button = new QPushButton(layoutWidget);
+        ray1PanelDet0Button->setObjectName(QStringLiteral("ray1PanelDet0Button"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(ray2PanelDet1Button->sizePolicy().hasHeightForWidth());
-        ray2PanelDet1Button->setSizePolicy(sizePolicy);
-        ray2PanelDet1Button->setMinimumSize(QSize(110, 60));
-        ray2PanelDet1Button->setMaximumSize(QSize(110, 60));
+        sizePolicy.setHeightForWidth(ray1PanelDet0Button->sizePolicy().hasHeightForWidth());
+        ray1PanelDet0Button->setSizePolicy(sizePolicy);
+        ray1PanelDet0Button->setMinimumSize(QSize(110, 60));
+        ray1PanelDet0Button->setMaximumSize(QSize(110, 60));
 
-        verticalLayout->addWidget(ray2PanelDet1Button);
+        verticalLayout->addWidget(ray1PanelDet0Button);
 
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
@@ -97,10 +97,10 @@ public:
     void retranslateUi(QMainWindow *CTScanClass)
     {
         CTScanClass->setWindowTitle(QApplication::translate("CTScanClass", "CTScan", nullptr));
-        ray1LineDet1Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2201-\347\272\277\351\230\265", nullptr));
-        ray1PanelDet1Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2201-\351\235\242\351\230\265", nullptr));
-        ray2LineDet1Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2202-\347\272\277\351\230\265", nullptr));
-        ray2PanelDet1Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2202-\351\235\242\351\230\265", nullptr));
+        ray0LineDet0Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2201-\347\272\277\351\230\265", nullptr));
+        ray0PanelDet0Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2201-\351\235\242\351\230\265", nullptr));
+        ray1LineDet0Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2202-\347\272\277\351\230\265", nullptr));
+        ray1PanelDet0Button->setText(QApplication::translate("CTScanClass", "\345\260\204\347\272\277\346\272\2202-\351\235\242\351\230\265", nullptr));
         pushButton->setText(QApplication::translate("CTScanClass", "PushButton", nullptr));
     } // retranslateUi
 

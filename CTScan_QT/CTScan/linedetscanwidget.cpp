@@ -2,23 +2,44 @@
 #include "linedetscanwidget.h"
 #include "motorcontrolwidget.h"
 #include "simotioncontroller.h"
+#include "LineDetNetWork.h"
 #include "../Public/headers/setupData.h"
 #include "ct3scan.h"
-LineDetScanWidget::LineDetScanWidget(MotorControlWidget* in_motorControl, std::vector<LineDetScanInterface*>& in_scan,
-	SetupData* in_setupData, QWidget *parent)
-	: QWidget(parent), d_motorControlDialog(in_motorControl)
-	, d_detNum(1), d_rayNum(1), d_setupData(in_setupData)
+
+LineDetScanWidget::LineDetScanWidget(MotorControlWidget* in_motorControl, int in_rayId, int in_lineDetId, const	std::vector<ScanMode>& in_scanMode, SetupData* in_setupData, 
+	LineDetNetWork* in_lineDetNetWork, ControllerInterface* in_controller, QWidget *parent)
+: QWidget(parent), d_motorControlDialog(in_motorControl)
+	, d_rayNum(in_rayId), d_detNum(in_lineDetId)
+	, d_setupData(in_setupData), d_lineDetNetWork(in_lineDetNetWork), d_controller(in_controller)
 {
 	ui.setupUi(this);
 	initiliseControls();
 
-	for (auto itr : in_scan)
+	for (auto& scanMode : in_scanMode)
 	{
-		if (auto scan = dynamic_cast<CT3Scan*>(itr))
+		if (scanMode == ScanMode::CT3_SCAN)
 		{
-			CT3Data data{ scan->getData() };
-			initiliseCt3Controls(data);
-			d_scanMap.insert({ ScanMode::CT3_SCAN, itr });
+			auto itr = std::find_if(d_setupData->ct3Data.begin(), d_setupData->ct3Data.end(),
+				[=](CT3Data& in_ct3Data)
+			{	return in_ct3Data.Ray == in_rayId && in_ct3Data.Det == in_lineDetId; });
+
+			initiliseCt3Controls(*itr);
+		}
+		else if (scanMode == ScanMode::DR_SCAN)
+		{
+			auto itr = std::find_if(d_setupData->drScanData.begin(), d_setupData->drScanData.end(),
+				[=](DrScanData& in_drData)
+			{	return in_drData.Ray == in_rayId && in_drData.Det == in_lineDetId; });
+
+			initiliseDrControls(*itr);
+		}
+		else if (scanMode == ScanMode::CT2_SCAN)
+		{
+			auto itr = std::find_if(d_setupData->ct2Data.begin(), d_setupData->ct2Data.end(),
+				[=](CT2Data& in_ct2Data)
+			{	return in_ct2Data.Ray == in_rayId && in_ct2Data.Det == in_lineDetId; });
+
+			initiliseCt2Controls(*itr);
 		}
 	}
 
@@ -103,46 +124,46 @@ void LineDetScanWidget::initiliseCt3Controls(CT3Data& in_data)
 	ui.ct3MultiLayerComboBox->setCurrentText(str.fromLocal8Bit("单层"));
 }
 
-void LineDetScanWidget::initiliseCt2Controls()
+void LineDetScanWidget::initiliseCt2Controls(CT2Data& in_data)
 {
-	//addItemToMatixVieSample(d_setupData->ct2Data, ui.ct2MatrixComboBox, ui.ct2ViewComboBox,
-	//	ui.ct2SampleTimeComboBox, d_rayNum, d_detNum);
-	//QString str;
-	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度"));
-	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度间隔"));
-	//ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("180度"));
+	addItemToMatixVieSample(in_data, ui.ct2MatrixComboBox, ui.ct2ViewComboBox,
+		ui.ct2SampleTimeComboBox, d_rayNum, d_detNum);
+	QString str;
+	ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度"));
+	ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("360度间隔"));
+	ui.ct2ScanModeComboBox->addItem(str.fromLocal8Bit("180度"));
 }
 
-void LineDetScanWidget::initiliseDrControls()
+void LineDetScanWidget::initiliseDrControls(DrScanData& in_data)
 {
-	//addItemToMatixVieSample(d_setupData->drScanData, ui.drMatrixComboBox, ui.drViewComboBox,
-	//	ui.drSampleTimeComboBox, d_rayNum, d_detNum);
-	//QString str;
-	//ui.drRatioComboBox->addItem(str.fromLocal8Bit("等比例"));
-	//ui.drRatioComboBox->addItem(str.fromLocal8Bit("不等比例"));
+	addItemToMatixVieSample(in_data, ui.drMatrixComboBox, ui.drViewComboBox,
+		ui.drSampleTimeComboBox, d_rayNum, d_detNum);
+	QString str;
+	ui.drRatioComboBox->addItem(str.fromLocal8Bit("等比例"));
+	ui.drRatioComboBox->addItem(str.fromLocal8Bit("不等比例"));
 }
 
-void LineDetScanWidget::on_startButton_clicked()
+void LineDetScanWidget::on_Ct3StartButton_clicked()
 {
-	if (ui.scanModeTab->currentWidget() == ui.ct3Tab)
-	{
-		QString str;
-		float layer;
+	QString str;
+	float layer;
 
-		if (ui.ct3MultiLayerComboBox->currentText() == str.fromLocal8Bit("单层"))
-			layer = ui.ct3LayerPosLineEdit->text().toFloat();
-		else
-			layer = ui.ct3LayerPosListWidget->item(0)->text().toFloat();
+	if (ui.ct3MultiLayerComboBox->currentText() == str.fromLocal8Bit("单层"))
+		layer = ui.ct3LayerPosLineEdit->text().toFloat();
+	else
+		layer = ui.ct3LayerPosListWidget->item(0)->text().toFloat();
 
-		int matrix = ui.ct3MatrixComboBox->currentText().toInt();
-		int view = ui.ct3ViewComboBox->currentText().toInt();
-		int sampleTime = ui.ct3SampleTimeComboBox->currentText().toInt();
-		float angle = ui.ct3AngleLineEdit->text().toFloat();
-		auto ct3 = d_scanMap[ScanMode::CT3_SCAN];
+	int matrix = ui.ct3MatrixComboBox->currentText().toInt();
+	int view = ui.ct3ViewComboBox->currentText().toInt();
+	int sampleTime = ui.ct3SampleTimeComboBox->currentText().toInt();
+	float angle = ui.ct3AngleLineEdit->text().toFloat();
+	d_scan.reset(new CT3Scan(d_controller, d_lineDetNetWork, d_setupData->ct3Data[d_rayNum, d_detNum]));
 	
-		if (dynamic_cast<CT3Scan*>(ct3)->setScanParameter(layer, matrix, view, sampleTime, angle))
-			ct3->startScan();
-	}
+	if (!dynamic_cast<CT3Scan*>(d_scan.get())
+		->setScanParameter(layer, matrix, view, sampleTime, angle))
+		return;
+
+	d_scan->beginScan();
 }
 
 void LineDetScanWidget::on_saveDirButton_clicked()

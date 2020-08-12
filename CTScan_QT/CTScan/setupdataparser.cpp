@@ -25,10 +25,8 @@ bool SetupDataParser::parseLineDetData(tinyxml2::XMLElement * in_element, int i)
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
-		if (strcmp(element->Value(), "LideDetID") == 0)
-		{
-			localLineDetData.LineDetID = atoi(element->GetText());
-		}
+		if (strcmp(element->Value(), "ID") == 0)
+			localLineDetData.ID = atoi(element->GetText());
 		else if (strcmp(element->Value(), "LineDetType") == 0)
 		{
 			if (strcmp(element->GetText(), "Arch") == 0)
@@ -115,8 +113,8 @@ bool SetupDataParser::parsePanelDetData(tinyxml2::XMLElement * in_element, int i
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
-		if (strcmp(element->Value(), "PanelDetID") == 0)
-			localPanDetData.PanelDetID = atoi(element->GetText());
+		if (strcmp(element->Value(), "ID") == 0)
+			localPanDetData.ID = atoi(element->GetText());
 		else if (strcmp(element->Value(), "PandetType") == 0)
 			strcpy(localPanDetData.PandetType, element->GetText());
 		else if (strcmp(element->Value(), "horizontalPixels") == 0)
@@ -166,7 +164,9 @@ bool SetupDataParser::parsekVRayData(tinyxml2::XMLElement * in_element, int in_n
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
-		if (strcmp(element->Value(), "rayType") == 0)
+		if (strcmp(element->Value(), "ID") == 0)
+			in_kvRayData.ID= atoi(element->GetText());
+		else if (strcmp(element->Value(), "rayType") == 0)
 			strcpy(in_kvRayData.rayType, element->GetText());
 		else if (strcmp(element->Value(), "rayEnergy") == 0)
 			in_kvRayData.rayEnergy = atof(element->GetText());
@@ -202,7 +202,9 @@ bool SetupDataParser::parseAcceleratorData(tinyxml2::XMLElement * in_element, in
 	for (auto element = in_element->FirstChildElement(); element != nullptr;
 		element = element->NextSiblingElement())
 	{
-		if (strcmp(element->Value(), "rayType") == 0)
+		if (strcmp(element->Value(), "ID") == 0)
+			in_accData.ID = atoi(element->GetText());
+		else if (strcmp(element->Value(), "rayType") == 0)
 			strcpy(in_accData.rayType, element->GetText());
 		else if (strcmp(element->Value(), "rayEnergy") == 0)
 			in_accData.rayEnergy = atof(element->GetText());
@@ -350,11 +352,11 @@ bool SetupDataParser::parseCT2Data(tinyxml2::XMLElement * in_element)
 		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
 		{
 
-			if (strcmp(element11->Value(), "Ray") == 0)
+			if (strcmp(element11->Value(), "RayId") == 0)
 			{
 				locaData.Ray = atoi(element11->GetText());
 			}
-			else if (strcmp(element11->Value(), "Det") == 0)
+			else if (strcmp(element11->Value(), "LineDetId") == 0)
 			{
 				locaData.Det = atoi(element11->GetText());
 			}
@@ -395,11 +397,11 @@ bool SetupDataParser::parseCT3Data(tinyxml2::XMLElement * in_element)
 		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
 		{
 
-			if (strcmp(element11->Value(), "Ray") == 0)
+			if (strcmp(element11->Value(), "RayId") == 0)
 			{
 				locaData.Ray = atoi(element11->GetText());
 			}
-			else if (strcmp(element11->Value(), "Det") == 0)
+			else if (strcmp(element11->Value(), "LineDetId") == 0)
 			{
 				locaData.Det = atoi(element11->GetText());
 			}
@@ -440,11 +442,11 @@ bool SetupDataParser::parseDRData(tinyxml2::XMLElement * in_element)
 		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
 		{
 
-			if (strcmp(element11->Value(), "Ray") == 0)
+			if (strcmp(element11->Value(), "RayId") == 0)
 			{
 				locaData.Ray = atoi(element11->GetText());
 			}
-			else if (strcmp(element11->Value(), "Det") == 0)
+			else if (strcmp(element11->Value(), "LineDetId") == 0)
 			{
 				locaData.Det = atoi(element11->GetText());
 			}
@@ -493,11 +495,11 @@ bool SetupDataParser::parseConeScanData(tinyxml2::XMLElement * in_element)
 		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
 		{
 
-			if (strcmp(element11->Value(), "Ray") == 0)
+			if (strcmp(element11->Value(), "RayId") == 0)
 			{
 				locaData.Ray = atoi(element11->GetText());
 			}
-			else if (strcmp(element11->Value(), "Det") == 0)
+			else if (strcmp(element11->Value(), "PanelDetId") == 0)
 			{
 				locaData.Det = atoi(element11->GetText());
 			}
@@ -526,11 +528,11 @@ bool SetupDataParser::parseConeJointRotScanData(tinyxml2::XMLElement * in_elemen
 		for (auto element11 = element1->FirstChildElement(); element11 != nullptr; element11 = element11->NextSiblingElement())
 		{
 
-			if (strcmp(element11->Value(), "Ray") == 0)
+			if (strcmp(element11->Value(), "RayId") == 0)
 			{
 				locaData.Ray = atoi(element11->GetText());
 			}
-			else if (strcmp(element11->Value(), "Det") == 0)
+			else if (strcmp(element11->Value(), "PanelDetId") == 0)
 			{
 				locaData.Det = atoi(element11->GetText());
 			}

@@ -21,7 +21,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -30,7 +29,11 @@ class Ui_LineDetScanWidget
 {
 public:
     QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *saveDirButton;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *label_6;
+    QLineEdit *fileNameEdit;
     QTabWidget *rayTab;
     QWidget *rayWrox225Tab;
     QPushButton *worx225XRayOffButton_2;
@@ -50,15 +53,9 @@ public:
     QComboBox *Comet450FocusComboBox;
     QLineEdit *Comet450EmissionCurrentEdit;
     QPushButton *Comet450XRayOffButton;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *saveDirButton;
-    QSpacerItem *horizontalSpacer_2;
-    QLabel *label_6;
-    QLineEdit *fileNameEdit;
-    QVBoxLayout *verticalLayout_3;
     QTabWidget *scanModeTab;
     QWidget *ct3Tab;
-    QGridLayout *gridLayout_5;
+    QGridLayout *gridLayout_9;
     QGridLayout *gridLayout_2;
     QLabel *label_53;
     QComboBox *ct3MultiLayerComboBox;
@@ -76,12 +73,19 @@ public:
     QLineEdit *ct3LayerSpaceLineEdit;
     QLabel *ct3SpaceNumLabel;
     QLineEdit *ct3SpaceNumLineEdit;
-    QSpacerItem *verticalSpacer_4;
-    QVBoxLayout *verticalLayout;
     QListWidget *ct3LayerPosListWidget;
-    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *verticalSpacer;
+    QGridLayout *gridLayout_4;
+    QLabel *label_4;
+    QLabel *label_5;
+    QPushButton *Ct3StartButton;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *stopButton;
+    QProgressBar *Ct3ScanNowProgressBar;
+    QProgressBar *Ct3ScanAllProgressBar;
+    QSpacerItem *verticalSpacer_4;
     QWidget *ct2Tab;
-    QGridLayout *gridLayout_7;
+    QGridLayout *gridLayout_8;
     QGridLayout *gridLayout_3;
     QLabel *label_41;
     QComboBox *drRatioComboBox;
@@ -96,10 +100,15 @@ public:
     QLabel *label_38;
     QLineEdit *lineEdit_14;
     QSpacerItem *horizontalSpacer_3;
-    QSpacerItem *verticalSpacer_3;
+    QSpacerItem *verticalSpacer_2;
+    QGridLayout *gridLayout_5;
+    QPushButton *startButton_2;
+    QLabel *label_10;
+    QProgressBar *DrAllProgressBar;
+    QSpacerItem *horizontalSpacer_4;
+    QPushButton *stopButton_2;
     QWidget *drTab;
-    QGridLayout *gridLayout_6;
-    QHBoxLayout *horizontalLayout_3;
+    QGridLayout *gridLayout_7;
     QGridLayout *gridLayout;
     QLabel *label_40;
     QComboBox *ct2ScanModeComboBox;
@@ -117,138 +126,33 @@ public:
     QLineEdit *lineEdit_12;
     QLabel *label_18;
     QLineEdit *lineEdit_7;
-    QVBoxLayout *verticalLayout_2;
     QListWidget *ct2LayerPosListWidget;
-    QSpacerItem *verticalSpacer;
-    QGridLayout *gridLayout_4;
-    QLabel *label_4;
-    QLabel *label_5;
-    QPushButton *startButton;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *stopButton;
-    QProgressBar *nowProgressBar;
-    QProgressBar *allProgressBar;
+    QSpacerItem *verticalSpacer_5;
+    QSpacerItem *verticalSpacer_3;
+    QGridLayout *gridLayout_6;
+    QLabel *label_9;
+    QLabel *label_11;
+    QPushButton *startButton_3;
+    QSpacerItem *horizontalSpacer_5;
+    QPushButton *stopButton_3;
+    QProgressBar *Ct2ScanNowProgressBar;
+    QProgressBar *Ct2ScanAllProgressBar;
 
     void setupUi(QWidget *LineDetScanWidget)
     {
         if (LineDetScanWidget->objectName().isEmpty())
             LineDetScanWidget->setObjectName(QStringLiteral("LineDetScanWidget"));
-        LineDetScanWidget->resize(308, 550);
+        LineDetScanWidget->resize(303, 550);
         LineDetScanWidget->setMinimumSize(QSize(300, 550));
         LineDetScanWidget->setMaximumSize(QSize(1000, 550));
         layoutWidget = new QWidget(LineDetScanWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 11, 284, 493));
-        verticalLayout_4 = new QVBoxLayout(layoutWidget);
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        rayTab = new QTabWidget(layoutWidget);
-        rayTab->setObjectName(QStringLiteral("rayTab"));
-        rayTab->setMinimumSize(QSize(0, 80));
-        rayTab->setMaximumSize(QSize(16777215, 80));
-        rayWrox225Tab = new QWidget();
-        rayWrox225Tab->setObjectName(QStringLiteral("rayWrox225Tab"));
-        worx225XRayOffButton_2 = new QPushButton(rayWrox225Tab);
-        worx225XRayOffButton_2->setObjectName(QStringLiteral("worx225XRayOffButton_2"));
-        worx225XRayOffButton_2->setGeometry(QRect(220, 10, 60, 40));
-        worx225XRayOffButton_2->setMinimumSize(QSize(60, 40));
-        worx225XRayOffButton_2->setMaximumSize(QSize(60, 40));
-        worx225kvStaticLabel_2 = new QLabel(rayWrox225Tab);
-        worx225kvStaticLabel_2->setObjectName(QStringLiteral("worx225kvStaticLabel_2"));
-        worx225kvStaticLabel_2->setGeometry(QRect(50, 8, 25, 18));
-        worx225kvStaticLabel_2->setMinimumSize(QSize(25, 18));
-        worx225kvStaticLabel_2->setMaximumSize(QSize(25, 18));
-        worx225uaStaticLabel_2 = new QLabel(rayWrox225Tab);
-        worx225uaStaticLabel_2->setObjectName(QStringLiteral("worx225uaStaticLabel_2"));
-        worx225uaStaticLabel_2->setGeometry(QRect(130, 10, 25, 18));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(25);
-        sizePolicy.setVerticalStretch(18);
-        sizePolicy.setHeightForWidth(worx225uaStaticLabel_2->sizePolicy().hasHeightForWidth());
-        worx225uaStaticLabel_2->setSizePolicy(sizePolicy);
-        worx225uaStaticLabel_2->setMinimumSize(QSize(25, 18));
-        worx225XRayOnButton_2 = new QPushButton(rayWrox225Tab);
-        worx225XRayOnButton_2->setObjectName(QStringLiteral("worx225XRayOnButton_2"));
-        worx225XRayOnButton_2->setGeometry(QRect(150, 10, 60, 40));
-        worx225XRayOnButton_2->setMinimumSize(QSize(60, 40));
-        worx225XRayOnButton_2->setMaximumSize(QSize(60, 40));
-        worx225EmissionCurrentEdit_2 = new QLineEdit(rayWrox225Tab);
-        worx225EmissionCurrentEdit_2->setObjectName(QStringLiteral("worx225EmissionCurrentEdit_2"));
-        worx225EmissionCurrentEdit_2->setGeometry(QRect(70, 10, 60, 20));
-        worx225EmissionCurrentEdit_2->setMinimumSize(QSize(60, 20));
-        worx225EmissionCurrentEdit_2->setMaximumSize(QSize(60, 20));
-        worx225VoltageInputEdit = new QLineEdit(rayWrox225Tab);
-        worx225VoltageInputEdit->setObjectName(QStringLiteral("worx225VoltageInputEdit"));
-        worx225VoltageInputEdit->setGeometry(QRect(-10, 10, 60, 20));
-        worx225VoltageInputEdit->setMinimumSize(QSize(60, 20));
-        worx225VoltageInputEdit->setMaximumSize(QSize(60, 20));
-        worx225FocusStaticLabel_2 = new QLabel(rayWrox225Tab);
-        worx225FocusStaticLabel_2->setObjectName(QStringLiteral("worx225FocusStaticLabel_2"));
-        worx225FocusStaticLabel_2->setGeometry(QRect(20, 30, 24, 16));
-        worx225FocusComboBox_2 = new QComboBox(rayWrox225Tab);
-        worx225FocusComboBox_2->setObjectName(QStringLiteral("worx225FocusComboBox_2"));
-        worx225FocusComboBox_2->setGeometry(QRect(70, 30, 60, 20));
-        worx225FocusComboBox_2->setMinimumSize(QSize(60, 20));
-        worx225FocusComboBox_2->setMaximumSize(QSize(60, 20));
-        rayTab->addTab(rayWrox225Tab, QString());
-        worx225kvStaticLabel_2->raise();
-        worx225XRayOffButton_2->raise();
-        worx225XRayOnButton_2->raise();
-        worx225EmissionCurrentEdit_2->raise();
-        worx225uaStaticLabel_2->raise();
-        worx225VoltageInputEdit->raise();
-        worx225FocusStaticLabel_2->raise();
-        worx225FocusComboBox_2->raise();
-        rayComet450Tab = new QWidget();
-        rayComet450Tab->setObjectName(QStringLiteral("rayComet450Tab"));
-        Comet450uaStaticLabel = new QLabel(rayComet450Tab);
-        Comet450uaStaticLabel->setObjectName(QStringLiteral("Comet450uaStaticLabel"));
-        Comet450uaStaticLabel->setGeometry(QRect(120, 7, 25, 19));
-        sizePolicy.setHeightForWidth(Comet450uaStaticLabel->sizePolicy().hasHeightForWidth());
-        Comet450uaStaticLabel->setSizePolicy(sizePolicy);
-        Comet450uaStaticLabel->setMinimumSize(QSize(25, 18));
-        Comet450VoltageInputEdit = new QLineEdit(rayComet450Tab);
-        Comet450VoltageInputEdit->setObjectName(QStringLiteral("Comet450VoltageInputEdit"));
-        Comet450VoltageInputEdit->setGeometry(QRect(13, 7, 40, 20));
-        Comet450VoltageInputEdit->setMinimumSize(QSize(40, 20));
-        Comet450VoltageInputEdit->setMaximumSize(QSize(40, 20));
-        Comet450kvStaticLabel = new QLabel(rayComet450Tab);
-        Comet450kvStaticLabel->setObjectName(QStringLiteral("Comet450kvStaticLabel"));
-        Comet450kvStaticLabel->setGeometry(QRect(60, 7, 25, 18));
-        Comet450kvStaticLabel->setMinimumSize(QSize(25, 18));
-        Comet450kvStaticLabel->setMaximumSize(QSize(25, 18));
-        Comet450XRayOnButton = new QPushButton(rayComet450Tab);
-        Comet450XRayOnButton->setObjectName(QStringLiteral("Comet450XRayOnButton"));
-        Comet450XRayOnButton->setGeometry(QRect(210, 10, 60, 40));
-        Comet450XRayOnButton->setMinimumSize(QSize(60, 40));
-        Comet450XRayOnButton->setMaximumSize(QSize(60, 40));
-        Comet450FocusStaticLabel = new QLabel(rayComet450Tab);
-        Comet450FocusStaticLabel->setObjectName(QStringLiteral("Comet450FocusStaticLabel"));
-        Comet450FocusStaticLabel->setGeometry(QRect(13, 32, 60, 18));
-        Comet450FocusComboBox = new QComboBox(rayComet450Tab);
-        Comet450FocusComboBox->setObjectName(QStringLiteral("Comet450FocusComboBox"));
-        Comet450FocusComboBox->setGeometry(QRect(80, 32, 40, 20));
-        Comet450FocusComboBox->setMinimumSize(QSize(40, 20));
-        Comet450FocusComboBox->setMaximumSize(QSize(40, 20));
-        Comet450EmissionCurrentEdit = new QLineEdit(rayComet450Tab);
-        Comet450EmissionCurrentEdit->setObjectName(QStringLiteral("Comet450EmissionCurrentEdit"));
-        Comet450EmissionCurrentEdit->setGeometry(QRect(80, 7, 40, 20));
-        Comet450EmissionCurrentEdit->setMinimumSize(QSize(40, 20));
-        Comet450EmissionCurrentEdit->setMaximumSize(QSize(40, 20));
-        Comet450XRayOffButton = new QPushButton(rayComet450Tab);
-        Comet450XRayOffButton->setObjectName(QStringLiteral("Comet450XRayOffButton"));
-        Comet450XRayOffButton->setGeometry(QRect(140, 10, 60, 40));
-        Comet450XRayOffButton->setMinimumSize(QSize(60, 40));
-        Comet450XRayOffButton->setMaximumSize(QSize(60, 40));
-        rayTab->addTab(rayComet450Tab, QString());
-
-        verticalLayout_4->addWidget(rayTab);
-
-        horizontalLayout = new QHBoxLayout();
+        layoutWidget->setGeometry(QRect(11, 99, 281, 27));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         saveDirButton = new QPushButton(layoutWidget);
         saveDirButton->setObjectName(QStringLiteral("saveDirButton"));
         saveDirButton->setMinimumSize(QSize(30, 25));
@@ -272,25 +176,121 @@ public:
 
         horizontalLayout->addWidget(fileNameEdit);
 
-
-        verticalLayout_4->addLayout(horizontalLayout);
-
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        scanModeTab = new QTabWidget(layoutWidget);
+        rayTab = new QTabWidget(LineDetScanWidget);
+        rayTab->setObjectName(QStringLiteral("rayTab"));
+        rayTab->setGeometry(QRect(11, 13, 280, 80));
+        rayTab->setMinimumSize(QSize(280, 80));
+        rayTab->setMaximumSize(QSize(500, 80));
+        rayWrox225Tab = new QWidget();
+        rayWrox225Tab->setObjectName(QStringLiteral("rayWrox225Tab"));
+        worx225XRayOffButton_2 = new QPushButton(rayWrox225Tab);
+        worx225XRayOffButton_2->setObjectName(QStringLiteral("worx225XRayOffButton_2"));
+        worx225XRayOffButton_2->setGeometry(QRect(230, 15, 60, 40));
+        worx225XRayOffButton_2->setMinimumSize(QSize(60, 40));
+        worx225XRayOffButton_2->setMaximumSize(QSize(60, 40));
+        worx225kvStaticLabel_2 = new QLabel(rayWrox225Tab);
+        worx225kvStaticLabel_2->setObjectName(QStringLiteral("worx225kvStaticLabel_2"));
+        worx225kvStaticLabel_2->setGeometry(QRect(60, 10, 25, 18));
+        worx225kvStaticLabel_2->setMinimumSize(QSize(25, 18));
+        worx225kvStaticLabel_2->setMaximumSize(QSize(25, 18));
+        worx225uaStaticLabel_2 = new QLabel(rayWrox225Tab);
+        worx225uaStaticLabel_2->setObjectName(QStringLiteral("worx225uaStaticLabel_2"));
+        worx225uaStaticLabel_2->setGeometry(QRect(130, 15, 25, 18));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(25);
+        sizePolicy.setVerticalStretch(18);
+        sizePolicy.setHeightForWidth(worx225uaStaticLabel_2->sizePolicy().hasHeightForWidth());
+        worx225uaStaticLabel_2->setSizePolicy(sizePolicy);
+        worx225uaStaticLabel_2->setMinimumSize(QSize(25, 18));
+        worx225XRayOnButton_2 = new QPushButton(rayWrox225Tab);
+        worx225XRayOnButton_2->setObjectName(QStringLiteral("worx225XRayOnButton_2"));
+        worx225XRayOnButton_2->setGeometry(QRect(164, 15, 60, 40));
+        worx225XRayOnButton_2->setMinimumSize(QSize(60, 40));
+        worx225XRayOnButton_2->setMaximumSize(QSize(60, 40));
+        worx225EmissionCurrentEdit_2 = new QLineEdit(rayWrox225Tab);
+        worx225EmissionCurrentEdit_2->setObjectName(QStringLiteral("worx225EmissionCurrentEdit_2"));
+        worx225EmissionCurrentEdit_2->setGeometry(QRect(71, 15, 60, 20));
+        worx225EmissionCurrentEdit_2->setMinimumSize(QSize(60, 20));
+        worx225EmissionCurrentEdit_2->setMaximumSize(QSize(60, 20));
+        worx225VoltageInputEdit = new QLineEdit(rayWrox225Tab);
+        worx225VoltageInputEdit->setObjectName(QStringLiteral("worx225VoltageInputEdit"));
+        worx225VoltageInputEdit->setGeometry(QRect(0, 15, 60, 20));
+        worx225VoltageInputEdit->setMinimumSize(QSize(60, 20));
+        worx225VoltageInputEdit->setMaximumSize(QSize(60, 20));
+        worx225FocusStaticLabel_2 = new QLabel(rayWrox225Tab);
+        worx225FocusStaticLabel_2->setObjectName(QStringLiteral("worx225FocusStaticLabel_2"));
+        worx225FocusStaticLabel_2->setGeometry(QRect(9, 40, 24, 16));
+        worx225FocusComboBox_2 = new QComboBox(rayWrox225Tab);
+        worx225FocusComboBox_2->setObjectName(QStringLiteral("worx225FocusComboBox_2"));
+        worx225FocusComboBox_2->setGeometry(QRect(71, 33, 60, 20));
+        worx225FocusComboBox_2->setMinimumSize(QSize(60, 20));
+        worx225FocusComboBox_2->setMaximumSize(QSize(60, 20));
+        rayTab->addTab(rayWrox225Tab, QString());
+        worx225kvStaticLabel_2->raise();
+        worx225XRayOffButton_2->raise();
+        worx225XRayOnButton_2->raise();
+        worx225EmissionCurrentEdit_2->raise();
+        worx225uaStaticLabel_2->raise();
+        worx225VoltageInputEdit->raise();
+        worx225FocusStaticLabel_2->raise();
+        worx225FocusComboBox_2->raise();
+        rayComet450Tab = new QWidget();
+        rayComet450Tab->setObjectName(QStringLiteral("rayComet450Tab"));
+        Comet450uaStaticLabel = new QLabel(rayComet450Tab);
+        Comet450uaStaticLabel->setObjectName(QStringLiteral("Comet450uaStaticLabel"));
+        Comet450uaStaticLabel->setGeometry(QRect(10, 10, 25, 18));
+        sizePolicy.setHeightForWidth(Comet450uaStaticLabel->sizePolicy().hasHeightForWidth());
+        Comet450uaStaticLabel->setSizePolicy(sizePolicy);
+        Comet450uaStaticLabel->setMinimumSize(QSize(25, 18));
+        Comet450VoltageInputEdit = new QLineEdit(rayComet450Tab);
+        Comet450VoltageInputEdit->setObjectName(QStringLiteral("Comet450VoltageInputEdit"));
+        Comet450VoltageInputEdit->setGeometry(QRect(10, 126, 40, 20));
+        Comet450VoltageInputEdit->setMinimumSize(QSize(40, 20));
+        Comet450VoltageInputEdit->setMaximumSize(QSize(40, 20));
+        Comet450kvStaticLabel = new QLabel(rayComet450Tab);
+        Comet450kvStaticLabel->setObjectName(QStringLiteral("Comet450kvStaticLabel"));
+        Comet450kvStaticLabel->setGeometry(QRect(10, 178, 25, 18));
+        Comet450kvStaticLabel->setMinimumSize(QSize(25, 18));
+        Comet450kvStaticLabel->setMaximumSize(QSize(25, 18));
+        Comet450XRayOnButton = new QPushButton(rayComet450Tab);
+        Comet450XRayOnButton->setObjectName(QStringLiteral("Comet450XRayOnButton"));
+        Comet450XRayOnButton->setGeometry(QRect(10, 80, 60, 40));
+        Comet450XRayOnButton->setMinimumSize(QSize(60, 40));
+        Comet450XRayOnButton->setMaximumSize(QSize(60, 40));
+        Comet450FocusStaticLabel = new QLabel(rayComet450Tab);
+        Comet450FocusStaticLabel->setObjectName(QStringLiteral("Comet450FocusStaticLabel"));
+        Comet450FocusStaticLabel->setGeometry(QRect(10, 228, 24, 16));
+        Comet450FocusComboBox = new QComboBox(rayComet450Tab);
+        Comet450FocusComboBox->setObjectName(QStringLiteral("Comet450FocusComboBox"));
+        Comet450FocusComboBox->setGeometry(QRect(10, 202, 40, 20));
+        Comet450FocusComboBox->setMinimumSize(QSize(40, 20));
+        Comet450FocusComboBox->setMaximumSize(QSize(40, 20));
+        Comet450EmissionCurrentEdit = new QLineEdit(rayComet450Tab);
+        Comet450EmissionCurrentEdit->setObjectName(QStringLiteral("Comet450EmissionCurrentEdit"));
+        Comet450EmissionCurrentEdit->setGeometry(QRect(10, 152, 40, 20));
+        Comet450EmissionCurrentEdit->setMinimumSize(QSize(40, 20));
+        Comet450EmissionCurrentEdit->setMaximumSize(QSize(40, 20));
+        Comet450XRayOffButton = new QPushButton(rayComet450Tab);
+        Comet450XRayOffButton->setObjectName(QStringLiteral("Comet450XRayOffButton"));
+        Comet450XRayOffButton->setGeometry(QRect(10, 34, 60, 40));
+        Comet450XRayOffButton->setMinimumSize(QSize(60, 40));
+        Comet450XRayOffButton->setMaximumSize(QSize(60, 40));
+        rayTab->addTab(rayComet450Tab, QString());
+        scanModeTab = new QTabWidget(LineDetScanWidget);
         scanModeTab->setObjectName(QStringLiteral("scanModeTab"));
-        scanModeTab->setMinimumSize(QSize(280, 280));
-        scanModeTab->setMaximumSize(QSize(280, 280));
+        scanModeTab->setGeometry(QRect(11, 132, 280, 400));
+        scanModeTab->setMinimumSize(QSize(280, 400));
+        scanModeTab->setMaximumSize(QSize(280, 400));
         ct3Tab = new QWidget();
         ct3Tab->setObjectName(QStringLiteral("ct3Tab"));
-        gridLayout_5 = new QGridLayout(ct3Tab);
-        gridLayout_5->setSpacing(6);
-        gridLayout_5->setContentsMargins(11, 11, 11, 11);
-        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        gridLayout_9 = new QGridLayout(ct3Tab);
+        gridLayout_9->setSpacing(6);
+        gridLayout_9->setContentsMargins(11, 11, 11, 11);
+        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setSpacing(6);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout_2->setVerticalSpacing(10);
         label_53 = new QLabel(ct3Tab);
         label_53->setObjectName(QStringLiteral("label_53"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
@@ -427,37 +427,84 @@ public:
 
         gridLayout_2->addWidget(ct3SpaceNumLineEdit, 7, 1, 1, 1);
 
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_2->addItem(verticalSpacer_4, 8, 0, 1, 2);
+        gridLayout_9->addLayout(gridLayout_2, 0, 0, 2, 1);
 
-
-        gridLayout_5->addLayout(gridLayout_2, 0, 0, 1, 1);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         ct3LayerPosListWidget = new QListWidget(ct3Tab);
         ct3LayerPosListWidget->setObjectName(QStringLiteral("ct3LayerPosListWidget"));
         ct3LayerPosListWidget->setMinimumSize(QSize(100, 130));
         ct3LayerPosListWidget->setMaximumSize(QSize(100, 130));
 
-        verticalLayout->addWidget(ct3LayerPosListWidget);
+        gridLayout_9->addWidget(ct3LayerPosListWidget, 0, 1, 1, 1);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 26, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer_2);
+        gridLayout_9->addItem(verticalSpacer, 2, 0, 1, 1);
+
+        gridLayout_4 = new QGridLayout();
+        gridLayout_4->setSpacing(6);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        label_4 = new QLabel(ct3Tab);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        gridLayout_4->addWidget(label_4, 0, 0, 1, 1);
+
+        label_5 = new QLabel(ct3Tab);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout_4->addWidget(label_5, 1, 0, 1, 1);
+
+        Ct3StartButton = new QPushButton(ct3Tab);
+        Ct3StartButton->setObjectName(QStringLiteral("Ct3StartButton"));
+        Ct3StartButton->setMinimumSize(QSize(0, 30));
+
+        gridLayout_4->addWidget(Ct3StartButton, 2, 0, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_4->addItem(horizontalSpacer, 2, 1, 1, 1);
+
+        stopButton = new QPushButton(ct3Tab);
+        stopButton->setObjectName(QStringLiteral("stopButton"));
+        stopButton->setMinimumSize(QSize(0, 30));
+
+        gridLayout_4->addWidget(stopButton, 2, 2, 1, 1);
+
+        Ct3ScanNowProgressBar = new QProgressBar(ct3Tab);
+        Ct3ScanNowProgressBar->setObjectName(QStringLiteral("Ct3ScanNowProgressBar"));
+        sizePolicy2.setHeightForWidth(Ct3ScanNowProgressBar->sizePolicy().hasHeightForWidth());
+        Ct3ScanNowProgressBar->setSizePolicy(sizePolicy2);
+        Ct3ScanNowProgressBar->setMinimumSize(QSize(100, 0));
+        Ct3ScanNowProgressBar->setAutoFillBackground(false);
+        Ct3ScanNowProgressBar->setValue(24);
+        Ct3ScanNowProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_4->addWidget(Ct3ScanNowProgressBar, 0, 1, 1, 2);
+
+        Ct3ScanAllProgressBar = new QProgressBar(ct3Tab);
+        Ct3ScanAllProgressBar->setObjectName(QStringLiteral("Ct3ScanAllProgressBar"));
+        sizePolicy2.setHeightForWidth(Ct3ScanAllProgressBar->sizePolicy().hasHeightForWidth());
+        Ct3ScanAllProgressBar->setSizePolicy(sizePolicy2);
+        Ct3ScanAllProgressBar->setAutoFillBackground(false);
+        Ct3ScanAllProgressBar->setValue(24);
+        Ct3ScanAllProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_4->addWidget(Ct3ScanAllProgressBar, 1, 1, 1, 2);
 
 
-        gridLayout_5->addLayout(verticalLayout, 0, 1, 1, 1);
+        gridLayout_9->addLayout(gridLayout_4, 3, 0, 1, 2);
+
+        verticalSpacer_4 = new QSpacerItem(20, 93, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_9->addItem(verticalSpacer_4, 1, 1, 2, 1);
 
         scanModeTab->addTab(ct3Tab, QString());
         ct2Tab = new QWidget();
         ct2Tab->setObjectName(QStringLiteral("ct2Tab"));
-        gridLayout_7 = new QGridLayout(ct2Tab);
-        gridLayout_7->setSpacing(6);
-        gridLayout_7->setContentsMargins(11, 11, 11, 11);
-        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
+        gridLayout_8 = new QGridLayout(ct2Tab);
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setContentsMargins(11, 11, 11, 11);
+        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
         gridLayout_3 = new QGridLayout();
         gridLayout_3->setSpacing(6);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
@@ -569,26 +616,60 @@ public:
         gridLayout_3->addWidget(lineEdit_14, 5, 1, 1, 1);
 
 
-        gridLayout_7->addLayout(gridLayout_3, 0, 0, 1, 1);
+        gridLayout_8->addLayout(gridLayout_3, 0, 0, 1, 1);
 
         horizontalSpacer_3 = new QSpacerItem(105, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_7->addItem(horizontalSpacer_3, 0, 1, 1, 1);
+        gridLayout_8->addItem(horizontalSpacer_3, 0, 1, 1, 1);
 
-        verticalSpacer_3 = new QSpacerItem(20, 56, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 112, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_7->addItem(verticalSpacer_3, 1, 0, 1, 1);
+        gridLayout_8->addItem(verticalSpacer_2, 1, 0, 1, 1);
+
+        gridLayout_5 = new QGridLayout();
+        gridLayout_5->setSpacing(6);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        startButton_2 = new QPushButton(ct2Tab);
+        startButton_2->setObjectName(QStringLiteral("startButton_2"));
+        startButton_2->setMinimumSize(QSize(0, 30));
+
+        gridLayout_5->addWidget(startButton_2, 1, 0, 1, 1);
+
+        label_10 = new QLabel(ct2Tab);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        gridLayout_5->addWidget(label_10, 0, 0, 1, 1);
+
+        DrAllProgressBar = new QProgressBar(ct2Tab);
+        DrAllProgressBar->setObjectName(QStringLiteral("DrAllProgressBar"));
+        sizePolicy2.setHeightForWidth(DrAllProgressBar->sizePolicy().hasHeightForWidth());
+        DrAllProgressBar->setSizePolicy(sizePolicy2);
+        DrAllProgressBar->setAutoFillBackground(false);
+        DrAllProgressBar->setValue(24);
+        DrAllProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_5->addWidget(DrAllProgressBar, 0, 1, 1, 2);
+
+        horizontalSpacer_4 = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_5->addItem(horizontalSpacer_4, 1, 1, 1, 1);
+
+        stopButton_2 = new QPushButton(ct2Tab);
+        stopButton_2->setObjectName(QStringLiteral("stopButton_2"));
+        stopButton_2->setMinimumSize(QSize(0, 30));
+
+        gridLayout_5->addWidget(stopButton_2, 1, 2, 1, 1);
+
+
+        gridLayout_8->addLayout(gridLayout_5, 2, 0, 1, 2);
 
         scanModeTab->addTab(ct2Tab, QString());
         drTab = new QWidget();
         drTab->setObjectName(QStringLiteral("drTab"));
-        gridLayout_6 = new QGridLayout(drTab);
-        gridLayout_6->setSpacing(6);
-        gridLayout_6->setContentsMargins(11, 11, 11, 11);
-        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        gridLayout_7 = new QGridLayout(drTab);
+        gridLayout_7->setSpacing(6);
+        gridLayout_7->setContentsMargins(11, 11, 11, 11);
+        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
@@ -738,11 +819,8 @@ public:
         gridLayout->addWidget(lineEdit_7, 7, 1, 1, 1);
 
 
-        horizontalLayout_3->addLayout(gridLayout);
+        gridLayout_7->addLayout(gridLayout, 0, 0, 2, 1);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         ct2LayerPosListWidget = new QListWidget(drTab);
         ct2LayerPosListWidget->setObjectName(QStringLiteral("ct2LayerPosListWidget"));
         QSizePolicy sizePolicy5(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -753,83 +831,75 @@ public:
         ct2LayerPosListWidget->setMinimumSize(QSize(100, 130));
         ct2LayerPosListWidget->setMaximumSize(QSize(100, 130));
 
-        verticalLayout_2->addWidget(ct2LayerPosListWidget);
+        gridLayout_7->addWidget(ct2LayerPosListWidget, 0, 1, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout_2->addItem(verticalSpacer);
+        gridLayout_7->addItem(verticalSpacer_5, 1, 1, 2, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 26, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_7->addItem(verticalSpacer_3, 2, 0, 1, 1);
+
+        gridLayout_6 = new QGridLayout();
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        label_9 = new QLabel(drTab);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        gridLayout_6->addWidget(label_9, 0, 0, 1, 1);
+
+        label_11 = new QLabel(drTab);
+        label_11->setObjectName(QStringLiteral("label_11"));
+
+        gridLayout_6->addWidget(label_11, 1, 0, 1, 1);
+
+        startButton_3 = new QPushButton(drTab);
+        startButton_3->setObjectName(QStringLiteral("startButton_3"));
+        startButton_3->setMinimumSize(QSize(0, 30));
+
+        gridLayout_6->addWidget(startButton_3, 2, 0, 1, 1);
+
+        horizontalSpacer_5 = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_6->addItem(horizontalSpacer_5, 2, 1, 1, 1);
+
+        stopButton_3 = new QPushButton(drTab);
+        stopButton_3->setObjectName(QStringLiteral("stopButton_3"));
+        stopButton_3->setMinimumSize(QSize(0, 30));
+
+        gridLayout_6->addWidget(stopButton_3, 2, 2, 1, 1);
+
+        Ct2ScanNowProgressBar = new QProgressBar(drTab);
+        Ct2ScanNowProgressBar->setObjectName(QStringLiteral("Ct2ScanNowProgressBar"));
+        sizePolicy2.setHeightForWidth(Ct2ScanNowProgressBar->sizePolicy().hasHeightForWidth());
+        Ct2ScanNowProgressBar->setSizePolicy(sizePolicy2);
+        Ct2ScanNowProgressBar->setMinimumSize(QSize(100, 0));
+        Ct2ScanNowProgressBar->setAutoFillBackground(false);
+        Ct2ScanNowProgressBar->setValue(24);
+        Ct2ScanNowProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_6->addWidget(Ct2ScanNowProgressBar, 0, 1, 1, 2);
+
+        Ct2ScanAllProgressBar = new QProgressBar(drTab);
+        Ct2ScanAllProgressBar->setObjectName(QStringLiteral("Ct2ScanAllProgressBar"));
+        sizePolicy2.setHeightForWidth(Ct2ScanAllProgressBar->sizePolicy().hasHeightForWidth());
+        Ct2ScanAllProgressBar->setSizePolicy(sizePolicy2);
+        Ct2ScanAllProgressBar->setAutoFillBackground(false);
+        Ct2ScanAllProgressBar->setValue(24);
+        Ct2ScanAllProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout_6->addWidget(Ct2ScanAllProgressBar, 1, 1, 1, 2);
 
 
-        horizontalLayout_3->addLayout(verticalLayout_2);
-
-
-        gridLayout_6->addLayout(horizontalLayout_3, 0, 0, 1, 1);
+        gridLayout_7->addLayout(gridLayout_6, 3, 0, 1, 2);
 
         scanModeTab->addTab(drTab, QString());
-
-        verticalLayout_3->addWidget(scanModeTab);
-
-        gridLayout_4 = new QGridLayout();
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        label_4 = new QLabel(layoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        gridLayout_4->addWidget(label_4, 0, 0, 1, 1);
-
-        label_5 = new QLabel(layoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        gridLayout_4->addWidget(label_5, 1, 0, 1, 1);
-
-        startButton = new QPushButton(layoutWidget);
-        startButton->setObjectName(QStringLiteral("startButton"));
-        startButton->setMinimumSize(QSize(0, 30));
-
-        gridLayout_4->addWidget(startButton, 2, 0, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(68, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer, 2, 1, 1, 1);
-
-        stopButton = new QPushButton(layoutWidget);
-        stopButton->setObjectName(QStringLiteral("stopButton"));
-        stopButton->setMinimumSize(QSize(0, 30));
-
-        gridLayout_4->addWidget(stopButton, 2, 2, 1, 1);
-
-        nowProgressBar = new QProgressBar(layoutWidget);
-        nowProgressBar->setObjectName(QStringLiteral("nowProgressBar"));
-        sizePolicy2.setHeightForWidth(nowProgressBar->sizePolicy().hasHeightForWidth());
-        nowProgressBar->setSizePolicy(sizePolicy2);
-        nowProgressBar->setMinimumSize(QSize(100, 0));
-        nowProgressBar->setAutoFillBackground(false);
-        nowProgressBar->setValue(24);
-        nowProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_4->addWidget(nowProgressBar, 0, 1, 1, 2);
-
-        allProgressBar = new QProgressBar(layoutWidget);
-        allProgressBar->setObjectName(QStringLiteral("allProgressBar"));
-        sizePolicy2.setHeightForWidth(allProgressBar->sizePolicy().hasHeightForWidth());
-        allProgressBar->setSizePolicy(sizePolicy2);
-        allProgressBar->setAutoFillBackground(false);
-        allProgressBar->setValue(24);
-        allProgressBar->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_4->addWidget(allProgressBar, 1, 1, 1, 2);
-
-
-        verticalLayout_3->addLayout(gridLayout_4);
-
-
-        verticalLayout_4->addLayout(verticalLayout_3);
-
 
         retranslateUi(LineDetScanWidget);
 
         rayTab->setCurrentIndex(1);
-        scanModeTab->setCurrentIndex(2);
+        scanModeTab->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(LineDetScanWidget);
@@ -838,6 +908,8 @@ public:
     void retranslateUi(QWidget *LineDetScanWidget)
     {
         LineDetScanWidget->setWindowTitle(QString());
+        saveDirButton->setText(QApplication::translate("LineDetScanWidget", "\344\277\235\345\255\230\350\267\257\345\276\204", nullptr));
+        label_6->setText(QApplication::translate("LineDetScanWidget", "\346\226\207\344\273\266\345\220\215", nullptr));
         worx225XRayOffButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\235\237", nullptr));
         worx225kvStaticLabel_2->setText(QApplication::translate("LineDetScanWidget", "KV", nullptr));
         worx225uaStaticLabel_2->setText(QApplication::translate("LineDetScanWidget", "\316\274A", nullptr));
@@ -850,8 +922,6 @@ public:
         Comet450FocusStaticLabel->setText(QApplication::translate("LineDetScanWidget", "\347\204\246\347\202\271", nullptr));
         Comet450XRayOffButton->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\235\237", nullptr));
         rayTab->setTabText(rayTab->indexOf(rayComet450Tab), QApplication::translate("LineDetScanWidget", "COMET", nullptr));
-        saveDirButton->setText(QApplication::translate("LineDetScanWidget", "\344\277\235\345\255\230\350\267\257\345\276\204", nullptr));
-        label_6->setText(QApplication::translate("LineDetScanWidget", "\346\226\207\344\273\266\345\220\215", nullptr));
         label_53->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215/\345\244\232\345\261\202", nullptr));
         label->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
         label_2->setText(QApplication::translate("LineDetScanWidget", "\350\247\206\345\234\272\347\233\264\345\276\204", nullptr));
@@ -860,6 +930,10 @@ public:
         label_8->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
         ct3LayerSpaceLabel->setText(QApplication::translate("LineDetScanWidget", "\345\261\202\351\227\264\350\267\235", nullptr));
         ct3SpaceNumLabel->setText(QApplication::translate("LineDetScanWidget", "\345\261\202\346\225\260", nullptr));
+        label_4->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215\350\277\233\345\272\246", nullptr));
+        label_5->setText(QApplication::translate("LineDetScanWidget", "\346\200\273\344\275\223\350\277\233\345\272\246", nullptr));
+        Ct3StartButton->setText(QApplication::translate("LineDetScanWidget", "\345\274\200\345\247\213", nullptr));
+        stopButton->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\255\242", nullptr));
         scanModeTab->setTabText(scanModeTab->indexOf(ct3Tab), QApplication::translate("LineDetScanWidget", "\344\270\211\344\273\243CT", nullptr));
         label_41->setText(QApplication::translate("LineDetScanWidget", "\346\257\224\344\276\213\346\250\241\345\274\217", nullptr));
         label_34->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
@@ -867,6 +941,9 @@ public:
         label_36->setText(QApplication::translate("LineDetScanWidget", "\351\207\207\346\240\267\346\227\266\351\227\264", nullptr));
         label_37->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_38->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
+        startButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\274\200\345\247\213", nullptr));
+        label_10->setText(QApplication::translate("LineDetScanWidget", "\346\200\273\344\275\223\350\277\233\345\272\246", nullptr));
+        stopButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\255\242", nullptr));
         scanModeTab->setTabText(scanModeTab->indexOf(ct2Tab), QApplication::translate("LineDetScanWidget", "DR", nullptr));
         label_40->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\345\274\217", nullptr));
         label_39->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215/\345\244\232\345\261\202", nullptr));
@@ -876,11 +953,11 @@ public:
         label_32->setText(QApplication::translate("LineDetScanWidget", "\346\211\253\346\217\217\346\226\271\344\275\215", nullptr));
         label_29->setText(QApplication::translate("LineDetScanWidget", "\346\226\255\345\261\202\344\275\215\347\275\256", nullptr));
         label_18->setText(QApplication::translate("LineDetScanWidget", "\345\261\202\351\227\264\350\267\235", nullptr));
+        label_9->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215\350\277\233\345\272\246", nullptr));
+        label_11->setText(QApplication::translate("LineDetScanWidget", "\346\200\273\344\275\223\350\277\233\345\272\246", nullptr));
+        startButton_3->setText(QApplication::translate("LineDetScanWidget", "\345\274\200\345\247\213", nullptr));
+        stopButton_3->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\255\242", nullptr));
         scanModeTab->setTabText(scanModeTab->indexOf(drTab), QApplication::translate("LineDetScanWidget", "\344\272\214\344\273\243CT", nullptr));
-        label_4->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215\350\277\233\345\272\246", nullptr));
-        label_5->setText(QApplication::translate("LineDetScanWidget", "\346\200\273\344\275\223\350\277\233\345\272\246", nullptr));
-        startButton->setText(QApplication::translate("LineDetScanWidget", "\345\274\200\345\247\213", nullptr));
-        stopButton->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\255\242", nullptr));
     } // retranslateUi
 
 };

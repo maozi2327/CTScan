@@ -19,15 +19,15 @@ protected:
 	void sendCmdToControl();
 	virtual void saveFile();
 	virtual bool setGenerialFileHeader();
-	virtual bool checkScanAble();
 	virtual bool canScan();
 public:
-	CT3Scan(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWor, CT3Data& in_data);
+	CT3Scan(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWork
+		, CT3Data& in_data);
 	~CT3Scan();
 	bool setScanParameter(float in_layers, int in_matrix, float in_view,
 		int in_sampleTime, float in_angle);
 	virtual void stopScan();
-	virtual bool startScan();
+	virtual bool beginScan();
 	CT3Data getData();
 };
 

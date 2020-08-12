@@ -12,7 +12,8 @@
 #include "../Public/util/macro.h"
 #include "simotioncontroller.h"
 
-CT3Scan::CT3Scan(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWor, CT3Data& in_data) : LineDetScanInterface(in_controller, in_lineDetNetWor)
+CT3Scan::CT3Scan(ControllerInterface* in_controller, LineDetNetWork* in_lineDetNetWork, 
+	CT3Data& in_data) : LineDetScanInterface(in_controller, in_lineDetNetWork)
 	, d_ct3Data(in_data)
 {
 	;
@@ -24,7 +25,8 @@ CT3Scan::~CT3Scan()
 		d_scanThread->stopThread();
 }
 
-bool CT3Scan::setScanParameter(float in_layer, int in_matrix, float in_view, int in_sampleTime, float in_angle)
+bool CT3Scan::setScanParameter(float in_layer, int in_matrix, float in_view, 
+	int in_sampleTime, float in_angle)
 {
 	d_layer = in_layer;
 	d_matrix = in_matrix;
@@ -102,11 +104,12 @@ void CT3Scan::saveFile()
 	d_lineDetImageProcess->dispose(d_installDirectory, orgFilaName, disposedFilaName);
 }
 
-bool CT3Scan::startScan()
+bool CT3Scan::beginScan()
 {	
 	if (canScan())
 	{
-		d_scanThread.reset(new Thread(std::bind(&CT3Scan::scanThread, this), std::ref(d_threadRun)));
+		d_scanThread.reset(new Thread(std::bind(&CT3Scan::scanThread, this), 
+			std::ref(d_threadRun)));
 		return d_scanThread->detach();
 	}	
 	else
@@ -128,7 +131,6 @@ bool CT3Scan::setGenerialFileHeader()
 	d_ictHeader.ScanParameter.Azimuth = d_angle;
 	d_ictHeader.ScanParameter.NumberofValidVerticalDetector =
 		d_setupData->lineDetData[d_lineDetIndex].NumberOfSystemHorizontalDetector;
-
 	//对无关参数设置默认值
 	d_ictHeader.ScanParameter.RadialDistanceInLocal = 0;
 	d_ictHeader.ScanParameter.AngleInLocal = 0;
@@ -164,15 +166,23 @@ bool CT3Scan::setGenerialFileHeader()
 	return true;
 }
 
-bool CT3Scan::checkScanAble()
-{
-	return false;
-}
-
 bool CT3Scan::canScan()
 {
+	QString str;
+
 	if(!LineDetScanInterface::canScan())
+	{
+		LOG_ERROR(str.fromLocal8Bit("控制器未就绪"));
 		return false;
+	}
+
+	if (!d_controller->checkReadyToScan())
+	{
+		LOG_ERROR(str.fromLocal8Bit("控制器未就绪"));
+		return false;
+	}
+
+	return true;
 }
 
 void CT3Scan::stopScan()

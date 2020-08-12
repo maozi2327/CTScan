@@ -29,53 +29,32 @@ CTScan::CTScan(QWidget *parent)
 		if (time[index] == ':')
 			time[index] = '-';
 
-	QString logFileFullName = d_workDir + "/log/" + QDateTime::currentDateTime().date().toString(Qt::ISODate)
-		+ '/' + time;
+	QString logFileFullName = d_workDir + "/log/" + 
+		QDateTime::currentDateTime().date().toString(Qt::ISODate) + '/' + time;
 	d_msg.reset(new MsgListBox(logFileFullName));
 	ui.setupUi(this);
 	connect(d_controller.get(), &ControllerInterface::netWorkStsSginal
 		, this, &CTScan::controllerNetWorkStsSlot, Qt::QueuedConnection);
-	tray = new QSystemTrayIcon(this);
-	tray->setIcon(QIcon(":/images/ico.png"));
+	d_tray = new QSystemTrayIcon(this);
+	d_tray->setIcon(QIcon(":/images/ico.png"));
+
+	connect(d_tray,&QSystemTrayIcon::activated, this, &CTScan::on_activatedSysTrayIcon);
 
 	for (int i = 0; i != d_setupData->lineDetNum; ++i)
 	{
 		std::unique_ptr<LineDetNetWork> ptr(new LineDetNetWork(d_setupData->lineDetData[i].nAcquireClientPort));
-		d_lineDetNetWorkMap.insert({ d_setupData->lineDetData[i].LineDetID,  std::move(ptr) });
+		d_lineDetNetWorkMap.insert({ d_setupData->lineDetData[i].ID,  std::move(ptr) });
 	}
 
 	//查找同一种扫描方式有几种射线源和探测器组合，有几种就初始化几个线阵扫描和面阵扫描的widget
 	for (auto& matrixItr : d_setupData->ct3Data)
-	{
-		std::unique_ptr<LineDetScanInterface> scan(new CT3Scan(d_controller.get(),
-			d_lineDetNetWorkMap[matrixItr.Det].get(), matrixItr));
-		connect(scan.get(), &LineDetScanInterface::errorMsgSignal, this, &CTScan::errorMsgSlot);
-		d_rayLineDetScanMap[{matrixItr.Ray, matrixItr.Det}].push_back(std::move(scan));
-	}
+		d_lineDetScanModeMap[{ matrixItr.Ray, matrixItr.Det }].push_back(ScanMode::CT3_SCAN);
 
 	for (auto& matrixItr : d_setupData->ct2Data)
-	{
-		std::unique_ptr<LineDetScanInterface> scan(new Ct2Scan(d_controller.get(),
-			d_lineDetNetWorkMap[matrixItr.Det].get(), matrixItr));
-		connect(scan.get(), &LineDetScanInterface::errorMsgSignal, this, &CTScan::errorMsgSlot);
-		d_rayLineDetScanMap[{matrixItr.Ray, matrixItr.Det}].push_back(std::move(scan));
-	}
+		d_lineDetScanModeMap[{ matrixItr.Ray, matrixItr.Det }].push_back(ScanMode::CT2_SCAN);
 
 	for (auto& matrixItr : d_setupData->drScanData)
-	{
-		std::unique_ptr<LineDetScanInterface> scan(new DrScan(d_controller.get(),
-			d_lineDetNetWorkMap[matrixItr.Det].get(), matrixItr));
-		connect(scan.get(), &LineDetScanInterface::errorMsgSignal, this, &CTScan::errorMsgSlot);
-		d_rayLineDetScanMap[{matrixItr.Ray, matrixItr.Det}].push_back(std::move(scan));
-	}
-
-	for (auto& scan : d_rayLineDetScanMap)
-	{
-		std::vector<LineDetScanInterface*> scanVector(scan.second.size());
-		std::transform(scan.second.begin(), scan.second.end(), scanVector.begin(),
-			[](std::unique_ptr<LineDetScanInterface>& elem) { return elem.get(); });
-		d_lineDetScanWidget[scan.first].reset(new LineDetScanWidget(d_motorControl.get(), scanVector, d_setupData.get()));
-	}
+		d_lineDetScanModeMap[{ matrixItr.Ray, matrixItr.Det }].push_back(ScanMode::DR_SCAN);
 }
 
 CTScan::~CTScan()
@@ -83,32 +62,39 @@ CTScan::~CTScan()
 
 }
 
-void CTScan::on_ray1LineDet1Button_clicked()
+void CTScan::on_ray0LineDet0Button_clicked()
 {
+	if (d_lineDetScanWidget[{0, 0}].get() == nullptr)
+	{
+		auto widget = new LineDetScanWidget(d_motorControl.get(), 0, 0,
+			d_lineDetScanModeMap[{ 0, 0}], d_setupData.get(), d_lineDetNetWorkMap[0].get(), d_controller.get(), nullptr);
+		d_lineDetScanWidget[{0, 0}].reset(widget);
+	}
+
+	d_lineDetScanWidget[{0, 0}]->show();
+	hide();
 	//QString fileName("0000.tif");
 	//d_panelImageProcess->loadAirData(fileName);
-	//d_line1Det1ScanWidget->show();
-	//tray->show();
 }
 
-void CTScan::on_ray1PanelDet1Button_clicked()
+void CTScan::on_ray0PanelDet0Button_clicked()
 {
-	d_conesc
+	
 }
 
-void CTScan::on_ray2LineDet1Button_clicked()
+void CTScan::on_ray1LineDet0Button_clicked()
 {
 
 }
 
-void CTScan::on_ray2PanelDet1Button_clicked()
+void CTScan::on_ray1PanelDet0Button_clicked()
 {
 
 }
 
 void CTScan::controllerNetWorkStsSlot(bool sts)
 {
-	d_line1Det1ScanWidget->onNetworkStsChanged(sts);
+	//d_line1Det1ScanWidget->onNetworkStsChanged(sts);
 }
 
 void CTScan::errorMsgSlot(QString msg)
@@ -124,6 +110,20 @@ void CTScan::bugMsgSlot(QString msg)
 {
 }
 
+void CTScan::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
+{
+	switch (reason) 
+	{
+	case QSystemTrayIcon::Trigger:
+		break;
+	case QSystemTrayIcon::DoubleClick:
+		this->showNormal();
+		break;
+	default:
+		break;
+	}
+}
+
 //void CTScan::on_pushButton_clicked()
 //{
 //	//if(!d_rayPanelMotion->isVisible())
@@ -133,6 +133,7 @@ void CTScan::bugMsgSlot(QString msg)
 void CTScan::cut()
 {
 	hide();                 /* 最小化到托盘 */
+	d_tray->show();
 }
 
 
@@ -169,4 +170,13 @@ void CTScan::contextMenuEvent(QContextMenuEvent *event)
 	menu.addAction(copyAct);
 	menu.addAction(pasteAct);
 	menu.exec(event->globalPos());
+}
+
+void CTScan::changeEvent(QEvent * event)
+{
+	if ((event->type() == QEvent::WindowStateChange) && isMinimized())
+	{
+		hide();
+		d_tray->show();
+	}
 }

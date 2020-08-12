@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_CTScan_t {
-    QByteArrayData data[15];
-    char stringdata0[210];
+    QByteArrayData data[18];
+    char stringdata0[279];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,29 +33,34 @@ struct qt_meta_stringdata_CTScan_t {
 static const qt_meta_stringdata_CTScan_t qt_meta_stringdata_CTScan = {
     {
 QT_MOC_LITERAL(0, 0, 6), // "CTScan"
-QT_MOC_LITERAL(1, 7, 28), // "on_ray1LineDetButton_clicked"
-QT_MOC_LITERAL(2, 36, 0), // ""
-QT_MOC_LITERAL(3, 37, 29), // "on_ray1PanelDetButton_clicked"
-QT_MOC_LITERAL(4, 67, 28), // "on_ray2LineDetButton_clicked"
-QT_MOC_LITERAL(5, 96, 29), // "on_ray2PanelDetButton_clicked"
-QT_MOC_LITERAL(6, 126, 3), // "cut"
-QT_MOC_LITERAL(7, 130, 4), // "copy"
-QT_MOC_LITERAL(8, 135, 5), // "paste"
-QT_MOC_LITERAL(9, 141, 24), // "controllerNetWorkStsSlot"
-QT_MOC_LITERAL(10, 166, 3), // "sts"
-QT_MOC_LITERAL(11, 170, 12), // "errorMsgSlot"
-QT_MOC_LITERAL(12, 183, 3), // "msg"
-QT_MOC_LITERAL(13, 187, 11), // "infoMsgSlot"
-QT_MOC_LITERAL(14, 199, 10) // "bugMsgSlot"
+QT_MOC_LITERAL(1, 7, 29), // "on_ray0LineDet0Button_clicked"
+QT_MOC_LITERAL(2, 37, 0), // ""
+QT_MOC_LITERAL(3, 38, 30), // "on_ray0PanelDet0Button_clicked"
+QT_MOC_LITERAL(4, 69, 29), // "on_ray1LineDet0Button_clicked"
+QT_MOC_LITERAL(5, 99, 30), // "on_ray1PanelDet0Button_clicked"
+QT_MOC_LITERAL(6, 130, 3), // "cut"
+QT_MOC_LITERAL(7, 134, 4), // "copy"
+QT_MOC_LITERAL(8, 139, 5), // "paste"
+QT_MOC_LITERAL(9, 145, 24), // "controllerNetWorkStsSlot"
+QT_MOC_LITERAL(10, 170, 3), // "sts"
+QT_MOC_LITERAL(11, 174, 12), // "errorMsgSlot"
+QT_MOC_LITERAL(12, 187, 3), // "msg"
+QT_MOC_LITERAL(13, 191, 11), // "infoMsgSlot"
+QT_MOC_LITERAL(14, 203, 10), // "bugMsgSlot"
+QT_MOC_LITERAL(15, 214, 23), // "on_activatedSysTrayIcon"
+QT_MOC_LITERAL(16, 238, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(17, 272, 6) // "reason"
 
     },
-    "CTScan\0on_ray1LineDetButton_clicked\0"
-    "\0on_ray1PanelDetButton_clicked\0"
-    "on_ray2LineDetButton_clicked\0"
-    "on_ray2PanelDetButton_clicked\0cut\0"
+    "CTScan\0on_ray0LineDet0Button_clicked\0"
+    "\0on_ray0PanelDet0Button_clicked\0"
+    "on_ray1LineDet0Button_clicked\0"
+    "on_ray1PanelDet0Button_clicked\0cut\0"
     "copy\0paste\0controllerNetWorkStsSlot\0"
     "sts\0errorMsgSlot\0msg\0infoMsgSlot\0"
-    "bugMsgSlot"
+    "bugMsgSlot\0on_activatedSysTrayIcon\0"
+    "QSystemTrayIcon::ActivationReason\0"
+    "reason"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +70,7 @@ static const uint qt_meta_data_CTScan[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -73,17 +78,18 @@ static const uint qt_meta_data_CTScan[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x08 /* Private */,
-       3,    0,   70,    2, 0x08 /* Private */,
-       4,    0,   71,    2, 0x08 /* Private */,
-       5,    0,   72,    2, 0x08 /* Private */,
-       6,    0,   73,    2, 0x08 /* Private */,
-       7,    0,   74,    2, 0x08 /* Private */,
-       8,    0,   75,    2, 0x08 /* Private */,
-       9,    1,   76,    2, 0x08 /* Private */,
-      11,    1,   79,    2, 0x08 /* Private */,
-      13,    1,   82,    2, 0x08 /* Private */,
-      14,    1,   85,    2, 0x08 /* Private */,
+       1,    0,   74,    2, 0x08 /* Private */,
+       3,    0,   75,    2, 0x08 /* Private */,
+       4,    0,   76,    2, 0x08 /* Private */,
+       5,    0,   77,    2, 0x08 /* Private */,
+       6,    0,   78,    2, 0x08 /* Private */,
+       7,    0,   79,    2, 0x08 /* Private */,
+       8,    0,   80,    2, 0x08 /* Private */,
+       9,    1,   81,    2, 0x08 /* Private */,
+      11,    1,   84,    2, 0x08 /* Private */,
+      13,    1,   87,    2, 0x08 /* Private */,
+      14,    1,   90,    2, 0x08 /* Private */,
+      15,    1,   93,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -97,6 +103,7 @@ static const uint qt_meta_data_CTScan[] = {
     QMetaType::Void, QMetaType::QString,   12,
     QMetaType::Void, QMetaType::QString,   12,
     QMetaType::Void, QMetaType::QString,   12,
+    QMetaType::Void, 0x80000000 | 16,   17,
 
        0        // eod
 };
@@ -107,10 +114,10 @@ void CTScan::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         CTScan *_t = static_cast<CTScan *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_ray1LineDetButton_clicked(); break;
-        case 1: _t->on_ray1PanelDetButton_clicked(); break;
-        case 2: _t->on_ray2LineDetButton_clicked(); break;
-        case 3: _t->on_ray2PanelDetButton_clicked(); break;
+        case 0: _t->on_ray0LineDet0Button_clicked(); break;
+        case 1: _t->on_ray0PanelDet0Button_clicked(); break;
+        case 2: _t->on_ray1LineDet0Button_clicked(); break;
+        case 3: _t->on_ray1PanelDet0Button_clicked(); break;
         case 4: _t->cut(); break;
         case 5: _t->copy(); break;
         case 6: _t->paste(); break;
@@ -118,6 +125,7 @@ void CTScan::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 8: _t->errorMsgSlot((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 9: _t->infoMsgSlot((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 10: _t->bugMsgSlot((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 11: _t->on_activatedSysTrayIcon((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -148,13 +156,13 @@ int CTScan::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

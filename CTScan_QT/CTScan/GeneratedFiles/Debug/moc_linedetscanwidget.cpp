@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_LineDetScanWidget_t {
     QByteArrayData data[8];
-    char stringdata0[166];
+    char stringdata0[169];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,15 +35,16 @@ static const qt_meta_stringdata_LineDetScanWidget_t qt_meta_stringdata_LineDetSc
 QT_MOC_LITERAL(0, 0, 17), // "LineDetScanWidget"
 QT_MOC_LITERAL(1, 18, 14), // "showMotorTable"
 QT_MOC_LITERAL(2, 33, 0), // ""
-QT_MOC_LITERAL(3, 34, 22), // "on_startButton_clicked"
-QT_MOC_LITERAL(4, 57, 24), // "on_saveDirButton_clicked"
-QT_MOC_LITERAL(5, 82, 44), // "on_ct3MultiLayerComboBox_curr..."
-QT_MOC_LITERAL(6, 127, 7), // "in_text"
-QT_MOC_LITERAL(7, 135, 30) // "on_ct3LayerPosLineEdit_returnd"
+QT_MOC_LITERAL(3, 34, 25), // "on_Ct3StartButton_clicked"
+QT_MOC_LITERAL(4, 60, 24), // "on_saveDirButton_clicked"
+QT_MOC_LITERAL(5, 85, 44), // "on_ct3MultiLayerComboBox_curr..."
+QT_MOC_LITERAL(6, 130, 7), // "in_text"
+QT_MOC_LITERAL(7, 138, 30) // "on_ct3LayerPosLineEdit_returnd"
 
     },
     "LineDetScanWidget\0showMotorTable\0\0"
-    "on_startButton_clicked\0on_saveDirButton_clicked\0"
+    "on_Ct3StartButton_clicked\0"
+    "on_saveDirButton_clicked\0"
     "on_ct3MultiLayerComboBox_currentIndexChanged\0"
     "in_text\0on_ct3LayerPosLineEdit_returnd"
 };
@@ -86,7 +87,7 @@ void LineDetScanWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->showMotorTable(); break;
-        case 1: _t->on_startButton_clicked(); break;
+        case 1: _t->on_Ct3StartButton_clicked(); break;
         case 2: _t->on_saveDirButton_clicked(); break;
         case 3: _t->on_ct3MultiLayerComboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 4: _t->on_ct3LayerPosLineEdit_returnd(); break;

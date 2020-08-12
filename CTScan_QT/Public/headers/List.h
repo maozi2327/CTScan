@@ -94,10 +94,9 @@ public:
 
 		if (cmdSelect == CHOOSECONSISIT)
 		{
-			std::lock_guard<std::mutex> lk(d_consistMutex);
-			int size = d_consistCmd.size();
+			std::unique_lock<std::mutex> lk(d_consistMutex);
 			
-			if (size != 0)
+			if (d_conConsist.wait_for(lk, std::chrono::milliseconds{10}, [=]() {	return d_consistCmd.size() != 0; }))
 			{
 				in_cmd = *d_consistIndex;
 
@@ -105,14 +104,13 @@ public:
 					d_consistIndex = d_consistCmd.begin();
 
 				return true;
-			}
+			};
 		}
 		else if (cmdSelect == CHOOSEONETIME)
 		{
-			std::lock_guard<std::mutex> lk(d_oneTimeMutex);
-			int size = d_oneTimeCmd.size();
+			std::unique_lock<std::mutex> lk(d_oneTimeMutex);
 
-			if (size != 0)
+			if (d_conOneTime.wait_for(lk, std::chrono::milliseconds{ 10 }, [=]() {	return d_oneTimeCmd.size() != 0; }))
 			{
 				in_cmd = d_oneTimeCmd.front();
 				d_oneTimeCmd.pop_front();

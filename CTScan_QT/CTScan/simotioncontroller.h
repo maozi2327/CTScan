@@ -18,22 +18,22 @@ struct CommandType
 		d_size = in_size;
 	}
 
-	void operator=(const CommandType& in_commandLeft)
+	void operator=(const CommandType& in_command)
 	{
 		char* temp = nullptr;
 		
-		if (in_commandLeft.d_size != 0)
+		if (in_command.d_size != 0)
 		{
-			temp = new char[in_commandLeft.d_size];
-			memcpy(temp, in_commandLeft.d_data, in_commandLeft.d_size);
+			temp = new char[in_command.d_size];
+			memcpy(temp, in_command.d_data, in_command.d_size);
 		}
 
 		if (d_data != nullptr)
 			delete[] d_data;
 
 		d_data = temp;
-		d_size = in_commandLeft.d_size;
-		d_cmd = in_commandLeft.d_cmd;
+		d_size = in_command.d_size;
+		d_cmd = in_command.d_cmd;
 	}
 
 	CommandType(const char* in_data, int in_size)

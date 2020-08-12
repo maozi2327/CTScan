@@ -4,7 +4,7 @@
 #include "ui_ctscan.h"
 #include "imagewidgetmanager.h"
 #include <memory>
-struct SetupData;
+#include "../Public/headers/setupdata.h"
 class SetupDataParser;
 class RayPanelMotion;
 class MotorControlWidget;
@@ -23,10 +23,10 @@ public:
 	~CTScan();
 
 private slots:
-	void on_ray1LineDet1Button_clicked();
-	void on_ray1PanelDet1Button_clicked();
-	void on_ray2LineDet1Button_clicked();
-	void on_ray2PanelDet1Button_clicked();
+	void on_ray0LineDet0Button_clicked();
+	void on_ray0PanelDet0Button_clicked();
+	void on_ray1LineDet0Button_clicked();
+	void on_ray1PanelDet0Button_clicked();
 
 private slots:
 	void cut();
@@ -36,9 +36,11 @@ private slots:
 	void errorMsgSlot(QString msg);
 	void infoMsgSlot(QString msg);
 	void bugMsgSlot(QString msg);
+	void on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason);
 protected:
 #ifndef QT_NO_CONTEXTMENU
 	void contextMenuEvent(QContextMenuEvent *event) override;
+	void changeEvent(QEvent * event) override;
 #endif // QT_NO_CONTEXTMENU
 private:
     Ui::CTScanClass ui;
@@ -47,18 +49,18 @@ private:
 	QAction *pasteAct;
 	std::unique_ptr<SetupData> d_setupData;
 	std::unique_ptr<SetupDataParser> d_setupDataPaser;
-	std::unique_ptr<MotorControlWidget> d_motorControl;
 	std::unique_ptr<ImageWidgetManager> d_imageWidgetManager;
-	std::map<std::pair<int, int>, std::unique_ptr<LineDetScanWidget>> d_lineDetScanWidget;
-	std::unique_ptr<LineDetScanWidget> d_line1Det1ScanWidget;
-	std::unique_ptr<ConeScanWidget> d_panle1Det1ScanWidget;
 	std::unique_ptr<RayPanelMotion> d_rayPanelMotion;
 	std::unique_ptr<ControllerInterface> d_controller;
+	std::unique_ptr<MotorControlWidget> d_motorControl;
+	std::unique_ptr<ConeScanWidget> d_panle1Det1ScanWidget;
 	std::unique_ptr<MsgListBox> d_msg;
 	std::map<int, std::unique_ptr<LineDetNetWork>> d_lineDetNetWorkMap;
-	std::map<std::pair<int, int>, std::vector<std::unique_ptr<LineDetScanInterface>>> d_rayLineDetScanMap;
+	std::map<std::pair<int, int>, std::vector<ScanMode>> d_lineDetScanModeMap;
+	std::map<std::pair<int, int>, std::vector<ScanMode>> d_panelDetScanModeMap;
+	std::map<std::pair<int, int>, std::unique_ptr<LineDetScanWidget>> d_lineDetScanWidget;
 	size_t frontImageIndex;
-	QSystemTrayIcon* tray;
+	QSystemTrayIcon* d_tray;
 	QString	d_workDir;
 };
 //#ifdef TABLETRANSLATION

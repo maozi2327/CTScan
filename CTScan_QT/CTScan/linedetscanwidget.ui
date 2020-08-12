@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>308</width>
+    <width>303</width>
     <height>550</height>
    </rect>
   </property>
@@ -29,1716 +29,1900 @@
    <property name="geometry">
     <rect>
      <x>11</x>
-     <y>11</y>
-     <width>284</width>
-     <height>493</height>
+     <y>99</y>
+     <width>281</width>
+     <height>27</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QTabWidget" name="rayTab">
+     <widget class="QPushButton" name="saveDirButton">
       <property name="minimumSize">
        <size>
-        <width>0</width>
-        <height>80</height>
+        <width>30</width>
+        <height>25</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
-        <height>80</height>
+        <width>80</width>
+        <height>25</height>
        </size>
       </property>
-      <property name="currentIndex">
-       <number>1</number>
+      <property name="text">
+       <string>保存路径</string>
       </property>
-      <widget class="QWidget" name="rayWrox225Tab">
-       <attribute name="title">
-        <string>WROX</string>
-       </attribute>
-       <widget class="QPushButton" name="worx225XRayOffButton_2">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>10</y>
-          <width>60</width>
-          <height>40</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>停束</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="worx225kvStaticLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>8</y>
-          <width>25</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>25</width>
-          <height>18</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>25</width>
-          <height>18</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>KV</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="worx225uaStaticLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>10</y>
-          <width>25</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>25</horstretch>
-          <verstretch>18</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>25</width>
-          <height>18</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>μA</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="worx225XRayOnButton_2">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>10</y>
-          <width>60</width>
-          <height>40</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>出束</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="worx225EmissionCurrentEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>10</y>
-          <width>60</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="worx225VoltageInputEdit">
-        <property name="geometry">
-         <rect>
-          <x>-10</x>
-          <y>10</y>
-          <width>60</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-       <widget class="QLabel" name="worx225FocusStaticLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>30</y>
-          <width>24</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>焦点</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="worx225FocusComboBox_2">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>30</y>
-          <width>60</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-       <zorder>worx225kvStaticLabel_2</zorder>
-       <zorder>worx225XRayOffButton_2</zorder>
-       <zorder>worx225XRayOnButton_2</zorder>
-       <zorder>worx225EmissionCurrentEdit_2</zorder>
-       <zorder>worx225uaStaticLabel_2</zorder>
-       <zorder>worx225VoltageInputEdit</zorder>
-       <zorder>worx225FocusStaticLabel_2</zorder>
-       <zorder>worx225FocusComboBox_2</zorder>
-      </widget>
-      <widget class="QWidget" name="rayComet450Tab">
-       <attribute name="title">
-        <string>COMET</string>
-       </attribute>
-       <widget class="QLabel" name="Comet450uaStaticLabel">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>7</y>
-          <width>25</width>
-          <height>19</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>25</horstretch>
-          <verstretch>18</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>25</width>
-          <height>18</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>μA</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="Comet450VoltageInputEdit">
-        <property name="geometry">
-         <rect>
-          <x>13</x>
-          <y>7</y>
-          <width>40</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-       <widget class="QLabel" name="Comet450kvStaticLabel">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>7</y>
-          <width>25</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>25</width>
-          <height>18</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>25</width>
-          <height>18</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>KV</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="Comet450XRayOnButton">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>10</y>
-          <width>60</width>
-          <height>40</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>出束</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="Comet450FocusStaticLabel">
-        <property name="geometry">
-         <rect>
-          <x>13</x>
-          <y>32</y>
-          <width>60</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>焦点</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="Comet450FocusComboBox">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>32</y>
-          <width>40</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="Comet450EmissionCurrentEdit">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>7</y>
-          <width>40</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="Comet450XRayOffButton">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>10</y>
-          <width>60</width>
-          <height>40</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>60</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>停束</string>
-        </property>
-       </widget>
-      </widget>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="saveDirButton">
-        <property name="minimumSize">
-         <size>
-          <width>30</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>80</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>保存路径</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>文件名</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="fileNameEdit">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>25</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="QTabWidget" name="scanModeTab">
-        <property name="minimumSize">
-         <size>
-          <width>280</width>
-          <height>280</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>280</width>
-          <height>280</height>
-         </size>
-        </property>
-        <property name="currentIndex">
-         <number>2</number>
-        </property>
-        <widget class="QWidget" name="ct3Tab">
-         <attribute name="title">
-          <string>三代CT</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <layout class="QGridLayout" name="gridLayout_2">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_53">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>当前/多层</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="ct3MultiLayerComboBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label">
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>图像矩阵</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="ct3MatrixComboBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_2">
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>视场直径</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="ct3ViewComboBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label_3">
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>采样时间</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QComboBox" name="ct3SampleTimeComboBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_7">
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>扫描方位</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLineEdit" name="ct3AngleLineEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>断层位置</string>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QLineEdit" name="ct3LayerPosLineEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="0">
-             <widget class="QLabel" name="ct3LayerSpaceLabel">
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>层间距</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="1">
-             <widget class="QLineEdit" name="ct3LayerSpaceLineEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="0">
-             <widget class="QLabel" name="ct3SpaceNumLabel">
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>层数</string>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="1">
-             <widget class="QLineEdit" name="ct3SpaceNumLineEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0" colspan="2">
-             <spacer name="verticalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="1">
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <item>
-             <widget class="QListWidget" name="ct3LayerPosListWidget">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>130</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>130</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="ct2Tab">
-         <attribute name="title">
-          <string>DR</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="0">
-           <layout class="QGridLayout" name="gridLayout_3">
-            <property name="verticalSpacing">
-             <number>10</number>
-            </property>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_41">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>比例模式</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="drRatioComboBox">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_34">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>图像矩阵</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="drMatrixComboBox">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_35">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>视场直径</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QComboBox" name="drViewComboBox">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label_36">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>采样时间</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QComboBox" name="drSampleTimeComboBox">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_37">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>扫描方位</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLineEdit" name="drAngleLineEdit">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="0">
-             <widget class="QLabel" name="label_38">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>54</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>54</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>断层位置</string>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QLineEdit" name="lineEdit_14">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>80</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>105</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="0">
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>56</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="drTab">
-         <attribute name="title">
-          <string>二代CT</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <layout class="QGridLayout" name="gridLayout">
-              <property name="verticalSpacing">
-               <number>10</number>
-              </property>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_40">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>扫描方式</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="ct2ScanModeComboBox">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_39">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>当前/多层</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="ct2MultiLayerComboBox">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_31">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>图像矩阵</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QComboBox" name="ct2MatrixComboBox">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="label_30">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>视场直径</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QComboBox" name="ct2ViewComboBox">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="label_33">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>采样时间</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="1">
-               <widget class="QComboBox" name="ct2SampleTimeComboBox">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="label_32">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>扫描方位</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="1">
-               <widget class="QLineEdit" name="lineEdit_11">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="label_29">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>断层位置</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="1">
-               <widget class="QLineEdit" name="lineEdit_12">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="label_18">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>54</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>54</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>层间距</string>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="1">
-               <widget class="QLineEdit" name="lineEdit_7">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>80</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <widget class="QListWidget" name="ct2LayerPosListWidget">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>100</width>
-                  <height>130</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>100</width>
-                  <height>130</height>
-                 </size>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </widget>
-      </item>
-      <item>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>当前进度</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>总体进度</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="startButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>开始</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>68</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="2">
-         <widget class="QPushButton" name="stopButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>停止</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" colspan="2">
-         <widget class="QProgressBar" name="nowProgressBar">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="value">
-           <number>24</number>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" colspan="2">
-         <widget class="QProgressBar" name="allProgressBar">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="value">
-           <number>24</number>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>文件名</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="fileNameEdit">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>25</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QTabWidget" name="rayTab">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>13</y>
+     <width>280</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>280</width>
+     <height>80</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>500</width>
+     <height>80</height>
+    </size>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="rayWrox225Tab">
+    <attribute name="title">
+     <string>WROX</string>
+    </attribute>
+    <widget class="QPushButton" name="worx225XRayOffButton_2">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>15</y>
+       <width>60</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>停束</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="worx225kvStaticLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>10</y>
+       <width>25</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>25</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>25</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>KV</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="worx225uaStaticLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>15</y>
+       <width>25</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>25</horstretch>
+       <verstretch>18</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>25</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>μA</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="worx225XRayOnButton_2">
+     <property name="geometry">
+      <rect>
+       <x>164</x>
+       <y>15</y>
+       <width>60</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>出束</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="worx225EmissionCurrentEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>71</x>
+       <y>15</y>
+       <width>60</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="worx225VoltageInputEdit">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>15</y>
+       <width>60</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="worx225FocusStaticLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>40</y>
+       <width>24</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>焦点</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="worx225FocusComboBox_2">
+     <property name="geometry">
+      <rect>
+       <x>71</x>
+       <y>33</y>
+       <width>60</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <zorder>worx225kvStaticLabel_2</zorder>
+    <zorder>worx225XRayOffButton_2</zorder>
+    <zorder>worx225XRayOnButton_2</zorder>
+    <zorder>worx225EmissionCurrentEdit_2</zorder>
+    <zorder>worx225uaStaticLabel_2</zorder>
+    <zorder>worx225VoltageInputEdit</zorder>
+    <zorder>worx225FocusStaticLabel_2</zorder>
+    <zorder>worx225FocusComboBox_2</zorder>
+   </widget>
+   <widget class="QWidget" name="rayComet450Tab">
+    <attribute name="title">
+     <string>COMET</string>
+    </attribute>
+    <widget class="QLabel" name="Comet450uaStaticLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>25</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>25</horstretch>
+       <verstretch>18</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>25</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>μA</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="Comet450VoltageInputEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>126</y>
+       <width>40</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Comet450kvStaticLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>178</y>
+       <width>25</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>25</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>25</width>
+       <height>18</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>KV</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Comet450XRayOnButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>60</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>出束</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Comet450FocusStaticLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>228</y>
+       <width>24</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>焦点</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="Comet450FocusComboBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>202</y>
+       <width>40</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="Comet450EmissionCurrentEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>152</y>
+       <width>40</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Comet450XRayOffButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>34</y>
+       <width>60</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>60</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>停束</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QTabWidget" name="scanModeTab">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>132</y>
+     <width>280</width>
+     <height>400</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>280</width>
+     <height>400</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>280</width>
+     <height>400</height>
+    </size>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="ct3Tab">
+    <attribute name="title">
+     <string>三代CT</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_9">
+     <item row="0" column="0" rowspan="2">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <property name="verticalSpacing">
+        <number>10</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_53">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>当前/多层</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="ct3MultiLayerComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>图像矩阵</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="ct3MatrixComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>视场直径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="ct3ViewComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>采样时间</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="ct3SampleTimeComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>扫描方位</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="ct3AngleLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>断层位置</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="ct3LayerPosLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="ct3LayerSpaceLabel">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>层间距</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="ct3LayerSpaceLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="ct3SpaceNumLabel">
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>层数</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="ct3SpaceNumLineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <widget class="QListWidget" name="ct3LayerPosListWidget">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>130</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>130</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>26</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>当前进度</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>总体进度</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="Ct3StartButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>开始</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>68</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="stopButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>停止</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QProgressBar" name="Ct3ScanNowProgressBar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="value">
+          <number>24</number>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QProgressBar" name="Ct3ScanAllProgressBar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="value">
+          <number>24</number>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="1" rowspan="2">
+      <spacer name="verticalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>93</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="ct2Tab">
+    <attribute name="title">
+     <string>DR</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_8">
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="verticalSpacing">
+        <number>10</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_41">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>比例模式</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="drRatioComboBox">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_34">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>图像矩阵</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="drMatrixComboBox">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_35">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>视场直径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="drViewComboBox">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_36">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>采样时间</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="drSampleTimeComboBox">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_37">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>扫描方位</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="drAngleLineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_38">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>断层位置</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="lineEdit_14">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>105</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="0">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>112</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="startButton_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>开始</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>总体进度</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QProgressBar" name="DrAllProgressBar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="value">
+          <number>24</number>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>68</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="stopButton_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>停止</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="drTab">
+    <attribute name="title">
+     <string>二代CT</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_7">
+     <item row="0" column="0" rowspan="2">
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="verticalSpacing">
+        <number>10</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_40">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>扫描方式</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="ct2ScanModeComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_39">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>当前/多层</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="ct2MultiLayerComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_31">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>图像矩阵</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="ct2MatrixComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_30">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>视场直径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="ct2ViewComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_33">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>采样时间</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="ct2SampleTimeComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_32">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>扫描方位</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="lineEdit_11">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_29">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>断层位置</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="lineEdit_12">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_18">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>54</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>54</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>层间距</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="lineEdit_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <widget class="QListWidget" name="ct2LayerPosListWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>130</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>100</width>
+         <height>130</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" rowspan="2">
+      <spacer name="verticalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="0">
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>26</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>当前进度</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>总体进度</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="startButton_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>开始</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>68</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="stopButton_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>停止</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QProgressBar" name="Ct2ScanNowProgressBar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="value">
+          <number>24</number>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <widget class="QProgressBar" name="Ct2ScanAllProgressBar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="value">
+          <number>24</number>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

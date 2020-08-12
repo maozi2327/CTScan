@@ -5,7 +5,7 @@
 	<LineDetSection>
 		<Num>1</Num>
 		<LineDetData>
-			<LideDetID>0</LideDetID>
+			<ID>0</ID>
 			<LineDetType>Arch<!--线阵类型-->
 			</LineDetType>
 			<NumberOfCalibrateHorizontalDetector>608<!--探测器通道数量-->
@@ -42,11 +42,13 @@
 	<kVRaySection>
 		<num>2</num>
 		<kVRayData>
+			<ID>0</ID>
 			<rayType>Comet-450</rayType>
 			<rayEnergy>450kV</rayEnergy>
 			<rayDoseRate>100</rayDoseRate>
 		</kVRayData>
 		<kVRayData>
+			<ID>1</ID>
 			<rayType>Wrox-225</rayType>
 			<rayEnergy>225kV</rayEnergy>
 			<rayDoseRate>60</rayDoseRate>
@@ -111,8 +113,8 @@
 		<CT2>
 			<Num>1</Num>
 			<a>
-				<Ray>1</Ray>
-				<Det>1</Det>
+				<RayId>0</RayId>
+				<LineDetId>0</LineDetId>
 				<View>800</View>
 				<Matrix>1024,2048</Matrix>
 				<translationModeDefine>1</translationModeDefine>
@@ -122,8 +124,8 @@
 		<CT3>
 			<Num>1</Num>
 			<a>
-				<Ray>1</Ray>
-				<Det>1</Det>
+				<RayId>0</RayId>
+				<LineDetId>0</LineDetId>
 				<View>100,150,200,300,450,600</View>
 				<Matrix>256,512,1024,2048</Matrix>
 				<ct3InterpolationFlag>1</ct3InterpolationFlag>
@@ -133,8 +135,8 @@
 		<DR>
 			<Num>1</Num>
 			<a>
-				<Ray>1</Ray>
-				<Det>1</Det>
+				<RayId>0</RayId>
+				<LineDetId>0</LineDetId>
 				<View>100,150,200,300</View>
 				<Matrix>256,512,1024,2048</Matrix>
 				<drScanModeDefine>1</drScanModeDefine>
@@ -146,27 +148,27 @@
 		<CONE_SCAN>
 			<Num>2</Num>
 			<a>
-				<Ray>1</Ray>
-				<Det>1</Det>
+				<RayId>0</RayId>
+				<PanelDetId>0</PanelDetId>
 				<Matrix>256,512,1024,2048</Matrix>
 			</a>
 			<a>
-				<Ray>1</Ray>
-				<Det>1</Det>
+				<Ray>0</Ray>
+				<Det>0</Det>
 				<Matrix>256,512,1024,2048</Matrix>
 			</a>
 		</CONE_SCAN>
 		<CONE_JOINT_ROT_SCAN>
 			<Num>2</Num>
 			<a>
-				<Ray>1</Ray>
-				<Det>1</Det>
+				<RayId>1</RayId>
+				<PanelDetId>0</PanelDetId>
 				<Matrix>256,512,1024,2048</Matrix>
 				<View>500</View>
 			</a>
 			<a>
-				<Ray>1</Ray>
-				<Det>1</Det>
+				<RayId>1</RayId>
+				<PanelDetId>0</PanelDetId>
 				<Matrix>256,512,1024,2048</Matrix>
 				<View>500</View>
 			</a>

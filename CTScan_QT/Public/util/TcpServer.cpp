@@ -53,6 +53,7 @@ bool TcpServer::initialNetWork()
 }
 bool TcpServer::initialNetWorkForVariablePacketSize()
 {
+	d_isRecvRunning = true;
 	d_sendThreadPromisePtr.reset(new std::promise<bool>);
 	//std::thread([this]() { sendThread(*d_sendThreadPromisePtr); });
 	std::function<void()> sendThreadFun = std::bind(&TcpServer::sendThread, this, std::ref(*d_sendThreadPromisePtr));
@@ -133,7 +134,9 @@ void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 
 		while (d_connected)
 		{
-			d_tcpSocket->waitForReadyRead(10000000);
+			if(!d_tcpSocket->waitForReadyRead(100))
+				continue;
+
 			char* headBuffer = new char[d_packetHeadSize];
 			int nRet = d_tcpSocket->read(headBuffer, d_packetHeadSize);
 
@@ -172,7 +175,6 @@ void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 			}
 		}
 
-		//std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 }
 bool TcpServer::getConnected()

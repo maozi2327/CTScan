@@ -4,10 +4,14 @@
 #include <chrono>
 #include <algorithm>
 LineDetNetWork::LineDetNetWork(unsigned short in_port)
-	: d_server(new TcpServer(4, 4, 0
-		, [] {; }
-		, [this](char* in_char, int in_size) { DecodePackages(in_char, in_size); }
-		, QHostAddress::Any, 4000))
+	: d_server
+	(
+		nullptr
+		//new TcpServer(4, 4, 0
+		//, [] {; }
+		//, [this](char* in_char, int in_size) { DecodePackages(in_char, in_size); }
+		//, QHostAddress::Any, 4000)
+	)
 {
 	connect(d_server.get(), SIGNAL(netWorkStatusSignal(bool)), this, SLOT(netWorkStatusSlot));
 }

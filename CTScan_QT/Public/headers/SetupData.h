@@ -250,12 +250,14 @@ struct _WorkPieceInfoData
 //扫描组态整体数据结构定义
 struct kVRayData 
 {
+	char	ID;
 	char rayType[16];
 	float rayEnergy;												//射线能量,单位:KV
 	float rayDoseRate;											//射线剂量率, 单位:cGy/min/m
 };
 struct AcceleratorData
 {
+	char	ID;
 	char rayType[16];
 	float rayEnergy;												//射线能量,单位:KV
 	float rayDoseRate;
@@ -271,7 +273,7 @@ enum class LineDetNum
 };
 struct LineDetData
 {
-	char	LineDetID;
+	char	ID;
 	char	LineDetType;
 	short	NumberOfSystemHorizontalDetector;               //射线平面方向系统探测器数(此参数为探测器总数)
 	short	NumberOfCalibrateHorizontalDetector;            //射线平面方向校正用探测器数(此参数为校正用探测器数量)
@@ -293,7 +295,7 @@ struct LineDetData
 };
 struct PanDetData
 {
-	char PanelDetID;
+	char	ID;
 	char PandetType[32];
 	short horizontalPixels;
 	short verticalPixels;

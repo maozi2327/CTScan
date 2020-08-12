@@ -121,7 +121,13 @@ bool ConeScanInterface::canScan()
 
 bool ConeScanInterface::loadBkgData()
 {
-	return d_imageProcess->loadBkgData(QString("bkg.tif"));
+	if(!d_imageProcess->loadBkgData(QString("bkg.tif")))
+	{
+		LOG_ERROR("锥束扫描加载空气文件失败！");
+		return false;
+	}
+
+	return true;
 }
 
 bool ConeScanInterface::writeParameterFile()
@@ -231,6 +237,9 @@ bool ConeScanInterface::beginScan()
 		return false;
 
 	if(!writeParameterFile())
+		return false;
+	
+	if (!loadBkgData())
 		return false;
 
 	if (!loadAirData())
