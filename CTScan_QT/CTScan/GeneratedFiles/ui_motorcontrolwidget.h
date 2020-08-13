@@ -71,7 +71,7 @@ public:
     QLabel *label;
     QGridLayout *gridLayout;
     QLineEdit *objRotationPosEdit;
-    QPushButton *objRotNegtiveButton;
+    QPushButton *objRotNegativeButton;
     QPushButton *objRotPositiveButton;
     QPushButton *objRotAbsPosButton;
     QVBoxLayout *objRotLayout3;
@@ -419,12 +419,12 @@ public:
 
         gridLayout->addWidget(objRotationPosEdit, 0, 0, 1, 2);
 
-        objRotNegtiveButton = new QPushButton(layoutWidget);
-        objRotNegtiveButton->setObjectName(QStringLiteral("objRotNegtiveButton"));
-        objRotNegtiveButton->setMinimumSize(QSize(25, 25));
-        objRotNegtiveButton->setMaximumSize(QSize(25, 25));
+        objRotNegativeButton = new QPushButton(layoutWidget);
+        objRotNegativeButton->setObjectName(QStringLiteral("objRotNegativeButton"));
+        objRotNegativeButton->setMinimumSize(QSize(25, 25));
+        objRotNegativeButton->setMaximumSize(QSize(25, 25));
 
-        gridLayout->addWidget(objRotNegtiveButton, 1, 0, 1, 1);
+        gridLayout->addWidget(objRotNegativeButton, 1, 0, 1, 1);
 
         objRotPositiveButton = new QPushButton(layoutWidget);
         objRotPositiveButton->setObjectName(QStringLiteral("objRotPositiveButton"));
@@ -808,7 +808,6 @@ public:
 
 
         retranslateUi(MotorControlWidget);
-        QObject::connect(objRotNegtiveButton, SIGNAL(clicked()), objRotNegtiveButton, SLOT(click()));
 
         QMetaObject::connectSlotsByName(MotorControlWidget);
     } // setupUi
@@ -836,7 +835,7 @@ public:
 "\345\256\232\344\275\215", nullptr));
         objRadialStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
         label->setText(QApplication::translate("MotorControlWidget", "<html><head/><body><p>\345\267\245\344\273\266\346\227\213\350\275\254</p></body></html>", nullptr));
-        objRotNegtiveButton->setText(QApplication::translate("MotorControlWidget", "\345\217\215", nullptr));
+        objRotNegativeButton->setText(QApplication::translate("MotorControlWidget", "\345\217\215", nullptr));
         objRotPositiveButton->setText(QApplication::translate("MotorControlWidget", "\346\255\243", nullptr));
         objRotAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
 "\345\256\232\344\275\215", nullptr));

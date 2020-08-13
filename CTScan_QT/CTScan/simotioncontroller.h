@@ -104,11 +104,14 @@ private:
 	bool d_run;
 	bool d_threadRun;
 
+	char* d_netWorkBuffer;
+	int d_bytesReceived;
 	void getAixsValueAndNotify(std::map<Axis, float>& in_value, char* in_data, int in_axisNum, int in_typeCode);
 	void fillInCmdStructAndFillCmdList(int in_cmd, char* in_data, int in_size, bool in_consist);
 protected:
 	virtual bool sendCmd();
-	virtual void setConnectdSts();
+	virtual void setConnectdSts(); 
+	void pocessData(char* in_package, int in_size);
 public:
 	SimotionController();
 	~SimotionController();

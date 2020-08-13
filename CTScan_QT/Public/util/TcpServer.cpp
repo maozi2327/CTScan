@@ -5,30 +5,19 @@
 TcpServer::TcpServer(int in_packetHeadSize, int in_packetSizeLenth, int in_packetSizePos
 	, std::function<void()> in_sendDataCallBack
 	, std::function<void(char*, int in_size)> in_dataHandlerCallBack
-	, QHostAddress in_hosetAddress, unsigned short in_serverPort, QObject *parent)
-	: d_tcpServer(new QTcpServer())
-	, QObject(parent)
-	, d_packetHeadSize(in_packetHeadSize), d_packetSize(in_packetSizeLenth), d_packetSizePos(in_packetSizePos)
-	, d_serverAddress(in_hosetAddress), d_serverPort(in_serverPort)
+	, in_addr in_hosetAddress, unsigned short in_serverPort)
+	: d_packetHeadSize(in_packetHeadSize), d_packetSizeLenth(in_packetSizeLenth), d_packetSizePos(in_packetSizePos)
+	, d_address(in_hosetAddress), d_serverPort(in_serverPort)
 	, d_dataHandlerCallBack(in_dataHandlerCallBack), d_sendInitiliseCallBack(in_sendDataCallBack)
 	, d_connected(false)
 {
+	d_sockaddr.sin_addr = d_address;
+	d_sockaddr.sin_family = AF_INET;
+	d_sockaddr.sin_port = htons(d_serverPort);
+	WSADATA wsaData;
+	WSAStartup(MAKEWORD(2, 2), &wsaData);
 	initialNetWorkForVariablePacketSize();
-	connect(d_tcpServer, &QTcpServer::newConnection, this, &TcpServer::acceptCollection);
 }
-
-TcpServer::TcpServer(int in_packetSize, QHostAddress in_hosetAddress, unsigned short in_serverPort
-	, std::function<void(char*, int in_size)> in_dataHandlerCallBack, QObject *parent)
-	: d_tcpServer(new QTcpServer())
-	, QObject(parent)
-	, d_serverAddress(in_hosetAddress), d_serverPort(in_serverPort), d_packetSize(in_packetSize)
-	, d_dataHandlerCallBack(in_dataHandlerCallBack)
-	, d_connected(false)
-{
-	initialNetWork();
-	connect(d_tcpServer, SIGNAL(newConnection()), this, SLOT(acceptCollection()));
-}
-
 
 TcpServer::~TcpServer()
 {
@@ -40,29 +29,17 @@ TcpServer::~TcpServer()
 	if (d_sendThreadPromisePtr)
 		d_sendThreadPromisePtr->get_future().get();
 }
-bool TcpServer::initialNetWork()
-{
-	d_sendThreadPromisePtr.reset(new std::promise<bool>);
-	std::function<void()> sendThreadFun = std::bind(&TcpServer::sendThread, this, std::ref(*d_sendThreadPromisePtr));
-	std::thread(sendThreadFun).detach();
-	d_recvThreadPromisePtr.reset(new std::promise<bool>);
-	std::function<void()> recvThreadFun = std::bind(&TcpServer::recvThread, this, std::ref(*d_recvThreadPromisePtr));
-	std::thread(recvThreadFun).detach();
-
-	return d_tcpServer->listen(d_serverAddress, d_serverPort);
-}
 bool TcpServer::initialNetWorkForVariablePacketSize()
 {
 	d_isRecvRunning = true;
 	d_sendThreadPromisePtr.reset(new std::promise<bool>);
-	//std::thread([this]() { sendThread(*d_sendThreadPromisePtr); });
 	std::function<void()> sendThreadFun = std::bind(&TcpServer::sendThread, this, std::ref(*d_sendThreadPromisePtr));
 	std::thread(sendThreadFun).detach();
 	d_recvThreadPromisePtr.reset(new std::promise<bool>);
 	std::function<void()> recvThreadFun = std::bind(&TcpServer::recvThreadPacketHead, this, std::ref(*d_recvThreadPromisePtr));
 	std::thread(recvThreadFun).detach();
 
-	return d_tcpServer->listen(d_serverAddress, d_serverPort);
+	return true;
 }
 bool TcpServer::sendAsyn(const char* in_buffer, int in_size)
 {
@@ -75,8 +52,8 @@ bool TcpServer::sendAsyn(const char* in_buffer, int in_size)
 }
 int TcpServer::sendSyn(const char* in_buffer, int in_size)
 {
-	if(d_connected && d_tcpSocket)
-		return d_tcpSocket->write(in_buffer, in_size);
+	if(d_connected)
+		return send(d_client, in_buffer, in_size, NULL);
 
 	return -1;
 }
@@ -85,48 +62,11 @@ bool TcpServer::receive(char* in_buffer, int in_size)
 	
 	return true;
 }
-void TcpServer::acceptCollection()
-{
-	d_tcpSocket = d_tcpServer->nextPendingConnection();
-	d_connected = true;
-	d_sendInitiliseCallBack();
-	d_tcpServer->pauseAccepting();
-}
-void TcpServer::recvThread(std::promise<bool>& in_promise)
-{
-	in_promise.set_value_at_thread_exit(true);
 
-	while (d_isRecvRunning)
-	{
-		char* buffer = new char[d_packetSize];
-		int byteRead = 0;
-
-		while (d_connected)
-		{
-			int nRet = d_tcpSocket->read(buffer + byteRead, d_packetSize - byteRead);
-
-			if (nRet == -1)
-			{
-				reAccept();
-				break;
-			}
-
-			byteRead += nRet;
-
-			if (byteRead == d_packetSize)
-			{
-				TcpServer::command cmd{ buffer, d_packetSize };
-				d_receiveQueue.push(cmd);
-				byteRead = 0;
-			}
-		}
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
-	}
-}
 void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
+	char buffer[1000];
 
 	while (d_isRecvRunning)
 	{
@@ -134,47 +74,19 @@ void TcpServer::recvThreadPacketHead(std::promise<bool>& in_promise)
 
 		while (d_connected)
 		{
-			if(!d_tcpSocket->waitForReadyRead(100))
-				continue;
+			auto ret = recv(d_client, buffer, 1000, NULL);
 
-			char* headBuffer = new char[d_packetHeadSize];
-			int nRet = d_tcpSocket->read(headBuffer, d_packetHeadSize);
-
-			if (nRet == -1)
+			if (ret == SOCKET_ERROR)
 			{
-				reAccept();
+				closesocket(d_client);
+				d_connected = false;
 				break;
 			}
-			else if (nRet == 0)
-				continue;
 
-			byteRead += nRet;
-			unsigned int packetSize = 0;
-			memcpy(&packetSize, headBuffer + d_packetSizePos, d_packetSizeLenth);
-			char* buffer = new char[packetSize];
-			memcpy(buffer, headBuffer, d_packetHeadSize);
-			delete[] headBuffer;
-
-			while (byteRead != packetSize)
-			{
-				int nRet = d_tcpSocket->read(buffer + byteRead, d_packetHeadSize);
-
-				if (nRet == -1)
-				{
-					reAccept();
-					break;
-				}
-
-				byteRead += nRet;
-			}
-
-			if (byteRead == packetSize)
-			{
-				d_dataHandlerCallBack(buffer, d_packetSize);
-				byteRead = 0;
-			}
+			d_dataHandlerCallBack(buffer, ret);
 		}
 
+		std::this_thread::sleep_for(std::chrono::milliseconds{ 100 });
 	}
 }
 bool TcpServer::getConnected()
@@ -184,36 +96,59 @@ bool TcpServer::getConnected()
 void TcpServer::sendThread(std::promise<bool>& in_promise)
 {
 	in_promise.set_value_at_thread_exit(true);
-
 	while (d_isSendRunning)
 	{
-		command cmd;
-		int byteSend = 0;
-		
-		if(!d_sendQueue.pop(cmd))
+		if((d_server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == SOCKET_ERROR)
 			continue;
 
-		while (d_connected)
+		if (bind(d_server, (sockaddr*)&d_sockaddr, sizeof(sockaddr)) == SOCKET_ERROR)
 		{
-			int nRet = d_tcpSocket->write(cmd.in_buffer + byteSend, cmd.in_size - byteSend);
+			closesocket(d_server);
+			continue;
+		}
 			
-			if (nRet == -1)
+		if (listen(d_server, 10) == SOCKET_ERROR)
+		{
+			closesocket(d_server);
+			continue;
+		}
+
+		while (d_isSendRunning)
+		{
+			sockaddr_in clientAddr;
+
+			if ((d_client = accept(d_server, (sockaddr*)&clientAddr, NULL)) == SOCKET_ERROR)
+				continue;
+
+			d_connected = true;
+			d_sendInitiliseCallBack();
+
+			while (d_connected)
 			{
-				reAccept();
-				break;
+				command cmd;
+
+				if (!d_sendQueue.pop(cmd))
+					continue;
+
+				int bytesSend = 0;
+
+				while (true)
+				{
+					int nRet = send(d_client, cmd.in_buffer + bytesSend, cmd.in_size - bytesSend, NULL);
+
+					if (nRet == -1)
+					{
+						d_connected = false;
+						closesocket(d_client);
+						break;
+					}
+
+					bytesSend += nRet;
+
+					if (bytesSend == cmd.in_size)
+						break;
+				}
 			}
-
-			byteSend += nRet;
-
-			if (byteSend == cmd.in_size)
-				break;
 		}
 	}
-}
-
-void TcpServer::reAccept()
-{
-	d_connected = false;
-	delete d_tcpSocket;
-	d_tcpServer->resumeAccepting();
 }

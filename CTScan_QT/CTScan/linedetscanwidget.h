@@ -16,7 +16,6 @@ class LineDetScanWidget : public QWidget
 	Q_OBJECT
 
 public:
-
 	LineDetScanWidget(MotorControlWidget* in_motorControl, int in_rayId, int in_lineDetId, const
 		std::vector<ScanMode>& in_scanMode, SetupData* in_setupData, 
 		LineDetNetWork* in_lineDetNetWork, ControllerInterface* in_controller, QWidget *parent = Q_NULLPTR);

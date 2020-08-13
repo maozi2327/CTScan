@@ -10,14 +10,18 @@
 const unsigned short SimotionController::d_port = 8000;
 const int SimotionController::d_packetSize = 256;
 
-SimotionController::SimotionController()
+SimotionController::SimotionController() : d_bytesReceived(0) , d_netWorkBuffer(new char[1000])
 {
+	
 	d_threadRun = true;
-	std::function<void(char*, int)> decodeFun = std::bind(&SimotionController::decodePackages, 
+	std::function<void(char*, int)> decodeFun = std::bind(&SimotionController::pocessData,
 		this, std::placeholders::_1, std::placeholders::_2);
 	std::function<void()> sendFun = std::bind(&SimotionController::initialSend, this);
-	d_server.reset(new TcpServer(sizeof(tagCOMM_PACKET1), 2, 4, sendFun, decodeFun, 
-		QHostAddress::Any, d_port));
+
+	in_addr hostAddr;
+	hostAddr.S_un.S_addr = INADDR_ANY;
+	d_server.reset(new TcpServer(sizeof(tagCOMM_PACKET1), 2, 4, sendFun, decodeFun,
+		hostAddr, d_port));
 	auto intervel = std::chrono::milliseconds(100);
 
 	std::thread([this, intervel] 
@@ -58,6 +62,7 @@ SimotionController::SimotionController()
 SimotionController::~SimotionController()
 {
 	d_threadRun = false;
+	delete d_netWorkBuffer;
 }
 
 bool SimotionController::getConnected()
@@ -196,7 +201,7 @@ void SimotionController::getAixsValueAndNotify(std::map<Axis, float>& in_value, 
 {
 	for (int i = 0; i != in_axisNum; ++i)
 		in_value.insert({ Axis(*(in_data + i * 5)), *(float*)((in_data + i * 5 + 1)) });
-
+	
 	{
 		std::lock_guard<std::mutex> lock(d_mutex);
 		d_receivedCmd = in_typeCode;
@@ -217,7 +222,7 @@ void SimotionController::fillInCmdStructAndFillCmdList(int in_cmd, char * in_dat
 	for (int i = 0; i < 3 + in_size + 3; i++)
 		sum += *(d_cmdData.d_data + i);
 
-	*d_cmdData.d_data = sum;
+	*(d_cmdData.d_data + 3 + in_size + 3) = sum;
 	d_cmdList.pushBack(d_cmdData, in_consist);
 }
 
@@ -225,19 +230,12 @@ bool SimotionController::sendCmd()
 {
 	while (d_threadRun)
 	{
-		//std::weak_ptr<SimotionController> thisWeak = shared_from_this();
-		//auto shared = thisWeak.lock();
+		CommandType cmd(0);
 
-		//if (shared)
-			while (d_threadRun)
-			{
-				CommandType cmd(0);
+		if(d_cmdList.getNext(cmd))
+			d_server->sendAsyn(cmd.d_data, cmd.d_size);
 
-				if(d_cmdList.getNext(cmd))
-					d_server->sendAsyn(cmd.d_data, cmd.d_size);
-
-				std::this_thread::sleep_for(std::chrono::milliseconds(1));
-			}
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
 	return true;
@@ -255,6 +253,51 @@ void SimotionController::sendToControl(char * in_package, int in_size, bool in_c
 {
 	CommandType cmd(in_package, in_size);
 	d_cmdList.pushBack(cmd, in_consist);
+}
+
+void SimotionController::pocessData(char* in_package, int in_size)
+{
+	int posecessedDataLenth = 0;
+	memcpy(d_netWorkBuffer + d_bytesReceived, in_package, in_size);
+	d_bytesReceived += in_size;
+
+	while (true)
+	{
+		struct tag
+		{
+			char tag1;
+			char tag2;
+			char tag3;
+		};
+
+		static tag temp{ 0x55, 0xAA, 0x5A };
+		char* packetHead = d_netWorkBuffer + posecessedDataLenth;
+
+		for (; packetHead != d_netWorkBuffer + d_bytesReceived - sizeof(tag); ++packetHead)
+			if (memcmp(packetHead, &temp, sizeof(tag))== 0)
+				break;
+
+		if ((packetHead - d_netWorkBuffer) + sizeof(tagCOMM_PACKET1) < d_bytesReceived)
+		{
+			auto packetSize = *((unsigned short*)(d_netWorkBuffer + (packetHead - d_netWorkBuffer) + 4));
+
+			if (d_bytesReceived - (packetHead - d_netWorkBuffer) < packetSize)
+				break;
+			else
+			{
+				decodePackages(packetHead, packetSize);
+				posecessedDataLenth = packetSize + (packetHead - d_netWorkBuffer);
+			}
+		}
+		else
+			break;
+	}
+
+	if (posecessedDataLenth > 0)
+	{
+		memmove(d_netWorkBuffer, d_netWorkBuffer + posecessedDataLenth, d_bytesReceived - posecessedDataLenth);
+		d_bytesReceived -= posecessedDataLenth;
+	}
 }
 
 void SimotionController::decodePackages(char* in_package, int in_size)

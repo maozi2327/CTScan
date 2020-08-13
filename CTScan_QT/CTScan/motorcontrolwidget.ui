@@ -578,7 +578,7 @@
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QPushButton" name="objRotNegtiveButton">
+            <widget class="QPushButton" name="objRotNegativeButton">
              <property name="minimumSize">
               <size>
                <width>25</width>
@@ -1333,22 +1333,5 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections>
-  <connection>
-   <sender>objRotNegtiveButton</sender>
-   <signal>clicked()</signal>
-   <receiver>objRotNegtiveButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>81</x>
-     <y>79</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>81</x>
-     <y>78</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

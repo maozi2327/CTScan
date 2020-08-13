@@ -233,6 +233,9 @@
     <ClInclude Include="ct2scan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\util\tcpserver.h">
+      <Filter>Header Files\utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="setupdataparser.h">
@@ -266,9 +269,6 @@
       <Filter>Header Files\utility</Filter>
     </QtMoc>
     <QtMoc Include="..\Public\util\tcpclient.h">
-      <Filter>Header Files\utility</Filter>
-    </QtMoc>
-    <QtMoc Include="..\Public\util\tcpserver.h">
       <Filter>Header Files\utility</Filter>
     </QtMoc>
     <QtMoc Include="motorcontrolwidget.h">

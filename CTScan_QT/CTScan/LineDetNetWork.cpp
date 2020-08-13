@@ -13,7 +13,7 @@ LineDetNetWork::LineDetNetWork(unsigned short in_port)
 		//, QHostAddress::Any, 4000)
 	)
 {
-	connect(d_server.get(), SIGNAL(netWorkStatusSignal(bool)), this, SLOT(netWorkStatusSlot));
+	//connect(d_server.get(), SIGNAL(netWorkStatusSignal(bool)), this, SLOT(netWorkStatusSlot));
 }
 
 

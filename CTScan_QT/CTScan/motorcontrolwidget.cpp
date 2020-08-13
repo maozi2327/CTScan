@@ -32,7 +32,6 @@ void MotorControlWidget::updateAxisStatus()
 	ui.detRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::detRadial]));
 	ui.detTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::detTranslation]));
 }
-
 void MotorControlWidget::on_objRotNegativeButton_clicked()
 {
 	d_controller->axisRelMove(Axis::objRotation, -ui.objRotationPosEdit->text().toFloat());
