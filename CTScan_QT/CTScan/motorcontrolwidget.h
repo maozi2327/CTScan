@@ -19,6 +19,7 @@ public:
 private:
 	Ui::MotorControlWidget ui;
 	void updateAxisStatus();
+	QTimer* d_timer;
 private slots:
 	void on_objRotAbsPosButton_clicked();
 	void on_objRotNegativeButton_clicked();
@@ -47,4 +48,6 @@ private slots:
 	void on_rayLayerAbsPosButton_clicked();
 	void on_rayLayerNegativeButton_clicked();
 	void on_rayLayerPositiveButton_clicked();
+
+	void updateStatus();
 };

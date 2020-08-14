@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string/>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>11</x>
@@ -50,7 +50,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="rayWrox225Tab">
        <attribute name="title">
@@ -201,14 +201,8 @@
          </widget>
         </item>
        </layout>
-       <zorder>worx225kvStaticLabel_2</zorder>
        <zorder>worx225XRayOffButton_2</zorder>
        <zorder>worx225XRayOnButton_2</zorder>
-       <zorder>worx225EmissionCurrentEdit_2</zorder>
-       <zorder>worx225uaStaticLabel_2</zorder>
-       <zorder>worx225VoltageInputEdit</zorder>
-       <zorder>worx225FocusStaticLabel_2</zorder>
-       <zorder>worx225FocusComboBox_2</zorder>
       </widget>
       <widget class="QWidget" name="rayComet450Tab">
        <attribute name="title">
@@ -1897,12 +1891,6 @@
     </item>
    </layout>
   </widget>
-  <zorder>layoutWidget</zorder>
-  <zorder>scanModeTab</zorder>
-  <zorder>rayTab</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>horizontalSpacer_6</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

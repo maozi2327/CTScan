@@ -148,6 +148,8 @@ void TcpServer::sendThread(std::promise<bool>& in_promise)
 					if (bytesSend == cmd.in_size)
 						break;
 				}
+
+				std::this_thread::sleep_for(std::chrono::milliseconds(50));
 			}
 		}
 	}

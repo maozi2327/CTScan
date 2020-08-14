@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -21,6 +22,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -29,30 +31,43 @@ class Ui_LineDetScanWidget
 {
 public:
     QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_3;
+    QTabWidget *rayTab;
+    QWidget *rayWrox225Tab;
+    QHBoxLayout *horizontalLayout_4;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
+    QLineEdit *worx225VoltageInputEdit;
+    QLabel *worx225kvStaticLabel_2;
+    QLineEdit *worx225EmissionCurrentEdit_2;
+    QLabel *worx225uaStaticLabel_2;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *worx225FocusStaticLabel_2;
+    QComboBox *worx225FocusComboBox_2;
+    QPushButton *worx225XRayOnButton_2;
+    QPushButton *worx225XRayOffButton_2;
+    QWidget *rayComet450Tab;
+    QHBoxLayout *horizontalLayout_7;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_5;
+    QLineEdit *Comet450VoltageInputEdit;
+    QLabel *Comet450kvStaticLabel;
+    QLineEdit *Comet450EmissionCurrentEdit;
+    QLabel *Comet450uaStaticLabel;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *Comet450FocusStaticLabel;
+    QComboBox *Comet450FocusComboBox;
+    QPushButton *Comet450XRayOnButton;
+    QPushButton *Comet450XRayOffButton;
     QHBoxLayout *horizontalLayout;
     QPushButton *saveDirButton;
     QSpacerItem *horizontalSpacer_2;
     QLabel *label_6;
     QLineEdit *fileNameEdit;
-    QTabWidget *rayTab;
-    QWidget *rayWrox225Tab;
-    QPushButton *worx225XRayOffButton_2;
-    QLabel *worx225kvStaticLabel_2;
-    QLabel *worx225uaStaticLabel_2;
-    QPushButton *worx225XRayOnButton_2;
-    QLineEdit *worx225EmissionCurrentEdit_2;
-    QLineEdit *worx225VoltageInputEdit;
-    QLabel *worx225FocusStaticLabel_2;
-    QComboBox *worx225FocusComboBox_2;
-    QWidget *rayComet450Tab;
-    QLabel *Comet450uaStaticLabel;
-    QLineEdit *Comet450VoltageInputEdit;
-    QLabel *Comet450kvStaticLabel;
-    QPushButton *Comet450XRayOnButton;
-    QLabel *Comet450FocusStaticLabel;
-    QComboBox *Comet450FocusComboBox;
-    QLineEdit *Comet450EmissionCurrentEdit;
-    QPushButton *Comet450XRayOffButton;
+    QHBoxLayout *horizontalLayout_8;
+    QFrame *line;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QTabWidget *scanModeTab;
     QWidget *ct3Tab;
     QGridLayout *gridLayout_9;
@@ -142,17 +157,192 @@ public:
     {
         if (LineDetScanWidget->objectName().isEmpty())
             LineDetScanWidget->setObjectName(QStringLiteral("LineDetScanWidget"));
-        LineDetScanWidget->resize(303, 550);
+        LineDetScanWidget->resize(307, 602);
         LineDetScanWidget->setMinimumSize(QSize(300, 550));
-        LineDetScanWidget->setMaximumSize(QSize(1000, 550));
+        LineDetScanWidget->setMaximumSize(QSize(1000, 1000));
         layoutWidget = new QWidget(LineDetScanWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(11, 99, 281, 27));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
+        layoutWidget->setGeometry(QRect(11, 11, 282, 585));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        rayTab = new QTabWidget(layoutWidget);
+        rayTab->setObjectName(QStringLiteral("rayTab"));
+        rayTab->setMinimumSize(QSize(280, 80));
+        rayTab->setMaximumSize(QSize(280, 5000));
+        rayWrox225Tab = new QWidget();
+        rayWrox225Tab->setObjectName(QStringLiteral("rayWrox225Tab"));
+        horizontalLayout_4 = new QHBoxLayout(rayWrox225Tab);
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        worx225VoltageInputEdit = new QLineEdit(rayWrox225Tab);
+        worx225VoltageInputEdit->setObjectName(QStringLiteral("worx225VoltageInputEdit"));
+        worx225VoltageInputEdit->setMinimumSize(QSize(40, 20));
+        worx225VoltageInputEdit->setMaximumSize(QSize(40, 20));
+
+        horizontalLayout_2->addWidget(worx225VoltageInputEdit);
+
+        worx225kvStaticLabel_2 = new QLabel(rayWrox225Tab);
+        worx225kvStaticLabel_2->setObjectName(QStringLiteral("worx225kvStaticLabel_2"));
+        worx225kvStaticLabel_2->setMinimumSize(QSize(25, 18));
+        worx225kvStaticLabel_2->setMaximumSize(QSize(25, 18));
+
+        horizontalLayout_2->addWidget(worx225kvStaticLabel_2);
+
+        worx225EmissionCurrentEdit_2 = new QLineEdit(rayWrox225Tab);
+        worx225EmissionCurrentEdit_2->setObjectName(QStringLiteral("worx225EmissionCurrentEdit_2"));
+        worx225EmissionCurrentEdit_2->setMinimumSize(QSize(40, 20));
+        worx225EmissionCurrentEdit_2->setMaximumSize(QSize(40, 20));
+
+        horizontalLayout_2->addWidget(worx225EmissionCurrentEdit_2);
+
+        worx225uaStaticLabel_2 = new QLabel(rayWrox225Tab);
+        worx225uaStaticLabel_2->setObjectName(QStringLiteral("worx225uaStaticLabel_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(25);
+        sizePolicy.setVerticalStretch(18);
+        sizePolicy.setHeightForWidth(worx225uaStaticLabel_2->sizePolicy().hasHeightForWidth());
+        worx225uaStaticLabel_2->setSizePolicy(sizePolicy);
+        worx225uaStaticLabel_2->setMinimumSize(QSize(25, 18));
+
+        horizontalLayout_2->addWidget(worx225uaStaticLabel_2);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        worx225FocusStaticLabel_2 = new QLabel(rayWrox225Tab);
+        worx225FocusStaticLabel_2->setObjectName(QStringLiteral("worx225FocusStaticLabel_2"));
+
+        horizontalLayout_3->addWidget(worx225FocusStaticLabel_2);
+
+        worx225FocusComboBox_2 = new QComboBox(rayWrox225Tab);
+        worx225FocusComboBox_2->setObjectName(QStringLiteral("worx225FocusComboBox_2"));
+        worx225FocusComboBox_2->setMinimumSize(QSize(60, 20));
+        worx225FocusComboBox_2->setMaximumSize(QSize(60, 20));
+
+        horizontalLayout_3->addWidget(worx225FocusComboBox_2);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
+
+
+        horizontalLayout_4->addLayout(verticalLayout);
+
+        worx225XRayOnButton_2 = new QPushButton(rayWrox225Tab);
+        worx225XRayOnButton_2->setObjectName(QStringLiteral("worx225XRayOnButton_2"));
+        worx225XRayOnButton_2->setMinimumSize(QSize(60, 40));
+        worx225XRayOnButton_2->setMaximumSize(QSize(60, 40));
+
+        horizontalLayout_4->addWidget(worx225XRayOnButton_2);
+
+        worx225XRayOffButton_2 = new QPushButton(rayWrox225Tab);
+        worx225XRayOffButton_2->setObjectName(QStringLiteral("worx225XRayOffButton_2"));
+        worx225XRayOffButton_2->setMinimumSize(QSize(60, 40));
+        worx225XRayOffButton_2->setMaximumSize(QSize(60, 40));
+
+        horizontalLayout_4->addWidget(worx225XRayOffButton_2);
+
+        rayTab->addTab(rayWrox225Tab, QString());
+        worx225XRayOffButton_2->raise();
+        worx225XRayOnButton_2->raise();
+        rayComet450Tab = new QWidget();
+        rayComet450Tab->setObjectName(QStringLiteral("rayComet450Tab"));
+        horizontalLayout_7 = new QHBoxLayout(rayComet450Tab);
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        Comet450VoltageInputEdit = new QLineEdit(rayComet450Tab);
+        Comet450VoltageInputEdit->setObjectName(QStringLiteral("Comet450VoltageInputEdit"));
+        Comet450VoltageInputEdit->setMinimumSize(QSize(40, 20));
+        Comet450VoltageInputEdit->setMaximumSize(QSize(40, 20));
+
+        horizontalLayout_5->addWidget(Comet450VoltageInputEdit);
+
+        Comet450kvStaticLabel = new QLabel(rayComet450Tab);
+        Comet450kvStaticLabel->setObjectName(QStringLiteral("Comet450kvStaticLabel"));
+        Comet450kvStaticLabel->setMinimumSize(QSize(25, 18));
+        Comet450kvStaticLabel->setMaximumSize(QSize(25, 18));
+
+        horizontalLayout_5->addWidget(Comet450kvStaticLabel);
+
+        Comet450EmissionCurrentEdit = new QLineEdit(rayComet450Tab);
+        Comet450EmissionCurrentEdit->setObjectName(QStringLiteral("Comet450EmissionCurrentEdit"));
+        Comet450EmissionCurrentEdit->setMinimumSize(QSize(40, 20));
+        Comet450EmissionCurrentEdit->setMaximumSize(QSize(40, 20));
+
+        horizontalLayout_5->addWidget(Comet450EmissionCurrentEdit);
+
+        Comet450uaStaticLabel = new QLabel(rayComet450Tab);
+        Comet450uaStaticLabel->setObjectName(QStringLiteral("Comet450uaStaticLabel"));
+        sizePolicy.setHeightForWidth(Comet450uaStaticLabel->sizePolicy().hasHeightForWidth());
+        Comet450uaStaticLabel->setSizePolicy(sizePolicy);
+        Comet450uaStaticLabel->setMinimumSize(QSize(25, 18));
+
+        horizontalLayout_5->addWidget(Comet450uaStaticLabel);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_5);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        Comet450FocusStaticLabel = new QLabel(rayComet450Tab);
+        Comet450FocusStaticLabel->setObjectName(QStringLiteral("Comet450FocusStaticLabel"));
+
+        horizontalLayout_6->addWidget(Comet450FocusStaticLabel);
+
+        Comet450FocusComboBox = new QComboBox(rayComet450Tab);
+        Comet450FocusComboBox->setObjectName(QStringLiteral("Comet450FocusComboBox"));
+        Comet450FocusComboBox->setMinimumSize(QSize(60, 20));
+        Comet450FocusComboBox->setMaximumSize(QSize(60, 20));
+
+        horizontalLayout_6->addWidget(Comet450FocusComboBox);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_6);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_2);
+
+        Comet450XRayOnButton = new QPushButton(rayComet450Tab);
+        Comet450XRayOnButton->setObjectName(QStringLiteral("Comet450XRayOnButton"));
+        Comet450XRayOnButton->setMinimumSize(QSize(60, 40));
+        Comet450XRayOnButton->setMaximumSize(QSize(60, 40));
+
+        horizontalLayout_7->addWidget(Comet450XRayOnButton);
+
+        Comet450XRayOffButton = new QPushButton(rayComet450Tab);
+        Comet450XRayOffButton->setObjectName(QStringLiteral("Comet450XRayOffButton"));
+        Comet450XRayOffButton->setMinimumSize(QSize(60, 40));
+        Comet450XRayOffButton->setMaximumSize(QSize(60, 40));
+
+        horizontalLayout_7->addWidget(Comet450XRayOffButton);
+
+        rayTab->addTab(rayComet450Tab, QString());
+
+        verticalLayout_3->addWidget(rayTab);
+
+        horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         saveDirButton = new QPushButton(layoutWidget);
         saveDirButton->setObjectName(QStringLiteral("saveDirButton"));
         saveDirButton->setMinimumSize(QSize(30, 25));
@@ -176,109 +366,39 @@ public:
 
         horizontalLayout->addWidget(fileNameEdit);
 
-        rayTab = new QTabWidget(LineDetScanWidget);
-        rayTab->setObjectName(QStringLiteral("rayTab"));
-        rayTab->setGeometry(QRect(11, 13, 280, 80));
-        rayTab->setMinimumSize(QSize(280, 80));
-        rayTab->setMaximumSize(QSize(500, 80));
-        rayWrox225Tab = new QWidget();
-        rayWrox225Tab->setObjectName(QStringLiteral("rayWrox225Tab"));
-        worx225XRayOffButton_2 = new QPushButton(rayWrox225Tab);
-        worx225XRayOffButton_2->setObjectName(QStringLiteral("worx225XRayOffButton_2"));
-        worx225XRayOffButton_2->setGeometry(QRect(230, 15, 60, 40));
-        worx225XRayOffButton_2->setMinimumSize(QSize(60, 40));
-        worx225XRayOffButton_2->setMaximumSize(QSize(60, 40));
-        worx225kvStaticLabel_2 = new QLabel(rayWrox225Tab);
-        worx225kvStaticLabel_2->setObjectName(QStringLiteral("worx225kvStaticLabel_2"));
-        worx225kvStaticLabel_2->setGeometry(QRect(60, 10, 25, 18));
-        worx225kvStaticLabel_2->setMinimumSize(QSize(25, 18));
-        worx225kvStaticLabel_2->setMaximumSize(QSize(25, 18));
-        worx225uaStaticLabel_2 = new QLabel(rayWrox225Tab);
-        worx225uaStaticLabel_2->setObjectName(QStringLiteral("worx225uaStaticLabel_2"));
-        worx225uaStaticLabel_2->setGeometry(QRect(130, 15, 25, 18));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(25);
-        sizePolicy.setVerticalStretch(18);
-        sizePolicy.setHeightForWidth(worx225uaStaticLabel_2->sizePolicy().hasHeightForWidth());
-        worx225uaStaticLabel_2->setSizePolicy(sizePolicy);
-        worx225uaStaticLabel_2->setMinimumSize(QSize(25, 18));
-        worx225XRayOnButton_2 = new QPushButton(rayWrox225Tab);
-        worx225XRayOnButton_2->setObjectName(QStringLiteral("worx225XRayOnButton_2"));
-        worx225XRayOnButton_2->setGeometry(QRect(164, 15, 60, 40));
-        worx225XRayOnButton_2->setMinimumSize(QSize(60, 40));
-        worx225XRayOnButton_2->setMaximumSize(QSize(60, 40));
-        worx225EmissionCurrentEdit_2 = new QLineEdit(rayWrox225Tab);
-        worx225EmissionCurrentEdit_2->setObjectName(QStringLiteral("worx225EmissionCurrentEdit_2"));
-        worx225EmissionCurrentEdit_2->setGeometry(QRect(71, 15, 60, 20));
-        worx225EmissionCurrentEdit_2->setMinimumSize(QSize(60, 20));
-        worx225EmissionCurrentEdit_2->setMaximumSize(QSize(60, 20));
-        worx225VoltageInputEdit = new QLineEdit(rayWrox225Tab);
-        worx225VoltageInputEdit->setObjectName(QStringLiteral("worx225VoltageInputEdit"));
-        worx225VoltageInputEdit->setGeometry(QRect(0, 15, 60, 20));
-        worx225VoltageInputEdit->setMinimumSize(QSize(60, 20));
-        worx225VoltageInputEdit->setMaximumSize(QSize(60, 20));
-        worx225FocusStaticLabel_2 = new QLabel(rayWrox225Tab);
-        worx225FocusStaticLabel_2->setObjectName(QStringLiteral("worx225FocusStaticLabel_2"));
-        worx225FocusStaticLabel_2->setGeometry(QRect(9, 40, 24, 16));
-        worx225FocusComboBox_2 = new QComboBox(rayWrox225Tab);
-        worx225FocusComboBox_2->setObjectName(QStringLiteral("worx225FocusComboBox_2"));
-        worx225FocusComboBox_2->setGeometry(QRect(71, 33, 60, 20));
-        worx225FocusComboBox_2->setMinimumSize(QSize(60, 20));
-        worx225FocusComboBox_2->setMaximumSize(QSize(60, 20));
-        rayTab->addTab(rayWrox225Tab, QString());
-        worx225kvStaticLabel_2->raise();
-        worx225XRayOffButton_2->raise();
-        worx225XRayOnButton_2->raise();
-        worx225EmissionCurrentEdit_2->raise();
-        worx225uaStaticLabel_2->raise();
-        worx225VoltageInputEdit->raise();
-        worx225FocusStaticLabel_2->raise();
-        worx225FocusComboBox_2->raise();
-        rayComet450Tab = new QWidget();
-        rayComet450Tab->setObjectName(QStringLiteral("rayComet450Tab"));
-        Comet450uaStaticLabel = new QLabel(rayComet450Tab);
-        Comet450uaStaticLabel->setObjectName(QStringLiteral("Comet450uaStaticLabel"));
-        Comet450uaStaticLabel->setGeometry(QRect(10, 10, 25, 18));
-        sizePolicy.setHeightForWidth(Comet450uaStaticLabel->sizePolicy().hasHeightForWidth());
-        Comet450uaStaticLabel->setSizePolicy(sizePolicy);
-        Comet450uaStaticLabel->setMinimumSize(QSize(25, 18));
-        Comet450VoltageInputEdit = new QLineEdit(rayComet450Tab);
-        Comet450VoltageInputEdit->setObjectName(QStringLiteral("Comet450VoltageInputEdit"));
-        Comet450VoltageInputEdit->setGeometry(QRect(10, 126, 40, 20));
-        Comet450VoltageInputEdit->setMinimumSize(QSize(40, 20));
-        Comet450VoltageInputEdit->setMaximumSize(QSize(40, 20));
-        Comet450kvStaticLabel = new QLabel(rayComet450Tab);
-        Comet450kvStaticLabel->setObjectName(QStringLiteral("Comet450kvStaticLabel"));
-        Comet450kvStaticLabel->setGeometry(QRect(10, 178, 25, 18));
-        Comet450kvStaticLabel->setMinimumSize(QSize(25, 18));
-        Comet450kvStaticLabel->setMaximumSize(QSize(25, 18));
-        Comet450XRayOnButton = new QPushButton(rayComet450Tab);
-        Comet450XRayOnButton->setObjectName(QStringLiteral("Comet450XRayOnButton"));
-        Comet450XRayOnButton->setGeometry(QRect(10, 80, 60, 40));
-        Comet450XRayOnButton->setMinimumSize(QSize(60, 40));
-        Comet450XRayOnButton->setMaximumSize(QSize(60, 40));
-        Comet450FocusStaticLabel = new QLabel(rayComet450Tab);
-        Comet450FocusStaticLabel->setObjectName(QStringLiteral("Comet450FocusStaticLabel"));
-        Comet450FocusStaticLabel->setGeometry(QRect(10, 228, 24, 16));
-        Comet450FocusComboBox = new QComboBox(rayComet450Tab);
-        Comet450FocusComboBox->setObjectName(QStringLiteral("Comet450FocusComboBox"));
-        Comet450FocusComboBox->setGeometry(QRect(10, 202, 40, 20));
-        Comet450FocusComboBox->setMinimumSize(QSize(40, 20));
-        Comet450FocusComboBox->setMaximumSize(QSize(40, 20));
-        Comet450EmissionCurrentEdit = new QLineEdit(rayComet450Tab);
-        Comet450EmissionCurrentEdit->setObjectName(QStringLiteral("Comet450EmissionCurrentEdit"));
-        Comet450EmissionCurrentEdit->setGeometry(QRect(10, 152, 40, 20));
-        Comet450EmissionCurrentEdit->setMinimumSize(QSize(40, 20));
-        Comet450EmissionCurrentEdit->setMaximumSize(QSize(40, 20));
-        Comet450XRayOffButton = new QPushButton(rayComet450Tab);
-        Comet450XRayOffButton->setObjectName(QStringLiteral("Comet450XRayOffButton"));
-        Comet450XRayOffButton->setGeometry(QRect(10, 34, 60, 40));
-        Comet450XRayOffButton->setMinimumSize(QSize(60, 40));
-        Comet450XRayOffButton->setMaximumSize(QSize(60, 40));
-        rayTab->addTab(rayComet450Tab, QString());
-        scanModeTab = new QTabWidget(LineDetScanWidget);
+
+        verticalLayout_3->addLayout(horizontalLayout);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        line = new QFrame(layoutWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_8->addWidget(line);
+
+        pushButton = new QPushButton(layoutWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setMinimumSize(QSize(75, 40));
+        pushButton->setMaximumSize(QSize(75, 40));
+
+        horizontalLayout_8->addWidget(pushButton);
+
+        pushButton_2 = new QPushButton(layoutWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setMinimumSize(QSize(75, 40));
+        pushButton_2->setMaximumSize(QSize(75, 40));
+
+        horizontalLayout_8->addWidget(pushButton_2);
+
+        horizontalLayout_8->setStretch(0, 1);
+
+        verticalLayout_3->addLayout(horizontalLayout_8);
+
+        scanModeTab = new QTabWidget(layoutWidget);
         scanModeTab->setObjectName(QStringLiteral("scanModeTab"));
-        scanModeTab->setGeometry(QRect(11, 132, 280, 400));
         scanModeTab->setMinimumSize(QSize(280, 400));
         scanModeTab->setMaximumSize(QSize(280, 400));
         ct3Tab = new QWidget();
@@ -896,10 +1016,13 @@ public:
 
         scanModeTab->addTab(drTab, QString());
 
+        verticalLayout_3->addWidget(scanModeTab);
+
+
         retranslateUi(LineDetScanWidget);
 
-        rayTab->setCurrentIndex(1);
-        scanModeTab->setCurrentIndex(0);
+        rayTab->setCurrentIndex(0);
+        scanModeTab->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(LineDetScanWidget);
@@ -908,20 +1031,22 @@ public:
     void retranslateUi(QWidget *LineDetScanWidget)
     {
         LineDetScanWidget->setWindowTitle(QString());
-        saveDirButton->setText(QApplication::translate("LineDetScanWidget", "\344\277\235\345\255\230\350\267\257\345\276\204", nullptr));
-        label_6->setText(QApplication::translate("LineDetScanWidget", "\346\226\207\344\273\266\345\220\215", nullptr));
-        worx225XRayOffButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\235\237", nullptr));
         worx225kvStaticLabel_2->setText(QApplication::translate("LineDetScanWidget", "KV", nullptr));
         worx225uaStaticLabel_2->setText(QApplication::translate("LineDetScanWidget", "\316\274A", nullptr));
-        worx225XRayOnButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\207\272\346\235\237", nullptr));
         worx225FocusStaticLabel_2->setText(QApplication::translate("LineDetScanWidget", "\347\204\246\347\202\271", nullptr));
+        worx225XRayOnButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\207\272\346\235\237", nullptr));
+        worx225XRayOffButton_2->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\235\237", nullptr));
         rayTab->setTabText(rayTab->indexOf(rayWrox225Tab), QApplication::translate("LineDetScanWidget", "WROX", nullptr));
-        Comet450uaStaticLabel->setText(QApplication::translate("LineDetScanWidget", "\316\274A", nullptr));
         Comet450kvStaticLabel->setText(QApplication::translate("LineDetScanWidget", "KV", nullptr));
-        Comet450XRayOnButton->setText(QApplication::translate("LineDetScanWidget", "\345\207\272\346\235\237", nullptr));
+        Comet450uaStaticLabel->setText(QApplication::translate("LineDetScanWidget", "\316\274A", nullptr));
         Comet450FocusStaticLabel->setText(QApplication::translate("LineDetScanWidget", "\347\204\246\347\202\271", nullptr));
+        Comet450XRayOnButton->setText(QApplication::translate("LineDetScanWidget", "\345\207\272\346\235\237", nullptr));
         Comet450XRayOffButton->setText(QApplication::translate("LineDetScanWidget", "\345\201\234\346\235\237", nullptr));
         rayTab->setTabText(rayTab->indexOf(rayComet450Tab), QApplication::translate("LineDetScanWidget", "COMET", nullptr));
+        saveDirButton->setText(QApplication::translate("LineDetScanWidget", "\344\277\235\345\255\230\350\267\257\345\276\204", nullptr));
+        label_6->setText(QApplication::translate("LineDetScanWidget", "\346\226\207\344\273\266\345\220\215", nullptr));
+        pushButton->setText(QApplication::translate("LineDetScanWidget", "\350\203\214\346\231\257\346\240\241\346\255\243", nullptr));
+        pushButton_2->setText(QApplication::translate("LineDetScanWidget", "\347\251\272\346\260\224\346\240\241\346\255\243", nullptr));
         label_53->setText(QApplication::translate("LineDetScanWidget", "\345\275\223\345\211\215/\345\244\232\345\261\202", nullptr));
         label->setText(QApplication::translate("LineDetScanWidget", "\345\233\276\345\203\217\347\237\251\351\230\265", nullptr));
         label_2->setText(QApplication::translate("LineDetScanWidget", "\350\247\206\345\234\272\347\233\264\345\276\204", nullptr));

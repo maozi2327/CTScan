@@ -12,13 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,113 +28,164 @@ class Ui_MotorControlWidget
 {
 public:
     QGroupBox *motionGroupBox;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_11;
-    QVBoxLayout *verticalLayout_4;
-    QHBoxLayout *objTranslationLayout;
+    QFrame *detLayerLine;
+    QFrame *objTranslationLine;
+    QPushButton *objTranslationAbsPosButton;
     QLabel *label_6;
-    QGridLayout *objTranslationLayout_2;
     QLineEdit *objTranslationPosEdit;
     QPushButton *objTranslationNegtiveButton;
     QPushButton *objTranslationPositiveButton;
-    QPushButton *objTranslationAbsPosButton;
-    QVBoxLayout *objTranslationLayout3;
     QLabel *objTranslationStaticLabel;
-    QSlider *objTranslationHorizontalSlider;
-    QFrame *objTranslationLine;
-    QVBoxLayout *verticalLayout_5;
-    QHBoxLayout *deflectLayout1;
+    QFrame *objRotLine;
     QLabel *label_2;
-    QGridLayout *deflectLayout2;
+    QPushButton *deflectAbsPosButton;
     QLineEdit *deflectPosEdit;
     QPushButton *deflectNegtiveButton;
     QPushButton *deflectPositiveButton;
-    QPushButton *deflectAbsPosButton;
-    QVBoxLayout *deflectLayout3;
     QLabel *deflectStaticLabel;
-    QSlider *deflectHorizontalSlider;
-    QFrame *objRotLine;
-    QVBoxLayout *verticalLayout_6;
-    QHBoxLayout *objRadialLayout1;
+    QFrame *objRadialLine;
     QLabel *label_7;
-    QGridLayout *objRadialLayout2;
+    QPushButton *objRadialAbsPosButton;
     QLineEdit *objRadialPosEdit;
     QPushButton *objRadialNegtiveButton;
     QPushButton *obRadialPositiveButton;
-    QPushButton *objRadialAbsPosButton;
-    QVBoxLayout *objRadialLayout3;
     QLabel *objRadialStaticLabel;
-    QSlider *objRadialHorizontalSlider;
-    QFrame *objRadialLine;
-    QVBoxLayout *verticalLayout_3;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QGridLayout *gridLayout;
-    QLineEdit *objRotationPosEdit;
-    QPushButton *objRotNegativeButton;
-    QPushButton *objRotPositiveButton;
-    QPushButton *objRotAbsPosButton;
-    QVBoxLayout *objRotLayout3;
-    QLabel *objRotStaticLabel;
-    QSlider *objRotHorizontalSlider;
-    QFrame *deflectLine;
-    QVBoxLayout *verticalLayout_7;
-    QHBoxLayout *detRadialLayout1;
-    QLabel *label_5;
-    QGridLayout *detRadialLayout2;
-    QLineEdit *detRadialPosEdit;
-    QPushButton *detRadialNegtiveButton;
-    QPushButton *detRadialPositiveButton;
-    QPushButton *detRadialAbsPosButton;
-    QVBoxLayout *detRadialLayout3;
-    QLabel *detRadialStaticLabel;
-    QSlider *detRadialHorizontalSlider;
-    QFrame *detRadialLine;
-    QVBoxLayout *verticalLayout_8;
-    QHBoxLayout *detTranslationLayout1;
-    QLabel *label_4;
-    QGridLayout *detTranslationLayout2;
-    QLineEdit *detTranslationPosEdit;
-    QPushButton *detTranslationNegtiveButton;
-    QPushButton *detTranslationPositiveButton;
-    QPushButton *detTranslationAbsPosButton;
-    QVBoxLayout *detTranslationLayout3;
-    QLabel *detTranslationStaticLabel;
-    QSlider *detTranslationHorizontalSlider;
-    QFrame *detTranslationLine;
-    QVBoxLayout *verticalLayout_9;
-    QHBoxLayout *detLayerLayout1;
-    QLabel *label_3;
-    QGridLayout *detLayerLayout2;
-    QLineEdit *detLayerPosEdit;
-    QPushButton *detLayerNegtiveButton;
-    QPushButton *detLayerPositiveButton;
-    QPushButton *detLayerAbsPosButton;
-    QVBoxLayout *verticalLayout;
-    QLabel *detLayerStaticLabel;
-    QSlider *detLayerHorizontalSlider;
-    QFrame *detLayerLine;
-    QVBoxLayout *verticalLayout_10;
-    QHBoxLayout *detLayerLayout1_2;
+    QFrame *rayLayerLine;
     QLabel *label_8;
-    QGridLayout *detLayerLayout2_2;
+    QPushButton *rayLayerAbsPosButton;
     QLineEdit *rayLayerPosEdit;
     QPushButton *rayLayerNegtiveButton;
     QPushButton *rayLayerPositiveButton;
-    QPushButton *rayLayerAbsPosButton;
-    QVBoxLayout *verticalLayout_2;
     QLabel *rayLayerStaticLabel;
+    QFrame *deflectLine;
+    QLabel *label;
+    QPushButton *objRotAbsPosButton;
+    QLineEdit *objRotationPosEdit;
+    QPushButton *objRotNegativeButton;
+    QPushButton *objRotPositiveButton;
+    QLabel *objRotStaticLabel;
+    QFrame *detRadialLine;
+    QLabel *label_5;
+    QPushButton *detRadialAbsPosButton;
+    QLineEdit *detRadialPosEdit;
+    QPushButton *detRadialNegtiveButton;
+    QPushButton *detRadialPositiveButton;
+    QLabel *detRadialStaticLabel;
+    QFrame *detTranslationLine;
+    QLabel *label_4;
+    QPushButton *detTranslationAbsPosButton;
+    QLineEdit *detTranslationPosEdit;
+    QPushButton *detTranslationNegtiveButton;
+    QPushButton *detTranslationPositiveButton;
+    QLabel *detTranslationStaticLabel;
+    QLabel *label_3;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *horizontalLayout_2;
+    QVBoxLayout *verticalLayout_2;
+    QLineEdit *detLayerPosEdit;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *detLayerNegtiveButton;
+    QPushButton *detLayerPositiveButton;
+    QVBoxLayout *verticalLayout;
+    QLabel *detLayerStaticLabel;
+    QPushButton *detLayerAbsPosButton;
+    QPushButton *detLayerAbsPosButton_2;
+    QSlider *objRotHorizontalSlider;
+    QSlider *objTranslationHorizontalSlider;
+    QSlider *detTranslationHorizontalSlider;
+    QSlider *deflectHorizontalSlider;
+    QSlider *detRadialHorizontalSlider;
+    QSlider *detLayerHorizontalSlider;
     QSlider *rayLayerHorizontalSlider;
-    QFrame *rayLayerLine;
+    QSlider *objRadialHorizontalSlider;
+    QTabWidget *tabWidget;
+    QWidget *tab;
+    QHBoxLayout *horizontalLayout_9;
+    QHBoxLayout *horizontalLayout_7;
+    QVBoxLayout *verticalLayout_5;
+    QLineEdit *detLayerPosEdit_3;
+    QHBoxLayout *horizontalLayout_8;
+    QPushButton *detLayerNegtiveButton_3;
+    QPushButton *detLayerPositiveButton_3;
+    QVBoxLayout *verticalLayout_6;
+    QLabel *detLayerStaticLabel_3;
+    QPushButton *detLayerAbsPosButton_5;
+    QPushButton *detLayerAbsPosButton_6;
+    QWidget *tab2;
+    QHBoxLayout *horizontalLayout_4;
+    QHBoxLayout *horizontalLayout_5;
+    QVBoxLayout *verticalLayout_3;
+    QLineEdit *detLayerPosEdit_2;
+    QHBoxLayout *horizontalLayout_6;
+    QPushButton *detLayerNegtiveButton_2;
+    QPushButton *detLayerPositiveButton_2;
+    QVBoxLayout *verticalLayout_4;
+    QLabel *detLayerStaticLabel_2;
+    QPushButton *detLayerAbsPosButton_3;
+    QPushButton *detLayerAbsPosButton_4;
+    QWidget *tab_4;
+    QWidget *tab_5;
+    QTabWidget *tabWidget_2;
+    QWidget *tab_2;
+    QHBoxLayout *horizontalLayout_10;
+    QHBoxLayout *horizontalLayout_11;
+    QVBoxLayout *verticalLayout_7;
+    QLineEdit *detLayerPosEdit_4;
+    QHBoxLayout *horizontalLayout_12;
+    QPushButton *detLayerNegtiveButton_4;
+    QPushButton *detLayerPositiveButton_4;
+    QVBoxLayout *verticalLayout_8;
+    QLabel *detLayerStaticLabel_4;
+    QPushButton *detLayerAbsPosButton_7;
+    QPushButton *detLayerAbsPosButton_8;
+    QWidget *tab2_2;
+    QHBoxLayout *horizontalLayout_13;
+    QHBoxLayout *horizontalLayout_14;
+    QVBoxLayout *verticalLayout_9;
+    QLineEdit *detLayerPosEdit_5;
+    QHBoxLayout *horizontalLayout_15;
+    QPushButton *detLayerNegtiveButton_5;
+    QPushButton *detLayerPositiveButton_5;
+    QVBoxLayout *verticalLayout_10;
+    QLabel *detLayerStaticLabel_5;
+    QPushButton *detLayerAbsPosButton_9;
+    QPushButton *detLayerAbsPosButton_10;
+    QTabWidget *tabWidget_3;
+    QWidget *tab_3;
+    QWidget *layoutWidget_3;
+    QHBoxLayout *horizontalLayout_16;
+    QHBoxLayout *horizontalLayout_17;
+    QVBoxLayout *verticalLayout_11;
+    QLineEdit *detLayerPosEdit_6;
+    QHBoxLayout *horizontalLayout_18;
+    QPushButton *detLayerNegtiveButton_6;
+    QPushButton *detLayerPositiveButton_6;
+    QVBoxLayout *verticalLayout_12;
+    QLabel *detLayerStaticLabel_6;
+    QPushButton *detLayerAbsPosButton_11;
+    QPushButton *detLayerAbsPosButton_12;
+    QWidget *tab2_3;
+    QHBoxLayout *horizontalLayout_19;
+    QHBoxLayout *horizontalLayout_20;
+    QVBoxLayout *verticalLayout_13;
+    QLineEdit *detLayerPosEdit_7;
+    QHBoxLayout *horizontalLayout_21;
+    QPushButton *detLayerNegtiveButton_7;
+    QPushButton *detLayerPositiveButton_7;
+    QVBoxLayout *verticalLayout_14;
+    QLabel *detLayerStaticLabel_7;
+    QPushButton *detLayerAbsPosButton_13;
+    QPushButton *detLayerAbsPosButton_14;
 
     void setupUi(QWidget *MotorControlWidget)
     {
         if (MotorControlWidget->objectName().isEmpty())
             MotorControlWidget->setObjectName(QStringLiteral("MotorControlWidget"));
-        MotorControlWidget->resize(323, 685);
+        MotorControlWidget->resize(1366, 685);
         motionGroupBox = new QGroupBox(MotorControlWidget);
         motionGroupBox->setObjectName(QStringLiteral("motionGroupBox"));
-        motionGroupBox->setGeometry(QRect(10, 20, 300, 651));
+        motionGroupBox->setGeometry(QRect(790, 30, 300, 636));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -142,672 +193,880 @@ public:
         motionGroupBox->setSizePolicy(sizePolicy);
         motionGroupBox->setMinimumSize(QSize(300, 0));
         motionGroupBox->setMaximumSize(QSize(300, 1000));
-        layoutWidget = new QWidget(motionGroupBox);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 20, 286, 606));
-        verticalLayout_11 = new QVBoxLayout(layoutWidget);
-        verticalLayout_11->setSpacing(6);
-        verticalLayout_11->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
-        verticalLayout_11->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        objTranslationLayout = new QHBoxLayout();
-        objTranslationLayout->setSpacing(1);
-        objTranslationLayout->setObjectName(QStringLiteral("objTranslationLayout"));
-        label_6 = new QLabel(layoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setMinimumSize(QSize(50, 0));
-        label_6->setMaximumSize(QSize(50, 16777215));
-
-        objTranslationLayout->addWidget(label_6);
-
-        objTranslationLayout_2 = new QGridLayout();
-        objTranslationLayout_2->setSpacing(6);
-        objTranslationLayout_2->setObjectName(QStringLiteral("objTranslationLayout_2"));
-        objTranslationPosEdit = new QLineEdit(layoutWidget);
-        objTranslationPosEdit->setObjectName(QStringLiteral("objTranslationPosEdit"));
-        objTranslationPosEdit->setMinimumSize(QSize(70, 25));
-        objTranslationPosEdit->setMaximumSize(QSize(70, 25));
-
-        objTranslationLayout_2->addWidget(objTranslationPosEdit, 0, 0, 1, 2);
-
-        objTranslationNegtiveButton = new QPushButton(layoutWidget);
-        objTranslationNegtiveButton->setObjectName(QStringLiteral("objTranslationNegtiveButton"));
-        objTranslationNegtiveButton->setMinimumSize(QSize(25, 25));
-        objTranslationNegtiveButton->setMaximumSize(QSize(25, 25));
-
-        objTranslationLayout_2->addWidget(objTranslationNegtiveButton, 1, 0, 1, 1);
-
-        objTranslationPositiveButton = new QPushButton(layoutWidget);
-        objTranslationPositiveButton->setObjectName(QStringLiteral("objTranslationPositiveButton"));
-        objTranslationPositiveButton->setMinimumSize(QSize(25, 25));
-        objTranslationPositiveButton->setMaximumSize(QSize(25, 25));
-
-        objTranslationLayout_2->addWidget(objTranslationPositiveButton, 1, 1, 1, 1);
-
-
-        objTranslationLayout->addLayout(objTranslationLayout_2);
-
-        objTranslationAbsPosButton = new QPushButton(layoutWidget);
-        objTranslationAbsPosButton->setObjectName(QStringLiteral("objTranslationAbsPosButton"));
-        objTranslationAbsPosButton->setMinimumSize(QSize(50, 50));
-        objTranslationAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        objTranslationLayout->addWidget(objTranslationAbsPosButton);
-
-        objTranslationLayout3 = new QVBoxLayout();
-        objTranslationLayout3->setSpacing(6);
-        objTranslationLayout3->setObjectName(QStringLiteral("objTranslationLayout3"));
-        objTranslationStaticLabel = new QLabel(layoutWidget);
-        objTranslationStaticLabel->setObjectName(QStringLiteral("objTranslationStaticLabel"));
-
-        objTranslationLayout3->addWidget(objTranslationStaticLabel);
-
-        objTranslationHorizontalSlider = new QSlider(layoutWidget);
-        objTranslationHorizontalSlider->setObjectName(QStringLiteral("objTranslationHorizontalSlider"));
-        objTranslationHorizontalSlider->setMinimumSize(QSize(100, 0));
-        objTranslationHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        objTranslationHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        objTranslationLayout3->addWidget(objTranslationHorizontalSlider);
-
-
-        objTranslationLayout->addLayout(objTranslationLayout3);
-
-
-        verticalLayout_4->addLayout(objTranslationLayout);
-
-        objTranslationLine = new QFrame(layoutWidget);
-        objTranslationLine->setObjectName(QStringLiteral("objTranslationLine"));
-        objTranslationLine->setMinimumSize(QSize(280, 2));
-        objTranslationLine->setMaximumSize(QSize(280, 2));
-        objTranslationLine->setLayoutDirection(Qt::LeftToRight);
-        objTranslationLine->setFrameShape(QFrame::HLine);
-        objTranslationLine->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_4->addWidget(objTranslationLine);
-
-
-        verticalLayout_11->addLayout(verticalLayout_4);
-
-        verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setSpacing(6);
-        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        deflectLayout1 = new QHBoxLayout();
-        deflectLayout1->setSpacing(1);
-        deflectLayout1->setObjectName(QStringLiteral("deflectLayout1"));
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setMinimumSize(QSize(50, 0));
-        label_2->setMaximumSize(QSize(50, 16777215));
-
-        deflectLayout1->addWidget(label_2);
-
-        deflectLayout2 = new QGridLayout();
-        deflectLayout2->setSpacing(6);
-        deflectLayout2->setObjectName(QStringLiteral("deflectLayout2"));
-        deflectPosEdit = new QLineEdit(layoutWidget);
-        deflectPosEdit->setObjectName(QStringLiteral("deflectPosEdit"));
-        deflectPosEdit->setMinimumSize(QSize(70, 25));
-        deflectPosEdit->setMaximumSize(QSize(70, 25));
-
-        deflectLayout2->addWidget(deflectPosEdit, 0, 1, 1, 2);
-
-        deflectNegtiveButton = new QPushButton(layoutWidget);
-        deflectNegtiveButton->setObjectName(QStringLiteral("deflectNegtiveButton"));
-        deflectNegtiveButton->setMinimumSize(QSize(25, 25));
-        deflectNegtiveButton->setMaximumSize(QSize(25, 25));
-
-        deflectLayout2->addWidget(deflectNegtiveButton, 1, 1, 1, 1);
-
-        deflectPositiveButton = new QPushButton(layoutWidget);
-        deflectPositiveButton->setObjectName(QStringLiteral("deflectPositiveButton"));
-        deflectPositiveButton->setMinimumSize(QSize(25, 25));
-        deflectPositiveButton->setMaximumSize(QSize(25, 25));
-
-        deflectLayout2->addWidget(deflectPositiveButton, 1, 2, 1, 1);
-
-
-        deflectLayout1->addLayout(deflectLayout2);
-
-        deflectAbsPosButton = new QPushButton(layoutWidget);
-        deflectAbsPosButton->setObjectName(QStringLiteral("deflectAbsPosButton"));
-        deflectAbsPosButton->setMinimumSize(QSize(50, 50));
-        deflectAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        deflectLayout1->addWidget(deflectAbsPosButton);
-
-        deflectLayout3 = new QVBoxLayout();
-        deflectLayout3->setSpacing(6);
-        deflectLayout3->setObjectName(QStringLiteral("deflectLayout3"));
-        deflectStaticLabel = new QLabel(layoutWidget);
-        deflectStaticLabel->setObjectName(QStringLiteral("deflectStaticLabel"));
-
-        deflectLayout3->addWidget(deflectStaticLabel);
-
-        deflectHorizontalSlider = new QSlider(layoutWidget);
-        deflectHorizontalSlider->setObjectName(QStringLiteral("deflectHorizontalSlider"));
-        deflectHorizontalSlider->setMinimumSize(QSize(100, 0));
-        deflectHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        deflectHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        deflectLayout3->addWidget(deflectHorizontalSlider);
-
-
-        deflectLayout1->addLayout(deflectLayout3);
-
-
-        verticalLayout_5->addLayout(deflectLayout1);
-
-        objRotLine = new QFrame(layoutWidget);
-        objRotLine->setObjectName(QStringLiteral("objRotLine"));
-        objRotLine->setMinimumSize(QSize(280, 2));
-        objRotLine->setMaximumSize(QSize(280, 2));
-        objRotLine->setLayoutDirection(Qt::LeftToRight);
-        objRotLine->setFrameShape(QFrame::HLine);
-        objRotLine->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_5->addWidget(objRotLine);
-
-
-        verticalLayout_11->addLayout(verticalLayout_5);
-
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setSpacing(6);
-        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        objRadialLayout1 = new QHBoxLayout();
-        objRadialLayout1->setSpacing(1);
-        objRadialLayout1->setObjectName(QStringLiteral("objRadialLayout1"));
-        label_7 = new QLabel(layoutWidget);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setMinimumSize(QSize(50, 0));
-        label_7->setMaximumSize(QSize(50, 16777215));
-
-        objRadialLayout1->addWidget(label_7);
-
-        objRadialLayout2 = new QGridLayout();
-        objRadialLayout2->setSpacing(6);
-        objRadialLayout2->setObjectName(QStringLiteral("objRadialLayout2"));
-        objRadialPosEdit = new QLineEdit(layoutWidget);
-        objRadialPosEdit->setObjectName(QStringLiteral("objRadialPosEdit"));
-        objRadialPosEdit->setMinimumSize(QSize(70, 25));
-        objRadialPosEdit->setMaximumSize(QSize(70, 25));
-
-        objRadialLayout2->addWidget(objRadialPosEdit, 0, 1, 1, 2);
-
-        objRadialNegtiveButton = new QPushButton(layoutWidget);
-        objRadialNegtiveButton->setObjectName(QStringLiteral("objRadialNegtiveButton"));
-        objRadialNegtiveButton->setMinimumSize(QSize(25, 25));
-        objRadialNegtiveButton->setMaximumSize(QSize(25, 25));
-
-        objRadialLayout2->addWidget(objRadialNegtiveButton, 1, 1, 1, 1);
-
-        obRadialPositiveButton = new QPushButton(layoutWidget);
-        obRadialPositiveButton->setObjectName(QStringLiteral("obRadialPositiveButton"));
-        obRadialPositiveButton->setMinimumSize(QSize(25, 25));
-        obRadialPositiveButton->setMaximumSize(QSize(25, 25));
-
-        objRadialLayout2->addWidget(obRadialPositiveButton, 1, 2, 1, 1);
-
-
-        objRadialLayout1->addLayout(objRadialLayout2);
-
-        objRadialAbsPosButton = new QPushButton(layoutWidget);
-        objRadialAbsPosButton->setObjectName(QStringLiteral("objRadialAbsPosButton"));
-        objRadialAbsPosButton->setMinimumSize(QSize(50, 50));
-        objRadialAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        objRadialLayout1->addWidget(objRadialAbsPosButton);
-
-        objRadialLayout3 = new QVBoxLayout();
-        objRadialLayout3->setSpacing(6);
-        objRadialLayout3->setObjectName(QStringLiteral("objRadialLayout3"));
-        objRadialStaticLabel = new QLabel(layoutWidget);
-        objRadialStaticLabel->setObjectName(QStringLiteral("objRadialStaticLabel"));
-
-        objRadialLayout3->addWidget(objRadialStaticLabel);
-
-        objRadialHorizontalSlider = new QSlider(layoutWidget);
-        objRadialHorizontalSlider->setObjectName(QStringLiteral("objRadialHorizontalSlider"));
-        objRadialHorizontalSlider->setMinimumSize(QSize(100, 0));
-        objRadialHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        objRadialHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        objRadialLayout3->addWidget(objRadialHorizontalSlider);
-
-
-        objRadialLayout1->addLayout(objRadialLayout3);
-
-
-        verticalLayout_6->addLayout(objRadialLayout1);
-
-        objRadialLine = new QFrame(layoutWidget);
-        objRadialLine->setObjectName(QStringLiteral("objRadialLine"));
-        objRadialLine->setMinimumSize(QSize(280, 0));
-        objRadialLine->setMaximumSize(QSize(280, 16777215));
-        objRadialLine->setLayoutDirection(Qt::LeftToRight);
-        objRadialLine->setFrameShape(QFrame::HLine);
-        objRadialLine->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_6->addWidget(objRadialLine);
-
-
-        verticalLayout_11->addLayout(verticalLayout_6);
-
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(2);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setMinimumSize(QSize(50, 0));
-        label->setMaximumSize(QSize(50, 16777215));
-
-        horizontalLayout->addWidget(label);
-
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(6);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        objRotationPosEdit = new QLineEdit(layoutWidget);
-        objRotationPosEdit->setObjectName(QStringLiteral("objRotationPosEdit"));
-        objRotationPosEdit->setMinimumSize(QSize(70, 25));
-        objRotationPosEdit->setMaximumSize(QSize(70, 25));
-
-        gridLayout->addWidget(objRotationPosEdit, 0, 0, 1, 2);
-
-        objRotNegativeButton = new QPushButton(layoutWidget);
-        objRotNegativeButton->setObjectName(QStringLiteral("objRotNegativeButton"));
-        objRotNegativeButton->setMinimumSize(QSize(25, 25));
-        objRotNegativeButton->setMaximumSize(QSize(25, 25));
-
-        gridLayout->addWidget(objRotNegativeButton, 1, 0, 1, 1);
-
-        objRotPositiveButton = new QPushButton(layoutWidget);
-        objRotPositiveButton->setObjectName(QStringLiteral("objRotPositiveButton"));
-        objRotPositiveButton->setMinimumSize(QSize(25, 25));
-        objRotPositiveButton->setMaximumSize(QSize(25, 25));
-
-        gridLayout->addWidget(objRotPositiveButton, 1, 1, 1, 1);
-
-
-        horizontalLayout->addLayout(gridLayout);
-
-        objRotAbsPosButton = new QPushButton(layoutWidget);
-        objRotAbsPosButton->setObjectName(QStringLiteral("objRotAbsPosButton"));
-        objRotAbsPosButton->setMinimumSize(QSize(50, 50));
-        objRotAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        horizontalLayout->addWidget(objRotAbsPosButton);
-
-        objRotLayout3 = new QVBoxLayout();
-        objRotLayout3->setSpacing(6);
-        objRotLayout3->setObjectName(QStringLiteral("objRotLayout3"));
-        objRotLayout3->setSizeConstraint(QLayout::SetDefaultConstraint);
-        objRotStaticLabel = new QLabel(layoutWidget);
-        objRotStaticLabel->setObjectName(QStringLiteral("objRotStaticLabel"));
-        sizePolicy.setHeightForWidth(objRotStaticLabel->sizePolicy().hasHeightForWidth());
-        objRotStaticLabel->setSizePolicy(sizePolicy);
-
-        objRotLayout3->addWidget(objRotStaticLabel);
-
-        objRotHorizontalSlider = new QSlider(layoutWidget);
-        objRotHorizontalSlider->setObjectName(QStringLiteral("objRotHorizontalSlider"));
-        objRotHorizontalSlider->setMinimumSize(QSize(100, 0));
-        objRotHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        objRotHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        objRotLayout3->addWidget(objRotHorizontalSlider);
-
-
-        horizontalLayout->addLayout(objRotLayout3);
-
-
-        verticalLayout_3->addLayout(horizontalLayout);
-
-        deflectLine = new QFrame(layoutWidget);
-        deflectLine->setObjectName(QStringLiteral("deflectLine"));
-        deflectLine->setMinimumSize(QSize(280, 2));
-        deflectLine->setMaximumSize(QSize(280, 2));
-        deflectLine->setLayoutDirection(Qt::LeftToRight);
-        deflectLine->setFrameShape(QFrame::HLine);
-        deflectLine->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_3->addWidget(deflectLine);
-
-
-        verticalLayout_11->addLayout(verticalLayout_3);
-
-        verticalLayout_7 = new QVBoxLayout();
-        verticalLayout_7->setSpacing(6);
-        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
-        detRadialLayout1 = new QHBoxLayout();
-        detRadialLayout1->setSpacing(1);
-        detRadialLayout1->setObjectName(QStringLiteral("detRadialLayout1"));
-        label_5 = new QLabel(layoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setMinimumSize(QSize(50, 0));
-        label_5->setMaximumSize(QSize(50, 16777215));
-
-        detRadialLayout1->addWidget(label_5);
-
-        detRadialLayout2 = new QGridLayout();
-        detRadialLayout2->setSpacing(6);
-        detRadialLayout2->setObjectName(QStringLiteral("detRadialLayout2"));
-        detRadialPosEdit = new QLineEdit(layoutWidget);
-        detRadialPosEdit->setObjectName(QStringLiteral("detRadialPosEdit"));
-        detRadialPosEdit->setMinimumSize(QSize(70, 25));
-        detRadialPosEdit->setMaximumSize(QSize(70, 25));
-
-        detRadialLayout2->addWidget(detRadialPosEdit, 0, 0, 1, 2);
-
-        detRadialNegtiveButton = new QPushButton(layoutWidget);
-        detRadialNegtiveButton->setObjectName(QStringLiteral("detRadialNegtiveButton"));
-        detRadialNegtiveButton->setMinimumSize(QSize(25, 25));
-        detRadialNegtiveButton->setMaximumSize(QSize(25, 25));
-
-        detRadialLayout2->addWidget(detRadialNegtiveButton, 1, 0, 1, 1);
-
-        detRadialPositiveButton = new QPushButton(layoutWidget);
-        detRadialPositiveButton->setObjectName(QStringLiteral("detRadialPositiveButton"));
-        detRadialPositiveButton->setMinimumSize(QSize(25, 25));
-        detRadialPositiveButton->setMaximumSize(QSize(25, 25));
-
-        detRadialLayout2->addWidget(detRadialPositiveButton, 1, 1, 1, 1);
-
-
-        detRadialLayout1->addLayout(detRadialLayout2);
-
-        detRadialAbsPosButton = new QPushButton(layoutWidget);
-        detRadialAbsPosButton->setObjectName(QStringLiteral("detRadialAbsPosButton"));
-        detRadialAbsPosButton->setMinimumSize(QSize(50, 50));
-        detRadialAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        detRadialLayout1->addWidget(detRadialAbsPosButton);
-
-        detRadialLayout3 = new QVBoxLayout();
-        detRadialLayout3->setSpacing(6);
-        detRadialLayout3->setObjectName(QStringLiteral("detRadialLayout3"));
-        detRadialStaticLabel = new QLabel(layoutWidget);
-        detRadialStaticLabel->setObjectName(QStringLiteral("detRadialStaticLabel"));
-
-        detRadialLayout3->addWidget(detRadialStaticLabel);
-
-        detRadialHorizontalSlider = new QSlider(layoutWidget);
-        detRadialHorizontalSlider->setObjectName(QStringLiteral("detRadialHorizontalSlider"));
-        detRadialHorizontalSlider->setMinimumSize(QSize(100, 0));
-        detRadialHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        detRadialHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        detRadialLayout3->addWidget(detRadialHorizontalSlider);
-
-
-        detRadialLayout1->addLayout(detRadialLayout3);
-
-
-        verticalLayout_7->addLayout(detRadialLayout1);
-
-        detRadialLine = new QFrame(layoutWidget);
-        detRadialLine->setObjectName(QStringLiteral("detRadialLine"));
-        detRadialLine->setMinimumSize(QSize(280, 2));
-        detRadialLine->setMaximumSize(QSize(280, 2));
-        detRadialLine->setLayoutDirection(Qt::LeftToRight);
-        detRadialLine->setFrameShape(QFrame::HLine);
-        detRadialLine->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_7->addWidget(detRadialLine);
-
-
-        verticalLayout_11->addLayout(verticalLayout_7);
-
-        verticalLayout_8 = new QVBoxLayout();
-        verticalLayout_8->setSpacing(6);
-        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
-        detTranslationLayout1 = new QHBoxLayout();
-        detTranslationLayout1->setSpacing(1);
-        detTranslationLayout1->setObjectName(QStringLiteral("detTranslationLayout1"));
-        label_4 = new QLabel(layoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setMinimumSize(QSize(50, 0));
-        label_4->setMaximumSize(QSize(50, 16777215));
-
-        detTranslationLayout1->addWidget(label_4);
-
-        detTranslationLayout2 = new QGridLayout();
-        detTranslationLayout2->setSpacing(6);
-        detTranslationLayout2->setObjectName(QStringLiteral("detTranslationLayout2"));
-        detTranslationPosEdit = new QLineEdit(layoutWidget);
-        detTranslationPosEdit->setObjectName(QStringLiteral("detTranslationPosEdit"));
-        detTranslationPosEdit->setMinimumSize(QSize(70, 25));
-        detTranslationPosEdit->setMaximumSize(QSize(70, 25));
-
-        detTranslationLayout2->addWidget(detTranslationPosEdit, 0, 0, 1, 2);
-
-        detTranslationNegtiveButton = new QPushButton(layoutWidget);
-        detTranslationNegtiveButton->setObjectName(QStringLiteral("detTranslationNegtiveButton"));
-        detTranslationNegtiveButton->setMinimumSize(QSize(25, 25));
-        detTranslationNegtiveButton->setMaximumSize(QSize(25, 25));
-
-        detTranslationLayout2->addWidget(detTranslationNegtiveButton, 1, 0, 1, 1);
-
-        detTranslationPositiveButton = new QPushButton(layoutWidget);
-        detTranslationPositiveButton->setObjectName(QStringLiteral("detTranslationPositiveButton"));
-        detTranslationPositiveButton->setMinimumSize(QSize(25, 25));
-        detTranslationPositiveButton->setMaximumSize(QSize(25, 25));
-
-        detTranslationLayout2->addWidget(detTranslationPositiveButton, 1, 1, 1, 1);
-
-
-        detTranslationLayout1->addLayout(detTranslationLayout2);
-
-        detTranslationAbsPosButton = new QPushButton(layoutWidget);
-        detTranslationAbsPosButton->setObjectName(QStringLiteral("detTranslationAbsPosButton"));
-        detTranslationAbsPosButton->setMinimumSize(QSize(50, 50));
-        detTranslationAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        detTranslationLayout1->addWidget(detTranslationAbsPosButton);
-
-        detTranslationLayout3 = new QVBoxLayout();
-        detTranslationLayout3->setSpacing(6);
-        detTranslationLayout3->setObjectName(QStringLiteral("detTranslationLayout3"));
-        detTranslationStaticLabel = new QLabel(layoutWidget);
-        detTranslationStaticLabel->setObjectName(QStringLiteral("detTranslationStaticLabel"));
-
-        detTranslationLayout3->addWidget(detTranslationStaticLabel);
-
-        detTranslationHorizontalSlider = new QSlider(layoutWidget);
-        detTranslationHorizontalSlider->setObjectName(QStringLiteral("detTranslationHorizontalSlider"));
-        detTranslationHorizontalSlider->setMinimumSize(QSize(100, 0));
-        detTranslationHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        detTranslationHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        detTranslationLayout3->addWidget(detTranslationHorizontalSlider);
-
-
-        detTranslationLayout1->addLayout(detTranslationLayout3);
-
-
-        verticalLayout_8->addLayout(detTranslationLayout1);
-
-        detTranslationLine = new QFrame(layoutWidget);
-        detTranslationLine->setObjectName(QStringLiteral("detTranslationLine"));
-        detTranslationLine->setMinimumSize(QSize(280, 2));
-        detTranslationLine->setMaximumSize(QSize(280, 2));
-        detTranslationLine->setLayoutDirection(Qt::LeftToRight);
-        detTranslationLine->setFrameShape(QFrame::HLine);
-        detTranslationLine->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_8->addWidget(detTranslationLine);
-
-
-        verticalLayout_11->addLayout(verticalLayout_8);
-
-        verticalLayout_9 = new QVBoxLayout();
-        verticalLayout_9->setSpacing(6);
-        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
-        detLayerLayout1 = new QHBoxLayout();
-        detLayerLayout1->setSpacing(1);
-        detLayerLayout1->setObjectName(QStringLiteral("detLayerLayout1"));
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setMinimumSize(QSize(50, 0));
-        label_3->setMaximumSize(QSize(50, 16777215));
-
-        detLayerLayout1->addWidget(label_3);
-
-        detLayerLayout2 = new QGridLayout();
-        detLayerLayout2->setSpacing(6);
-        detLayerLayout2->setObjectName(QStringLiteral("detLayerLayout2"));
-        detLayerPosEdit = new QLineEdit(layoutWidget);
-        detLayerPosEdit->setObjectName(QStringLiteral("detLayerPosEdit"));
-        detLayerPosEdit->setMinimumSize(QSize(70, 25));
-        detLayerPosEdit->setMaximumSize(QSize(70, 25));
-
-        detLayerLayout2->addWidget(detLayerPosEdit, 0, 0, 1, 2);
-
-        detLayerNegtiveButton = new QPushButton(layoutWidget);
-        detLayerNegtiveButton->setObjectName(QStringLiteral("detLayerNegtiveButton"));
-        detLayerNegtiveButton->setMinimumSize(QSize(25, 25));
-        detLayerNegtiveButton->setMaximumSize(QSize(25, 25));
-
-        detLayerLayout2->addWidget(detLayerNegtiveButton, 1, 0, 1, 1);
-
-        detLayerPositiveButton = new QPushButton(layoutWidget);
-        detLayerPositiveButton->setObjectName(QStringLiteral("detLayerPositiveButton"));
-        detLayerPositiveButton->setMinimumSize(QSize(25, 25));
-        detLayerPositiveButton->setMaximumSize(QSize(25, 25));
-
-        detLayerLayout2->addWidget(detLayerPositiveButton, 1, 1, 1, 1);
-
-
-        detLayerLayout1->addLayout(detLayerLayout2);
-
-        detLayerAbsPosButton = new QPushButton(layoutWidget);
-        detLayerAbsPosButton->setObjectName(QStringLiteral("detLayerAbsPosButton"));
-        detLayerAbsPosButton->setMinimumSize(QSize(50, 50));
-        detLayerAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        detLayerLayout1->addWidget(detLayerAbsPosButton);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        detLayerStaticLabel = new QLabel(layoutWidget);
-        detLayerStaticLabel->setObjectName(QStringLiteral("detLayerStaticLabel"));
-
-        verticalLayout->addWidget(detLayerStaticLabel);
-
-        detLayerHorizontalSlider = new QSlider(layoutWidget);
-        detLayerHorizontalSlider->setObjectName(QStringLiteral("detLayerHorizontalSlider"));
-        detLayerHorizontalSlider->setMinimumSize(QSize(100, 0));
-        detLayerHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        detLayerHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        verticalLayout->addWidget(detLayerHorizontalSlider);
-
-
-        detLayerLayout1->addLayout(verticalLayout);
-
-
-        verticalLayout_9->addLayout(detLayerLayout1);
-
-        detLayerLine = new QFrame(layoutWidget);
+        detLayerLine = new QFrame(motionGroupBox);
         detLayerLine->setObjectName(QStringLiteral("detLayerLine"));
+        detLayerLine->setGeometry(QRect(11, 89, 280, 2));
         detLayerLine->setMinimumSize(QSize(280, 2));
         detLayerLine->setMaximumSize(QSize(280, 2));
         detLayerLine->setLayoutDirection(Qt::LeftToRight);
         detLayerLine->setFrameShape(QFrame::HLine);
         detLayerLine->setFrameShadow(QFrame::Sunken);
+        objTranslationLine = new QFrame(motionGroupBox);
+        objTranslationLine->setObjectName(QStringLiteral("objTranslationLine"));
+        objTranslationLine->setGeometry(QRect(11, 623, 280, 2));
+        objTranslationLine->setMinimumSize(QSize(280, 2));
+        objTranslationLine->setMaximumSize(QSize(280, 2));
+        objTranslationLine->setLayoutDirection(Qt::LeftToRight);
+        objTranslationLine->setFrameShape(QFrame::HLine);
+        objTranslationLine->setFrameShadow(QFrame::Sunken);
+        objTranslationAbsPosButton = new QPushButton(motionGroupBox);
+        objTranslationAbsPosButton->setObjectName(QStringLiteral("objTranslationAbsPosButton"));
+        objTranslationAbsPosButton->setGeometry(QRect(136, 562, 50, 50));
+        objTranslationAbsPosButton->setMinimumSize(QSize(50, 50));
+        objTranslationAbsPosButton->setMaximumSize(QSize(50, 50));
+        label_6 = new QLabel(motionGroupBox);
+        label_6->setObjectName(QStringLiteral("label_6"));
+        label_6->setGeometry(QRect(12, 558, 50, 16));
+        label_6->setMinimumSize(QSize(50, 0));
+        label_6->setMaximumSize(QSize(50, 16777215));
+        objTranslationPosEdit = new QLineEdit(motionGroupBox);
+        objTranslationPosEdit->setObjectName(QStringLiteral("objTranslationPosEdit"));
+        objTranslationPosEdit->setGeometry(QRect(64, 559, 70, 25));
+        objTranslationPosEdit->setMinimumSize(QSize(70, 25));
+        objTranslationPosEdit->setMaximumSize(QSize(70, 25));
+        objTranslationNegtiveButton = new QPushButton(motionGroupBox);
+        objTranslationNegtiveButton->setObjectName(QStringLiteral("objTranslationNegtiveButton"));
+        objTranslationNegtiveButton->setGeometry(QRect(64, 590, 25, 25));
+        objTranslationNegtiveButton->setMinimumSize(QSize(25, 25));
+        objTranslationNegtiveButton->setMaximumSize(QSize(25, 25));
+        objTranslationPositiveButton = new QPushButton(motionGroupBox);
+        objTranslationPositiveButton->setObjectName(QStringLiteral("objTranslationPositiveButton"));
+        objTranslationPositiveButton->setGeometry(QRect(103, 590, 25, 25));
+        objTranslationPositiveButton->setMinimumSize(QSize(25, 25));
+        objTranslationPositiveButton->setMaximumSize(QSize(25, 25));
+        objTranslationStaticLabel = new QLabel(motionGroupBox);
+        objTranslationStaticLabel->setObjectName(QStringLiteral("objTranslationStaticLabel"));
+        objTranslationStaticLabel->setGeometry(QRect(188, 559, 18, 16));
+        objRotLine = new QFrame(motionGroupBox);
+        objRotLine->setObjectName(QStringLiteral("objRotLine"));
+        objRotLine->setGeometry(QRect(11, 547, 280, 2));
+        objRotLine->setMinimumSize(QSize(280, 2));
+        objRotLine->setMaximumSize(QSize(280, 2));
+        objRotLine->setLayoutDirection(Qt::LeftToRight);
+        objRotLine->setFrameShape(QFrame::HLine);
+        objRotLine->setFrameShadow(QFrame::Sunken);
+        label_2 = new QLabel(motionGroupBox);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(12, 482, 50, 16));
+        label_2->setMinimumSize(QSize(50, 0));
+        label_2->setMaximumSize(QSize(50, 16777215));
+        deflectAbsPosButton = new QPushButton(motionGroupBox);
+        deflectAbsPosButton->setObjectName(QStringLiteral("deflectAbsPosButton"));
+        deflectAbsPosButton->setGeometry(QRect(136, 486, 50, 50));
+        deflectAbsPosButton->setMinimumSize(QSize(50, 50));
+        deflectAbsPosButton->setMaximumSize(QSize(50, 50));
+        deflectPosEdit = new QLineEdit(motionGroupBox);
+        deflectPosEdit->setObjectName(QStringLiteral("deflectPosEdit"));
+        deflectPosEdit->setGeometry(QRect(64, 483, 70, 25));
+        deflectPosEdit->setMinimumSize(QSize(70, 25));
+        deflectPosEdit->setMaximumSize(QSize(70, 25));
+        deflectNegtiveButton = new QPushButton(motionGroupBox);
+        deflectNegtiveButton->setObjectName(QStringLiteral("deflectNegtiveButton"));
+        deflectNegtiveButton->setGeometry(QRect(64, 514, 25, 25));
+        deflectNegtiveButton->setMinimumSize(QSize(25, 25));
+        deflectNegtiveButton->setMaximumSize(QSize(25, 25));
+        deflectPositiveButton = new QPushButton(motionGroupBox);
+        deflectPositiveButton->setObjectName(QStringLiteral("deflectPositiveButton"));
+        deflectPositiveButton->setGeometry(QRect(103, 514, 25, 25));
+        deflectPositiveButton->setMinimumSize(QSize(25, 25));
+        deflectPositiveButton->setMaximumSize(QSize(25, 25));
+        deflectStaticLabel = new QLabel(motionGroupBox);
+        deflectStaticLabel->setObjectName(QStringLiteral("deflectStaticLabel"));
+        deflectStaticLabel->setGeometry(QRect(188, 483, 18, 16));
+        objRadialLine = new QFrame(motionGroupBox);
+        objRadialLine->setObjectName(QStringLiteral("objRadialLine"));
+        objRadialLine->setGeometry(QRect(11, 470, 280, 16));
+        objRadialLine->setMinimumSize(QSize(280, 0));
+        objRadialLine->setMaximumSize(QSize(280, 16777215));
+        objRadialLine->setLayoutDirection(Qt::LeftToRight);
+        objRadialLine->setFrameShape(QFrame::HLine);
+        objRadialLine->setFrameShadow(QFrame::Sunken);
+        label_7 = new QLabel(motionGroupBox);
+        label_7->setObjectName(QStringLiteral("label_7"));
+        label_7->setGeometry(QRect(12, 405, 50, 16));
+        label_7->setMinimumSize(QSize(50, 0));
+        label_7->setMaximumSize(QSize(50, 16777215));
+        objRadialAbsPosButton = new QPushButton(motionGroupBox);
+        objRadialAbsPosButton->setObjectName(QStringLiteral("objRadialAbsPosButton"));
+        objRadialAbsPosButton->setGeometry(QRect(136, 409, 50, 50));
+        objRadialAbsPosButton->setMinimumSize(QSize(50, 50));
+        objRadialAbsPosButton->setMaximumSize(QSize(50, 50));
+        objRadialPosEdit = new QLineEdit(motionGroupBox);
+        objRadialPosEdit->setObjectName(QStringLiteral("objRadialPosEdit"));
+        objRadialPosEdit->setGeometry(QRect(64, 406, 70, 25));
+        objRadialPosEdit->setMinimumSize(QSize(70, 25));
+        objRadialPosEdit->setMaximumSize(QSize(70, 25));
+        objRadialNegtiveButton = new QPushButton(motionGroupBox);
+        objRadialNegtiveButton->setObjectName(QStringLiteral("objRadialNegtiveButton"));
+        objRadialNegtiveButton->setGeometry(QRect(64, 437, 25, 25));
+        objRadialNegtiveButton->setMinimumSize(QSize(25, 25));
+        objRadialNegtiveButton->setMaximumSize(QSize(25, 25));
+        obRadialPositiveButton = new QPushButton(motionGroupBox);
+        obRadialPositiveButton->setObjectName(QStringLiteral("obRadialPositiveButton"));
+        obRadialPositiveButton->setGeometry(QRect(103, 437, 25, 25));
+        obRadialPositiveButton->setMinimumSize(QSize(25, 25));
+        obRadialPositiveButton->setMaximumSize(QSize(25, 25));
+        objRadialStaticLabel = new QLabel(motionGroupBox);
+        objRadialStaticLabel->setObjectName(QStringLiteral("objRadialStaticLabel"));
+        objRadialStaticLabel->setGeometry(QRect(188, 406, 18, 16));
+        rayLayerLine = new QFrame(motionGroupBox);
+        rayLayerLine->setObjectName(QStringLiteral("rayLayerLine"));
+        rayLayerLine->setGeometry(QRect(11, 393, 278, 16));
+        rayLayerLine->setFrameShape(QFrame::HLine);
+        rayLayerLine->setFrameShadow(QFrame::Sunken);
+        label_8 = new QLabel(motionGroupBox);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(12, 328, 50, 16));
+        label_8->setMinimumSize(QSize(50, 0));
+        label_8->setMaximumSize(QSize(50, 16777215));
+        rayLayerAbsPosButton = new QPushButton(motionGroupBox);
+        rayLayerAbsPosButton->setObjectName(QStringLiteral("rayLayerAbsPosButton"));
+        rayLayerAbsPosButton->setGeometry(QRect(136, 332, 50, 50));
+        rayLayerAbsPosButton->setMinimumSize(QSize(50, 50));
+        rayLayerAbsPosButton->setMaximumSize(QSize(50, 50));
+        rayLayerPosEdit = new QLineEdit(motionGroupBox);
+        rayLayerPosEdit->setObjectName(QStringLiteral("rayLayerPosEdit"));
+        rayLayerPosEdit->setGeometry(QRect(64, 329, 70, 25));
+        rayLayerPosEdit->setMinimumSize(QSize(70, 25));
+        rayLayerPosEdit->setMaximumSize(QSize(70, 25));
+        rayLayerNegtiveButton = new QPushButton(motionGroupBox);
+        rayLayerNegtiveButton->setObjectName(QStringLiteral("rayLayerNegtiveButton"));
+        rayLayerNegtiveButton->setGeometry(QRect(64, 360, 25, 25));
+        rayLayerNegtiveButton->setMinimumSize(QSize(25, 25));
+        rayLayerNegtiveButton->setMaximumSize(QSize(25, 25));
+        rayLayerPositiveButton = new QPushButton(motionGroupBox);
+        rayLayerPositiveButton->setObjectName(QStringLiteral("rayLayerPositiveButton"));
+        rayLayerPositiveButton->setGeometry(QRect(103, 360, 25, 25));
+        rayLayerPositiveButton->setMinimumSize(QSize(25, 25));
+        rayLayerPositiveButton->setMaximumSize(QSize(25, 25));
+        rayLayerStaticLabel = new QLabel(motionGroupBox);
+        rayLayerStaticLabel->setObjectName(QStringLiteral("rayLayerStaticLabel"));
+        rayLayerStaticLabel->setGeometry(QRect(188, 329, 18, 16));
+        deflectLine = new QFrame(motionGroupBox);
+        deflectLine->setObjectName(QStringLiteral("deflectLine"));
+        deflectLine->setGeometry(QRect(11, 317, 280, 2));
+        deflectLine->setMinimumSize(QSize(280, 2));
+        deflectLine->setMaximumSize(QSize(280, 2));
+        deflectLine->setLayoutDirection(Qt::LeftToRight);
+        deflectLine->setFrameShape(QFrame::HLine);
+        deflectLine->setFrameShadow(QFrame::Sunken);
+        label = new QLabel(motionGroupBox);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(12, 252, 50, 16));
+        label->setMinimumSize(QSize(50, 0));
+        label->setMaximumSize(QSize(50, 16777215));
+        objRotAbsPosButton = new QPushButton(motionGroupBox);
+        objRotAbsPosButton->setObjectName(QStringLiteral("objRotAbsPosButton"));
+        objRotAbsPosButton->setGeometry(QRect(138, 256, 50, 50));
+        objRotAbsPosButton->setMinimumSize(QSize(50, 50));
+        objRotAbsPosButton->setMaximumSize(QSize(50, 50));
+        objRotationPosEdit = new QLineEdit(motionGroupBox);
+        objRotationPosEdit->setObjectName(QStringLiteral("objRotationPosEdit"));
+        objRotationPosEdit->setGeometry(QRect(65, 253, 70, 25));
+        objRotationPosEdit->setMinimumSize(QSize(70, 25));
+        objRotationPosEdit->setMaximumSize(QSize(70, 25));
+        objRotNegativeButton = new QPushButton(motionGroupBox);
+        objRotNegativeButton->setObjectName(QStringLiteral("objRotNegativeButton"));
+        objRotNegativeButton->setGeometry(QRect(65, 284, 25, 25));
+        objRotNegativeButton->setMinimumSize(QSize(25, 25));
+        objRotNegativeButton->setMaximumSize(QSize(25, 25));
+        objRotPositiveButton = new QPushButton(motionGroupBox);
+        objRotPositiveButton->setObjectName(QStringLiteral("objRotPositiveButton"));
+        objRotPositiveButton->setGeometry(QRect(104, 284, 25, 25));
+        objRotPositiveButton->setMinimumSize(QSize(25, 25));
+        objRotPositiveButton->setMaximumSize(QSize(25, 25));
+        objRotStaticLabel = new QLabel(motionGroupBox);
+        objRotStaticLabel->setObjectName(QStringLiteral("objRotStaticLabel"));
+        objRotStaticLabel->setGeometry(QRect(191, 253, 18, 16));
+        sizePolicy.setHeightForWidth(objRotStaticLabel->sizePolicy().hasHeightForWidth());
+        objRotStaticLabel->setSizePolicy(sizePolicy);
+        detRadialLine = new QFrame(motionGroupBox);
+        detRadialLine->setObjectName(QStringLiteral("detRadialLine"));
+        detRadialLine->setGeometry(QRect(11, 241, 280, 2));
+        detRadialLine->setMinimumSize(QSize(280, 2));
+        detRadialLine->setMaximumSize(QSize(280, 2));
+        detRadialLine->setLayoutDirection(Qt::LeftToRight);
+        detRadialLine->setFrameShape(QFrame::HLine);
+        detRadialLine->setFrameShadow(QFrame::Sunken);
+        label_5 = new QLabel(motionGroupBox);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(12, 176, 50, 16));
+        label_5->setMinimumSize(QSize(50, 0));
+        label_5->setMaximumSize(QSize(50, 16777215));
+        detRadialAbsPosButton = new QPushButton(motionGroupBox);
+        detRadialAbsPosButton->setObjectName(QStringLiteral("detRadialAbsPosButton"));
+        detRadialAbsPosButton->setGeometry(QRect(136, 180, 50, 50));
+        detRadialAbsPosButton->setMinimumSize(QSize(50, 50));
+        detRadialAbsPosButton->setMaximumSize(QSize(50, 50));
+        detRadialPosEdit = new QLineEdit(motionGroupBox);
+        detRadialPosEdit->setObjectName(QStringLiteral("detRadialPosEdit"));
+        detRadialPosEdit->setGeometry(QRect(64, 177, 70, 25));
+        detRadialPosEdit->setMinimumSize(QSize(70, 25));
+        detRadialPosEdit->setMaximumSize(QSize(70, 25));
+        detRadialNegtiveButton = new QPushButton(motionGroupBox);
+        detRadialNegtiveButton->setObjectName(QStringLiteral("detRadialNegtiveButton"));
+        detRadialNegtiveButton->setGeometry(QRect(64, 208, 25, 25));
+        detRadialNegtiveButton->setMinimumSize(QSize(25, 25));
+        detRadialNegtiveButton->setMaximumSize(QSize(25, 25));
+        detRadialPositiveButton = new QPushButton(motionGroupBox);
+        detRadialPositiveButton->setObjectName(QStringLiteral("detRadialPositiveButton"));
+        detRadialPositiveButton->setGeometry(QRect(103, 208, 25, 25));
+        detRadialPositiveButton->setMinimumSize(QSize(25, 25));
+        detRadialPositiveButton->setMaximumSize(QSize(25, 25));
+        detRadialStaticLabel = new QLabel(motionGroupBox);
+        detRadialStaticLabel->setObjectName(QStringLiteral("detRadialStaticLabel"));
+        detRadialStaticLabel->setGeometry(QRect(188, 177, 18, 16));
+        detTranslationLine = new QFrame(motionGroupBox);
+        detTranslationLine->setObjectName(QStringLiteral("detTranslationLine"));
+        detTranslationLine->setGeometry(QRect(11, 165, 280, 2));
+        detTranslationLine->setMinimumSize(QSize(280, 2));
+        detTranslationLine->setMaximumSize(QSize(280, 2));
+        detTranslationLine->setLayoutDirection(Qt::LeftToRight);
+        detTranslationLine->setFrameShape(QFrame::HLine);
+        detTranslationLine->setFrameShadow(QFrame::Sunken);
+        label_4 = new QLabel(motionGroupBox);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(12, 100, 50, 16));
+        label_4->setMinimumSize(QSize(50, 0));
+        label_4->setMaximumSize(QSize(50, 16777215));
+        detTranslationAbsPosButton = new QPushButton(motionGroupBox);
+        detTranslationAbsPosButton->setObjectName(QStringLiteral("detTranslationAbsPosButton"));
+        detTranslationAbsPosButton->setGeometry(QRect(136, 104, 50, 50));
+        detTranslationAbsPosButton->setMinimumSize(QSize(50, 50));
+        detTranslationAbsPosButton->setMaximumSize(QSize(50, 50));
+        detTranslationPosEdit = new QLineEdit(motionGroupBox);
+        detTranslationPosEdit->setObjectName(QStringLiteral("detTranslationPosEdit"));
+        detTranslationPosEdit->setGeometry(QRect(64, 101, 70, 25));
+        detTranslationPosEdit->setMinimumSize(QSize(70, 25));
+        detTranslationPosEdit->setMaximumSize(QSize(70, 25));
+        detTranslationNegtiveButton = new QPushButton(motionGroupBox);
+        detTranslationNegtiveButton->setObjectName(QStringLiteral("detTranslationNegtiveButton"));
+        detTranslationNegtiveButton->setGeometry(QRect(64, 132, 25, 25));
+        detTranslationNegtiveButton->setMinimumSize(QSize(25, 25));
+        detTranslationNegtiveButton->setMaximumSize(QSize(25, 25));
+        detTranslationPositiveButton = new QPushButton(motionGroupBox);
+        detTranslationPositiveButton->setObjectName(QStringLiteral("detTranslationPositiveButton"));
+        detTranslationPositiveButton->setGeometry(QRect(103, 132, 25, 25));
+        detTranslationPositiveButton->setMinimumSize(QSize(25, 25));
+        detTranslationPositiveButton->setMaximumSize(QSize(25, 25));
+        detTranslationStaticLabel = new QLabel(motionGroupBox);
+        detTranslationStaticLabel->setObjectName(QStringLiteral("detTranslationStaticLabel"));
+        detTranslationStaticLabel->setGeometry(QRect(188, 101, 18, 16));
+        label_3 = new QLabel(motionGroupBox);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(12, 24, 50, 16));
+        label_3->setMinimumSize(QSize(50, 0));
+        label_3->setMaximumSize(QSize(50, 16777215));
+        widget = new QWidget(motionGroupBox);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(60, 20, 190, 64));
+        horizontalLayout_3 = new QHBoxLayout(widget);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        detLayerPosEdit = new QLineEdit(widget);
+        detLayerPosEdit->setObjectName(QStringLiteral("detLayerPosEdit"));
+        detLayerPosEdit->setMinimumSize(QSize(70, 20));
+        detLayerPosEdit->setMaximumSize(QSize(70, 20));
 
-        verticalLayout_9->addWidget(detLayerLine);
+        verticalLayout_2->addWidget(detLayerPosEdit);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        detLayerNegtiveButton = new QPushButton(widget);
+        detLayerNegtiveButton->setObjectName(QStringLiteral("detLayerNegtiveButton"));
+        detLayerNegtiveButton->setMinimumSize(QSize(30, 30));
+        detLayerNegtiveButton->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout->addWidget(detLayerNegtiveButton);
+
+        detLayerPositiveButton = new QPushButton(widget);
+        detLayerPositiveButton->setObjectName(QStringLiteral("detLayerPositiveButton"));
+        detLayerPositiveButton->setMinimumSize(QSize(30, 30));
+        detLayerPositiveButton->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout->addWidget(detLayerPositiveButton);
 
 
-        verticalLayout_11->addLayout(verticalLayout_9);
+        verticalLayout_2->addLayout(horizontalLayout);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        detLayerStaticLabel = new QLabel(widget);
+        detLayerStaticLabel->setObjectName(QStringLiteral("detLayerStaticLabel"));
+        detLayerStaticLabel->setMinimumSize(QSize(70, 20));
+        detLayerStaticLabel->setMaximumSize(QSize(70, 20));
+        detLayerStaticLabel->setFrameShape(QFrame::Box);
+
+        verticalLayout->addWidget(detLayerStaticLabel);
+
+        detLayerAbsPosButton = new QPushButton(widget);
+        detLayerAbsPosButton->setObjectName(QStringLiteral("detLayerAbsPosButton"));
+        detLayerAbsPosButton->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton->setMaximumSize(QSize(70, 30));
+
+        verticalLayout->addWidget(detLayerAbsPosButton);
+
+
+        horizontalLayout_2->addLayout(verticalLayout);
+
+
+        horizontalLayout_3->addLayout(horizontalLayout_2);
+
+        detLayerAbsPosButton_2 = new QPushButton(widget);
+        detLayerAbsPosButton_2->setObjectName(QStringLiteral("detLayerAbsPosButton_2"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_2->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_2->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_2->setMinimumSize(QSize(30, 50));
+        detLayerAbsPosButton_2->setMaximumSize(QSize(30, 100));
+
+        horizontalLayout_3->addWidget(detLayerAbsPosButton_2);
+
+        objRotHorizontalSlider = new QSlider(MotorControlWidget);
+        objRotHorizontalSlider->setObjectName(QStringLiteral("objRotHorizontalSlider"));
+        objRotHorizontalSlider->setGeometry(QRect(1233, 257, 100, 19));
+        objRotHorizontalSlider->setMinimumSize(QSize(100, 0));
+        objRotHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        objRotHorizontalSlider->setOrientation(Qt::Horizontal);
+        objTranslationHorizontalSlider = new QSlider(MotorControlWidget);
+        objTranslationHorizontalSlider->setObjectName(QStringLiteral("objTranslationHorizontalSlider"));
+        objTranslationHorizontalSlider->setGeometry(QRect(1230, 563, 100, 19));
+        objTranslationHorizontalSlider->setMinimumSize(QSize(100, 0));
+        objTranslationHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        objTranslationHorizontalSlider->setOrientation(Qt::Horizontal);
+        detTranslationHorizontalSlider = new QSlider(MotorControlWidget);
+        detTranslationHorizontalSlider->setObjectName(QStringLiteral("detTranslationHorizontalSlider"));
+        detTranslationHorizontalSlider->setGeometry(QRect(1230, 105, 100, 19));
+        detTranslationHorizontalSlider->setMinimumSize(QSize(100, 0));
+        detTranslationHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        detTranslationHorizontalSlider->setOrientation(Qt::Horizontal);
+        deflectHorizontalSlider = new QSlider(MotorControlWidget);
+        deflectHorizontalSlider->setObjectName(QStringLiteral("deflectHorizontalSlider"));
+        deflectHorizontalSlider->setGeometry(QRect(1230, 487, 100, 19));
+        deflectHorizontalSlider->setMinimumSize(QSize(100, 0));
+        deflectHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        deflectHorizontalSlider->setOrientation(Qt::Horizontal);
+        detRadialHorizontalSlider = new QSlider(MotorControlWidget);
+        detRadialHorizontalSlider->setObjectName(QStringLiteral("detRadialHorizontalSlider"));
+        detRadialHorizontalSlider->setGeometry(QRect(1230, 181, 100, 19));
+        detRadialHorizontalSlider->setMinimumSize(QSize(100, 0));
+        detRadialHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        detRadialHorizontalSlider->setOrientation(Qt::Horizontal);
+        detLayerHorizontalSlider = new QSlider(MotorControlWidget);
+        detLayerHorizontalSlider->setObjectName(QStringLiteral("detLayerHorizontalSlider"));
+        detLayerHorizontalSlider->setGeometry(QRect(1230, 29, 100, 19));
+        detLayerHorizontalSlider->setMinimumSize(QSize(100, 0));
+        detLayerHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        detLayerHorizontalSlider->setOrientation(Qt::Horizontal);
+        rayLayerHorizontalSlider = new QSlider(MotorControlWidget);
+        rayLayerHorizontalSlider->setObjectName(QStringLiteral("rayLayerHorizontalSlider"));
+        rayLayerHorizontalSlider->setGeometry(QRect(1230, 333, 100, 19));
+        rayLayerHorizontalSlider->setMinimumSize(QSize(100, 0));
+        rayLayerHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        rayLayerHorizontalSlider->setOrientation(Qt::Horizontal);
+        objRadialHorizontalSlider = new QSlider(MotorControlWidget);
+        objRadialHorizontalSlider->setObjectName(QStringLiteral("objRadialHorizontalSlider"));
+        objRadialHorizontalSlider->setGeometry(QRect(1230, 410, 100, 19));
+        objRadialHorizontalSlider->setMinimumSize(QSize(100, 0));
+        objRadialHorizontalSlider->setMaximumSize(QSize(100, 16777215));
+        objRadialHorizontalSlider->setOrientation(Qt::Horizontal);
+        tabWidget = new QTabWidget(MotorControlWidget);
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setGeometry(QRect(20, 20, 291, 106));
+        tab = new QWidget();
+        tab->setObjectName(QStringLiteral("tab"));
+        horizontalLayout_9 = new QHBoxLayout(tab);
+        horizontalLayout_9->setSpacing(6);
+        horizontalLayout_9->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        detLayerPosEdit_3 = new QLineEdit(tab);
+        detLayerPosEdit_3->setObjectName(QStringLiteral("detLayerPosEdit_3"));
+        detLayerPosEdit_3->setMinimumSize(QSize(70, 20));
+        detLayerPosEdit_3->setMaximumSize(QSize(70, 20));
+
+        verticalLayout_5->addWidget(detLayerPosEdit_3);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        detLayerNegtiveButton_3 = new QPushButton(tab);
+        detLayerNegtiveButton_3->setObjectName(QStringLiteral("detLayerNegtiveButton_3"));
+        detLayerNegtiveButton_3->setMinimumSize(QSize(30, 30));
+        detLayerNegtiveButton_3->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_8->addWidget(detLayerNegtiveButton_3);
+
+        detLayerPositiveButton_3 = new QPushButton(tab);
+        detLayerPositiveButton_3->setObjectName(QStringLiteral("detLayerPositiveButton_3"));
+        detLayerPositiveButton_3->setMinimumSize(QSize(30, 30));
+        detLayerPositiveButton_3->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_8->addWidget(detLayerPositiveButton_3);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_8);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_5);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        detLayerStaticLabel_3 = new QLabel(tab);
+        detLayerStaticLabel_3->setObjectName(QStringLiteral("detLayerStaticLabel_3"));
+        detLayerStaticLabel_3->setMinimumSize(QSize(70, 20));
+        detLayerStaticLabel_3->setMaximumSize(QSize(70, 20));
+        detLayerStaticLabel_3->setFrameShape(QFrame::Box);
+
+        verticalLayout_6->addWidget(detLayerStaticLabel_3);
+
+        detLayerAbsPosButton_5 = new QPushButton(tab);
+        detLayerAbsPosButton_5->setObjectName(QStringLiteral("detLayerAbsPosButton_5"));
+        detLayerAbsPosButton_5->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton_5->setMaximumSize(QSize(70, 30));
+
+        verticalLayout_6->addWidget(detLayerAbsPosButton_5);
+
+
+        horizontalLayout_7->addLayout(verticalLayout_6);
+
+
+        horizontalLayout_9->addLayout(horizontalLayout_7);
+
+        detLayerAbsPosButton_6 = new QPushButton(tab);
+        detLayerAbsPosButton_6->setObjectName(QStringLiteral("detLayerAbsPosButton_6"));
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_6->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_6->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_6->setMinimumSize(QSize(30, 50));
+        detLayerAbsPosButton_6->setMaximumSize(QSize(30, 100));
+
+        horizontalLayout_9->addWidget(detLayerAbsPosButton_6);
+
+        tabWidget->addTab(tab, QString());
+        tab2 = new QWidget();
+        tab2->setObjectName(QStringLiteral("tab2"));
+        horizontalLayout_4 = new QHBoxLayout(tab2);
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        detLayerPosEdit_2 = new QLineEdit(tab2);
+        detLayerPosEdit_2->setObjectName(QStringLiteral("detLayerPosEdit_2"));
+        detLayerPosEdit_2->setMinimumSize(QSize(70, 20));
+        detLayerPosEdit_2->setMaximumSize(QSize(70, 20));
+
+        verticalLayout_3->addWidget(detLayerPosEdit_2);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        detLayerNegtiveButton_2 = new QPushButton(tab2);
+        detLayerNegtiveButton_2->setObjectName(QStringLiteral("detLayerNegtiveButton_2"));
+        detLayerNegtiveButton_2->setMinimumSize(QSize(30, 30));
+        detLayerNegtiveButton_2->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_6->addWidget(detLayerNegtiveButton_2);
+
+        detLayerPositiveButton_2 = new QPushButton(tab2);
+        detLayerPositiveButton_2->setObjectName(QStringLiteral("detLayerPositiveButton_2"));
+        detLayerPositiveButton_2->setMinimumSize(QSize(30, 30));
+        detLayerPositiveButton_2->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_6->addWidget(detLayerPositiveButton_2);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_6);
+
+
+        horizontalLayout_5->addLayout(verticalLayout_3);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        detLayerStaticLabel_2 = new QLabel(tab2);
+        detLayerStaticLabel_2->setObjectName(QStringLiteral("detLayerStaticLabel_2"));
+        detLayerStaticLabel_2->setMinimumSize(QSize(70, 20));
+        detLayerStaticLabel_2->setMaximumSize(QSize(70, 20));
+        detLayerStaticLabel_2->setFrameShape(QFrame::Box);
+
+        verticalLayout_4->addWidget(detLayerStaticLabel_2);
+
+        detLayerAbsPosButton_3 = new QPushButton(tab2);
+        detLayerAbsPosButton_3->setObjectName(QStringLiteral("detLayerAbsPosButton_3"));
+        detLayerAbsPosButton_3->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton_3->setMaximumSize(QSize(70, 30));
+
+        verticalLayout_4->addWidget(detLayerAbsPosButton_3);
+
+
+        horizontalLayout_5->addLayout(verticalLayout_4);
+
+
+        horizontalLayout_4->addLayout(horizontalLayout_5);
+
+        detLayerAbsPosButton_4 = new QPushButton(tab2);
+        detLayerAbsPosButton_4->setObjectName(QStringLiteral("detLayerAbsPosButton_4"));
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_4->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_4->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_4->setMinimumSize(QSize(30, 50));
+        detLayerAbsPosButton_4->setMaximumSize(QSize(30, 100));
+
+        horizontalLayout_4->addWidget(detLayerAbsPosButton_4);
+
+        tabWidget->addTab(tab2, QString());
+        tab_4 = new QWidget();
+        tab_4->setObjectName(QStringLiteral("tab_4"));
+        tabWidget->addTab(tab_4, QString());
+        tab_5 = new QWidget();
+        tab_5->setObjectName(QStringLiteral("tab_5"));
+        tabWidget->addTab(tab_5, QString());
+        tabWidget_2 = new QTabWidget(MotorControlWidget);
+        tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
+        tabWidget_2->setGeometry(QRect(20, 150, 291, 106));
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QStringLiteral("tab_2"));
+        horizontalLayout_10 = new QHBoxLayout(tab_2);
+        horizontalLayout_10->setSpacing(6);
+        horizontalLayout_10->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setSpacing(6);
+        horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        detLayerPosEdit_4 = new QLineEdit(tab_2);
+        detLayerPosEdit_4->setObjectName(QStringLiteral("detLayerPosEdit_4"));
+        detLayerPosEdit_4->setMinimumSize(QSize(70, 20));
+        detLayerPosEdit_4->setMaximumSize(QSize(70, 20));
+
+        verticalLayout_7->addWidget(detLayerPosEdit_4);
+
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setSpacing(6);
+        horizontalLayout_12->setObjectName(QStringLiteral("horizontalLayout_12"));
+        detLayerNegtiveButton_4 = new QPushButton(tab_2);
+        detLayerNegtiveButton_4->setObjectName(QStringLiteral("detLayerNegtiveButton_4"));
+        detLayerNegtiveButton_4->setMinimumSize(QSize(30, 30));
+        detLayerNegtiveButton_4->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_12->addWidget(detLayerNegtiveButton_4);
+
+        detLayerPositiveButton_4 = new QPushButton(tab_2);
+        detLayerPositiveButton_4->setObjectName(QStringLiteral("detLayerPositiveButton_4"));
+        detLayerPositiveButton_4->setMinimumSize(QSize(30, 30));
+        detLayerPositiveButton_4->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_12->addWidget(detLayerPositiveButton_4);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_12);
+
+
+        horizontalLayout_11->addLayout(verticalLayout_7);
+
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        detLayerStaticLabel_4 = new QLabel(tab_2);
+        detLayerStaticLabel_4->setObjectName(QStringLiteral("detLayerStaticLabel_4"));
+        detLayerStaticLabel_4->setMinimumSize(QSize(70, 20));
+        detLayerStaticLabel_4->setMaximumSize(QSize(70, 20));
+        detLayerStaticLabel_4->setFrameShape(QFrame::Box);
+
+        verticalLayout_8->addWidget(detLayerStaticLabel_4);
+
+        detLayerAbsPosButton_7 = new QPushButton(tab_2);
+        detLayerAbsPosButton_7->setObjectName(QStringLiteral("detLayerAbsPosButton_7"));
+        detLayerAbsPosButton_7->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton_7->setMaximumSize(QSize(70, 30));
+
+        verticalLayout_8->addWidget(detLayerAbsPosButton_7);
+
+
+        horizontalLayout_11->addLayout(verticalLayout_8);
+
+
+        horizontalLayout_10->addLayout(horizontalLayout_11);
+
+        detLayerAbsPosButton_8 = new QPushButton(tab_2);
+        detLayerAbsPosButton_8->setObjectName(QStringLiteral("detLayerAbsPosButton_8"));
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_8->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_8->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_8->setMinimumSize(QSize(30, 50));
+        detLayerAbsPosButton_8->setMaximumSize(QSize(30, 100));
+
+        horizontalLayout_10->addWidget(detLayerAbsPosButton_8);
+
+        tabWidget_2->addTab(tab_2, QString());
+        tab2_2 = new QWidget();
+        tab2_2->setObjectName(QStringLiteral("tab2_2"));
+        horizontalLayout_13 = new QHBoxLayout(tab2_2);
+        horizontalLayout_13->setSpacing(6);
+        horizontalLayout_13->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
+        horizontalLayout_14 = new QHBoxLayout();
+        horizontalLayout_14->setSpacing(6);
+        horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
+        verticalLayout_9 = new QVBoxLayout();
+        verticalLayout_9->setSpacing(6);
+        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        detLayerPosEdit_5 = new QLineEdit(tab2_2);
+        detLayerPosEdit_5->setObjectName(QStringLiteral("detLayerPosEdit_5"));
+        detLayerPosEdit_5->setMinimumSize(QSize(70, 20));
+        detLayerPosEdit_5->setMaximumSize(QSize(70, 20));
+
+        verticalLayout_9->addWidget(detLayerPosEdit_5);
+
+        horizontalLayout_15 = new QHBoxLayout();
+        horizontalLayout_15->setSpacing(6);
+        horizontalLayout_15->setObjectName(QStringLiteral("horizontalLayout_15"));
+        detLayerNegtiveButton_5 = new QPushButton(tab2_2);
+        detLayerNegtiveButton_5->setObjectName(QStringLiteral("detLayerNegtiveButton_5"));
+        detLayerNegtiveButton_5->setMinimumSize(QSize(30, 30));
+        detLayerNegtiveButton_5->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_15->addWidget(detLayerNegtiveButton_5);
+
+        detLayerPositiveButton_5 = new QPushButton(tab2_2);
+        detLayerPositiveButton_5->setObjectName(QStringLiteral("detLayerPositiveButton_5"));
+        detLayerPositiveButton_5->setMinimumSize(QSize(30, 30));
+        detLayerPositiveButton_5->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_15->addWidget(detLayerPositiveButton_5);
+
+
+        verticalLayout_9->addLayout(horizontalLayout_15);
+
+
+        horizontalLayout_14->addLayout(verticalLayout_9);
 
         verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setSpacing(6);
         verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
-        detLayerLayout1_2 = new QHBoxLayout();
-        detLayerLayout1_2->setSpacing(1);
-        detLayerLayout1_2->setObjectName(QStringLiteral("detLayerLayout1_2"));
-        label_8 = new QLabel(layoutWidget);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setMinimumSize(QSize(50, 0));
-        label_8->setMaximumSize(QSize(50, 16777215));
+        detLayerStaticLabel_5 = new QLabel(tab2_2);
+        detLayerStaticLabel_5->setObjectName(QStringLiteral("detLayerStaticLabel_5"));
+        detLayerStaticLabel_5->setMinimumSize(QSize(70, 20));
+        detLayerStaticLabel_5->setMaximumSize(QSize(70, 20));
+        detLayerStaticLabel_5->setFrameShape(QFrame::Box);
 
-        detLayerLayout1_2->addWidget(label_8);
+        verticalLayout_10->addWidget(detLayerStaticLabel_5);
 
-        detLayerLayout2_2 = new QGridLayout();
-        detLayerLayout2_2->setSpacing(6);
-        detLayerLayout2_2->setObjectName(QStringLiteral("detLayerLayout2_2"));
-        rayLayerPosEdit = new QLineEdit(layoutWidget);
-        rayLayerPosEdit->setObjectName(QStringLiteral("rayLayerPosEdit"));
-        rayLayerPosEdit->setMinimumSize(QSize(70, 25));
-        rayLayerPosEdit->setMaximumSize(QSize(70, 25));
+        detLayerAbsPosButton_9 = new QPushButton(tab2_2);
+        detLayerAbsPosButton_9->setObjectName(QStringLiteral("detLayerAbsPosButton_9"));
+        detLayerAbsPosButton_9->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton_9->setMaximumSize(QSize(70, 30));
 
-        detLayerLayout2_2->addWidget(rayLayerPosEdit, 0, 0, 1, 2);
-
-        rayLayerNegtiveButton = new QPushButton(layoutWidget);
-        rayLayerNegtiveButton->setObjectName(QStringLiteral("rayLayerNegtiveButton"));
-        rayLayerNegtiveButton->setMinimumSize(QSize(25, 25));
-        rayLayerNegtiveButton->setMaximumSize(QSize(25, 25));
-
-        detLayerLayout2_2->addWidget(rayLayerNegtiveButton, 1, 0, 1, 1);
-
-        rayLayerPositiveButton = new QPushButton(layoutWidget);
-        rayLayerPositiveButton->setObjectName(QStringLiteral("rayLayerPositiveButton"));
-        rayLayerPositiveButton->setMinimumSize(QSize(25, 25));
-        rayLayerPositiveButton->setMaximumSize(QSize(25, 25));
-
-        detLayerLayout2_2->addWidget(rayLayerPositiveButton, 1, 1, 1, 1);
+        verticalLayout_10->addWidget(detLayerAbsPosButton_9);
 
 
-        detLayerLayout1_2->addLayout(detLayerLayout2_2);
-
-        rayLayerAbsPosButton = new QPushButton(layoutWidget);
-        rayLayerAbsPosButton->setObjectName(QStringLiteral("rayLayerAbsPosButton"));
-        rayLayerAbsPosButton->setMinimumSize(QSize(50, 50));
-        rayLayerAbsPosButton->setMaximumSize(QSize(50, 50));
-
-        detLayerLayout1_2->addWidget(rayLayerAbsPosButton);
-
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        rayLayerStaticLabel = new QLabel(layoutWidget);
-        rayLayerStaticLabel->setObjectName(QStringLiteral("rayLayerStaticLabel"));
-
-        verticalLayout_2->addWidget(rayLayerStaticLabel);
-
-        rayLayerHorizontalSlider = new QSlider(layoutWidget);
-        rayLayerHorizontalSlider->setObjectName(QStringLiteral("rayLayerHorizontalSlider"));
-        rayLayerHorizontalSlider->setMinimumSize(QSize(100, 0));
-        rayLayerHorizontalSlider->setMaximumSize(QSize(100, 16777215));
-        rayLayerHorizontalSlider->setOrientation(Qt::Horizontal);
-
-        verticalLayout_2->addWidget(rayLayerHorizontalSlider);
+        horizontalLayout_14->addLayout(verticalLayout_10);
 
 
-        detLayerLayout1_2->addLayout(verticalLayout_2);
+        horizontalLayout_13->addLayout(horizontalLayout_14);
+
+        detLayerAbsPosButton_10 = new QPushButton(tab2_2);
+        detLayerAbsPosButton_10->setObjectName(QStringLiteral("detLayerAbsPosButton_10"));
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_10->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_10->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_10->setMinimumSize(QSize(30, 50));
+        detLayerAbsPosButton_10->setMaximumSize(QSize(30, 100));
+
+        horizontalLayout_13->addWidget(detLayerAbsPosButton_10);
+
+        tabWidget_2->addTab(tab2_2, QString());
+        tabWidget_3 = new QTabWidget(MotorControlWidget);
+        tabWidget_3->setObjectName(QStringLiteral("tabWidget_3"));
+        tabWidget_3->setGeometry(QRect(20, 280, 291, 106));
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QStringLiteral("tab_3"));
+        layoutWidget_3 = new QWidget(tab_3);
+        layoutWidget_3->setObjectName(QStringLiteral("layoutWidget_3"));
+        layoutWidget_3->setGeometry(QRect(3, 11, 190, 64));
+        horizontalLayout_16 = new QHBoxLayout(layoutWidget_3);
+        horizontalLayout_16->setSpacing(6);
+        horizontalLayout_16->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_16->setObjectName(QStringLiteral("horizontalLayout_16"));
+        horizontalLayout_16->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_17 = new QHBoxLayout();
+        horizontalLayout_17->setSpacing(6);
+        horizontalLayout_17->setObjectName(QStringLiteral("horizontalLayout_17"));
+        verticalLayout_11 = new QVBoxLayout();
+        verticalLayout_11->setSpacing(6);
+        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        detLayerPosEdit_6 = new QLineEdit(layoutWidget_3);
+        detLayerPosEdit_6->setObjectName(QStringLiteral("detLayerPosEdit_6"));
+        detLayerPosEdit_6->setMinimumSize(QSize(70, 20));
+        detLayerPosEdit_6->setMaximumSize(QSize(70, 20));
+
+        verticalLayout_11->addWidget(detLayerPosEdit_6);
+
+        horizontalLayout_18 = new QHBoxLayout();
+        horizontalLayout_18->setSpacing(6);
+        horizontalLayout_18->setObjectName(QStringLiteral("horizontalLayout_18"));
+        detLayerNegtiveButton_6 = new QPushButton(layoutWidget_3);
+        detLayerNegtiveButton_6->setObjectName(QStringLiteral("detLayerNegtiveButton_6"));
+        detLayerNegtiveButton_6->setMinimumSize(QSize(30, 30));
+        detLayerNegtiveButton_6->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_18->addWidget(detLayerNegtiveButton_6);
+
+        detLayerPositiveButton_6 = new QPushButton(layoutWidget_3);
+        detLayerPositiveButton_6->setObjectName(QStringLiteral("detLayerPositiveButton_6"));
+        detLayerPositiveButton_6->setMinimumSize(QSize(30, 30));
+        detLayerPositiveButton_6->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_18->addWidget(detLayerPositiveButton_6);
 
 
-        verticalLayout_10->addLayout(detLayerLayout1_2);
-
-        rayLayerLine = new QFrame(layoutWidget);
-        rayLayerLine->setObjectName(QStringLiteral("rayLayerLine"));
-        rayLayerLine->setFrameShape(QFrame::HLine);
-        rayLayerLine->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout_10->addWidget(rayLayerLine);
+        verticalLayout_11->addLayout(horizontalLayout_18);
 
 
-        verticalLayout_11->addLayout(verticalLayout_10);
+        horizontalLayout_17->addLayout(verticalLayout_11);
 
+        verticalLayout_12 = new QVBoxLayout();
+        verticalLayout_12->setSpacing(6);
+        verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
+        detLayerStaticLabel_6 = new QLabel(layoutWidget_3);
+        detLayerStaticLabel_6->setObjectName(QStringLiteral("detLayerStaticLabel_6"));
+        detLayerStaticLabel_6->setMinimumSize(QSize(70, 20));
+        detLayerStaticLabel_6->setMaximumSize(QSize(70, 20));
+        detLayerStaticLabel_6->setFrameShape(QFrame::Box);
+
+        verticalLayout_12->addWidget(detLayerStaticLabel_6);
+
+        detLayerAbsPosButton_11 = new QPushButton(layoutWidget_3);
+        detLayerAbsPosButton_11->setObjectName(QStringLiteral("detLayerAbsPosButton_11"));
+        detLayerAbsPosButton_11->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton_11->setMaximumSize(QSize(70, 30));
+
+        verticalLayout_12->addWidget(detLayerAbsPosButton_11);
+
+
+        horizontalLayout_17->addLayout(verticalLayout_12);
+
+
+        horizontalLayout_16->addLayout(horizontalLayout_17);
+
+        detLayerAbsPosButton_12 = new QPushButton(layoutWidget_3);
+        detLayerAbsPosButton_12->setObjectName(QStringLiteral("detLayerAbsPosButton_12"));
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_12->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_12->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_12->setMinimumSize(QSize(30, 50));
+        detLayerAbsPosButton_12->setMaximumSize(QSize(30, 100));
+
+        horizontalLayout_16->addWidget(detLayerAbsPosButton_12);
+
+        tabWidget_3->addTab(tab_3, QString());
+        tab2_3 = new QWidget();
+        tab2_3->setObjectName(QStringLiteral("tab2_3"));
+        horizontalLayout_19 = new QHBoxLayout(tab2_3);
+        horizontalLayout_19->setSpacing(6);
+        horizontalLayout_19->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_19->setObjectName(QStringLiteral("horizontalLayout_19"));
+        horizontalLayout_20 = new QHBoxLayout();
+        horizontalLayout_20->setSpacing(6);
+        horizontalLayout_20->setObjectName(QStringLiteral("horizontalLayout_20"));
+        verticalLayout_13 = new QVBoxLayout();
+        verticalLayout_13->setSpacing(6);
+        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
+        detLayerPosEdit_7 = new QLineEdit(tab2_3);
+        detLayerPosEdit_7->setObjectName(QStringLiteral("detLayerPosEdit_7"));
+        detLayerPosEdit_7->setMinimumSize(QSize(70, 20));
+        detLayerPosEdit_7->setMaximumSize(QSize(70, 20));
+
+        verticalLayout_13->addWidget(detLayerPosEdit_7);
+
+        horizontalLayout_21 = new QHBoxLayout();
+        horizontalLayout_21->setSpacing(6);
+        horizontalLayout_21->setObjectName(QStringLiteral("horizontalLayout_21"));
+        detLayerNegtiveButton_7 = new QPushButton(tab2_3);
+        detLayerNegtiveButton_7->setObjectName(QStringLiteral("detLayerNegtiveButton_7"));
+        detLayerNegtiveButton_7->setMinimumSize(QSize(30, 30));
+        detLayerNegtiveButton_7->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_21->addWidget(detLayerNegtiveButton_7);
+
+        detLayerPositiveButton_7 = new QPushButton(tab2_3);
+        detLayerPositiveButton_7->setObjectName(QStringLiteral("detLayerPositiveButton_7"));
+        detLayerPositiveButton_7->setMinimumSize(QSize(30, 30));
+        detLayerPositiveButton_7->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout_21->addWidget(detLayerPositiveButton_7);
+
+
+        verticalLayout_13->addLayout(horizontalLayout_21);
+
+
+        horizontalLayout_20->addLayout(verticalLayout_13);
+
+        verticalLayout_14 = new QVBoxLayout();
+        verticalLayout_14->setSpacing(6);
+        verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
+        detLayerStaticLabel_7 = new QLabel(tab2_3);
+        detLayerStaticLabel_7->setObjectName(QStringLiteral("detLayerStaticLabel_7"));
+        detLayerStaticLabel_7->setMinimumSize(QSize(70, 20));
+        detLayerStaticLabel_7->setMaximumSize(QSize(70, 20));
+        detLayerStaticLabel_7->setFrameShape(QFrame::Box);
+
+        verticalLayout_14->addWidget(detLayerStaticLabel_7);
+
+        detLayerAbsPosButton_13 = new QPushButton(tab2_3);
+        detLayerAbsPosButton_13->setObjectName(QStringLiteral("detLayerAbsPosButton_13"));
+        detLayerAbsPosButton_13->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton_13->setMaximumSize(QSize(70, 30));
+
+        verticalLayout_14->addWidget(detLayerAbsPosButton_13);
+
+
+        horizontalLayout_20->addLayout(verticalLayout_14);
+
+
+        horizontalLayout_19->addLayout(horizontalLayout_20);
+
+        detLayerAbsPosButton_14 = new QPushButton(tab2_3);
+        detLayerAbsPosButton_14->setObjectName(QStringLiteral("detLayerAbsPosButton_14"));
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_14->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_14->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_14->setMinimumSize(QSize(30, 50));
+        detLayerAbsPosButton_14->setMaximumSize(QSize(30, 100));
+
+        horizontalLayout_19->addWidget(detLayerAbsPosButton_14);
+
+        tabWidget_3->addTab(tab2_3, QString());
 
         retranslateUi(MotorControlWidget);
+
+        tabWidget->setCurrentIndex(1);
+        tabWidget_2->setCurrentIndex(0);
+        tabWidget_3->setCurrentIndex(1);
+
 
         QMetaObject::connectSlotsByName(MotorControlWidget);
     } // setupUi
@@ -816,54 +1075,92 @@ public:
     {
         MotorControlWidget->setWindowTitle(QApplication::translate("MotorControlWidget", "MotorControl", nullptr));
         motionGroupBox->setTitle(QApplication::translate("MotorControlWidget", "\350\277\220\345\212\250", nullptr));
+        objTranslationAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
+"\345\256\232\344\275\215", nullptr));
         label_6->setText(QApplication::translate("MotorControlWidget", "\345\267\245\344\273\266\345\271\263\347\247\273", nullptr));
         objTranslationNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
         objTranslationPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
-        objTranslationAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
-"\345\256\232\344\275\215", nullptr));
         objTranslationStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
         label_2->setText(QApplication::translate("MotorControlWidget", "<html><head/><body><p>\345\267\245\344\273\266\346\227\213\350\275\254</p></body></html>", nullptr));
-        deflectNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
-        deflectPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         deflectAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
 "\345\256\232\344\275\215", nullptr));
+        deflectNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        deflectPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         deflectStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
         label_7->setText(QApplication::translate("MotorControlWidget", "\345\267\245\344\273\266\345\276\204\345\220\221", nullptr));
-        objRadialNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
-        obRadialPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         objRadialAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
 "\345\256\232\344\275\215", nullptr));
+        objRadialNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        obRadialPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         objRadialStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        label_8->setText(QApplication::translate("MotorControlWidget", "\345\260\204\347\272\277\345\215\207\351\231\215", nullptr));
+        rayLayerAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
+"\345\256\232\344\275\215", nullptr));
+        rayLayerNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        rayLayerPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        rayLayerStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
         label->setText(QApplication::translate("MotorControlWidget", "<html><head/><body><p>\345\267\245\344\273\266\346\227\213\350\275\254</p></body></html>", nullptr));
-        objRotNegativeButton->setText(QApplication::translate("MotorControlWidget", "\345\217\215", nullptr));
-        objRotPositiveButton->setText(QApplication::translate("MotorControlWidget", "\346\255\243", nullptr));
         objRotAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
 "\345\256\232\344\275\215", nullptr));
+        objRotNegativeButton->setText(QApplication::translate("MotorControlWidget", "\345\217\215", nullptr));
+        objRotPositiveButton->setText(QApplication::translate("MotorControlWidget", "\346\255\243", nullptr));
         objRotStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
         label_5->setText(QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\276\204\345\220\221", nullptr));
-        detRadialNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
-        detRadialPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         detRadialAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
 "\345\256\232\344\275\215", nullptr));
+        detRadialNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detRadialPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         detRadialStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
         label_4->setText(QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\271\263\347\247\273", nullptr));
-        detTranslationNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
-        detTranslationPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         detTranslationAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
 "\345\256\232\344\275\215", nullptr));
+        detTranslationNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detTranslationPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
         detTranslationStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
         label_3->setText(QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\215\207\351\231\215", nullptr));
         detLayerNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
         detLayerPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
-        detLayerAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
-"\345\256\232\344\275\215", nullptr));
         detLayerStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
-        label_8->setText(QApplication::translate("MotorControlWidget", "\345\260\204\347\272\277\345\215\207\351\231\215", nullptr));
-        rayLayerNegtiveButton->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
-        rayLayerPositiveButton->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
-        rayLayerAbsPosButton->setText(QApplication::translate("MotorControlWidget", "\347\273\235\345\257\271\n"
-"\345\256\232\344\275\215", nullptr));
-        rayLayerStaticLabel->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        detLayerAbsPosButton->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_2->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
+        detLayerNegtiveButton_3->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detLayerPositiveButton_3->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        detLayerStaticLabel_3->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        detLayerAbsPosButton_5->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_6->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\271\263\347\247\273", nullptr));
+        detLayerNegtiveButton_2->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detLayerPositiveButton_2->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        detLayerStaticLabel_2->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        detLayerAbsPosButton_3->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_4->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab2), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\215\207\351\231\215", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\271\263\347\247\273", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\271\263\347\247\273", nullptr));
+        detLayerNegtiveButton_4->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detLayerPositiveButton_4->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        detLayerStaticLabel_4->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        detLayerAbsPosButton_7->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_8->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab_2), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\271\263\347\247\273", nullptr));
+        detLayerNegtiveButton_5->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detLayerPositiveButton_5->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        detLayerStaticLabel_5->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        detLayerAbsPosButton_9->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_10->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(tab2_2), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\215\207\351\231\215", nullptr));
+        detLayerNegtiveButton_6->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detLayerPositiveButton_6->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        detLayerStaticLabel_6->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        detLayerAbsPosButton_11->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_12->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
+        tabWidget_3->setTabText(tabWidget_3->indexOf(tab_3), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\271\263\347\247\273", nullptr));
+        detLayerNegtiveButton_7->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detLayerPositiveButton_7->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        detLayerStaticLabel_7->setText(QApplication::translate("MotorControlWidget", "0.0", nullptr));
+        detLayerAbsPosButton_13->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_14->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
+        tabWidget_3->setTabText(tabWidget_3->indexOf(tab2_3), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\215\207\351\231\215", nullptr));
     } // retranslateUi
 
 };

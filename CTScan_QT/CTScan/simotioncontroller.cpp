@@ -136,14 +136,13 @@ std::map<Axis, float> SimotionController::readAxisSpeed()
 bool SimotionController::initialSend()
 {
 	getSystemStatus();
-
+	getAxisPosition();
 	std::thread	( 
 		[this]()
 		{
 			sendCmd();
 		}
 	).detach();
-
 	return true;
 }
 
@@ -200,7 +199,7 @@ bool SimotionController::sliceMove(float in_pos)
 void SimotionController::getAixsValueAndNotify(std::map<Axis, float>& in_value, char * in_data, int in_axisNum, int in_typeCode)
 {
 	for (int i = 0; i != in_axisNum; ++i)
-		in_value.insert({ Axis(*(in_data + i * 5)), *(float*)((in_data + i * 5 + 1)) });
+		in_value[Axis(i)] = *(float*)((in_data + i * 4));
 	
 	{
 		std::lock_guard<std::mutex> lock(d_mutex);
@@ -318,7 +317,7 @@ void SimotionController::decodePackages(char* in_package, int in_size)
 		break;
 	case	STS_WORKZERO:
 	{
-		int axisNum = dataSize / 5;
+		int axisNum = dataSize / 4;
 		getAixsValueAndNotify(d_axisWorkZero, in_package + sizeof(tagCOMM_PACKET1), axisNum, typeCode);
 		break;
 	}
@@ -326,13 +325,13 @@ void SimotionController::decodePackages(char* in_package, int in_size)
  	// 1字节 | 4字节 |1字节 | 4字节
 	case	STS_ALL_COORDINATION:
 	{
-		int axisNum = dataSize / 5;
+		int axisNum = dataSize / 4;
 		getAixsValueAndNotify(d_axisPosition, in_package + sizeof(tagCOMM_PACKET1), axisNum, typeCode);
 		break;
 	}
 	case	STS_AXIS_SPEED:
 	{
-		int axisNum = dataSize / 5;
+		int axisNum = dataSize / 4;
 		getAixsValueAndNotify(d_axisSpeed, in_package + sizeof(tagCOMM_PACKET1), axisNum, typeCode);
 		break;
 	}

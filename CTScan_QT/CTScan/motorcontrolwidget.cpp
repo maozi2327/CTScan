@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <QTimer>
 #include "motorcontrolwidget.h"
 #include "controllerinterface.h"
 #include "..\Public\headers\machineType.h"
@@ -8,6 +9,9 @@ MotorControlWidget::MotorControlWidget(ControllerInterface* in_controller, QWidg
 	, d_controller(in_controller)
 {
 	ui.setupUi(this);
+	d_timer = new QTimer(this);
+	d_timer->start(100);
+	connect(d_timer, &QTimer::timeout, this, &MotorControlWidget::updateStatus);
 	//d_controller->getAxisPosition();
 }
 
@@ -24,13 +28,13 @@ void MotorControlWidget::on_objRotAbsPosButton_clicked()
 void MotorControlWidget::updateAxisStatus()
 {
 	std::map<Axis, float> axisPos = d_controller->readAxisPostion();
-	ui.rayLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::rayLayer]));
-	ui.objRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRadial]));
-	ui.objRotStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRotation]));
-	ui.objTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::objTranslation]));
-	ui.detLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::detLayer]));
-	ui.detRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::detRadial]));
-	ui.detTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::detTranslation]));
+	ui.rayLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::rayLayer], 0, 'f', 2));
+	ui.objRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRadial], 0, 'f', 2));
+	ui.objRotStaticLabel->setText(QString("%1").arg(axisPos[Axis::objRotation], 0, 'f', 2));
+	ui.objTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::objTranslation], 0, 'f', 2));
+	ui.detLayerStaticLabel->setText(QString("%1").arg(axisPos[Axis::detLayer], 0, 'f', 2));
+	ui.detRadialStaticLabel->setText(QString("%1").arg(axisPos[Axis::detRadial], 0, 'f', 2));
+	ui.detTranslationStaticLabel->setText(QString("%1").arg(axisPos[Axis::detTranslation], 0, 'f', 2));
 }
 void MotorControlWidget::on_objRotNegativeButton_clicked()
 {
@@ -130,4 +134,9 @@ void MotorControlWidget::on_rayLayerNegativeButton_clicked()
 void MotorControlWidget::on_rayLayerPositiveButton_clicked()
 {
 	d_controller->axisRelMove(Axis::rayLayer, ui.rayLayerPosEdit->text().toFloat());
+}
+
+void MotorControlWidget::updateStatus()
+{
+	updateAxisStatus();
 }
