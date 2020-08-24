@@ -17,6 +17,7 @@
 
 CTScan::CTScan(QWidget *parent)
     : QMainWindow(parent)
+	, d_scanWidget(nullptr)
 	, d_rayPanelMotion(new RayPanelMotion()), d_imageWidgetManager(new ImageWidgetManager())
 	, d_controller(new SimotionController()), d_motorControl(new MotorControlWidget(d_controller.get()))
 	, d_setupData(new SetupData), d_setupDataPaser(new SetupDataParser(d_setupData.get()))
@@ -67,19 +68,36 @@ void CTScan::on_ray0LineDet0Button_clicked()
 	if (d_lineDetScanWidget[{0, 0}].get() == nullptr)
 	{
 		auto widget = new LineDetScanWidget(d_motorControl.get(), 0, 0,
-			d_lineDetScanModeMap[{ 0, 0}], d_setupData.get(), d_lineDetNetWorkMap[0].get(), d_controller.get(), nullptr);
+			d_lineDetScanModeMap[{ 0, 0}], d_setupData.get(), d_lineDetNetWorkMap[0].get(), d_controller.get(), this);
 		d_lineDetScanWidget[{0, 0}].reset(widget);
 	}
+	
+	if(d_scanWidget != nullptr && d_scanWidget->isVisible())
+		d_scanWidget->hide();
 
-	d_lineDetScanWidget[{0, 0}]->show();
-	hide();
+	d_scanWidget = d_lineDetScanWidget[{0, 0}].get();
+	d_scanWidget->setGeometry((QRect(400, 400, 520, 730)));
+	d_scanWidget->show();
+	//hide();
 	//QString fileName("0000.tif");
 	//d_panelImageProcess->loadAirData(fileName);
 }
 
 void CTScan::on_ray0PanelDet0Button_clicked()
 {
-	
+	if (d_panelDetScanWidget[{0, 0}].get() == nullptr)
+	{
+		auto widget = new ConeScanWidget(d_motorControl.get(), 0, 0,
+			d_panelDetScanModeMap[{ 0, 0}], d_setupData.get(), nullptr, d_controller.get(), this);
+		d_panelDetScanWidget[{0, 0}].reset(widget);
+	}
+
+	if (d_scanWidget != nullptr && d_scanWidget->isVisible())
+		d_scanWidget->hide();
+
+	d_scanWidget = d_panelDetScanWidget[{0, 0}].get();
+	d_scanWidget->setGeometry((QRect(400, 400, 1520, 1730)));
+	d_scanWidget->show();
 }
 
 void CTScan::on_ray1LineDet0Button_clicked()

@@ -157,6 +157,7 @@ public:
     {
         if (LineDetScanWidget->objectName().isEmpty())
             LineDetScanWidget->setObjectName(QStringLiteral("LineDetScanWidget"));
+        LineDetScanWidget->setWindowModality(Qt::NonModal);
         LineDetScanWidget->resize(307, 602);
         LineDetScanWidget->setMinimumSize(QSize(300, 550));
         LineDetScanWidget->setMaximumSize(QSize(1000, 1000));

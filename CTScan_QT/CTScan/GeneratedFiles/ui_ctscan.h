@@ -36,7 +36,7 @@ public:
     {
         if (CTScanClass->objectName().isEmpty())
             CTScanClass->setObjectName(QStringLiteral("CTScanClass"));
-        CTScanClass->resize(166, 359);
+        CTScanClass->resize(634, 731);
         CTScanClass->setContextMenuPolicy(Qt::DefaultContextMenu);
         centralWidget = new QWidget(CTScanClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));

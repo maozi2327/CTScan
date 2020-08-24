@@ -12,11 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -79,7 +81,7 @@ public:
     QPushButton *detTranslationPositiveButton;
     QLabel *detTranslationStaticLabel;
     QLabel *label_3;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout_2;
@@ -177,12 +179,80 @@ public:
     QLabel *detLayerStaticLabel_7;
     QPushButton *detLayerAbsPosButton_13;
     QPushButton *detLayerAbsPosButton_14;
+    QLabel *label_17;
+    QLabel *label_20;
+    QLabel *label_21;
+    QLabel *label_27;
+    QLabel *label_28;
+    QLabel *label_29;
+    QLabel *label_30;
+    QLabel *label_31;
+    QLabel *label_32;
+    QLabel *label_33;
+    QLabel *label_34;
+    QLabel *label_35;
+    QLabel *label_36;
+    QLabel *label_37;
+    QLabel *label_38;
+    QLabel *label_39;
+    QLabel *label_40;
+    QLabel *label_41;
+    QLabel *label_42;
+    QLabel *label_43;
+    QLabel *label_44;
+    QLabel *label_45;
+    QLabel *label_46;
+    QLabel *label_47;
+    QLabel *label_48;
+    QLabel *label_49;
+    QLabel *label_50;
+    QLabel *label_51;
+    QLabel *label_52;
+    QLabel *label_53;
+    QLabel *label_54;
+    QLabel *label_55;
+    QLabel *label_56;
+    QLabel *label_57;
+    QLabel *label_58;
+    QLabel *label_59;
+    QLabel *label_60;
+    QRadioButton *radioButton_8;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_22;
+    QGridLayout *gridLayout_2;
+    QRadioButton *radioButton;
+    QLabel *label_10;
+    QLabel *label_18;
+    QRadioButton *radioButton_2;
+    QLabel *label_11;
+    QLabel *label_19;
+    QRadioButton *radioButton_4;
+    QLabel *label_12;
+    QLabel *label_22;
+    QRadioButton *radioButton_5;
+    QLabel *label_15;
+    QLabel *label_24;
+    QRadioButton *radioButton_6;
+    QLabel *label_16;
+    QLabel *label_25;
+    QRadioButton *radioButton_7;
+    QLabel *label_14;
+    QLabel *label_26;
+    QRadioButton *radioButton_3;
+    QLabel *label_13;
+    QLabel *label_23;
+    QGridLayout *gridLayout;
+    QLineEdit *lineEdit_7;
+    QPushButton *detLayerNegtiveButton_8;
+    QPushButton *detLayerPositiveButton_8;
+    QPushButton *detLayerAbsPosButton_15;
+    QPushButton *detLayerAbsPosButton_16;
 
     void setupUi(QWidget *MotorControlWidget)
     {
         if (MotorControlWidget->objectName().isEmpty())
             MotorControlWidget->setObjectName(QStringLiteral("MotorControlWidget"));
-        MotorControlWidget->resize(1366, 685);
+        MotorControlWidget->resize(1254, 776);
         motionGroupBox = new QGroupBox(MotorControlWidget);
         motionGroupBox->setObjectName(QStringLiteral("motionGroupBox"));
         motionGroupBox->setGeometry(QRect(790, 30, 300, 636));
@@ -457,10 +527,10 @@ public:
         label_3->setGeometry(QRect(12, 24, 50, 16));
         label_3->setMinimumSize(QSize(50, 0));
         label_3->setMaximumSize(QSize(50, 16777215));
-        widget = new QWidget(motionGroupBox);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(60, 20, 190, 64));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(motionGroupBox);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(60, 20, 190, 64));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
@@ -471,7 +541,7 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        detLayerPosEdit = new QLineEdit(widget);
+        detLayerPosEdit = new QLineEdit(layoutWidget);
         detLayerPosEdit->setObjectName(QStringLiteral("detLayerPosEdit"));
         detLayerPosEdit->setMinimumSize(QSize(70, 20));
         detLayerPosEdit->setMaximumSize(QSize(70, 20));
@@ -481,14 +551,14 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        detLayerNegtiveButton = new QPushButton(widget);
+        detLayerNegtiveButton = new QPushButton(layoutWidget);
         detLayerNegtiveButton->setObjectName(QStringLiteral("detLayerNegtiveButton"));
         detLayerNegtiveButton->setMinimumSize(QSize(30, 30));
         detLayerNegtiveButton->setMaximumSize(QSize(30, 30));
 
         horizontalLayout->addWidget(detLayerNegtiveButton);
 
-        detLayerPositiveButton = new QPushButton(widget);
+        detLayerPositiveButton = new QPushButton(layoutWidget);
         detLayerPositiveButton->setObjectName(QStringLiteral("detLayerPositiveButton"));
         detLayerPositiveButton->setMinimumSize(QSize(30, 30));
         detLayerPositiveButton->setMaximumSize(QSize(30, 30));
@@ -504,7 +574,7 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        detLayerStaticLabel = new QLabel(widget);
+        detLayerStaticLabel = new QLabel(layoutWidget);
         detLayerStaticLabel->setObjectName(QStringLiteral("detLayerStaticLabel"));
         detLayerStaticLabel->setMinimumSize(QSize(70, 20));
         detLayerStaticLabel->setMaximumSize(QSize(70, 20));
@@ -512,7 +582,7 @@ public:
 
         verticalLayout->addWidget(detLayerStaticLabel);
 
-        detLayerAbsPosButton = new QPushButton(widget);
+        detLayerAbsPosButton = new QPushButton(layoutWidget);
         detLayerAbsPosButton->setObjectName(QStringLiteral("detLayerAbsPosButton"));
         detLayerAbsPosButton->setMinimumSize(QSize(30, 30));
         detLayerAbsPosButton->setMaximumSize(QSize(70, 30));
@@ -525,7 +595,7 @@ public:
 
         horizontalLayout_3->addLayout(horizontalLayout_2);
 
-        detLayerAbsPosButton_2 = new QPushButton(widget);
+        detLayerAbsPosButton_2 = new QPushButton(layoutWidget);
         detLayerAbsPosButton_2->setObjectName(QStringLiteral("detLayerAbsPosButton_2"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -903,7 +973,7 @@ public:
         tabWidget_2->addTab(tab2_2, QString());
         tabWidget_3 = new QTabWidget(MotorControlWidget);
         tabWidget_3->setObjectName(QStringLiteral("tabWidget_3"));
-        tabWidget_3->setGeometry(QRect(20, 280, 291, 106));
+        tabWidget_3->setGeometry(QRect(360, 20, 291, 106));
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
         layoutWidget_3 = new QWidget(tab_3);
@@ -1060,10 +1130,425 @@ public:
         horizontalLayout_19->addWidget(detLayerAbsPosButton_14);
 
         tabWidget_3->addTab(tab2_3, QString());
+        label_17 = new QLabel(MotorControlWidget);
+        label_17->setObjectName(QStringLiteral("label_17"));
+        label_17->setGeometry(QRect(130, 270, 60, 16));
+        label_17->setMinimumSize(QSize(60, 0));
+        label_17->setMaximumSize(QSize(60, 16777215));
+        label_17->setFrameShape(QFrame::Box);
+        label_20 = new QLabel(MotorControlWidget);
+        label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setGeometry(QRect(590, 250, 61, 21));
+        label_20->setFrameShape(QFrame::Box);
+        label_21 = new QLabel(MotorControlWidget);
+        label_21->setObjectName(QStringLiteral("label_21"));
+        label_21->setGeometry(QRect(590, 290, 61, 21));
+        label_21->setFrameShape(QFrame::Box);
+        label_27 = new QLabel(MotorControlWidget);
+        label_27->setObjectName(QStringLiteral("label_27"));
+        label_27->setGeometry(QRect(34, 590, 60, 16));
+        label_27->setMinimumSize(QSize(60, 0));
+        label_27->setMaximumSize(QSize(60, 16777215));
+        label_27->setFrameShape(QFrame::Box);
+        label_28 = new QLabel(MotorControlWidget);
+        label_28->setObjectName(QStringLiteral("label_28"));
+        label_28->setGeometry(QRect(34, 650, 60, 16));
+        label_28->setMinimumSize(QSize(60, 0));
+        label_28->setMaximumSize(QSize(60, 16777215));
+        label_28->setFrameShape(QFrame::Box);
+        label_29 = new QLabel(MotorControlWidget);
+        label_29->setObjectName(QStringLiteral("label_29"));
+        label_29->setGeometry(QRect(34, 610, 60, 16));
+        label_29->setMinimumSize(QSize(60, 0));
+        label_29->setMaximumSize(QSize(60, 16777215));
+        label_29->setFrameShape(QFrame::Box);
+        label_30 = new QLabel(MotorControlWidget);
+        label_30->setObjectName(QStringLiteral("label_30"));
+        label_30->setGeometry(QRect(278, 761, 32, 16));
+        label_30->setFrameShape(QFrame::Box);
+        label_31 = new QLabel(MotorControlWidget);
+        label_31->setObjectName(QStringLiteral("label_31"));
+        label_31->setGeometry(QRect(34, 630, 60, 16));
+        label_31->setMinimumSize(QSize(60, 0));
+        label_31->setMaximumSize(QSize(60, 16777215));
+        label_31->setFrameShape(QFrame::Box);
+        label_32 = new QLabel(MotorControlWidget);
+        label_32->setObjectName(QStringLiteral("label_32"));
+        label_32->setGeometry(QRect(34, 570, 60, 16));
+        label_32->setMinimumSize(QSize(60, 0));
+        label_32->setMaximumSize(QSize(60, 16777215));
+        label_32->setFrameShape(QFrame::Box);
+        label_33 = new QLabel(MotorControlWidget);
+        label_33->setObjectName(QStringLiteral("label_33"));
+        label_33->setGeometry(QRect(34, 550, 60, 16));
+        label_33->setMinimumSize(QSize(60, 0));
+        label_33->setMaximumSize(QSize(60, 16777215));
+        label_33->setFrameShape(QFrame::Box);
+        label_34 = new QLabel(MotorControlWidget);
+        label_34->setObjectName(QStringLiteral("label_34"));
+        label_34->setGeometry(QRect(34, 670, 60, 16));
+        label_34->setMinimumSize(QSize(60, 0));
+        label_34->setMaximumSize(QSize(60, 16777215));
+        label_34->setFrameShape(QFrame::Box);
+        label_35 = new QLabel(MotorControlWidget);
+        label_35->setObjectName(QStringLiteral("label_35"));
+        label_35->setGeometry(QRect(305, 257, 32, 16));
+        label_35->setFrameShape(QFrame::Box);
+        label_36 = new QLabel(MotorControlWidget);
+        label_36->setObjectName(QStringLiteral("label_36"));
+        label_36->setGeometry(QRect(100, 590, 60, 16));
+        label_36->setMinimumSize(QSize(60, 0));
+        label_36->setMaximumSize(QSize(60, 16777215));
+        label_36->setFrameShape(QFrame::Box);
+        label_37 = new QLabel(MotorControlWidget);
+        label_37->setObjectName(QStringLiteral("label_37"));
+        label_37->setGeometry(QRect(100, 610, 60, 16));
+        label_37->setMinimumSize(QSize(60, 0));
+        label_37->setMaximumSize(QSize(60, 16777215));
+        label_37->setFrameShape(QFrame::Box);
+        label_38 = new QLabel(MotorControlWidget);
+        label_38->setObjectName(QStringLiteral("label_38"));
+        label_38->setGeometry(QRect(100, 670, 60, 16));
+        label_38->setMinimumSize(QSize(60, 0));
+        label_38->setMaximumSize(QSize(60, 16777215));
+        label_38->setFrameShape(QFrame::Box);
+        label_39 = new QLabel(MotorControlWidget);
+        label_39->setObjectName(QStringLiteral("label_39"));
+        label_39->setGeometry(QRect(100, 570, 60, 16));
+        label_39->setMinimumSize(QSize(60, 0));
+        label_39->setMaximumSize(QSize(60, 16777215));
+        label_39->setFrameShape(QFrame::Box);
+        label_40 = new QLabel(MotorControlWidget);
+        label_40->setObjectName(QStringLiteral("label_40"));
+        label_40->setGeometry(QRect(100, 650, 60, 16));
+        label_40->setMinimumSize(QSize(60, 0));
+        label_40->setMaximumSize(QSize(60, 16777215));
+        label_40->setFrameShape(QFrame::Box);
+        label_41 = new QLabel(MotorControlWidget);
+        label_41->setObjectName(QStringLiteral("label_41"));
+        label_41->setGeometry(QRect(100, 630, 60, 16));
+        label_41->setMinimumSize(QSize(60, 0));
+        label_41->setMaximumSize(QSize(60, 16777215));
+        label_41->setFrameShape(QFrame::Box);
+        label_42 = new QLabel(MotorControlWidget);
+        label_42->setObjectName(QStringLiteral("label_42"));
+        label_42->setGeometry(QRect(100, 550, 60, 16));
+        label_42->setMinimumSize(QSize(60, 0));
+        label_42->setMaximumSize(QSize(60, 16777215));
+        label_42->setFrameShape(QFrame::Box);
+        label_43 = new QLabel(MotorControlWidget);
+        label_43->setObjectName(QStringLiteral("label_43"));
+        label_43->setGeometry(QRect(370, 257, 32, 16));
+        label_43->setFrameShape(QFrame::Box);
+        label_44 = new QLabel(MotorControlWidget);
+        label_44->setObjectName(QStringLiteral("label_44"));
+        label_44->setGeometry(QRect(166, 610, 60, 16));
+        label_44->setMinimumSize(QSize(60, 0));
+        label_44->setMaximumSize(QSize(60, 16777215));
+        label_44->setFrameShape(QFrame::Box);
+        label_45 = new QLabel(MotorControlWidget);
+        label_45->setObjectName(QStringLiteral("label_45"));
+        label_45->setGeometry(QRect(166, 570, 60, 16));
+        label_45->setMinimumSize(QSize(60, 0));
+        label_45->setMaximumSize(QSize(60, 16777215));
+        label_45->setFrameShape(QFrame::Box);
+        label_46 = new QLabel(MotorControlWidget);
+        label_46->setObjectName(QStringLiteral("label_46"));
+        label_46->setGeometry(QRect(435, 257, 32, 16));
+        label_46->setFrameShape(QFrame::Box);
+        label_47 = new QLabel(MotorControlWidget);
+        label_47->setObjectName(QStringLiteral("label_47"));
+        label_47->setGeometry(QRect(166, 630, 60, 16));
+        label_47->setMinimumSize(QSize(60, 0));
+        label_47->setMaximumSize(QSize(60, 16777215));
+        label_47->setFrameShape(QFrame::Box);
+        label_48 = new QLabel(MotorControlWidget);
+        label_48->setObjectName(QStringLiteral("label_48"));
+        label_48->setGeometry(QRect(166, 550, 60, 16));
+        label_48->setMinimumSize(QSize(60, 0));
+        label_48->setMaximumSize(QSize(60, 16777215));
+        label_48->setFrameShape(QFrame::Box);
+        label_49 = new QLabel(MotorControlWidget);
+        label_49->setObjectName(QStringLiteral("label_49"));
+        label_49->setGeometry(QRect(166, 650, 60, 16));
+        label_49->setMinimumSize(QSize(60, 0));
+        label_49->setMaximumSize(QSize(60, 16777215));
+        label_49->setFrameShape(QFrame::Box);
+        label_50 = new QLabel(MotorControlWidget);
+        label_50->setObjectName(QStringLiteral("label_50"));
+        label_50->setGeometry(QRect(166, 670, 60, 16));
+        label_50->setMinimumSize(QSize(60, 0));
+        label_50->setMaximumSize(QSize(60, 16777215));
+        label_50->setFrameShape(QFrame::Box);
+        label_51 = new QLabel(MotorControlWidget);
+        label_51->setObjectName(QStringLiteral("label_51"));
+        label_51->setGeometry(QRect(166, 590, 60, 16));
+        label_51->setMinimumSize(QSize(60, 0));
+        label_51->setMaximumSize(QSize(60, 16777215));
+        label_51->setFrameShape(QFrame::Box);
+        label_52 = new QLabel(MotorControlWidget);
+        label_52->setObjectName(QStringLiteral("label_52"));
+        label_52->setGeometry(QRect(232, 610, 60, 16));
+        label_52->setMinimumSize(QSize(60, 0));
+        label_52->setMaximumSize(QSize(60, 16777215));
+        label_52->setFrameShape(QFrame::Box);
+        label_53 = new QLabel(MotorControlWidget);
+        label_53->setObjectName(QStringLiteral("label_53"));
+        label_53->setGeometry(QRect(232, 570, 60, 16));
+        label_53->setMinimumSize(QSize(60, 0));
+        label_53->setMaximumSize(QSize(60, 16777215));
+        label_53->setFrameShape(QFrame::Box);
+        label_54 = new QLabel(MotorControlWidget);
+        label_54->setObjectName(QStringLiteral("label_54"));
+        label_54->setGeometry(QRect(500, 257, 32, 16));
+        label_54->setFrameShape(QFrame::Box);
+        label_55 = new QLabel(MotorControlWidget);
+        label_55->setObjectName(QStringLiteral("label_55"));
+        label_55->setGeometry(QRect(232, 630, 60, 16));
+        label_55->setMinimumSize(QSize(60, 0));
+        label_55->setMaximumSize(QSize(60, 16777215));
+        label_55->setFrameShape(QFrame::Box);
+        label_56 = new QLabel(MotorControlWidget);
+        label_56->setObjectName(QStringLiteral("label_56"));
+        label_56->setGeometry(QRect(232, 550, 60, 16));
+        label_56->setMinimumSize(QSize(60, 0));
+        label_56->setMaximumSize(QSize(60, 16777215));
+        label_56->setFrameShape(QFrame::Box);
+        label_57 = new QLabel(MotorControlWidget);
+        label_57->setObjectName(QStringLiteral("label_57"));
+        label_57->setGeometry(QRect(232, 650, 60, 16));
+        label_57->setMinimumSize(QSize(60, 0));
+        label_57->setMaximumSize(QSize(60, 16777215));
+        label_57->setFrameShape(QFrame::Box);
+        label_58 = new QLabel(MotorControlWidget);
+        label_58->setObjectName(QStringLiteral("label_58"));
+        label_58->setGeometry(QRect(232, 670, 60, 16));
+        label_58->setMinimumSize(QSize(60, 0));
+        label_58->setMaximumSize(QSize(60, 16777215));
+        label_58->setFrameShape(QFrame::Box);
+        label_59 = new QLabel(MotorControlWidget);
+        label_59->setObjectName(QStringLiteral("label_59"));
+        label_59->setGeometry(QRect(232, 590, 60, 16));
+        label_59->setMinimumSize(QSize(60, 0));
+        label_59->setMaximumSize(QSize(60, 16777215));
+        label_59->setFrameShape(QFrame::Box);
+        label_60 = new QLabel(MotorControlWidget);
+        label_60->setObjectName(QStringLiteral("label_60"));
+        label_60->setGeometry(QRect(45, 270, 60, 16));
+        label_60->setMinimumSize(QSize(60, 0));
+        label_60->setMaximumSize(QSize(60, 16777215));
+        label_60->setFrameShape(QFrame::Box);
+        radioButton_8 = new QRadioButton(MotorControlWidget);
+        radioButton_8->setObjectName(QStringLiteral("radioButton_8"));
+        radioButton_8->setGeometry(QRect(26, 270, 16, 16));
+        widget = new QWidget(MotorControlWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(29, 320, 217, 147));
+        horizontalLayout_22 = new QHBoxLayout(widget);
+        horizontalLayout_22->setSpacing(6);
+        horizontalLayout_22->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_22->setObjectName(QStringLiteral("horizontalLayout_22"));
+        horizontalLayout_22->setContentsMargins(0, 0, 0, 0);
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        radioButton = new QRadioButton(widget);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+
+        gridLayout_2->addWidget(radioButton, 0, 0, 1, 1);
+
+        label_10 = new QLabel(widget);
+        label_10->setObjectName(QStringLiteral("label_10"));
+        label_10->setMinimumSize(QSize(60, 0));
+        label_10->setMaximumSize(QSize(60, 16777215));
+        label_10->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_10, 0, 1, 1, 1);
+
+        label_18 = new QLabel(widget);
+        label_18->setObjectName(QStringLiteral("label_18"));
+        label_18->setMinimumSize(QSize(60, 0));
+        label_18->setMaximumSize(QSize(60, 16777215));
+        label_18->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_18, 0, 2, 1, 1);
+
+        radioButton_2 = new QRadioButton(widget);
+        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+
+        gridLayout_2->addWidget(radioButton_2, 1, 0, 1, 1);
+
+        label_11 = new QLabel(widget);
+        label_11->setObjectName(QStringLiteral("label_11"));
+        label_11->setMinimumSize(QSize(60, 0));
+        label_11->setMaximumSize(QSize(60, 16777215));
+        label_11->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_11, 1, 1, 1, 1);
+
+        label_19 = new QLabel(widget);
+        label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setMinimumSize(QSize(60, 0));
+        label_19->setMaximumSize(QSize(60, 16777215));
+        label_19->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_19, 1, 2, 1, 1);
+
+        radioButton_4 = new QRadioButton(widget);
+        radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
+
+        gridLayout_2->addWidget(radioButton_4, 2, 0, 1, 1);
+
+        label_12 = new QLabel(widget);
+        label_12->setObjectName(QStringLiteral("label_12"));
+        label_12->setMinimumSize(QSize(60, 0));
+        label_12->setMaximumSize(QSize(60, 16777215));
+        label_12->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_12, 2, 1, 1, 1);
+
+        label_22 = new QLabel(widget);
+        label_22->setObjectName(QStringLiteral("label_22"));
+        label_22->setMinimumSize(QSize(60, 0));
+        label_22->setMaximumSize(QSize(60, 16777215));
+        label_22->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_22, 2, 2, 1, 1);
+
+        radioButton_5 = new QRadioButton(widget);
+        radioButton_5->setObjectName(QStringLiteral("radioButton_5"));
+
+        gridLayout_2->addWidget(radioButton_5, 3, 0, 1, 1);
+
+        label_15 = new QLabel(widget);
+        label_15->setObjectName(QStringLiteral("label_15"));
+        label_15->setMinimumSize(QSize(60, 0));
+        label_15->setMaximumSize(QSize(60, 16777215));
+        label_15->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_15, 3, 1, 1, 1);
+
+        label_24 = new QLabel(widget);
+        label_24->setObjectName(QStringLiteral("label_24"));
+        label_24->setMinimumSize(QSize(60, 0));
+        label_24->setMaximumSize(QSize(60, 16777215));
+        label_24->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_24, 3, 2, 1, 1);
+
+        radioButton_6 = new QRadioButton(widget);
+        radioButton_6->setObjectName(QStringLiteral("radioButton_6"));
+
+        gridLayout_2->addWidget(radioButton_6, 4, 0, 1, 1);
+
+        label_16 = new QLabel(widget);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setMinimumSize(QSize(60, 0));
+        label_16->setMaximumSize(QSize(60, 16777215));
+        label_16->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_16, 4, 1, 1, 1);
+
+        label_25 = new QLabel(widget);
+        label_25->setObjectName(QStringLiteral("label_25"));
+        label_25->setMinimumSize(QSize(60, 0));
+        label_25->setMaximumSize(QSize(60, 16777215));
+        label_25->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_25, 4, 2, 1, 1);
+
+        radioButton_7 = new QRadioButton(widget);
+        radioButton_7->setObjectName(QStringLiteral("radioButton_7"));
+
+        gridLayout_2->addWidget(radioButton_7, 5, 0, 1, 1);
+
+        label_14 = new QLabel(widget);
+        label_14->setObjectName(QStringLiteral("label_14"));
+        label_14->setMinimumSize(QSize(60, 0));
+        label_14->setMaximumSize(QSize(60, 16777215));
+        label_14->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_14, 5, 1, 1, 1);
+
+        label_26 = new QLabel(widget);
+        label_26->setObjectName(QStringLiteral("label_26"));
+        label_26->setMinimumSize(QSize(60, 0));
+        label_26->setMaximumSize(QSize(60, 16777215));
+        label_26->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_26, 5, 2, 1, 1);
+
+        radioButton_3 = new QRadioButton(widget);
+        radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
+
+        gridLayout_2->addWidget(radioButton_3, 6, 0, 1, 1);
+
+        label_13 = new QLabel(widget);
+        label_13->setObjectName(QStringLiteral("label_13"));
+        label_13->setMinimumSize(QSize(60, 0));
+        label_13->setMaximumSize(QSize(60, 16777215));
+        label_13->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_13, 6, 1, 1, 1);
+
+        label_23 = new QLabel(widget);
+        label_23->setObjectName(QStringLiteral("label_23"));
+        label_23->setMinimumSize(QSize(60, 0));
+        label_23->setMaximumSize(QSize(60, 16777215));
+        label_23->setFrameShape(QFrame::Box);
+
+        gridLayout_2->addWidget(label_23, 6, 2, 1, 1);
+
+
+        horizontalLayout_22->addLayout(gridLayout_2);
+
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(6);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        lineEdit_7 = new QLineEdit(widget);
+        lineEdit_7->setObjectName(QStringLiteral("lineEdit_7"));
+        lineEdit_7->setMinimumSize(QSize(60, 0));
+        lineEdit_7->setMaximumSize(QSize(60, 16777215));
+
+        gridLayout->addWidget(lineEdit_7, 0, 0, 1, 2);
+
+        detLayerNegtiveButton_8 = new QPushButton(widget);
+        detLayerNegtiveButton_8->setObjectName(QStringLiteral("detLayerNegtiveButton_8"));
+        detLayerNegtiveButton_8->setMinimumSize(QSize(25, 25));
+        detLayerNegtiveButton_8->setMaximumSize(QSize(25, 25));
+
+        gridLayout->addWidget(detLayerNegtiveButton_8, 1, 0, 1, 1);
+
+        detLayerPositiveButton_8 = new QPushButton(widget);
+        detLayerPositiveButton_8->setObjectName(QStringLiteral("detLayerPositiveButton_8"));
+        detLayerPositiveButton_8->setMinimumSize(QSize(25, 25));
+        detLayerPositiveButton_8->setMaximumSize(QSize(25, 25));
+
+        gridLayout->addWidget(detLayerPositiveButton_8, 1, 1, 1, 1);
+
+        detLayerAbsPosButton_15 = new QPushButton(widget);
+        detLayerAbsPosButton_15->setObjectName(QStringLiteral("detLayerAbsPosButton_15"));
+        detLayerAbsPosButton_15->setMinimumSize(QSize(30, 30));
+        detLayerAbsPosButton_15->setMaximumSize(QSize(70, 30));
+
+        gridLayout->addWidget(detLayerAbsPosButton_15, 2, 0, 1, 2);
+
+        detLayerAbsPosButton_16 = new QPushButton(widget);
+        detLayerAbsPosButton_16->setObjectName(QStringLiteral("detLayerAbsPosButton_16"));
+        sizePolicy1.setHeightForWidth(detLayerAbsPosButton_16->sizePolicy().hasHeightForWidth());
+        detLayerAbsPosButton_16->setSizePolicy(sizePolicy1);
+        detLayerAbsPosButton_16->setMinimumSize(QSize(50, 50));
+        detLayerAbsPosButton_16->setMaximumSize(QSize(100, 100));
+
+        gridLayout->addWidget(detLayerAbsPosButton_16, 3, 0, 1, 2);
+
+
+        horizontalLayout_22->addLayout(gridLayout);
+
 
         retranslateUi(MotorControlWidget);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
         tabWidget_2->setCurrentIndex(0);
         tabWidget_3->setCurrentIndex(1);
 
@@ -1161,6 +1646,69 @@ public:
         detLayerAbsPosButton_13->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
         detLayerAbsPosButton_14->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab2_3), QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\215\207\351\231\215", nullptr));
+        label_17->setText(QApplication::translate("MotorControlWidget", "\345\235\220\346\240\207", nullptr));
+        label_20->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_21->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_27->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_28->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_29->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_30->setText(QApplication::translate("MotorControlWidget", "\345\235\220\346\240\207", nullptr));
+        label_31->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_32->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_33->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_34->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_35->setText(QApplication::translate("MotorControlWidget", "\345\235\220\346\240\207", nullptr));
+        label_36->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_37->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_38->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_39->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_40->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_41->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_42->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_43->setText(QApplication::translate("MotorControlWidget", "\345\235\220\346\240\207", nullptr));
+        label_44->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_45->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_46->setText(QApplication::translate("MotorControlWidget", "\345\235\220\346\240\207", nullptr));
+        label_47->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_48->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_49->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_50->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_51->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_52->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_53->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_54->setText(QApplication::translate("MotorControlWidget", "\345\235\220\346\240\207", nullptr));
+        label_55->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_56->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_57->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_58->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_59->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        label_60->setText(QApplication::translate("MotorControlWidget", "\345\260\204\347\272\277\345\215\207\351\231\215", nullptr));
+        radioButton_8->setText(QString());
+        radioButton->setText(QString());
+        label_10->setText(QApplication::translate("MotorControlWidget", "\345\260\204\347\272\277\345\215\207\351\231\215", nullptr));
+        label_18->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        radioButton_2->setText(QString());
+        label_11->setText(QApplication::translate("MotorControlWidget", "\345\267\245\344\273\266\346\227\213\350\275\254", nullptr));
+        label_19->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        radioButton_4->setText(QString());
+        label_12->setText(QApplication::translate("MotorControlWidget", "\345\267\245\344\273\266\345\271\263\347\247\273", nullptr));
+        label_22->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        radioButton_5->setText(QString());
+        label_15->setText(QApplication::translate("MotorControlWidget", "\345\267\245\344\273\266\345\276\204\345\220\221", nullptr));
+        label_24->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        radioButton_6->setText(QString());
+        label_16->setText(QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\215\207\351\231\215", nullptr));
+        label_25->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        radioButton_7->setText(QString());
+        label_14->setText(QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\271\263\347\247\273", nullptr));
+        label_26->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        radioButton_3->setText(QString());
+        label_13->setText(QApplication::translate("MotorControlWidget", "\346\216\242\346\265\213\345\276\204\345\220\221", nullptr));
+        label_23->setText(QApplication::translate("MotorControlWidget", "1000", nullptr));
+        detLayerNegtiveButton_8->setText(QApplication::translate("MotorControlWidget", "<<", nullptr));
+        detLayerPositiveButton_8->setText(QApplication::translate("MotorControlWidget", ">>", nullptr));
+        detLayerAbsPosButton_15->setText(QApplication::translate("MotorControlWidget", "GO", nullptr));
+        detLayerAbsPosButton_16->setText(QApplication::translate("MotorControlWidget", "\345\201\234\346\255\242", nullptr));
     } // retranslateUi
 
 };

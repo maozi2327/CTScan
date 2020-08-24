@@ -59,9 +59,11 @@ private:
 	std::map<std::pair<int, int>, std::vector<ScanMode>> d_lineDetScanModeMap;
 	std::map<std::pair<int, int>, std::vector<ScanMode>> d_panelDetScanModeMap;
 	std::map<std::pair<int, int>, std::unique_ptr<LineDetScanWidget>> d_lineDetScanWidget;
+	std::map<std::pair<int, int>, std::unique_ptr<ConeScanWidget>> d_panelDetScanWidget;
 	size_t frontImageIndex;
 	QSystemTrayIcon* d_tray;
 	QString	d_workDir;
+	QWidget* d_scanWidget;
 };
 //#ifdef TABLETRANSLATION
 //#ifdef TABLERADIAL

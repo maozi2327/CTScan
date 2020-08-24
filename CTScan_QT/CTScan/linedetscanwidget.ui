@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>LineDetScanWidget</class>
  <widget class="QWidget" name="LineDetScanWidget">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -479,7 +482,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="ct3Tab">
        <attribute name="title">

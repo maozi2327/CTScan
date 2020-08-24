@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>548</height>
+    <height>566</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -325,7 +325,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -555,6 +555,9 @@
          <widget class="QProgressBar" name="coneScanAllProgressBar">
           <property name="value">
            <number>24</number>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>

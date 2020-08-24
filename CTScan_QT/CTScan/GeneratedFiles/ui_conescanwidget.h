@@ -93,7 +93,7 @@ public:
     {
         if (ConeScanWidget->objectName().isEmpty())
             ConeScanWidget->setObjectName(QStringLiteral("ConeScanWidget"));
-        ConeScanWidget->resize(300, 548);
+        ConeScanWidget->resize(300, 566);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -341,6 +341,7 @@ public:
         coneScanAllProgressBar = new QProgressBar(coneScanTab);
         coneScanAllProgressBar->setObjectName(QStringLiteral("coneScanAllProgressBar"));
         coneScanAllProgressBar->setValue(24);
+        coneScanAllProgressBar->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(coneScanAllProgressBar, 6, 0, 1, 4);
 
@@ -498,7 +499,7 @@ public:
 
         retranslateUi(ConeScanWidget);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(ConeScanWidget);
