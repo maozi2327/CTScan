@@ -14,6 +14,7 @@ class LineDetNetWork;
 class MsgListBox;
 class LineDetScanInterface;
 class ConeScanWidget;
+
 class CTScan : public QMainWindow
 {
     Q_OBJECT

@@ -89,6 +89,7 @@ void addItemToMatixVieSample(T& in_data, QComboBox* in_matrix, QComboBox* in_vie
 		in_sampleTime->addItem(QString::number(value));
 		//}
 }
+
 void LineDetScanWidget::initiliseControls()
 {
 	//addItemToMatixVieSample(d_setupData->ct2Data, ui.ct2MatrixComboBox, ui.ct2ViewComboBox,

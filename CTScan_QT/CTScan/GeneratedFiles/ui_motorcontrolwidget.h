@@ -217,7 +217,7 @@ public:
     QLabel *label_59;
     QLabel *label_60;
     QRadioButton *radioButton_8;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_22;
     QGridLayout *gridLayout_2;
     QRadioButton *radioButton;
@@ -252,7 +252,7 @@ public:
     {
         if (MotorControlWidget->objectName().isEmpty())
             MotorControlWidget->setObjectName(QStringLiteral("MotorControlWidget"));
-        MotorControlWidget->resize(1254, 776);
+        MotorControlWidget->resize(661, 776);
         motionGroupBox = new QGroupBox(MotorControlWidget);
         motionGroupBox->setObjectName(QStringLiteral("motionGroupBox"));
         motionGroupBox->setGeometry(QRect(790, 30, 300, 636));
@@ -1341,10 +1341,10 @@ public:
         radioButton_8 = new QRadioButton(MotorControlWidget);
         radioButton_8->setObjectName(QStringLiteral("radioButton_8"));
         radioButton_8->setGeometry(QRect(26, 270, 16, 16));
-        widget = new QWidget(MotorControlWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(29, 320, 217, 147));
-        horizontalLayout_22 = new QHBoxLayout(widget);
+        layoutWidget1 = new QWidget(MotorControlWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(29, 320, 217, 147));
+        horizontalLayout_22 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_22->setSpacing(6);
         horizontalLayout_22->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_22->setObjectName(QStringLiteral("horizontalLayout_22"));
@@ -1352,12 +1352,12 @@ public:
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setSpacing(6);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        radioButton = new QRadioButton(widget);
+        radioButton = new QRadioButton(layoutWidget1);
         radioButton->setObjectName(QStringLiteral("radioButton"));
 
         gridLayout_2->addWidget(radioButton, 0, 0, 1, 1);
 
-        label_10 = new QLabel(widget);
+        label_10 = new QLabel(layoutWidget1);
         label_10->setObjectName(QStringLiteral("label_10"));
         label_10->setMinimumSize(QSize(60, 0));
         label_10->setMaximumSize(QSize(60, 16777215));
@@ -1365,7 +1365,7 @@ public:
 
         gridLayout_2->addWidget(label_10, 0, 1, 1, 1);
 
-        label_18 = new QLabel(widget);
+        label_18 = new QLabel(layoutWidget1);
         label_18->setObjectName(QStringLiteral("label_18"));
         label_18->setMinimumSize(QSize(60, 0));
         label_18->setMaximumSize(QSize(60, 16777215));
@@ -1373,12 +1373,12 @@ public:
 
         gridLayout_2->addWidget(label_18, 0, 2, 1, 1);
 
-        radioButton_2 = new QRadioButton(widget);
+        radioButton_2 = new QRadioButton(layoutWidget1);
         radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
 
         gridLayout_2->addWidget(radioButton_2, 1, 0, 1, 1);
 
-        label_11 = new QLabel(widget);
+        label_11 = new QLabel(layoutWidget1);
         label_11->setObjectName(QStringLiteral("label_11"));
         label_11->setMinimumSize(QSize(60, 0));
         label_11->setMaximumSize(QSize(60, 16777215));
@@ -1386,7 +1386,7 @@ public:
 
         gridLayout_2->addWidget(label_11, 1, 1, 1, 1);
 
-        label_19 = new QLabel(widget);
+        label_19 = new QLabel(layoutWidget1);
         label_19->setObjectName(QStringLiteral("label_19"));
         label_19->setMinimumSize(QSize(60, 0));
         label_19->setMaximumSize(QSize(60, 16777215));
@@ -1394,12 +1394,12 @@ public:
 
         gridLayout_2->addWidget(label_19, 1, 2, 1, 1);
 
-        radioButton_4 = new QRadioButton(widget);
+        radioButton_4 = new QRadioButton(layoutWidget1);
         radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
 
         gridLayout_2->addWidget(radioButton_4, 2, 0, 1, 1);
 
-        label_12 = new QLabel(widget);
+        label_12 = new QLabel(layoutWidget1);
         label_12->setObjectName(QStringLiteral("label_12"));
         label_12->setMinimumSize(QSize(60, 0));
         label_12->setMaximumSize(QSize(60, 16777215));
@@ -1407,7 +1407,7 @@ public:
 
         gridLayout_2->addWidget(label_12, 2, 1, 1, 1);
 
-        label_22 = new QLabel(widget);
+        label_22 = new QLabel(layoutWidget1);
         label_22->setObjectName(QStringLiteral("label_22"));
         label_22->setMinimumSize(QSize(60, 0));
         label_22->setMaximumSize(QSize(60, 16777215));
@@ -1415,12 +1415,12 @@ public:
 
         gridLayout_2->addWidget(label_22, 2, 2, 1, 1);
 
-        radioButton_5 = new QRadioButton(widget);
+        radioButton_5 = new QRadioButton(layoutWidget1);
         radioButton_5->setObjectName(QStringLiteral("radioButton_5"));
 
         gridLayout_2->addWidget(radioButton_5, 3, 0, 1, 1);
 
-        label_15 = new QLabel(widget);
+        label_15 = new QLabel(layoutWidget1);
         label_15->setObjectName(QStringLiteral("label_15"));
         label_15->setMinimumSize(QSize(60, 0));
         label_15->setMaximumSize(QSize(60, 16777215));
@@ -1428,7 +1428,7 @@ public:
 
         gridLayout_2->addWidget(label_15, 3, 1, 1, 1);
 
-        label_24 = new QLabel(widget);
+        label_24 = new QLabel(layoutWidget1);
         label_24->setObjectName(QStringLiteral("label_24"));
         label_24->setMinimumSize(QSize(60, 0));
         label_24->setMaximumSize(QSize(60, 16777215));
@@ -1436,12 +1436,12 @@ public:
 
         gridLayout_2->addWidget(label_24, 3, 2, 1, 1);
 
-        radioButton_6 = new QRadioButton(widget);
+        radioButton_6 = new QRadioButton(layoutWidget1);
         radioButton_6->setObjectName(QStringLiteral("radioButton_6"));
 
         gridLayout_2->addWidget(radioButton_6, 4, 0, 1, 1);
 
-        label_16 = new QLabel(widget);
+        label_16 = new QLabel(layoutWidget1);
         label_16->setObjectName(QStringLiteral("label_16"));
         label_16->setMinimumSize(QSize(60, 0));
         label_16->setMaximumSize(QSize(60, 16777215));
@@ -1449,7 +1449,7 @@ public:
 
         gridLayout_2->addWidget(label_16, 4, 1, 1, 1);
 
-        label_25 = new QLabel(widget);
+        label_25 = new QLabel(layoutWidget1);
         label_25->setObjectName(QStringLiteral("label_25"));
         label_25->setMinimumSize(QSize(60, 0));
         label_25->setMaximumSize(QSize(60, 16777215));
@@ -1457,12 +1457,12 @@ public:
 
         gridLayout_2->addWidget(label_25, 4, 2, 1, 1);
 
-        radioButton_7 = new QRadioButton(widget);
+        radioButton_7 = new QRadioButton(layoutWidget1);
         radioButton_7->setObjectName(QStringLiteral("radioButton_7"));
 
         gridLayout_2->addWidget(radioButton_7, 5, 0, 1, 1);
 
-        label_14 = new QLabel(widget);
+        label_14 = new QLabel(layoutWidget1);
         label_14->setObjectName(QStringLiteral("label_14"));
         label_14->setMinimumSize(QSize(60, 0));
         label_14->setMaximumSize(QSize(60, 16777215));
@@ -1470,7 +1470,7 @@ public:
 
         gridLayout_2->addWidget(label_14, 5, 1, 1, 1);
 
-        label_26 = new QLabel(widget);
+        label_26 = new QLabel(layoutWidget1);
         label_26->setObjectName(QStringLiteral("label_26"));
         label_26->setMinimumSize(QSize(60, 0));
         label_26->setMaximumSize(QSize(60, 16777215));
@@ -1478,12 +1478,12 @@ public:
 
         gridLayout_2->addWidget(label_26, 5, 2, 1, 1);
 
-        radioButton_3 = new QRadioButton(widget);
+        radioButton_3 = new QRadioButton(layoutWidget1);
         radioButton_3->setObjectName(QStringLiteral("radioButton_3"));
 
         gridLayout_2->addWidget(radioButton_3, 6, 0, 1, 1);
 
-        label_13 = new QLabel(widget);
+        label_13 = new QLabel(layoutWidget1);
         label_13->setObjectName(QStringLiteral("label_13"));
         label_13->setMinimumSize(QSize(60, 0));
         label_13->setMaximumSize(QSize(60, 16777215));
@@ -1491,7 +1491,7 @@ public:
 
         gridLayout_2->addWidget(label_13, 6, 1, 1, 1);
 
-        label_23 = new QLabel(widget);
+        label_23 = new QLabel(layoutWidget1);
         label_23->setObjectName(QStringLiteral("label_23"));
         label_23->setMinimumSize(QSize(60, 0));
         label_23->setMaximumSize(QSize(60, 16777215));
@@ -1505,35 +1505,35 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        lineEdit_7 = new QLineEdit(widget);
+        lineEdit_7 = new QLineEdit(layoutWidget1);
         lineEdit_7->setObjectName(QStringLiteral("lineEdit_7"));
         lineEdit_7->setMinimumSize(QSize(60, 0));
         lineEdit_7->setMaximumSize(QSize(60, 16777215));
 
         gridLayout->addWidget(lineEdit_7, 0, 0, 1, 2);
 
-        detLayerNegtiveButton_8 = new QPushButton(widget);
+        detLayerNegtiveButton_8 = new QPushButton(layoutWidget1);
         detLayerNegtiveButton_8->setObjectName(QStringLiteral("detLayerNegtiveButton_8"));
         detLayerNegtiveButton_8->setMinimumSize(QSize(25, 25));
         detLayerNegtiveButton_8->setMaximumSize(QSize(25, 25));
 
         gridLayout->addWidget(detLayerNegtiveButton_8, 1, 0, 1, 1);
 
-        detLayerPositiveButton_8 = new QPushButton(widget);
+        detLayerPositiveButton_8 = new QPushButton(layoutWidget1);
         detLayerPositiveButton_8->setObjectName(QStringLiteral("detLayerPositiveButton_8"));
         detLayerPositiveButton_8->setMinimumSize(QSize(25, 25));
         detLayerPositiveButton_8->setMaximumSize(QSize(25, 25));
 
         gridLayout->addWidget(detLayerPositiveButton_8, 1, 1, 1, 1);
 
-        detLayerAbsPosButton_15 = new QPushButton(widget);
+        detLayerAbsPosButton_15 = new QPushButton(layoutWidget1);
         detLayerAbsPosButton_15->setObjectName(QStringLiteral("detLayerAbsPosButton_15"));
         detLayerAbsPosButton_15->setMinimumSize(QSize(30, 30));
         detLayerAbsPosButton_15->setMaximumSize(QSize(70, 30));
 
         gridLayout->addWidget(detLayerAbsPosButton_15, 2, 0, 1, 2);
 
-        detLayerAbsPosButton_16 = new QPushButton(widget);
+        detLayerAbsPosButton_16 = new QPushButton(layoutWidget1);
         detLayerAbsPosButton_16->setObjectName(QStringLiteral("detLayerAbsPosButton_16"));
         sizePolicy1.setHeightForWidth(detLayerAbsPosButton_16->sizePolicy().hasHeightForWidth());
         detLayerAbsPosButton_16->setSizePolicy(sizePolicy1);

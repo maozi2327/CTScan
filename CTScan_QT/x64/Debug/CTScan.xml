@@ -153,15 +153,15 @@
 				<Matrix>256,512,1024,2048</Matrix>
 			</a>
 			<a>
-				<Ray>0</Ray>
-				<Det>0</Det>
+				<RayId>1</RayId>
+				<PanelDetId>0</PanelDetId>
 				<Matrix>256,512,1024,2048</Matrix>
 			</a>
 		</CONE_SCAN>
 		<CONE_JOINT_ROT_SCAN>
 			<Num>2</Num>
 			<a>
-				<RayId>1</RayId>
+				<RayId>0</RayId>
 				<PanelDetId>0</PanelDetId>
 				<Matrix>256,512,1024,2048</Matrix>
 				<View>500</View>

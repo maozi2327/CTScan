@@ -17,15 +17,17 @@ ConeScanWidget::ConeScanWidget(MotorControlWidget* in_motorControl, int in_rayId
 				[=](ConeScanData& in_Data)
 			{	return in_Data.Ray == in_rayId && in_Data.Det == in_panelDetId; });
 
-			initiliseConeScanControls(*itr);
+			if(itr != d_setupData->coneScanData.end())
+				initiliseConeScanControls(*itr);
 		}
 		else if (scanMode == ScanMode::CONE_JOINT_ROT_SCAN)
 		{
 			auto itr = std::find_if(d_setupData->coneJointRotScanData.begin(), d_setupData->coneJointRotScanData.end(),
 				[=](ConeJointRotScanData& in_Data)
 			{	return in_Data.Ray == in_rayId && in_Data.Det == in_panelDetId; });
-
-			initiliseConeJointRotScanControls(*itr);
+			
+			if (itr != d_setupData->coneJointRotScanData.end())
+				initiliseConeJointRotScanControls(*itr);
 		}
 	}
 }
@@ -41,14 +43,21 @@ void ConeScanWidget::setConeScanProgress(int in_progress, const QString & in_msg
 	ui.coneScanProgressStaticLabel->setText(in_msg);
 }
 
+template<typename T>
+void addItemToMatixVieSample(T& in_data, QComboBox* in_matrix)
+{
+	for (auto& value : in_data.Matrix)
+		in_matrix->addItem(QString::number(value));
+}
+
 void ConeScanWidget::initiliseConeScanControls(ConeScanData & in_data)
 {
-
+	addItemToMatixVieSample(in_data, ui.coneScanMatrixComboBox);
 }
 
 void ConeScanWidget::initiliseConeJointRotScanControls(ConeJointRotScanData & in_data)
 {
-
+	addItemToMatixVieSample(in_data, ui.coneJointRotScanMatrixComboBox);
 }
 
 void ConeScanWidget::on_scanProgressUpdated()
